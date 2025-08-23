@@ -1,5 +1,6 @@
 #include <iostream>
-#include <cstring> // for strcpy, strlen
+#include <cstring> 
+using namespace std;
 
 class Exam {
 private:
@@ -8,7 +9,6 @@ private:
     int score;
 
 public:
-    // Constructor
     Exam(const char* name, const char* date, int s) {
         studentName = new char[strlen(name) + 1];
         strcpy(studentName, name);
@@ -19,13 +19,11 @@ public:
         score = s;
     }
 
-    // Destructor
     ~Exam() {
         delete[] studentName;
         delete[] examDate;
     }
 
-    // Setters
     void setStudentName(const char* name) {
         delete[] studentName;
         studentName = new char[strlen(name) + 1];
@@ -42,32 +40,27 @@ public:
         score = s;
     }
 
-    // Display method
     void display() const {
-        std::cout << "Student Name: " << studentName << std::endl;
-        std::cout << "Exam Date: " << examDate << std::endl;
-        std::cout << "Score: " << score << std::endl;
+        cout << "Student Name: " << studentName << endl;
+        cout << "Exam Date: " << examDate << endl;
+        cout << "Score: " << score << endl;
     }
 };
 
 int main() {
-    // Create an Exam instance
     Exam exam1("Alice", "2025-08-20", 95);
+    Exam exam2 = exam1;  
 
-    // Shallow copy (default copy constructor is used)
-    Exam exam2 = exam1;  // <-- Shallow copy happens here
-
-    std::cout << "Original Exam:" << std::endl;
+    cout << "Original Exam:" << endl;
     exam1.display();
 
-    std::cout << "\nShallow Copy Exam:" << std::endl;
+    cout << "\nShallow Copy Exam:" << endl;
     exam2.display();
 
-    // Modify original
     exam1.setStudentName("Bob");
-    std::cout << "\nAfter modifying original:" << std::endl;
+    cout << "\nAfter modifying original:" << endl;
     exam1.display();
-    exam2.display();  // <-- Notice the issue
+    exam2.display();  
 
     return 0;
 }
