@@ -1,0 +1,23 @@
+1) Bubble Sort:-
+    Point at an element, then check all elements after it and compare if a smaller is found, if yes then swap them and move to next element and repeat it till last element.
+
+2) Selection Sort:-
+    Find index smallest element in the array by comparing it with the element at each index and swap it with first element, then swap 2nd smallest with 2nd element......... then swap n-th smallest with n-th element.
+
+3) Insertion Sort:-
+    You take left side as sorted, then you move right side and find an unsorted (smaller) element and store it. Then you traverse backward and keep shifting elements forward until you find the right place for that element and place it there, increasing the sorted part of array by a unit.
+
+4) Shell Sort:-
+    Its an insertion sort for large arrays, when sorting large arrays the insertion sort approach looks overwhelming as it has to do a lot of word so what we do is first we sort elements such that they are unsorted by small margin (sort krenge uper uper se) and repeat this until this margin becomes 0. In each BIG sorting we apply insertion sort to make it less unsorted and in last step we do typical insertion sort.
+
+5) Comb Sort:-
+    It's a bubble sort for large arrays where difference between adjacent elements is big, the difference is first made small using gap method so that less work is done and then we do typical bubble sort. The minimum gap we should have is 1 where adjacent elements are compared. Also we use swapped variable to note if atleast 1 swap takes place in gap or adjacent sort
+
+6) Linear Search:-
+    Just traverse Whole array until find target
+
+7) Binary Search:-
+    Start at mid of array if target is bigger then remove right side since target exist in left else remove left side keep doing this until mid points to target element
+
+8) Interpolation Search:-
+    Optimizes binary serach by using mathematical formula to predice element position but only when array is evenly distributed
