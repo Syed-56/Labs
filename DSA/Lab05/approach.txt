@@ -1,0 +1,6 @@
+1) Factorial
+theres only base case and recursive call in it. Since 5! = 5x4! = 5x4x3! = 5x4x3x2! = 5x4x3x2x1! = 5x4x3x2x1 = 5x4x3x2 = 5x4x6 = 5x24 = 120. You see how we first go deep until no factorial left then we get the known factorial value and come up. So thats what happens in code. for 5! we find 5*4! which find 4x3! which finds 3x2! which finds 2x1! and base case is 1! = 1 so wee go up and get 120.
+
+2) Print Numbers
+in part1 we print a number and call function to print it again by reducing it by 1. this happens until number is 0.
+int part 2 we print the number but call another function to check if its 0 then stop else call print function again to print number.
