@@ -4,3 +4,9 @@ theres only base case and recursive call in it. Since 5! = 5x4! = 5x4x3! = 5x4x3
 2) Print Numbers
 in part1 we print a number and call function to print it again by reducing it by 1. this happens until number is 0.
 int part 2 we print the number but call another function to check if its 0 then stop else call print function again to print number.
+
+3) Sum
+In non-tail: we return the sum with next call, in non tail: we sum using recursion but return the added value after that
+
+4) Nested recursion
+ackermann function is just a function used for showing depth focused recursion using 3 cases nothing more
