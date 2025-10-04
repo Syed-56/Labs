@@ -9,35 +9,60 @@ INCLUDE Irvine32.inc
 	num2arm DWORD ?
 	num3arm DWORD ?
 	total DWORD ?
+	digits DWORD 3
 	original DWORD 153
 	msgEqual BYTE "Armstrong", 0
 	msgNotEqual BYTE "Not Armstrong", 0
 
 .code
 main PROC
-	MOV ECX, 2
+	MOV ECX, digits
+	DEC ECX
 	MOV EAX, num1
 	MOV EBX, num1
 	multiply1:
-		MUL EBX
+		PUSH ECX
+		MOV ECX, num1
+		DEC ECX
+		notMUL1:
+			ADD EAX, EBX
+			LOOP notMUL1
+		POP ECX
+		MOV EBX, EAX
 		LOOP multiply1
 	MOV num1arm, EAX
 
 	XOR EAX, EAX
-	MOV ECX, 2
+	MOV ECX, digits
+	DEC ECX
 	MOV EAX, num2
 	MOV EBX, num2
 	multiply2:
-		MUL EBX
+		PUSH ECX
+		MOV ECX, num2
+		DEC ECX
+		notMUL2:
+			ADD EAX, EBX
+			LOOP notMUL2
+		POP ECX
+		MOV EBX, EAX
 		LOOP multiply2
 	MOV num2arm, EAX
 
 	XOR EAX, EAX
-	MOV ECX, 2
+	MOV ECX, digits
+	DEC ECX
 	MOV EAX, num3
 	MOV EBX, num3
 	multiply3:
-		MUL EBX
+		PUSH ECX
+		MOV ECX, num3
+		DEC ECX
+		notMUL3:
+			ADD EAX, EBX
+			LOOP notMUL3
+		POP ECX
+		MOV EBX, EAX
 		LOOP multiply3
 	MOV num3arm, EAX
 
@@ -47,18 +72,17 @@ main PROC
 	ADD EAX, num3arm
 	MOV total, EAX
 	call WriteDec
-	CMP EAX, original
 	call Crlf
-	XOR EDX, EDX
-	JE equal
-	JNE notequal
 
-	equal:
-		MOV EDX, OFFSET msgEqual
-		call WriteString
-		JMP done
+	CMP EAX, original
+	JE equal
+
 	notequal:
 		MOV EDX, OFFSET msgNotEqual
+		call WriteString
+		JMP done
+	equal:
+		MOV EDX, OFFSET msgEqual
 		call WriteString
 		JMP done
 	done:
