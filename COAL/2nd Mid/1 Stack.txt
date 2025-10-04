@@ -1,0 +1,12 @@
+INCLUDE Irvine32.inc
+
+.data
+	num BYTE 10
+.code
+main PROC
+	MOV EAX, num	;EAX=10
+	push EAX	;ESP = 0FFCh and ESP-4=[1000h]=10
+	pop EBX		;EBX=10 and ESP = 1000h
+	exit
+main ENDP
+END main

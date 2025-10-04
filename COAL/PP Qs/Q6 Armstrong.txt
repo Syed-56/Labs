@@ -1,0 +1,67 @@
+INCLUDE Irvine32.inc
+
+.data
+	;153
+	num1 DWORD 1
+	num2 DWORD 5
+	num3 DWORD 3
+	num1arm DWORD ?
+	num2arm DWORD ?
+	num3arm DWORD ?
+	total DWORD ?
+	original DWORD 153
+	msgEqual BYTE "Armstrong", 0
+	msgNotEqual BYTE "Not Armstrong", 0
+
+.code
+main PROC
+	MOV ECX, 2
+	MOV EAX, num1
+	MOV EBX, num1
+	multiply1:
+		MUL EBX
+		LOOP multiply1
+	MOV num1arm, EAX
+
+	XOR EAX, EAX
+	MOV ECX, 2
+	MOV EAX, num2
+	MOV EBX, num2
+	multiply2:
+		MUL EBX
+		LOOP multiply2
+	MOV num2arm, EAX
+
+	XOR EAX, EAX
+	MOV ECX, 2
+	MOV EAX, num3
+	MOV EBX, num3
+	multiply3:
+		MUL EBX
+		LOOP multiply3
+	MOV num3arm, EAX
+
+	XOR EAX, EAX
+	MOV EAX, num1arm
+	ADD EAX, num2arm
+	ADD EAX, num3arm
+	MOV total, EAX
+	call WriteDec
+	CMP EAX, original
+	call Crlf
+	XOR EDX, EDX
+	JE equal
+	JNE notequal
+
+	equal:
+		MOV EDX, OFFSET msgEqual
+		call WriteString
+		JMP done
+	notequal:
+		MOV EDX, OFFSET msgNotEqual
+		call WriteString
+		JMP done
+	done:
+		exit
+main ENDP
+END main
