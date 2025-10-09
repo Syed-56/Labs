@@ -12,7 +12,6 @@ main PROC
 	CALL WriteString
 	call ReadInt	;stores input into EAX
 	MOV num, EAX
-	MOV EAX, num
 	call WriteInt
 	call Crlf
 
