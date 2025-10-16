@@ -7,17 +7,16 @@ MAIN proc
 	;EQUAL case
 	MOV EAX, 10
 	MOV EBX, 10
-	CMP EAX, EBX	;EAX-EBX=0, SF,CF,OF = 0 and ZF=1
-
+	CMP EAX, EBX	;EAX-EBX=0
 	;Less than case
 	MOV EAX, 10
 	MOV EBX, 20
-	CMP EAX, EBX	;EAX-EBX=-10 ZF,OF=0 and CF,SF=1
+	CMP EAX, EBX	;EAX-EBX=-10 
 
 	;greater than case
 	MOV EAX, 10
 	MOV EBX, 5
-	CMP EAX, EBX	;EAX-EBX=5 SF,ZF,CF all = 0
+	CMP EAX, EBX	;EAX-EBX=5 
 	exit
 main ENDP
 END main

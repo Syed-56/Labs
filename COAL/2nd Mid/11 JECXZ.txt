@@ -1,0 +1,29 @@
+INCLUDE Irvine32.inc
+
+.data
+    msg BYTE "Loop iteration: ", 0
+
+.code
+main PROC
+    mov ecx, 5          ; Loop counter (5 iterations)
+
+start_loop:
+    jecxz end_loop      ; Jump if ECX == 0 → exit loop
+
+    ; Print message
+    mov edx, OFFSET msg
+    call WriteString
+
+    ; Print current value of ECX
+    mov eax, ecx
+    call WriteDec
+    call Crlf
+
+    ; Decrement ECX manually (since we're not using LOOP)
+    dec ecx
+    jmp start_loop      ; Go back to loop start
+
+end_loop:
+    exit
+main ENDP
+END main
