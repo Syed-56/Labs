@@ -20,7 +20,7 @@ main PROC
 	call Crlf
 
 	MOV AL, 10101110b
-	TEST AL, 11110110b	;same as TEST but only update flag not register
+	TEST AL, 11110110b	;same as AND but only update flag not register
 	call DumpRegs
 	call Crlf
 	exit
