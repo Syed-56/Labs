@@ -1,0 +1,88 @@
+INCLUDE Irvine32.inc
+
+.data
+	varA DWORD ?
+	varB DWORD ?
+	varC DWORD ?
+	msgInput BYTE "Enter Number: ", 0
+	varAgreatest BYTE "varA is Greatest", 0
+	varBgreatest BYTE "varB is Greatest", 0
+	varCgreatest BYTE "varC is Greatest", 0
+	msgUnsigned BYTE "Unsigned: ", 0	
+	msgSigned BYTE "Signed: ", 0
+.code
+main PROC
+	MOV EDX, OFFSET msgInput
+	call WriteString
+	call ReadInt
+	MOV varA, EAX
+	call Crlf
+	MOV EDX, OFFSET msgInput
+	call WriteString
+	call ReadInt
+	MOV varB, EAX
+	call Crlf
+	MOV EDX, OFFSET msgInput
+	call WriteString
+	call ReadInt
+	MOV varC, EAX
+	call Crlf
+	MOV EDX, OFFSET msgSigned
+	call WriteString
+
+	checkForEAX:	
+		MOV EAX, varA
+		MOV EBX, varB
+		CMP EAX, EBX
+		JNG checkForEBX
+		MOV EBX, varC
+		CMP EAX, EBX
+		JNG checkForEBX
+		MOV EDX, OFFSET varAgreatest
+		call WriteString
+		JMP checkForUnsigned
+	checkForEBX:
+		MOV EAX, varB
+		MOV EBX, varC
+		CMP EAX, EBX
+		JNG checkForECX
+		MOV EDX, OFFSET varBgreatest
+		call WriteString
+		JMP checkForUnsigned
+	checkForECX:
+		MOV EDX, OFFSET varCgreatest
+		call WriteString
+		JMP checkForUnsigned
+
+	checkForUnsigned:
+	call Crlf
+	MOV EDX, OFFSET msgUnsigned
+	call WriteString
+
+	checkForEAXUS:	
+		MOV EAX, varA
+		MOV EBX, varB
+		CMP EAX, EBX
+		JNA checkForEBXUS
+		MOV EBX, varC
+		CMP EAX, EBX
+		JNA checkForEBXUS
+		MOV EDX, OFFSET varAgreatest
+		call WriteString
+		JMP done
+	checkForEBXUS:
+		MOV EAX, varB
+		MOV EBX, varC
+		CMP EAX, EBX
+		JNA checkForECXUS
+		MOV EDX, OFFSET varBgreatest
+		call WriteString
+		JMP done
+	checkForECXUS:
+		MOV EDX, OFFSET varCgreatest
+		call WriteString
+		JMP done
+done:
+exit
+main ENDP
+END main

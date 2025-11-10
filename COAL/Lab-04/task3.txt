@@ -1,0 +1,19 @@
+INCLUDE Irvine32.inc
+
+.data
+	num1 WORD 1234h
+	num2 WORD 5678h
+	
+.code
+main PROC
+	mov AX, num1
+	call WriteHex
+	call Crlf
+	mov BX, num2
+	XCHG AX, BX
+	call WriteHex
+	mov num1, AX
+	mov num2, BX
+	exit
+main ENDP
+END main

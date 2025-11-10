@@ -1,0 +1,85 @@
+INCLUDE Irvine32.inc
+
+.data
+	var1 BYTE 10101010b
+	var2 BYTE 11110000b
+	var3 BYTE 11001100b
+	msgSet BYTE "Bit 0 is set", 0
+	msgClear BYTE "Bit 0 is clear", 0
+
+.code
+main PROC
+	MOV AL, var1
+	MOV BL, var2
+	MOV CL, var3
+
+	;clear odd bits
+	AND AL, 01010101b
+	AND BL, 01010101b
+	AND CL, 01010101b
+
+	;set even bits
+	OR AL, 10101010b
+	OR BL, 10101010b
+	OR CL, 10101010b
+
+	;toggle bits
+	XOR AL, 11111111b
+	XOR BL, 11111111b
+	XOR CL, 11111111b
+
+	;test if bit 0 (lsb) is set
+	TEST AL, 00000001b
+	
+	JZ zeroSetAL
+	JNZ zeroNotSetAL
+	
+	zeroSetAL:	
+		MOV EDX, OFFSET msgSet
+		call WriteString
+		call Crlf
+		JMP next1
+	zeroNotSetAL:	
+		MOV EDX, OFFSET msgClear
+		call WriteString
+		call Crlf
+		JMP next1
+
+	next1:
+	TEST BL, 00000001b
+
+	JZ zeroSetBL
+	JNZ zeroNotSetBL
+	
+	zeroSetBL:	
+		MOV EDX, OFFSET msgSet
+		call WriteString
+		call Crlf
+		JMP next2
+	zeroNotSetBL:	
+		MOV EDX, OFFSET msgClear
+		call WriteString
+		call Crlf
+		JMP next2
+
+	next2:
+	TEST CL, 00000001b
+
+	JZ zeroSetCL
+	JNZ zeroNotSetCL
+	
+	zeroSetCL:	
+		MOV EDX, OFFSET msgSet
+		call WriteString
+		call Crlf
+		JMP done
+	zeroNotSetCL:	
+		MOV EDX, OFFSET msgClear
+		call WriteString
+		call Crlf
+		JMP done
+
+done:
+exit
+main ENDP
+END main
