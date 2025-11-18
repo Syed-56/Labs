@@ -16,23 +16,26 @@ public:
     }
 };
 
-// Get height safely
-int h(Node* root) {
-    return (root == NULL ? -1 : root->height);
+void updateHeight(Node* n) {
+    if (!n) return;
+
+    int leftH  = (n->left  ? n->left->height  : -1);
+    int rightH = (n->right ? n->right->height : -1);
+
+    n->height = 1 + max(leftH, rightH);
 }
 
-// Update height of a node
-void updateHeight(Node* root) {
-    if (root)
-        root->height = 1 + max(h(root->left), h(root->right));
+
+int getBalance(Node* n) {
+    if (!n) return 0;
+
+    int leftH  = (n->left  ? n->left->height  : -1);
+    int rightH = (n->right ? n->right->height : -1);
+
+    return leftH - rightH;
 }
 
-// Balance factor
-int getBalance(Node* root) {
-    return (root ? h(root->left) - h(root->right) : 0);
-}
 
-// Left Rotation
 Node* leftRotate(Node* x) {
     Node* y = x->right;
     Node* t = y->left;
@@ -46,7 +49,6 @@ Node* leftRotate(Node* x) {
     return y;
 }
 
-// Right Rotation
 Node* rightRotate(Node* y) {
     Node* x = y->left;
     Node* t = x->right;
@@ -93,7 +95,6 @@ Node* balance(Node* root) {
     return root;
 }
 
-// Insert
 Node* insert(Node* root, int val) {
     if (!root)
         return new Node(val);
@@ -108,14 +109,12 @@ Node* insert(Node* root, int val) {
     return balance(root);
 }
 
-// Find min
 Node* findMin(Node* root) {
     while (root->left)
         root = root->left;
     return root;
 }
 
-// Delete
 Node* deleteNode(Node* root, int val) {
     if (!root) return NULL;
 
@@ -125,7 +124,6 @@ Node* deleteNode(Node* root, int val) {
         root->right = deleteNode(root->right, val);
 
     else {
-        // node found
         if (!root->left || !root->right) {
             Node* temp = (root->left) ? root->left : root->right;
             delete root;
@@ -140,7 +138,6 @@ Node* deleteNode(Node* root, int val) {
     return balance(root);
 }
 
-// Main
 int main() {
     Node* tree = NULL;
     tree = insert(tree,240585);
