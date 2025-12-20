@@ -1,0 +1,28 @@
+INCLUDE Irvine32.inc
+
+.data
+	var DWORD 8
+.code
+
+fib PROTO USES EAX EBX, n:DWORD
+fib PROC USES EAX EBX, n:DWORD
+	CMP n,1
+	JNG baseCase
+recursion:
+	MOV EBX, n
+	DEC EBX
+	INVOKE fib, EBX
+	MOV EDX, EAX
+
+	MOV EBX, n
+	SUB EBX, 2
+	INVOKE fib, EBX
+baseCase:
+	ADD EAX, EDX
+	RET
+fib ENDP
+
+main PROC
+	INVOKE fib, var
+	call writeInt
+main ENDP

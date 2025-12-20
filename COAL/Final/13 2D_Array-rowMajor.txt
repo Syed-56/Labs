@@ -1,0 +1,39 @@
+INCLUDE Irvine32.inc
+
+.data
+  ROWS EQU 3
+  COLS EQU 5
+  arr DWORD ROWS*COLS DUP(?)
+
+.code
+main PROC
+  MOV ESI, 0  ;row counter = 0
+  
+  row_loop:
+    CMP ESI, ROWS
+    JGE done
+    MOV EDI, 0  ;col counter = 0
+    
+  col_loop:
+    CMP EDI, COLS
+    JGE next_row  
+    
+    MOV EBX, OFFSET arr ;base address
+    MOV EAX, ESI
+    IMUL EAX, COLS
+    IMUL EAX, TYPE tempReadings
+    ADD EBX, EAX
+    call readInt
+    MOV arr[EBX+EDI*TYPE arr], EAX  ;store input
+    
+    INC EDI
+    JMP col_loop
+  
+  next_row:
+    INC ESI
+    JMP row_loop
+  
+  done:
+    exit
+main ENDP
+END main

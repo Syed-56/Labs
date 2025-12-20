@@ -1,0 +1,35 @@
+INCLUDE Irvine32.inc 
+
+.data 
+   num DWORD ?
+   char BYTE ?
+   string BYTE 50 DUP(0)
+   prompt BYTE "Input: ", 0
+
+.code 
+main PROC
+	MOV EDX, OFFSET prompt
+	CALL WriteString
+	call ReadInt	;stores input into EAX
+	MOV num, EAX
+	call WriteInt
+	call Crlf
+
+	MOV EDX, OFFSET prompt
+	CALL WriteString
+	call ReadChar	;stores input into AL
+	MOV char, AL
+	MOV AL, char
+	call WriteChar	;dont use readchar as it also accepts ENTER Input causing issues
+	call Crlf
+
+	MOV EDX, OFFSET prompt
+	call WriteString
+	MOV EDX, OFFSET string
+	MOV ECX, SIZEOF string
+	call ReadString		;stores input into variable string
+	MOV EDX, OFFSET string
+	call WriteString
+  exit
+main ENDP
+END main
