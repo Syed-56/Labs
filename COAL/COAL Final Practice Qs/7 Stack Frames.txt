@@ -1,0 +1,32 @@
+Q1. When a C function returns a 32-bit integer, where is the return value stored? in EAX because
+Ans: int func(int a,int b) {return a+b;} => ADD EAX, [ESP+8]. ADD EAX, [ESP+12]. ADD ESP,8. RET
+Q2. How is the LEA instruction more powerful than the OFFSET operator?
+Ans: Can perform arithmetic on addresses at runtime. Can combine base, index, scale, and displacement in a single instruction. Still stores in register.
+Q3. How is an 8-bit character argument passed to a procedure that expects a 32-bit integer parameter?
+Ans: An 8-bit character argument is extended to 32 bits (MOVZX/MOVSX) and then pushed onto the stack for the procedure expecting a 32-bit integer.
+Q4. How is C-style convention better then STDCALL?
+Ans: The caller cleans the stack, giving more flexibility and easier handling of recursive calls.
+
+Q5. Write statements in the AddThree procedure (from question 11) that calculate the sum of the three stack parameters. 
+Ans: AddThree PROC
+    push ebp
+    mov ebp, esp
+    mov eax, [ebp+8]    ; EAX = a
+    add eax, [ebp+12]   ; EAX += b
+    add eax, [ebp+16]   ; EAX += c
+    pop ebp
+    ret
+    AddThree ENDP
+Q6. Declare a local variable named pArray that is a pointer to an array of doublewords.
+Ans: LOCAL pArray: PTR DWORD
+Q7. Declare a local variable named buffer that is an array of 20 bytes.
+Ans: LOCAL buffer: BYTE 20
+Q8. Declare a local variable named myByte that holds an 8-bit signed integer.
+Ans: LOCAL myByte: BYTE
+
+Q9. A subroutine’s stack frame always contains the caller’s return address and the subroutine’s local variables. True
+Q10. Arrays are passed by reference to avoid copying them onto the stack. True
+Q11. A procedure’s prologue code always pushes EBP on the stack. Fales
+Q12. Local variables are created by adding a positive value to the stack pointer. False
+Q13. In 32-bit protected mode, the last argument to be pushed on the stack in a procedure call is stored at location ebp+8. True
+Q14. Passing by reference requires popping a parameter’s offset from the stack inside the called procedure. False

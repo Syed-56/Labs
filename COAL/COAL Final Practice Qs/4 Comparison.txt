@@ -1,0 +1,27 @@
+Q1. Which Jump instructions follow signed integer comparison and which follow unsigned integer comparison?
+Ans: unsigned comparison only use ZF,CF and not use SF,OF but signed comparison uses SF,OF
+	unsigned jumps: JB,JA,JBE,JAE,JE,JNE.	signed jumps: JL,JG,JLE,JGE,JE,JNE
+Q2. Which conditional jump instruction branches based on the contents of ECX?
+Ans: LOOP, LOOPE, LOOPNE, LOOPZ, LOOPNZ
+Q3. The destination label of a LOOPZ instruction is? Ans: -128 to 127 bytes
+Q4. Convert into assembly:-
+if( ebx > ecx AND ebx > edx) OR ( edx > eax ) 
+ X = 1
+else
+ X = 2
+
+checkAnd:
+CMP EBX, ECX
+JNG checkOr
+CMP EBX,EDX
+JNG checkOr
+
+check Or:
+CMP EDX, EAX
+JNG elseBlock
+
+MOV X,1
+JMP done
+
+elseBlock:
+MOV X,2

@@ -1,0 +1,22 @@
+Uses of AND:-
+- Masking: AND the number with those bits 0 which you want to clear.
+	11000111 AND 00111111 = 00000111
+- Uppercase: Lowercase character can be uppercased by clearing bit 5
+	01100001(a) AND 11011111 = 01000001(A)
+
+Uses of OR:-
+- Setting Bit: OR the number with those bits 1 which you want to set.
+	11000111 OR 00111000 = 11111111
+- Digit->ASCII: OR the number with 30h and you have it as character.
+	00110000(5) OR 00000101(30h) = 00110101 ('5')
+
+Uses of XOR:-
+- Reverse Bits: XOR the number with those bots opposite which you want to reverse.
+	00111011 XOR 00111100 = 00111100
+- Check Parity: XORing a number with itself sets the Parity Flag. and XORing 		number with 0 inverts Parity Flag
+
+Set & Clear Flag:-
+ZF: clear => OR with 1. set => TEST/AND with 0
+SF: clear => AND highest bit with 0. set => OR highest bit with 1
+CF: clear => CLC. set => STC
+OF: clear => OR with 0. set => add 2 +ve ints that produce -ve (in AL +127+1 = -128)

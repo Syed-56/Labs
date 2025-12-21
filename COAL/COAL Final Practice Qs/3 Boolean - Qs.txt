@@ -1,0 +1,14 @@
+Q1. Write a single instruction using 16-bit operands that clears the high 8 bits of AX and does not change the low 8 bits.
+Ans: AND AX, 0000000011111111
+Q2. Write a single instruction using 16-bit operands that sets the high 8 bits of AX and does not change the low 8 bits.
+Ans: OR AX, 11111111100000000
+Q3. Write a single instruction (other than NOT) that inverts all the bits in EAX.
+Ans: XOR EAX, 11111111111111111111111111111111
+Q4. Write instructions that set the Zero flag if the 32-bit value in EAX is even and clear the Zero flag if EAX is odd.
+Ans: Divide number by 2 and compare EDX,0. ZF will automatically be set or cleared. You can then use JZ and JNZ to print respective statements.
+Q5. Give Uppercase <-> Lowercase conversion instructions:
+Ans: uppercase to lowercase -> OR AL, 00100000
+     lower to upper -> AND AL, 11011111
+Q6. Give binary <-> ASCII conversion instructions:
+Ans: binary to ascii -> OR AL, 30h
+     ascii to binary -> SUB AL, 30h

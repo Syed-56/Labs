@@ -1,0 +1,11 @@
+Q1. The PROC directive begins a procedure and the ENDP directive ends a procedure. True
+Q2. It is possible to define a procedure inside an existing procedure. False
+Q3. What would happen if the RET instruction was omitted from a procedure?
+Ans: Omitting RET causes the CPU to continue executing code past the procedure, leading to unpredictable behavior, possible crashes, and stack corruption.
+Q5. The CALL instruction pushes the offset of the which instruction on the stack. 
+Ans: CALL pushes the return address, which is the offset of the instruction following the CALL.
+Q7. The RET instruction pops the top of the stack into the instruction pointer. True
+Q8. Nested procedure calls are not permitted by the Microsoft assembler unless the NESTED operator is used in the procedure definition. False
+Q9. In protected mode, each procedure call uses a minimum of how many bytes of stack space? 4 bytes (32 bit)
+
+	

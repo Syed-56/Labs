@@ -1,0 +1,32 @@
+2d array Traversal:-
+
+INCLUDE Irvine32.inc
+
+.data
+	arr WORD 10,20,30,40,50,60,70,80,90
+	EQU rows 3
+	EQU cols 3
+.code
+main PROC
+	MOV ESI,0
+row_loop:
+	CMP ESI,ROWS
+	JNL done
+	MOV EDI, 0
+col_loop:
+	CMP EDI,COLS
+	JNL next_row
+	MOV AX, [arr + ESI*COLS*TYPE arr + EDI*TYPE arr]
+	;for col major: [arr + EDI*ROWS*TYPE arr + ESI*TYPE arr]
+	call writeDec
+next_row:
+	INC ESI
+	call crlf
+	JMP row_loop
+done:
+	exit
+main ENDP
+END main
+
+Q) DWORD matrix has 3 rows and 4 columns, address 3rd element of 2nd row: [ESI*COLS + EDI] * TYPE arr = [1*4 + 2]*4 = 24. therefore [arr+24]
+Q) Can you use base pointer in calculating offset: No

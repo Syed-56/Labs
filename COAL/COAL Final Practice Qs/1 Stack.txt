@@ -1,0 +1,21 @@
+Q1. Which Register in Protected mode manages stack?
+Ans: ESP points to top of stack and SS defines which segment used as stack.
+
+Q2. How is the runtime stack different from the stack abstract data type?
+Ans: Stack ADT is a theoretical concept used to simulate a data structure with push,pop,peek,empty operations. Meanwhile runtime stack is used for managing function calls and is dependant on hardware.
+
+Q3. Why stack is called LIFO
+Ans: Because last inserted elements are popped out first.
+
+Q4. When a 32-bit value is pushed on the stack, what happens to ESP?
+Ans: ESP is decremented by 4h: if ESP=1000h then 1000h-4h = 0FFCh is new ESP
+
+Q9. Which instruction pushes all of the 32-bit general-purpose registers on the stack? Ans: PUSHAD
+Q10. Which instruction pushes the 32-bit EFLAGS register on the stack? Ans: PUSHFD
+Q11. Which instruction pops the stack into the EFLAGS register? Ans: POPFD
+Q12. What happens when a 8 or 16 bit value is pushed on 32 bit stack? Ans: The value is zero extended.
+
+Q13. Suppose there were no PUSH instruction. Write a sequence of two other instructions that would accomplish the same as PUSH EAX?
+Ans: since push decrements ESP by 4h and makes ESP equal to pushed value so we would do:
+SUB ESP, 4h
+MOV [ESP], EAX

@@ -1,0 +1,18 @@
+Quick Revision:-
+MOVSB: copy contents of ESI into EDI
+CMPSB: compare contents of ESI with EDI and update flags
+SCASB: check if accumalator's value exist in EDI.
+STOSB: stores accumalator's value in EDI
+LODSB: copies ESI's value in accumalator.
+REP: while(ECX!=0).	REPE/REPZ: while(ECX!=0 && ZF=1).	REPNE/REPNZ: while(ECX!=0 && ZF=0)
+Direction Flag: STD => Sets it so we move backward.	CLD => Clears it so we move forward.
+
+1. In reference to string primitives, which 32-bit register is known as the accumulator? Ans: EAX
+2. Which instruction compares a 32-bit integer in the accumulator to the contents of memory, pointed to by EDI? Ans: EAX
+3. Which index register is used by the STOSD instruction? Ans: EDI
+4. Which instruction copies data from the memory location addressed by ESI into AX? Ans: LODSW
+5. What does the REPZ prefix do for a CMPSB instruction? Ans: Compares ESI and EDI until mismatch occuers
+6. Which Direction flag value causes index registers to move backward through memory when executing string primitives? Ans: when DF=1
+7. When a repeat prefix is used with STOSW, what value is added to or subtracted from the index register? Ans: 2 bcz we use 2 bytes accumalators so ESI += or -= 2
+8. In what way is the CMPS instruction ambiguous? Ans: dont tell if accumulator is 1 byte AL, 2 byte AX or 4 byte EAX
+9. When the Direction flag is clear and SCASB has found a matching character, where does EDI point? Ans: next byte after the match

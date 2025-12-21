@@ -1,0 +1,31 @@
+Q1. Explain why overflow cannot occur when the MUL and one-operand IMUL instructions execute.
+Ans: because overflowed bits of AL are in AX:AL. of AX are DX:AX. of EAX are EDX:EAX. However when overflowed bits are stored in non accumalator. Then OF=1
+
+Q2. How is the one-operand IMUL instruction different from MUL in the way it generates a
+multiplication product?
+Ans: MUL is for unsigend and IMUL for signed so product of 2 +ve numbers is same but 2 -ve make MUL give wrong ans and IMUL correct
+
+Q3. When EBX is the operand in a DIV instruction, which register holds the quotient? EAX 
+Q4. When BX is the operand in a DIV instruction, which register holds the quotient? AX 
+Q5. When BL is the operand in a MUL instruction, which registers hold the product? AL
+
+Q6. Write instructions that multiply -5 by 3 and store the result in a 16-bit variable val1.
+Ans:	MOV AL, -5
+	MOV BL, 3
+	IMUL BL
+	MOV val1, AX
+Q7. Write instructions that divide -276 by 10 and store the result in a 16-bit variable val1.
+Ans:	MOV AX, -276
+	CWD
+	MOV BX, 10
+	IDIV BX
+	MOV val1,AX
+Q8. Convert into C++: val1 = (val2 * val3) / (val4 - 3)
+Ans:	MOV EAX, val2
+	MOV EBX, val3
+	MUL EBX
+	MOV EBX, val4
+	SUB EBX, 3
+	;now EAX = val2*val3 and EBX = val4-3
+	DIV EBX
+	MOV val1, EAX

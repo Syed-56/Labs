@@ -1,0 +1,45 @@
+Q1. Write a sequence of shift instructions that cause AX to be sign-extended into EAX. In other words, the sign bit of AX is copied into the upper 16 bits of EAX.
+Ans: 	MOVZX EAX,AX	;16th bit is signed and above bits are 0	
+	SHL EAX, 16	;32nd bit is signed and low 16 bits are rn 0
+	SAR EAX, 16	;16 to 32 bits are 1 and from 15th bit the number starts so now its sign extended
+
+Q2. Perform right rotation by 1 without using rotate operations.
+Ans: 	SHR AL, 1	;CF store LSB and MSB is 0 rn
+	JNC skip	;if CF not set means LSB was 0 so MSB 0 is ok
+	OR AL, 10000000 ;set the MSB
+
+Q3. Write a logical shift instruction that multiplies the contents of EAX by 16. 
+Ans:	SHL EAX, 4
+Q4. Write a logical shift instruction that divides EBX by 4.
+Ans:	SHR EBX, 2
+Q5. Write a single rotate instruction that exchanges the high and low halves of the DL register. 
+Ans:	ROL DL, 4	;also we can do ROR DL, 4
+Q6. Write a SHLD instruction that shifts the highest bit of the AX register into the lowest bit position of DX and shifts DX one bit to the left
+Ans:	SHLD DX,AX,1
+
+Q7. Using only SUB, MOV, and AND instructions, show how to calculate x = n mod y (y is power of 2) 
+Ans:  rule: n mod y = n & (y-1)
+
+Q8. shift three memory words to the right by 1 bit position. wordArray WORD 810Dh, 0C064h,93ABh
+Ans:	MOV ESI, OFFSET wordArray
+	MOV EBX, TYPE wordArray
+	MOV count, 0
+	MOV ECX, LENGTHOF wordArray
+	shifting:
+		MOV AX, [ESI + count*EBX]
+		SHR AX, 1
+		MOV [ESI*EBX + count], AX
+		INC count
+		LOOP shifting
+
+Q9. calculate EAX * 21.
+	MOV EBX, EAX
+	SHL EAX, 4
+	MOV ECX, EBX
+	SHL ECX, 2
+	ADD EAX, ECX
+	MOV ECX, EBX
+	SHL ECX, 0
+	ADD EAX, ECX
+	
+		

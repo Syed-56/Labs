@@ -1,0 +1,17 @@
+Q1. The CALL instruction cannot include procedure arguments. True
+Q2. The INVOKE directive can include up to a maximum of three arguments. False
+Q3. The INVOKE directive can only pass memory operands, but not register values. False
+Q4. The PROC directive can contain a USES operator, but the PROTO directive cannot. True
+Q5. When using the PROC directive, all parameters must be listed on the same line. False
+Q6. If you pass a variable containing the offset of an array of bytes to a procedure that expects a pointer to an array of words, the assembler will not catch your error. True
+Q7. If you pass an immediate value to a procedure that expects a reference parameter, you can generate a general-protection fault (in protected mode). True
+Q8. Given the same task to accomplish, a recursive subroutine usually uses less memory than a nonrecursive one. False
+
+Q8. Declare a procedure named MultArray that receives two pointers to arrays of doublewords,and a third parameter indicating the number of array elements.
+Ans:	PROC MultArray ptr1: PTR DWORD, ptr2: PTR DOWRD, numElements: DWORD
+Q9. What would happen to the Factorial program’s output if you tried to calculate 13!?
+Ans:	13! exceedes 32 bits so overflow error will occur
+Q10. How many bytes of stack space would be used by the Factorial procedure when calculating 5!?
+Ans:	total calls are 5. stack size is ret address + parameter size = 4+4 = 8
+	therefore Stack Space = calls * bytes in stack = 5*8 = 40
+
