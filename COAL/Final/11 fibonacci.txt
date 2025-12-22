@@ -1,28 +1,40 @@
 INCLUDE Irvine32.inc
 
 .data
-	var DWORD 8
+	num DWORD 8
+
 .code
 
-fib PROTO USES EAX EBX, n:DWORD
-fib PROC USES EAX EBX, n:DWORD
-	CMP n,1
-	JNG baseCase
-recursion:
-	MOV EBX, n
-	DEC EBX
-	INVOKE fib, EBX
-	MOV EDX, EAX
-
-	MOV EBX, n
-	SUB EBX, 2
-	INVOKE fib, EBX
-baseCase:
-	ADD EAX, EDX
+fibo PROC count:DWORD
+	;base-case
+	CMP count,1
+	JG recursion
+	MOV EAX, count
 	RET
-fib ENDP
+
+	recursion:
+	PUSH ECX
+	;fib(n-1)
+	MOV ECX,count
+	DEC ECX
+	INVOKE fibo,ECX
+	PUSH EAX
+	;fib(n-2)
+	MOV ECX,count
+	SUB ECX,2
+	INVOKE fibo,ECX
+	;add 'em
+	POP EBX
+	ADD EAX,EBX
+	POP ECX
+	RET
+
+fibo ENDP
 
 main PROC
-	INVOKE fib, var
-	call writeInt
+	INVOKE fibo,num
+	call writeDec
+	exit
 main ENDP
+
+END main
