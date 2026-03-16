@@ -1,0 +1,28 @@
+Q1)
+1 grep -in "Linux" lab1.txt
+  grep -on "Linux" lab1.txt | wc -l
+  
+2 grep -vi "the" lab1.txt  
+grep -vc "the" lab1.txt
+
+3 grep -c "Python" lab1.txt
+4 grep -wc "go " lab1.txt 
+5 grep -wc "go " lab1.txt 
+6 grep -n "database" tech_part1.txt tech_part2.txt tech_part3.txt 
+7 grep -ih "cloud" tech_part1.txt tech_part2.txt tech_part3.txt
+8 grep -E "Java|Python|JavaScript" lab1.txt
+9 grep -E "server|database" tech_part1.txt tech_part2.txt tech_part3.txt 
+10 grep -l "encryption" tech_part1.txt tech_part2.txt tech_part3.txt 
+11 grep -f keywords.txt lab1.txt 
+12 grep "The" lab1.txt and  grep -c "The" lab1.txt 
+13 grep -ic "data$" lab1.txt and grep -i "data$" lab1.txt 
+14 grep -r "artificial intelligence" tech_articles/
+15 grep -q "blockchain" lab1.txt 2>/dev/null && echo "Matches found" || echo "No matches"
+
+Cron Job is * * * * * command_to_run
+fifth * = day of week (0-7) where 0 and 7 = sunday
+fourth * = month (1-12)
+third * = day of month (1-31)
+second * = hour (0-23)
+first * = minute (0-59)
+
