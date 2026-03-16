@@ -1,5 +1,5 @@
 #!/bin/bash
-#first line specifies bash path and echo means print
+#first line specifies bash path and echo means print  - LINUX
 echo "Hello World"
 
 #when initializing/updating dont give space around =.
@@ -9,7 +9,7 @@ age=18
 echo -n  "My name is $name and age is $age"
 echo " So cool"
 age=19
-#no "" when only printing variable, variable is indicated by $
+#no "" when only printing variable, variable is indicated by $  - LINUX
 echo $age
 
 #array - datatype dont matter in bash and no , in arrays
@@ -20,7 +20,7 @@ echo -e "\n"
 arr+=("Ahmed")	#append element in array
 echo ${arr[*]}	#print whole array
 
-#loops
+#loops  - LINUX
 for i in 1 2 3 4 5
 do
 	echo -n "$i  "
@@ -62,4 +62,3 @@ echo ${color:0:3}
 #        # the "catch-all" (if nothing else matches)
 #        ;;
 #esac
-
