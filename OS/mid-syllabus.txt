@@ -1,0 +1,101 @@
+Mid Term Lab Examination (Spring 2026) – Operating Systems Lab (CL-2006)
+Dear Students,
+The Mid Term Lab Exam will cover material from Lab 01 to Lab 06.
+
+Lab 01 – Operating System & Linux Basics
+Concepts:
+What is an Operating System
+What is Linux
+Program vs Process
+User Mode vs Kernel Mode
+Mode Switching
+Linux Commands:
+User Management:
+adduser, useradd, passwd, usermod, userdel, groups, groupadd, groupdel, id, who,
+whoami, su, sudo
+
+File Management:
+ls, pwd, cd, touch, mkdir, rmdir, cp, mv, rm, cat, less, more, head, tail, stat,
+file, wc [There are other commands too; please check the Additional Resources
+section on GCR.]
+
+File Permissions:
+chmod, chown, chgrp, numeric permissions (e.g., 755, 644)
+
+Process Management:
+ps, ps aux, top, htop, kill, kill -9, pkill, nice, renice, jobs, bg, fg
+
+Search & Text Processing:
+grep, grep -i, grep -r, grep -n [There are other commands too; please check the
+Additional Resources section on GCR.]
+
+Archiving & Compression:
+tar -cvf, tar -xvf, tar -tvf, zip, unzip, gzip, gunzip
+
+Linux Folder Structure: Study it properly
+
+Lab 02 – C Programming & Compilation
+
+C Program Compilation:
+Steps of compilation using gcc
+Running compiled programs
+Makefile:
+Purpose, structure, targets & dependencies
+make command
+C Programming Topics:
+Data Types & Variables: int, float, double, char
+Operators: arithmetic, relational, logical, assignment
+Control Statements: if, if–else, switch
+Loops: for, while, do–while
+Strings & String Functions
+Functions: definition, calling, parameters, return values
+File Handling: fopen, fclose, fscanf, fprintf
+Lab 03 – Shell Scripting [Please Check Uploaded Slides]
+Shell Basics:
+What is Linux Shell
+Types of Shell & current shell
+Shell scripting concepts
+Basic Script Concepts:
+First script, Shebang (#!/bin/bash), output, running scripts, comments
+Variables & Arrays:
+Normal & constant variables
+Arrays & associative arrays
+Array & string operations
+User Interaction:
+Reading input using read
+Arithmetic & Conditional Statements:
+if, if–else, elif, case, logical operators
+Loops:
+for, while, until, infinite loops
+Iterating values from files & CSV
+Functions & Arguments:
+Creating functions, passing arguments, script arguments ($1, $2), shift
+Useful Script Concepts:
+break, continue, sleep, exit & exit status
+basename, dirname, realpath
+Checking file/directory existence
+Bash variables: RANDOM, UID
+Redirection & /dev/null
+Running in background (nohup)
+Automation: at command & crontab
+
+Lab 04 – System Calls
+Important System Calls:
+fork(), wait(), waitpid(), execl(), sleep(), exit()
+File descriptors
+Equivalent commands in Windows
+
+Lab 06 – Inter Process Communication (IPC)
+IPC Concepts:
+Ordinary Pipes
+Named Pipes (FIFO)
+Shared Memory
+Communication between processes
+
+For Lab 01, check the manual and the additional resources section.
+For Lab 02, check the manual.
+For Lab 03, check the lab manual and the slides I uploaded.
+For Lab 04, check the manual and the codes we practiced. You must be familiar with processes, the use of system calls, and other concepts like orphan and zombie processes.
+For Lab 06, study the lab manual thoroughly and complete the codes accordingly.
+
+Note: Basic to intermediate knowledge of C programming is essential.
