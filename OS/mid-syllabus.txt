@@ -50,6 +50,7 @@ Loops: for, while, do–while
 Strings & String Functions
 Functions: definition, calling, parameters, return values
 File Handling: fopen, fclose, fscanf, fprintf
+
 Lab 03 – Shell Scripting [Please Check Uploaded Slides]
 Shell Basics:
 What is Linux Shell
