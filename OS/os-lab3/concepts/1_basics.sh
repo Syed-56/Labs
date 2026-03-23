@@ -26,3 +26,7 @@ echo $UID
 #common task: find a number between 1 and 100
 number=$(( ($RANDOM % 100) + 1 ))
 echo "Random Number is $number"
+
+#checking if command successfully ran
+ls .
+echo $?     #if it return 0. means success else means failure (1-255)
