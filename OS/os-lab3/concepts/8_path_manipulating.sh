@@ -1,10 +1,10 @@
 #!/bin/bash
-FILE="~/Documents/Labs/OS/mid-syllabus.txt"
+FILE="$HOME/Documents/Labs/OS/mid-syllabus.txt"
 fileName=$(basename "$FILE")
 dirName=$(dirname "$FILE")
 fullPath=$(realpath "$FILE")
 
-echo "Full String: $File"
+echo "Full String: $FILE"
 echo "File Name: $fileName"
 echo "Directory Name: $dirName"
 echo "Full Path: $fullPath"
@@ -17,7 +17,7 @@ echo "Full Path: $fullPath"
 #example: ./backup_script.sh data.txt
 
 #check if file or folder exist
-folder="../os-lab3"
+folder="../../os-lab3"
 if [ -d $folder ]
 then
     echo "$folder exists"
@@ -26,7 +26,7 @@ else
 fi
 
 filePath="../../mid-syllabus.txt"
-if [! -f filePath ]
+if [ ! -f filePath ]
 then 
     echo "$filePath exists"
 else 
