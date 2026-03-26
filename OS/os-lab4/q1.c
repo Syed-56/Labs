@@ -9,12 +9,12 @@ int main() {
 
     if (pid1==0) {
         printf("PID: %d\n", getpid());
-        exit(0);
+        exit(0);    
     }
     pid_t pid2 = fork();
     if (pid2==0) {
         printf("Parent PID: %d\n", getppid());
-        exit(0);
+        exit(0);    
     }
     int status;
     wait(&status);
