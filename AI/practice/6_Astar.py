@@ -1,12 +1,12 @@
 from queue import PriorityQueue
 graph = {
-'A': {'B': 4, 'C': 3},
-'B': {'E': 12, 'F': 5},
-'C': {'D': 7, 'E': 10},
-'D': {'E': 2},
-'E': {'G': 5},
-'F': {'G': 16},
-'G': {},
+    'A': {'B': 4, 'C': 3},
+    'B': {'E': 12, 'F': 5},
+    'C': {'D': 7, 'E': 10},
+    'D': {'E': 2},
+    'E': {'G': 5},
+    'F': {'G': 16},
+    'G': {},
 }
 heuristic = {'A': 14,'B': 12,'C': 11,'D': 6,'E': 4, 'F': 11,'G': 0 }
 
@@ -45,7 +45,4 @@ def Astar(start,goal,graph,h):
     print("Goal Not Found")
     return None
 
-print(Astar('A','G',graph,heuristic))
-
-
-        
+print(Astar('A','G',graph,heuristic))        
