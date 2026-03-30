@@ -1,0 +1,61 @@
+user and permissions:
+/etc/passwd - store user account details.
+● /etc/shadow - store encrypted user passwords.
+● /etc/group - stores group information.
+● /etc/gshadow - stores secure group details.
+CREATING A USER
+● useradd username - this creates a user without home directory
+● useradd -m username - this creates a user with home directory
+● useradd -s /bin/bash username - this specifies the bash shell otherwise linux
+will give you a dumber shell like sh or zsh.
+Use these ones when you aren’t on debian system or need manual control
+● adduser username - use this one, the best. It is interactive and automatically
+creates home directories and shell and also prompts you for password.
+MANAGING USER PASSWORD
+● To set or change a password name: passwd username.
+● You can also enforce policies on passwords:
+○ Expiration - chnge -M 90 username, now password will expire after 90
+days.
+○ Lock user account - passwd -l username
+○ Unlock user account - passwd -u username
+DELETING USERS
+● userdel username - deletes the user but keeps their home directory.
+● userdel -r username - deletes the user and also its home directory.
+WORKING WITH GROUPS
+● groupadd groupname - creating groups.
+● usermod -aG groupname username - adding users to groups.
+● groups username - viewing group memberships.
+● usermod -g new_primaryGroup_username - changing primary group.
+
+Changing ownership with chown
+Owner is usually the user but we can change ownership:
+● chown newuser filename gives the ownership of the file to the mentioned user.
+● chown newuser:newgroup filename changes both owner and group.
+● chown :newgroup filename changes group only.
+Changing group ownership with chgrp
+● chgrp newgroup filename changes group.
+● chgrp -R newgroup filename changes group recursively.
+
+PROCESS MANAGEMENT
+How processes are monitored, prioritized and terminated.
+For Monitoring
+● Ps - it only shows processes running in your current terminal.
+● Ps aux - standard snapshot of every process on the system.
+● Top - A real-time dynamic view of the system which updates every few seconds
+and sorts processes by CPU usage.
+● Htop - interactive colorful version of top. It also allows you to kill and scroll with
+mouse and keys.
+For Terminating
+● Kill PID - sends a terminating signal to process ID to close peacefully
+
+ARCHIVING AND COMPRESSION
+● tar -cvf archive.tar file1.txt file2.txt – tar is a common tool for
+bundling multiple files. Here c means create, v means verbose (show progress)
+and f means filename. It creates a new archive.
+● tar -xvf archive.tar – It extracts files from an archive.
+● tar -tvf archive.tar – list files inside the archive.
+● gzip file.txt – compresses file and renames to file.txt.gz
+● gunzip file.txt.gz – decompresses back to original state.
+● zip -r myfiles.zip folder/ – creates a zip file of folders. Recursive flag is
+mandatory.
+● unzip myfiles.zp - extract the contents

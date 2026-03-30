@@ -1,0 +1,32 @@
+AUTOMATING SCRIPT
+You can schedule your scripts to run at any time. Note, in automation always use full
+absolute paths of scripts.
+at
+● Use this command if you want your script to run at a time exactly one. Eg: To run
+your script at 2 am. We will do
+at 14:00
+at> ./script.sh
+at> <press ctrl+D to save>
+● There are different time formats like 14:00, at 10:30pm, at now +1 minute, at
+tomorrow.
+To show list of all scheduled tasks, use atq
+To remove a scheduled task, use atrm [job_number]
+Crontab
+It is for constant scheduling like if you want to run a script every day/hour/week.
+
+When you type crontab -e for editing, you will a format like * * * * *
+/path/scrpit.sh
+First Star is for minute (0-59)
+2nd Star is for hour (0-23)
+3rd Star is for day of month (0-31)
+4th Star is for month (0-12)
+5th Star is for day of week (0-6) where 0 is
+sunday
+Everyday at Midnight - 0 0 * * * /path/script.sh
+Every Monday at 8:30 AM - 30 8 * * 1 /path/script.sh
+Every 15 minutes - */15 * * * * /path/script.sh
+To check existing jobs (already scheduled ones), use crontab -l and to add a new job,
+use crontab -e.
+What Does This Job Tell? * * * * cd /home/paul/scripts && ./create
+file.sh
+This script will run every time by first navigating to the folder specifie

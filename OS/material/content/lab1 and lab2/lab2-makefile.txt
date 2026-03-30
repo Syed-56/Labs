@@ -1,0 +1,21 @@
+STANDARD TEMPLATE FOR MAKEFILES
+CC = gcc
+CFLAGS = -I.
+DEPS = hellomake.h
+OBJ = hellomake.o hellofunc.o
+%.o: %.c (DEPS)
+$(CC) -c -o $@ $< $(CFLAGS)
+hellomake: $(OBJ)
+$(CC) -o $@ $^ $(CFLAGS)
+
+COMPILATION
+The process is as follows:-
+C/C++ files → Preprocessed files(.i) → Assembly Files(.s) → Object Files(.o) →
+Generation → Final Executable.
+This is different from the compiler process which is Compiler → Assembler → Linker
+When no flag is used, the whole compilation process simply takes place. But:
+● -E option is used for running till preprocessed files generation.
+● -S option is used for running till Assembly files generation.
+● -C option is used for running till Object files generation.
+So if we run gcc main.c -c -o main.o It will generate object files and to turn them
+into executables we would run gcc main.o -o output

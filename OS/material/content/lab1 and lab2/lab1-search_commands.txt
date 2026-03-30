@@ -1,0 +1,30 @@
+grep is used for searching patterns in files. Its behaviour can be altered by using
+several flags:
+● -i (ignore case) searches for a term ignoring case sensitivity. Eg: grep -i
+linux filename.txt
+iv (invert match) display lines that do not contain a specific pattern. Eg: grep
+-iv the filename.txt
+● -c (count) shows the number of lines that match. Eg: grep -c python
+filename.txt. It can be used with other flags to display count instead of lines
+like ivc/ic.
+● -w (whole word) matches the pattern as a standalone word only. Eg: grep -w
+go filename.txt
+● -n (line number) shows the line number where the match was found. Eg: grep
+-n security filename.txt
+● -r (recursive) searches through all files in current and sub directories. Eg: grep
+-r AI folder/
+● $ (end of line) searches if only the word is last in the line. Eg: grep -ivc
+python$ filename.txt
+● -f (file) searches the keywords present in 1 file in another file. Eg: grep -f
+words.txt filename.txt
+● -1 (context) shows the line where the word was matched and also the line
+around it to show some context. Eg: grep -1 encryption filename.txt
+● -ivc (invert+case-sensitive+count) count lines not containing the word by
+ignoring word’s case sensitivity.
+● -E (extended Regex) searches for multiple patterns at once. Eg: grep -E
+“Java | Python | C” filename.txt
+● -q (quiet) it searches but prints nothing on screen bt returns 0 and 1 upon
+success. So you can pair another command with && which will only execute if the
+word was searched and || means only execute if it fails. Eg: grep -q
+“blockchain” filename.txt && echo “Match found” || echo “No
+match:

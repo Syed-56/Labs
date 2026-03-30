@@ -1,0 +1,27 @@
+FOLDER STRUCTURE
+Less Significant
+● /sbin – system binaries for administrative commands.
+● /bin – essential user binaries.
+● /lib – shared libraries and kernel modules
+● All of them are linked to /usr/bin.
+Important System Directories
+● /boot – stores files needed for booting the system.
+● /usr – contains user installed apps and libraries.
+● /var – stores logs, caches and temporary files that change frequently.
+● /etc – stores system configuration files.
+
+User and Application Specific Directories
+● /home – Default location for user home directories.
+● /opt – Used for installing optional third party softwares.
+● /srv – Holds data for services like web servers.
+● /root – Home directory of the root user.
+Temporary and Volatile directories
+● /tmp – Temporary files which are cleared on reboot.
+● /run – Holds runtime data for processes.
+● /proc – Virtual file system for process and system information.
+● /sys – Virtual file system for hardware and kernel information.
+● /dev – Contains device files like /dev/null or /dev/sda.
+Mount Points
+● /mnt – Temporary mount point for external file systems.
+● /media – Mount point for removable data like USB.
+● /data – Your mounted volume from windows (C:/Ubuntu-data
