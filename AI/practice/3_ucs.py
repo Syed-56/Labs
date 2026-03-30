@@ -46,7 +46,7 @@ def ucs(start,goal,tree):
         visited.add(node)
         for neighbour,cost in tree[node]:
             newCost = cost + curr_cost
-            if neighbour not in visited or newCost < cost_sofar[neighbour]:
+            if neighbour not in cost_sofar or newCost < cost_sofar[neighbour]:
                 cost_sofar[neighbour] = newCost
                 came_from[neighbour] = node
                 queue.append((neighbour,newCost))
