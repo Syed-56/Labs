@@ -1,0 +1,34 @@
+ML - Subset of AI. Enables a machine to learn from data and improve performance without explicit programming.
+Libraries Used: Numpy (for numerical computation), pandas (for data manipulation and analysis), matplotlib (For visualization), scikit-learn (for implementing the ML algos and data preprocessing,evaluation metrics), seaborn (enhanced data visualization).
+
+Supervised Learning - Machine is trained using a labelled data and on the basis of that data, output is predicted. The aim of a supervised algo is to find a mapping function to map the input data (x) with the output variable (y).
+Can be used for spam/fraud detection, sentiment analysis.
+
+Types of Supervised Learning
+Classification: Algos used when the output variable is of two classes like yes/no, male/female/ Includes Decision Trees, Logistic Regression, Support Vector Machines.
+Regression: Algos used if there is a relationship b/w input and output variable. Used to predict continous variables such as weather forecasting, market trends etc. Includes linear and non-linear reg, reg trees, bayesian linear reg, poly reg.
+
+SVM (Classification Model)
+SVM are a set of supervised learning algos used for Classification tasks but also for regression. Key idea behind SVM is to find the optimal hyperplane that seperates the class with the largest margin (distance b/w hyperplane and nearest datapoint), improving generalization. Goal is to maximize the margin b/w classes.
+Formula: w.x+b=0 (weights.feature+bias=0)
+Eg: Classify animals into cats(+1) and dogs (-1) based on weight and height: 3xweight+2xheight-50=0
+
+Linear/Hard  SVM: For linearly seperable data, SVM finds the hyperplane to perfectly seperate the classes. It is a simple case and the model does not require additional tricks. 
+Non-Linear SVM: Real world data may not be linearly seperable so SVM uses a kernal function to map the data into a higher-dimensional feature space, where a linear decision boundary can be found. Kernel functions include:
+Linear Kernel => K(x, z) = xᵀz
+Polynomial Kernel => K(x, z) = (xᵀz + c)^d
+Radial Basis Function (RBF) => exp(-γ ||x - z||²)
+These kernel functions allows SVM to find a non-linear decision boundary in the original feature space without calculating transformation.
+
+Linear Regression
+Statistical regression method used for predictive analysis. Shows relationship between X (predictor/independent) and Y (output/dependent).
+Y=mx+b where y is dependent, b is constant, m is slope and x is independent variables.
+Error in linear reg is calculated as error=y_predicted-y_current
+
+Decision Tree
+Used for Classification and Prediction. Internal node is a test on an attribute, external node is an outcome of a test, each leaf node holds a class label (outcome).
+1) Befine with root which is complete dataset.
+2) Find best attribute in dataset using attribute selection measure (ASM).
+3) Divide dataset into subsets that contain possible values for best attributes.
+4) Generate decision tree node containing best attribute.
+5) Recursively make new decision trees using subsets created in step 3 until no further Classification can be made and you reach a leaf node.

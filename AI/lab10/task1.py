@@ -26,7 +26,7 @@ final_score = (
     + 0.15 * attendance
     + 3.0 * part_numeric
     - 1.2 * internet_usage_hrs
-    + np.random.normal(0, 4, n)
+    + np.random.normal(0, 4, n) #noise
 ).clip(0, 100)
 
 df = pd.DataFrame({
@@ -38,6 +38,7 @@ df = pd.DataFrame({
     "final_score":       final_score,
 })
 
+#add missing values in 30 random rows.
 missing_idx_sh = np.random.choice(df.index, size=30, replace=False)
 missing_idx_at = np.random.choice(df.index, size=30, replace=False)
 df.loc[missing_idx_sh, "study_hours"] = np.nan
@@ -50,6 +51,7 @@ print(f"\nMissing values:\n{df.isnull().sum()}")
 
 print("\nCLEANING")
 
+#replace missing values with column's median
 num_cols = ["study_hours", "attendance", "prev_grades", "internet_usage"]
 imputer  = SimpleImputer(strategy="median")
 df[num_cols] = imputer.fit_transform(df[num_cols])

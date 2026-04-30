@@ -7,7 +7,7 @@ import warnings
 warnings.filterwarnings('ignore')
 
 # 1. Loading and Inspection
-df = pd.read_csv('telecom_churn.csv') # Path from EDA.pdf: 'Desktop/Python Tutorial/telecom_churn.csv'
+df = pd.read_csv('telecom_churn.csv') 
 print(df.head())
 print(df.shape)
 print(df.info())

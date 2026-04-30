@@ -1,0 +1,22 @@
+Unsupervised learning is a type of ML learning where model is not given any laballed data and instead is being told what the correct output is. Model tries to find patterns and strucutres of its own. Goal is to find underlying structure of the dataset.
+
+Types:-
+Clustering: Way of grouping similar things together. In ML/DS, clustering groups similar data points into clusters so items in same cluster are more alike than those in other clusters. 
+Association: Used for finding relationships b/w variables. It determines the set of items that occur together in the dataset. Eg: People who buy X item are also tend to purchase Y item (bread->jam/butter).
+Dimensionality Reduction: Process of reducing number of features in your dataset while keeping impportant info. Helps simplify complex data and makes it easier to visualize, also speeps up algos.
+
+K-means clustering:-
+Groups unlabeled dataset into different k clusters. It determiens best value for K center points by an iterative process and assigns each data point to its closest k-center. Data points nearer to the particular k-center creates the cluster.
+
+Elbow Method: Way to find the optimal value of k (number of clusters). It uses concept of WSS value (Within Cluster Sum of Squares). It defines total variables within a cluster.
+Formula => WCSS = sum(Pi) in cluster 1 distance (Pi,C1)^2 + sum(Pi) in cluster 2 distance (Pi,C2)^2 + sum(Po) in cluster 3 distance (Pi,C3)^2.
+it is the sum of squares of distances between each data point and its centroid within a cluster.
+To find optimal value of k: It executes k-means clustering on a dataset for different k values and for each k value the wcss value is calculated and a curve is plotted between WCSS and K value. The sharp point of bend (looks lik elbow) is the point considered best value of k.
+
+Working:-
+1) Select K.
+2) select random K points / centroids from input dataset.
+3) Assign each data point to their closes centroid to form pre-defined clusters.
+4) calculate variance and place a new centroid of each cluster.
+5) Repeat step step 3 to reassign each datapoint to the new closest centroid of their cluster.
+6) If a reassignment occurs, goto step4. Else finish.
