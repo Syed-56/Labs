@@ -1,0 +1,1992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Operating Systems — Lab Notes (Labs 06, 08, 09, 10)</title>
+
+<!-- Highlight.js for VSCode-like code coloring -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/c.min.js"></script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=Source+Sans+3:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #f8f6f1;
+    --surface: #ffffff;
+    --ink: #1a1a1a;
+    --ink-soft: #4a4a4a;
+    --muted: #6b6b6b;
+    --accent: #b4441e;
+    --accent-soft: #f3d4c4;
+    --rule: #e3ddd1;
+    --code-bg: #1e1e1e;        /* VSCode dark+ */
+    --code-gutter: #2a2a2a;
+    --code-gutter-text: #858585;
+    --highlight-bg: #fff7e0;
+    --note-bg: #eef4f0;
+    --note-border: #6e9e84;
+    --warn-bg: #fdf3e6;
+    --warn-border: #c98a3a;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; scroll-padding-top: 24px; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 16.5px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* --- Layout --- */
+  .layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  aside.toc {
+    position: sticky;
+    top: 0;
+    align-self: start;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 32px 24px;
+    border-right: 1px solid var(--rule);
+    background: var(--bg);
+    font-size: 14px;
+  }
+
+  aside.toc h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 16px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--accent);
+  }
+
+  aside.toc ol { list-style: none; padding: 0; margin: 0 0 18px; }
+  aside.toc ol ol { padding-left: 14px; margin: 4px 0 8px; font-size: 13px; }
+  aside.toc li { margin: 6px 0; }
+  aside.toc a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    display: block;
+    padding: 3px 8px;
+    border-radius: 4px;
+    transition: all 0.15s;
+  }
+  aside.toc a:hover { background: var(--accent-soft); color: var(--accent); }
+  aside.toc a.lab-link {
+    font-weight: 700;
+    color: var(--ink);
+    font-family: 'Fraunces', serif;
+    font-size: 15.5px;
+  }
+
+  main {
+    padding: 48px 56px;
+    max-width: 920px;
+  }
+
+  /* --- Cover --- */
+  .cover {
+    border-bottom: 3px double var(--ink);
+    padding-bottom: 32px;
+    margin-bottom: 48px;
+  }
+  .cover .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .cover h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 800;
+    font-size: 54px;
+    line-height: 1.0;
+    margin: 0 0 14px;
+    letter-spacing: -0.02em;
+  }
+  .cover .subtitle {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--muted);
+    margin-bottom: 24px;
+  }
+  .cover .meta {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .cover .meta span { padding: 4px 0; }
+  .cover .meta strong { color: var(--ink); }
+
+  /* --- Headings --- */
+  h2.lab-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 800;
+    font-size: 38px;
+    line-height: 1.1;
+    margin: 56px 0 8px;
+    letter-spacing: -0.015em;
+    border-bottom: none;
+  }
+  .lab-tag {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    background: var(--ink);
+    color: var(--bg);
+    padding: 4px 10px;
+    margin-bottom: 12px;
+    border-radius: 2px;
+  }
+  .lab-difficulty {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-left: 12px;
+  }
+
+  h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 26px;
+    margin: 40px 0 12px;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  h4 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 20px;
+    margin: 28px 0 8px;
+    color: var(--ink);
+  }
+  h5 {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin: 22px 0 6px;
+  }
+
+  p { margin: 0 0 14px; }
+  strong { color: var(--ink); font-weight: 700; }
+  em { color: var(--ink-soft); }
+
+  ul, ol { padding-left: 24px; margin: 0 0 16px; }
+  li { margin-bottom: 6px; }
+  li > ul, li > ol { margin-top: 6px; }
+
+  /* --- Code blocks: VSCode style --- */
+  .code-block {
+    background: var(--code-bg);
+    border-radius: 8px;
+    margin: 18px 0;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+    font-family: 'JetBrains Mono', 'Cascadia Code', 'Fira Code', monospace;
+  }
+  .code-header {
+    background: #252526;
+    color: #cccccc;
+    padding: 8px 16px;
+    font-size: 12px;
+    border-bottom: 1px solid #1e1e1e;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .code-header .filename { color: #d4d4d4; }
+  .code-header .lang {
+    color: #569cd6;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .code-header .dots {
+    display: inline-flex;
+    gap: 6px;
+    margin-right: 12px;
+  }
+  .code-header .dots span {
+    width: 12px; height: 12px; border-radius: 50%; display: inline-block;
+  }
+  .code-header .dots span:nth-child(1) { background: #ff5f56; }
+  .code-header .dots span:nth-child(2) { background: #ffbd2e; }
+  .code-header .dots span:nth-child(3) { background: #27c93f; }
+  .code-block-body {
+    display: flex;
+    font-size: 13.5px;
+    line-height: 1.55;
+    overflow-x: auto;
+  }
+  .line-numbers {
+    background: var(--code-gutter);
+    color: var(--code-gutter-text);
+    text-align: right;
+    padding: 14px 12px;
+    user-select: none;
+    border-right: 1px solid #333;
+    min-width: 44px;
+  }
+  .line-numbers span { display: block; }
+  .code-content {
+    padding: 14px 18px;
+    flex: 1;
+    overflow-x: auto;
+  }
+  .code-content pre {
+    margin: 0;
+    padding: 0;
+    background: transparent !important;
+    font-family: 'JetBrains Mono', 'Cascadia Code', 'Fira Code', monospace;
+  }
+  .code-content code {
+    background: transparent !important;
+    padding: 0 !important;
+    font-family: inherit;
+    font-size: inherit;
+  }
+
+  /* Inline code */
+  p code, li code, td code {
+    font-family: 'JetBrains Mono', monospace;
+    background: #efe7d8;
+    color: #8b3413;
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-size: 0.88em;
+  }
+
+  /* --- Callouts --- */
+  .callout {
+    border-left: 4px solid;
+    padding: 14px 18px;
+    margin: 20px 0;
+    border-radius: 0 6px 6px 0;
+  }
+  .callout.note {
+    background: var(--note-bg);
+    border-color: var(--note-border);
+  }
+  .callout.warn {
+    background: var(--warn-bg);
+    border-color: var(--warn-border);
+  }
+  .callout.key {
+    background: var(--highlight-bg);
+    border-color: var(--accent);
+  }
+  .callout-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 6px;
+    display: block;
+  }
+  .callout.note .callout-title { color: var(--note-border); }
+  .callout.warn .callout-title { color: var(--warn-border); }
+  .callout.key .callout-title { color: var(--accent); }
+  .callout p:last-child { margin-bottom: 0; }
+
+  /* --- Tables --- */
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 18px 0;
+    font-size: 14.5px;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+  }
+  th {
+    background: var(--ink);
+    color: var(--bg);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  tr:hover td { background: var(--surface); }
+
+  /* --- Section dividers --- */
+  .section-rule {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 56px 0 0;
+  }
+
+  /* --- Two-column for "vs" comparisons --- */
+  .compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin: 20px 0;
+  }
+  .compare > div {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    padding: 18px 20px;
+    border-radius: 6px;
+  }
+  .compare h5 { margin-top: 0; }
+
+  /* --- Print --- */
+  @media print {
+    aside.toc { display: none; }
+    .layout { display: block; }
+    main { max-width: none; padding: 0; }
+    .code-block { break-inside: avoid; box-shadow: none; }
+    body { background: white; }
+  }
+
+  /* --- Responsive --- */
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; }
+    aside.toc { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--rule); }
+    main { padding: 32px 24px; }
+    .cover h1 { font-size: 38px; }
+    .compare { grid-template-columns: 1fr; }
+  }
+
+  /* hljs override to play nice with our line numbers */
+  .hljs { background: transparent !important; padding: 0 !important; }
+</style>
+</head>
+<body>
+
+<div class="layout">
+
+<!-- ========================== TOC SIDEBAR ========================== -->
+<aside class="toc">
+  <h2>Contents</h2>
+  <ol>
+    <li><a href="#lab06" class="lab-link">Lab 06 — IPC: Pipes &amp; Shared Memory</a>
+      <ol>
+        <li><a href="#lab06-pipes">Ordinary Pipes</a></li>
+        <li><a href="#lab06-named">Named Pipes (FIFOs)</a></li>
+        <li><a href="#lab06-shm">Shared Memory (POSIX)</a></li>
+      </ol>
+    </li>
+    <li><a href="#lab08" class="lab-link">Lab 08 — Threads (Pthreads)</a>
+      <ol>
+        <li><a href="#lab08-intro">Threads Theory</a></li>
+        <li><a href="#lab08-cw1">Code Workout 1: Summation</a></li>
+        <li><a href="#lab08-cw2">Code Workout 2: Race Condition</a></li>
+        <li><a href="#lab08-inlab">In-Lab Problems</a></li>
+        <li><a href="#lab08-demo">Array-Sum Demo</a></li>
+      </ol>
+    </li>
+    <li><a href="#lab09" class="lab-link">Lab 09 — Signals</a>
+      <ol>
+        <li><a href="#lab09-intro">What are Signals?</a></li>
+        <li><a href="#lab09-handling">Handling &amp; Delivery</a></li>
+        <li><a href="#lab09-blocking">Blocking Signals</a></li>
+        <li><a href="#lab09-threads">Signals &amp; Threads</a></li>
+        <li><a href="#lab09-cw1">Code Workout 1: SIGINT</a></li>
+        <li><a href="#lab09-cw1a">Code Workout 1(a): sigaction</a></li>
+        <li><a href="#lab09-cw2">Code Workout 2: SIGCHLD</a></li>
+        <li><a href="#lab09-cw3">Code Workout 3: Threads + SIGUSR1</a></li>
+      </ol>
+    </li>
+    <li><a href="#lab10" class="lab-link">Lab 10 — Mutexes &amp; Semaphores</a>
+      <ol>
+        <li><a href="#lab10-mutex">Mutexes</a></li>
+        <li><a href="#lab10-sem">Semaphores</a></li>
+        <li><a href="#lab10-vs">Mutex vs Semaphore</a></li>
+        <li><a href="#lab10-cw1">Code Workout 1: Bounded Buffer</a></li>
+        <li><a href="#lab10-cw2">Code Workout 2: Readers–Writers</a></li>
+      </ol>
+    </li>
+    <li><a href="#cheatsheet" class="lab-link">Quick Cheatsheet</a></li>
+  </ol>
+</aside>
+
+<!-- ========================== MAIN ========================== -->
+<main>
+
+<!-- COVER -->
+<section class="cover">
+  <div class="eyebrow">CL2006 · Operating Systems · Spring 2026</div>
+  <h1>OS Lab Notes</h1>
+  <div class="subtitle">Pipes, Threads, Signals &amp; Semaphores — exam-ready compilation from the lab manuals.</div>
+  <div class="meta">
+    <span><strong>FAST-NU Karachi</strong></span>
+    <span>Labs covered: <strong>06, 08, 09, 10</strong></span>
+    <span>Coding focus: <strong>IPC / Threads / Signals / Sync</strong></span>
+  </div>
+</section>
+
+
+<!-- ============================================================
+                            LAB 06
+============================================================ -->
+<section id="lab06">
+  <span class="lab-tag">Lab 06</span><span class="lab-difficulty">High Difficulty</span>
+  <h2 class="lab-title">IPC — Pipes &amp; Shared Memory</h2>
+
+  <p><strong>Objectives.</strong> Develop an understanding of system calls by implementing them programmatically — focusing on their role in <em>ordinary pipes</em>, <em>named pipes</em> (FIFOs), and <em>shared memory</em>. Implement C programs that produce and consume data using each mechanism.</p>
+
+  <p><strong>Lab tasks.</strong> Use of system calls related to:</p>
+  <ol>
+    <li>Ordinary Pipes</li>
+    <li>Named Pipes</li>
+    <li>Shared Memory</li>
+  </ol>
+
+  <!-- ============== 6a Ordinary Pipes ============== -->
+  <h3 id="lab06-pipes">Experiment 6a — InterProcess Communication using Pipes</h3>
+
+  <h5>Concept</h5>
+  <p>Ordinary pipes allow two processes to communicate in a standard producer–consumer fashion: the producer writes to one end of the pipe (the <strong>write-end</strong>) and the consumer reads from the other end (the <strong>read-end</strong>).</p>
+  <ul>
+    <li>Ordinary pipes are <strong>unidirectional</strong>, allowing only one-way communication. If two-way communication is required, <strong>two pipes must be used</strong>, with each pipe sending data in a different direction.</li>
+    <li>A pipe has a <strong>read end</strong> and a <strong>write end</strong>.</li>
+    <li>Data written to the write end of a pipe can be read from the read end of the pipe.</li>
+  </ul>
+
+  <div class="callout key">
+    <span class="callout-title">Key Idea</span>
+    <p>Ordinary pipes only work between <strong>related processes</strong> — typically a parent and its forked child — because the file descriptors must be inherited across <code>fork()</code>.</p>
+  </div>
+
+  <h5>Creating an Ordinary Pipe</h5>
+
+  <div class="code-block">
+    <div class="code-header">
+      <span><span class="dots"><span></span><span></span><span></span></span><span class="filename">pipe_demo.c</span></span>
+      <span class="lang">C</span>
+    </div>
+    <div class="code-block-body">
+      <div class="line-numbers"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span><span>21</span><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span>27</span><span>28</span><span>29</span><span>30</span><span>31</span><span>32</span><span>33</span><span>34</span><span>35</span></div>
+      <div class="code-content"><pre><code class="language-c">#include &lt;sys/types.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include &lt;unistd.h&gt;
+#define BUFFER_SIZE 25
+#define READ_END  0
+#define WRITE_END 1
+
+int main(void) {
+    char write_msg[BUFFER_SIZE] = "Greetings";
+    char read_msg[BUFFER_SIZE];
+    int fd[2];
+    pid_t pid;
+
+    if (pipe(fd) == -1) {                       // create a pipe
+        fprintf(stderr, "Pipe failed");
+        return 1;
+    }
+
+    pid = fork();
+    if (pid &lt; 0) {                              /* error occurred */
+        fprintf(stderr, "Fork Failed");
+        return 1;
+    }
+
+    if (pid &gt; 0) {                              /* parent process */
+        close(fd[READ_END]);
+        write(fd[WRITE_END], write_msg, strlen(write_msg) + 1);
+        close(fd[WRITE_END]);
+    }
+    else {                                      /* child process */
+        close(fd[WRITE_END]);                   // close the unused end of the pipe
+        read(fd[READ_END], read_msg, BUFFER_SIZE); // read from the pipe
+        printf("read %s", read_msg);
+        close(fd[READ_END]);                    // close the read end of the pipe
+    }
+    return 0;
+}</code></pre></div>
+    </div>
+  </div>
+
+  <h5>In-Lab Tasks</h5>
+  <ul>
+    <li>Compile and execute the above code. Open a separate terminal window to note the process ids using this code.</li>
+    <li>Modify the code such that it takes <code>write_msg</code> value from the user terminal.</li>
+  </ul>
+
+  <!-- ============== 6b Named Pipes ============== -->
+  <h3 id="lab06-named">Experiment 6b — Named Pipes (FIFOs)</h3>
+
+  <h5>Concept</h5>
+  <ul>
+    <li>A named pipe is an extension to the traditional pipe concept on Unix. A traditional pipe is <strong>"unnamed"</strong> and lasts only as long as the process.</li>
+    <li>A named pipe, however, can last as long as the system is up, <strong>beyond the life of the process</strong>. It can be deleted if no longer used.</li>
+    <li>Usually, a named pipe appears as a file, and processes attach to it for inter-process communication. A <strong>FIFO file</strong> is a special kind of file on local storage which allows two or more processes to communicate by reading/writing to/from this file.</li>
+    <li>A FIFO special file is entered into the filesystem by calling <code>mkfifo()</code> in C. Once created, any process can open it for reading or writing, in the same way as an ordinary file. <strong>However, it must be open at both ends simultaneously</strong> before you can proceed to do any input or output operations on it.</li>
+    <li>Reading from or writing to a named pipe occurs just like traditional file reading and writing; except that the data is never written to or read from a file on hard disk — it lives in <strong>memory</strong>.</li>
+  </ul>
+
+  <h5>Producer code using Named Pipes</h5>
+
+  <div class="code-block">
+    <div class="code-header">
+      <span><span class="dots"><span></span><span></span><span></span></span><span class="filename">producer_fifo.c</span></span>
+      <span class="lang">C</span>
+    </div>
+    <div class="code-block-body">
+      <div class="line-numbers"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span><span>21</span><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span>27</span><span>28</span><span>29</span><span>30</span><span>31</span><span>32</span><span>33</span><span>34</span><span>35</span><span>36</span><span>37</span><span>38</span></div>
+      <div class="code-content"><pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;fcntl.h&gt;
+#include &lt;sys/types.h&gt;
+#include &lt;sys/stat.h&gt;
+#include &lt;string.h&gt;
+
+#define FIFO_FILE "/tmp/myfifo"
+
+int main() {
+    int fd;
+    char buffer[BUFSIZ];
+    ssize_t num_bytes;
+
+    mkfifo(FIFO_FILE, 0666);                // Create the named pipe (FIFO)
+    fd = open(FIFO_FILE, O_WRONLY);         // Open the named pipe for writing (producer)
+    if (fd == -1) {
+        perror("open");
+        exit(EXIT_FAILURE);
+    }
+
+    while (1) {                             // Producer loop
+        printf("Producer: Enter a message (or 'exit' to quit): ");
+        fgets(buffer, BUFSIZ, stdin);
+        num_bytes = write(fd, buffer, strlen(buffer));   // Write input to the named pipe
+        if (num_bytes == -1) {
+            perror("write");
+            exit(EXIT_FAILURE);
+        }
+        if (strncmp(buffer, "exit", 4) == 0) {           // Check for exit condition
+            break;
+        }
+    }
+
+    close(fd);                              // Close the named pipe
+    unlink(FIFO_FILE);                      // Remove the named pipe from the file system
+
+    return 0;
+}</code></pre></div>
+    </div>
+  </div>
+
+  <h5>In-Lab Tasks</h5>
+  <ol>
+    <li>Compile and execute the producer code above that uses the named pipe. Correct errors, if any.</li>
+    <li>Carefully study the producer code and verify that the <code>FIFO_FILE</code> has been created.</li>
+    <li>Now, write consumer code for the above producer using the following hints:
+      <ul>
+        <li>Open <code>FIFO_FILE</code> in read-only mode using <code>O_RDONLY</code>.</li>
+        <li>Consumer reads the data using <code>num_bytes = read(fd, buffer, BUFSIZ);</code></li>
+        <li>Display the data sent by the producer using <code>printf("Consumer: Received message: %s", buffer);</code></li>
+      </ul>
+    </li>
+  </ol>
+
+  <h5>Reference Consumer (constructed from the hints)</h5>
+  <div class="code-block">
+    <div class="code-header">
+      <span><span class="dots"><span></span><span></span><span></span></span><span class="filename">consumer_fifo.c</span></span>
+      <span class="lang">C</span>
+    </div>
+    <div class="code-block-body">
+      <div class="line-numbers"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span><span>21</span><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span></div>
+      <div class="code-content"><pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;fcntl.h&gt;
+#include &lt;string.h&gt;
+
+#define FIFO_FILE "/tmp/myfifo"
+
+int main() {
+    int fd;
+    char buffer[BUFSIZ];
+    ssize_t num_bytes;
+
+    fd = open(FIFO_FILE, O_RDONLY);
+    if (fd == -1) { perror("open"); exit(EXIT_FAILURE); }
+
+    while ((num_bytes = read(fd, buffer, BUFSIZ)) &gt; 0) {
+        buffer[num_bytes] = '\0';
+        printf("Consumer: Received message: %s", buffer);
+        if (strncmp(buffer, "exit", 4) == 0) break;
+    }
+
+    close(fd);
+    return 0;
+}</code></pre></div>
+    </div>
+  </div>
+
+  <!-- ============== 6c Shared Memory ============== -->
+  <h3 id="lab06-shm">Experiment 6c — InterProcess Communication using Shared Memory</h3>
+
+  <h5>Concept</h5>
+  <p>InterProcess Communication through shared memory is a concept where two or more processes can access common memory. Communication happens via this shared region — changes made by one process can be viewed by another process.</p>
+
+  <h5>Producer process using POSIX shared memory API</h5>
+  <div class="code-block">
+    <div class="code-header">
+      <span><span class="dots"><span></span><span></span><span></span></span><span class="filename">producer_shm.c</span></span>
+      <span class="lang">C</span>
+    </div>
+    <div class="code-block-body">
+      <div class="line-numbers"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span><span>21</span><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span>27</span><span>28</span><span>29</span></div>
+      <div class="code-content"><pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+#include &lt;fcntl.h&gt;
+#include &lt;sys/shm.h&gt;
+#include &lt;sys/stat.h&gt;
+#include &lt;sys/mman.h&gt;
+#include &lt;unistd.h&gt;
+
+int main() {
+    const int SIZE = 4096;                  // size (in bytes) of shared memory object
+    const char *name = "OS";                // name of the shared memory object
+    const char *message_0 = "Hello";        // strings written to shared memory
+    const char *message_1 = "World!";
+    int   fd;                               // shared memory file descriptor
+    char *ptr;                              // pointer to shared memory object
+
+    fd = shm_open(name, O_CREAT | O_RDWR, 0666); // create the shared memory object
+    ftruncate(fd, SIZE);                         // configure the size of the shared memory object
+
+    // memory map the shared memory object
+    ptr = (char *)mmap(0, SIZE, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
+
+    // write to the shared memory object
+    sprintf(ptr, "%s", message_0);
+    ptr += strlen(message_0);
+    sprintf(ptr, "%s", message_1);
+    ptr += strlen(message_1);
+
+    return 0;
+}</code></pre></div>
+    </div>
+  </div>
+
+  <div class="callout note">
+    <span class="callout-title">Compile</span>
+    <p>POSIX shared memory needs the real-time library: <code>gcc test.c -o test -lrt</code></p>
+  </div>
+
+  <h5>Consumer process using POSIX shared-memory API</h5>
+  <div class="code-block">
+    <div class="code-header">
+      <span><span class="dots"><span></span><span></span><span></span></span><span class="filename">consumer_shm.c</span></span>
+      <span class="lang">C</span>
+    </div>
+    <div class="code-block-body">
+      <div class="line-numbers"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span></div>
+      <div class="code-content"><pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;fcntl.h&gt;
+#include &lt;sys/shm.h&gt;
+#include &lt;sys/stat.h&gt;
+#include &lt;sys/mman.h&gt;
+
+int main() {
+    const int  SIZE  = 4096;
+    const char *name = "OS";
+    int   fd;
+    char *ptr;
+    fd  = shm_open(name, O_RDONLY, 0666);
+    ptr = (char *)mmap(0, SIZE, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
+    printf("%s", (char *)ptr);              // read from the shared memory object
+    shm_unlink(name);                       // remove the shared memory object
+    return 0;
+}</code></pre></div>
+    </div>
+  </div>
+
+  <h5>In-Lab Tasks</h5>
+  <ul>
+    <li>Compile and execute the producer code.</li>
+    <li>Compile and execute the consumer code. <strong>It will give a run-time error. Why?</strong> — because the producer terminates and cleans state before the consumer attaches; the consumer maps memory but the producer is no longer maintaining it concurrently. Also <code>shm_unlink</code> at the end of the consumer can remove the object before subsequent reads if not properly sequenced.</li>
+    <li>Now modify the producer code so that the producer and consumer run concurrently as two processes. Now the consumer code will print the message.</li>
+    <li>Now modify the consumer code to print the second message.</li>
+  </ul>
+</section>
+
+<hr class="section-rule">
+
+<!-- ============================================================
+                            LAB 08
+============================================================ -->
+<section id="lab08">
+  <span class="lab-tag">Lab 08</span><span class="lab-difficulty">High Difficulty</span>
+  <h2 class="lab-title">Threads — POSIX Pthreads</h2>
+
+  <p><strong>Objective.</strong> To understand and learn about implementing threads using the Pthread library already introduced in OS theory classes.</p>
+
+  <h3 id="lab08-intro">Threads — Theory</h3>
+  <p>Threads are an essential concept in computer science and programming, particularly in the context of multitasking and parallel computing. Some important aspects of threads:</p>
+
+  <h5>Provides → Concurrency &amp; Parallelism</h5>
+  <p>Threads allow multiple streams of execution within a single process. Different parts of a program can execute independently, potentially concurrently, improving overall efficiency by utilising available CPU resources effectively. In applications such as web servers or database servers, threads can be used to handle multiple client requests concurrently, improving scalability and throughput.</p>
+
+  <h5>Benefits → Responsiveness, Modularity, Resource Sharing, Efficiency</h5>
+  <p>Threads can keep an application responsive to user input or external events while performing other tasks in the background. A user interface can remain interactive even while performing complex computations in separate threads. Threads break complex tasks into smaller, more manageable units, improving modularity. Threads within the same process share resources such as memory and file descriptors, leading to efficient communication and data sharing. While threads introduce overhead due to context switching and synchronisation, they can still be more efficient than separate processes — particularly when sharing data and resources.</p>
+
+  <h5>Requires → Synchronisation</h5>
+  <p>Threads often need to coordinate their actions to ensure data consistency and avoid race conditions. Synchronisation mechanisms such as <strong>mutexes, semaphores, and condition variables</strong> are used to control access to shared resources and coordinate the execution of threads.</p>
+
+  <h5>Can we write multithreading programs in C?</h5>
+  <p>Unlike Java, multithreading is <em>not</em> supported by the language standard. <strong>POSIX Threads (Pthreads)</strong> are the POSIX standard for threads. Implementation of Pthread is available with the gcc compiler.</p>
+
+  <h5>Thread Library — POSIX Pthread</h5>
+  <p>Two general strategies for creating multiple threads:</p>
+  <ul>
+    <li><strong>Asynchronous threading:</strong> Parent and child threads run independently of each other. Typically little data sharing between threads.</li>
+    <li><strong>Synchronous threading:</strong> Parent thread waits for all of its children to terminate. Children threads run concurrently. Significant data sharing.</li>
+  </ul>
+  <ul>
+    <li>Each thread has a set of attributes, including stack size and scheduling information.</li>
+    <li>In a Pthread program, separate threads begin execution in a specified function (e.g. <code>runner()</code>).</li>
+    <li>When a program begins:
+      <ul>
+        <li>A single thread of control begins in <code>main()</code>.</li>
+        <li><code>main()</code> creates a second thread that begins control in the <code>runner()</code> function.</li>
+        <li>Both threads share the global data.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <!-- CODE WORKOUT 1 -->
+  <h3 id="lab08-cw1">Code Workout 1 — Summation in a Separate Thread</h3>
+  <p>Design a multi-threaded program that performs the summation of a non-negative integer in a separate thread using:</p>
+  <p style="text-align:center; font-family:'Fraunces',serif; font-size:20px; font-style:italic;">sum = Σ<sub>i=0</sub><sup>N</sup> i</p>
+  <p>For example, if <code>N</code> were 5, this function would represent the summation of integers from 0 to 5, which is 15.</p>
+
+  <div class="code-block">
+    <div class="code-header">
+      <span><span class="dots"><span></span><span></span><span></span></span><span class="filename">summation.c</span></span>
+      <span class="lang">C</span>
+    </div>
+    <div class="code-block-body">
+      <div class="line-numbers"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span><span>21</span><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span>27</span><span>28</span></div>
+      <div class="code-content"><pre><code class="language-c">#include &lt;pthread.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int sum = 0;                                // this data is shared by the thread(s)
+
+void *runner(void *parameters)
+{   // The thread will begin control in this function
+    int i, upper = *((int *)parameters);
+    if (upper &gt; 0)
+    {
+        for (i = 1; i &lt;= upper; i++)
+            sum = sum + i;
+    }
+    pthread_exit(0);
+}
+
+int main(int argc, char *argv[])
+{
+    pthread_t       threadID;               // thread identifier
+    pthread_attr_t  attributes;             // set attributes for the thread
+    int num = 1000;
+
+    pthread_attr_init(&amp;attributes);                                     // get the default attributes
+    pthread_create(&amp;threadID, &amp;attributes, runner, (void *)&amp;num);      // create the thread
+    pthread_join(threadID, NULL);                                       // now wait for the thread to exit
+    printf("sum=%d\n", sum);
+    exit(0);
+}</code></pre></div>
+    </div>
+  </div>
+
+  <div class="callout note">
+    <span class="callout-title">Compile</span>
+    <p><code>gcc yourprogram.c -o yourprogram -lpthread</code> (some older versions use <code>-pthread</code>).</p>
+  </div>
+
+  <h5>Observations &amp; Discussion</h5>
+  <ol type="a">
+    <li>Parameter passing from <code>pthread_create</code> call to runner function — the upper bound is passed as <code>void *</code>.</li>
+    <li><code>pthread_attr_init()</code> sets default attributes of each thread (stack size, scheduling, etc.). It will be covered in future labs.</li>
+    <li>To return values from the runner function so that <code>pthread_join()</code> can collect them, use the snippet below.</li>
+  </ol>
+
+  <div class="code-block">
+    <div class="code-header">
+      <span><span class="dots"><span></span><span></span><span></span></span><span class="filename">return_value_snippet.c</span></span>
+      <span class="lang">C</span>
+    </div>
+    <div class="code-block-body">
+      <div class="line-numbers"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span></div>
+      <div class="code-content"><pre><code class="language-c">void *thread_function(void *arg) {
+    printf("Thread executing...\n");
+    pthread_exit((void *)42);   // Exiting thread with status 42
+}
+
+int main() {
+    // Wait for the thread to finish and get its exit status
+    void *exit_status;
+    pthread_join(thread, &amp;exit_status);
+    printf("Thread exited with status: %ld\n", (long)exit_status);
+    return 0;
+}</code></pre></div>
+    </div>
+  </div>
+
+  <!-- CODE WORKOUT 2 -->
+  <h3 id="lab08-cw2">Code Workout 2 — Race Condition on a Shared Counter</h3>
+
+  <div class="code-block">
+    <div class="code-header">
+      <span><span class="dots"><span></span><span></span><span></span></span><span class="filename">race_counter.c</span></span>
+      <span class="lang">C</span>
+    </div>
+    <div class="code-block-body">
+      <div class="line-numbers"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span><span>21</span><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span>27</span><span>28</span><span>29</span><span>30</span></div>
+      <div class="code-content"><pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;pthread.h&gt;
+
+static volatile int counter = 0;
+
+void *mythread(void *arg) {
+    printf("%s: begin\n", (char *)arg);
+    int i;
+    //int counter = 0;
+    for (i = 0; i &lt; 1e7; i++) {
+        counter = counter + 1;
+    }
+    printf("%s: done. Counter = %d\n", (char *)arg, counter);
+    return NULL;
+}
+
+int main(int argc, char *argv[]) {
+    pthread_t p1, p2;
+
+    printf("main: begin (counter = %d)\n", counter);
+    pthread_create(&amp;p1, NULL, mythread, "A");
+    pthread_create(&amp;p2, NULL, mythread, "B");
+
+    // join waits for the threads to finish
+    pthread_join(p1, NULL);
+    pthread_join(p2, NULL);
+
+    printf("main: done with both (counter = %d)\n", counter);
+    return 0;
+}</code></pre></div>
+    </div>
+  </div>
+
+  <h5>Observations &amp; DIY</h5>
+  <ol type="a">
+    <li>Compile and run the code shown above.</li>
+    <li><strong>Why are both threads calculating different values of counter?</strong> Because <code>counter = counter + 1</code> is not atomic — it is a <em>read-modify-write</em>. Two threads interleave reads and writes, so increments are lost. This is the classic <strong>race condition</strong> on a shared variable.</li>
+    <li>Uncomment the statement <code>int counter = 0;</code> at line 9. Recompile and re-run to review counter values. <strong>How does line 9 affect the result?</strong> The local <code>counter</code> shadows the global one — each thread now operates on its own private copy, so neither thread interferes with the other. Both threads will reliably print <code>1e7</code>, but the global <code>counter</code> stays at 0.</li>
+  </ol>
+
+  <!-- IN-LAB PROBLEMS -->
+  <h3 id="lab08-inlab">In-Lab Problems</h3>
+
+  <h4>Question 1 — Vector Addition with 10 Worker Threads</h4>
+  <p>Declare three float arrays <code>A</code>, <code>B</code> and <code>C</code> each of size <code>1e7</code> (10,000,000) and perform the operation <code>C = A + B</code> for each element of A, B and C.</p>
+  <ol type="a">
+    <li>Write, compile, and run serial code.</li>
+    <li>Write concurrent code where 10 worker threads will equally divide the computational workload.</li>
+  </ol>
+
+  <h4>Question 2 — Avg / Min / Max of a Number List</h4>
+  <p>Write a multithreaded program that calculates various statistical values for a list of numbers. The program will pass a series of numbers on the command line and will then create three separate worker threads:</p>
+  <ul>
+    <li>One thread determines the <strong>average</strong>.</li>
+    <li>The second determines the <strong>maximum</strong>.</li>
+    <li>The third determines the <strong>minimum</strong>.</li>
+  </ul>
+  <p>The array of numbers must be passed as a parameter to threads, and each thread must return the calculated value to the main thread.</p>
+  <p>Example — for input <code>90 81 78 95 79 72 85</code>, the main thread will print:</p>
+  <pre style="background:var(--surface);padding:10px 14px;border-left:3px solid var(--accent);font-family:'JetBrains Mono',monospace;font-size:14px;">The average value is 82.
+The minimum value is 72.
+The maximum value is 95.</pre>
+
+  <!-- DEMO -->
+  <h3 id="lab08-demo">Demo — Multi-threaded Array Sum</h3>
+  <p>Reference demo (which sums an array using multiple threads):</p>
+
+  <div class="code-block">
+    <div class="code-header">
+      <span><span class="dots"><span></span><span></span><span></span></span><span class="filename">sum_array.c</span></span>
+      <span class="lang">C</span>
+    </div>
+    <div class="code-block-body">
+      <div class="line-numbers"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span><span>21</span><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span>27</span><span>28</span><span>29</span><span>30</span><span>31</span><span>32</span><span>33</span><span>34</span><span>35</span><span>36</span><span>37</span><span>38</span><span>39</span><span>40</span><span>41</span><span>42</span><span>43</span><span>44</span><span>45</span><span>46</span><span>47</span><span>48</span><span>49</span><span>50</span><span>51</span><span>52</span><span>53</span><span>54</span><span>55</span><span>56</span></div>
+      <div class="code-content"><pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;pthread.h&gt;
+
+#define NUM_THREADS 4
+#define ARRAY_SIZE  1000000
+
+int global_array[ARRAY_SIZE];               // Shared array
+
+// Function to initialize the array with random values
+void initialize_array() {
+    for (int i = 0; i &lt; ARRAY_SIZE; ++i) {
+        global_array[i] = rand() % 1000;
+    }
+}
+
+// Function to find the sum of elements in a portion of the array
+void *sum_array(void *arg) {
+    int thread_id = *((int *)arg);
+    int start = thread_id * (ARRAY_SIZE / NUM_THREADS);
+    int end   = start + (ARRAY_SIZE / NUM_THREADS);
+    int sum   = 0;
+
+    // Calculate the sum of elements in the assigned portion of the array
+    for (int i = start; i &lt; end; ++i) {
+        sum += global_array[i];
+    }
+
+    return (void *)(long)sum;               // Return the sum as a void pointer
+}
+
+int main() {
+    pthread_t threads[NUM_THREADS];
+    int   thread_args[NUM_THREADS];
+    void *thread_results[NUM_THREADS];
+    long  total_sum = 0;
+
+    // Initialize the array with random values
+    initialize_array();
+
+    // Create threads to compute the sum of array elements
+    for (int i = 0; i &lt; NUM_THREADS; ++i) {
+        thread_args[i] = i;
+        pthread_create(&amp;threads[i], NULL, sum_array, (void *)&amp;thread_args[i]);
+    }
+
+    // Join threads and collect results
+    for (int i = 0; i &lt; NUM_THREADS; ++i) {
+        pthread_join(threads[i], &amp;thread_results[i]);
+        total_sum += (long)thread_results[i];   // Accumulate the partial sums
+    }
+
+    printf("Total sum of array elements: %ld\n", total_sum);
+
+    return 0;
+}</code></pre></div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-rule">
+
+<!-- ============================================================
+                            LAB 09
+============================================================ -->
+<section id="lab09">
+  <span class="lab-tag">Lab 09</span><span class="lab-difficulty">Moderate Difficulty</span>
+  <h2 class="lab-title">Linux/Unix Signals</h2>
+
+  <p><strong>Objective.</strong> To understand and learn programming with signals in multi-process and multi-threaded applications.</p>
+
+  <!-- INTRO -->
+  <h3 id="lab09-intro">What are Signals?</h3>
+  <p>A signal is a <strong>software interrupt delivered to a process</strong>. The operating system uses signals to report exceptional situations to an executing program. Some signals report errors such as references to invalid memory addresses; others report asynchronous events, such as disconnection of a phone line. They are a way for the kernel, other processes, or the system itself to notify a process about events or conditions that have occurred.</p>
+
+  <p>Understanding signals is essential for understanding the behaviour of Unix-like operating systems and writing robust, reliable, and responsive software.</p>
+
+  <ul>
+    <li>Each signal is identified by a <strong>unique integer number</strong>.</li>
+    <li>Signals can be generated by the kernel in response to events such as errors, exceptions, or user actions (e.g. pressing <code>Ctrl+C</code>).</li>
+    <li>Processes can also send signals to other processes using the <code>kill</code> command or system calls like <code>kill</code> and <code>raise</code>.</li>
+    <li>Some common signals: <code>SIGINT</code> (generated by Ctrl+C), <code>SIGSEGV</code> (segmentation violation), <code>SIGTERM</code> (termination request), <code>SIGILL</code> (illegal instruction), <code>SIGALRM</code> (alarm clock).</li>
+    <li>Each signal has a <strong>default action</strong> associated with it, such as terminating the process, ignoring the signal, or stopping the process.</li>
+    <li>Signal handlers should be carefully designed to be <strong>signal-safe</strong>, meaning they can be safely executed asynchronously without causing unexpected behaviour or corruption.</li>
+    <li><strong>Signal-safe functions</strong> are those that can be safely called from within a signal handler. Examples include <code>write</code>, <code>read</code>, and <code>exit</code>.</li>
+  </ul>
+
+  <h5>Common Linux Signals (selected)</h5>
+  <table>
+    <thead>
+      <tr><th>#</th><th>Signal</th><th>Default Action</th><th>Comment</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>SIGHUP</td><td>Terminate</td><td>Hang up controlling terminal or process</td></tr>
+      <tr><td>2</td><td>SIGINT</td><td>Terminate</td><td>Interrupt from keyboard, Ctrl+C</td></tr>
+      <tr><td>3</td><td>SIGQUIT</td><td>Dump</td><td>Quit from keyboard, Ctrl+\</td></tr>
+      <tr><td>4</td><td>SIGILL</td><td>Dump</td><td>Illegal instruction</td></tr>
+      <tr><td>5</td><td>SIGTRAP</td><td>Dump</td><td>Breakpoint for debugging</td></tr>
+      <tr><td>6</td><td>SIGABRT</td><td>Dump</td><td>Abnormal termination</td></tr>
+      <tr><td>7</td><td>SIGBUS</td><td>Dump</td><td>Bus error</td></tr>
+      <tr><td>8</td><td>SIGFPE</td><td>Dump</td><td>Floating-point exception</td></tr>
+      <tr><td>9</td><td>SIGKILL</td><td>Terminate</td><td>Forced process termination (cannot be caught/ignored)</td></tr>
+      <tr><td>10</td><td>SIGUSR1</td><td>Terminate</td><td>Available to processes</td></tr>
+      <tr><td>11</td><td>SIGSEGV</td><td>Dump</td><td>Invalid memory reference</td></tr>
+      <tr><td>12</td><td>SIGUSR2</td><td>Terminate</td><td>Available to processes</td></tr>
+      <tr><td>13</td><td>SIGPIPE</td><td>Terminate</td><td>Write to pipe with no readers</td></tr>
+      <tr><td>14</td><td>SIGALRM</td><td>Terminate</td><td>Real-timer clock</td></tr>
+      <tr><td>15</td><td>SIGTERM</td><td>Terminate</td><td>Process termination</td></tr>
+      <tr><td>17</td><td>SIGCHLD</td><td>Ignore</td><td>Child process stopped or terminated</td></tr>
+      <tr><td>18</td><td>SIGCONT</td><td>Continue</td><td>Resume execution, if stopped</td></tr>
+      <tr><td>19</td><td>SIGSTOP</td><td>Stop</td><td>Stop process execution, Ctrl+Z</td></tr>
+      <tr><td>20</td><td>SIGTSTP</td><td>Stop</td><td>Stop process issued from tty</td></tr>
+    </tbody>
+  </table>
+
+  <!-- HANDLING -->
+  <h3 id="lab09-handling">Signal Handling and Delivery</h3>
+  <ul>
+    <li>Processes can install signal handlers to specify custom actions to be taken when a signal is received. This is done using the <code>signal</code> function or more modern alternatives like <code>sigaction</code>.</li>
+    <li>Signal handlers are functions that are executed asynchronously when a signal is delivered to the process. They can perform tasks such as cleanup, error handling, or responding to user input.</li>
+    <li>Signals can be delivered <strong>synchronously</strong> or <strong>asynchronously</strong>. Synchronous signals are generated because of the program's actions (e.g., dividing by zero), while asynchronous signals can arrive at any time (e.g., due to user input). By default, signals are delivered to the thread that caused them. However, signal handling can be configured to deliver signals to specific threads or to the entire process.</li>
+  </ul>
+
+  <!-- BLOCKING -->
+  <h3 id="lab09-blocking">Blocking Signals</h3>
+  <p>Blocking a signal means telling the operating system to <strong>hold it and deliver it later</strong>. Generally, a program does not block signals indefinitely — it might as well ignore them by setting their actions to <code>SIG_IGN</code>. But it is useful to block signals briefly, to prevent them from interrupting sensitive operations. For instance:</p>
+  <ul>
+    <li>Use <code>sigprocmask</code> to block signals while you modify global variables that are also modified by the handlers for these signals.</li>
+    <li>Set <code>sa_mask</code> in your <code>sigaction</code> call to block certain signals while a particular signal handler runs. This way, the signal handler can run without being interrupted by signals.</li>
+    <li>The <code>pthread_sigmask()</code> function is just like <code>sigprocmask(2)</code>, but used in multithreaded programs.</li>
+  </ul>
+
+  <!-- THREADS -->
+  <h3 id="lab09-threads">Signals and Threads</h3>
+  <p>Signals behave differently when used between threads compared to between processes. Understanding these differences is important for designing multi-threaded applications with robust signal handling mechanisms.</p>
+
+  <div class="compare">
+    <div>
+      <h5>Signal Delivery — Between Processes</h5>
+      <ul>
+        <li>Signals are delivered to entire processes, not individual threads.</li>
+        <li>When a signal is sent to a process, it is delivered to one of the threads within the process. The specific thread that receives the signal may vary depending on the OS and threading model.</li>
+      </ul>
+    </div>
+    <div>
+      <h5>Signal Delivery — Between Threads</h5>
+      <ul>
+        <li>Signals can be directed to specific threads within a process.</li>
+        <li>The <code>pthread_kill</code> function can be used to send a signal to a specific thread identified by its thread ID.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="compare">
+    <div>
+      <h5>Signal Handling — Between Processes</h5>
+      <ul>
+        <li>Each process has its own signal handlers, independent of other processes.</li>
+        <li>Signal handlers are installed using the <code>signal</code> function or similar mechanisms within each process.</li>
+      </ul>
+    </div>
+    <div>
+      <h5>Signal Handling — Between Threads</h5>
+      <ul>
+        <li>By default, threads within a process <strong>share</strong> the same signal handlers.</li>
+        <li>Signal handlers installed by one thread are inherited by all other threads within the same process.</li>
+        <li>If one thread installs a handler for a signal, all threads in the process will use the same handler for that signal.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="compare">
+    <div>
+      <h5>Signal Masking — Between Processes</h5>
+      <ul>
+        <li>Signal masking affects the entire process, blocking or unblocking signals for all threads within the process.</li>
+        <li>Signal masks are managed using system calls like <code>sigprocmask</code> or pthreads equivalents.</li>
+      </ul>
+    </div>
+    <div>
+      <h5>Signal Masking — Between Threads</h5>
+      <ul>
+        <li>Signal masking can be performed independently by each thread.</li>
+        <li>Each thread has its own signal mask, allowing it to block or unblock signals without affecting other threads.</li>
+        <li>The <code>pthread_sigmask</code> function is used to manipulate the signal mask for individual threads.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h5>Signal Safety</h5>
+  <ul>
+    <li>Signal handlers must be implemented carefully so they are <strong>signal-safe</strong> — they may execute asynchronously in response to signals.</li>
+    <li>Signal-safe functions can be called from within a signal handler without causing unexpected behaviour.</li>
+    <li>The same signal-safety considerations apply to handlers within threads — functions called from a signal handler in one thread should be signal-safe.</li>
+  </ul>
+
+  <!-- CW1 -->
+  <h3 id="lab09-cw1">Code Workout 1 — Catching SIGINT (Ctrl+C)</h3>
+  <p>A C program that demonstrates the use of a signal handler for the SIGINT signal (sent when the user presses Ctrl+C). The program prints a message when the signal is received.</p>
+
+  <div class="code-block">
+    <div class="code-header">
+      <span><span class="dots"><span></span><span></span><span></span></span><span class="filename">signal_demo.c</span></span>
+      <span class="lang">C</span>
+    </div>
+    <div class="code-block-body">
+      <div class="line-numbers"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span><span>21</span><span>22</span><span>23</span><span>24</span><span>25</span></div>
+      <div class="code-content"><pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;signal.h&gt;
+#include &lt;unistd.h&gt;
+
+// Signal handler function
+void sigint_handler(int signum) {
+    fprintf(stdout, "Caught SIGINT signal (%d)\n", signum);
+}
+
+int main() {
+    // Registering signal handler for SIGINT
+    if (signal(SIGINT, sigint_handler) == SIG_ERR) {
+        printf("Error setting up signal handler for SIGINT\n");
+        return 1;
+    }
+
+    printf("Press Ctrl+C to send a SIGINT signal\n");
+
+    // Infinite loop to keep the program running
+    while (1) {
+        sleep(1);
+    }
+
+    return 0;
+}</code></pre></div>
+    </div>
+  </div>
+
+  <h5>How it works</h5>
+  <ul>
+    <li>Header files used: <code>&lt;stdio.h&gt;</code>, <code>&lt;signal.h&gt;</code>, <code>&lt;unistd.h&gt;</code>.</li>
+    <li><code>sigint_handler</code> simply prints a message indicating SIGINT was caught. <code>printf</code> is <strong>not safe</strong> when called from a function exposed to multiple threads (technically, <code>printf</code> is not reentrant) — use <code>fprintf</code> instead.</li>
+    <li>In <code>main</code>, the handler is registered with <code>signal(SIGINT, sigint_handler)</code>.</li>
+    <li>The program prints a message and enters an infinite loop. When the user presses Ctrl+C, SIGINT is delivered and <code>sigint_handler</code> runs.</li>
+  </ul>
+
+  <h5>Observations &amp; DIY</h5>
+  <ol type="a">
+    <li>Compile and run this code from the bash command-line.</li>
+    <li>You can use <code>signal(SIGINT, SIG_IGN);</code> to ignore the SIGINT signal as well. However, here we're "ignoring" it by assigning a handler that just displays a message.</li>
+    <li>Change the <code>sigint_handler</code> to terminate the program after printing the message.</li>
+    <li>Read the <code>signal.h</code> manual page: <a href="https://manpages.ubuntu.com/manpages/trusty/man7/signal.h.7posix.html">manpages.ubuntu.com — signal.h</a>.</li>
+    <li>You cannot terminate this program by pressing Ctrl+C. Open another bash window, query the process, and kill it:</li>
+  </ol>
+  <div class="code-block">
+    <div class="code-header">
+      <span><span class="dots"><span></span><span></span><span></span></span><span class="filename">terminal</span></span>
+      <span class="lang">bash</span>
+    </div>
+    <div class="code-block-body">
+      <div class="line-numbers"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div>
+      <div class="code-content"><pre><code class="language-bash">$ ps -ef | grep signal2
+       38665  0 10:22 pts/4   00:00:00 ./signal2
+       38760  0 10:25 pts/5   00:00:00 grep --color=auto signal2
+$ kill -9 38665
+$ ps -ef | grep signal2</code></pre></div>
+    </div>
+  </div>
+  <ol type="a" start="6">
+    <li>Now place <code>raise(SIGKILL);</code> as the last statement in the signal handler to kill the process when Ctrl+C is pressed. <strong>SIGKILL cannot be ignored or handled.</strong></li>
+    <li>Now use <code>signal(SIGUSR1, my_handler);</code> with an appropriate <code>my_handler</code> function to place a user-defined signal and its handler in your code. Raise the signal with <code>kill(pid, SIGUSR1);</code>.</li>
+  </ol>
+
+  <!-- CW1a -->
+  <h3 id="lab09-cw1a">Code Workout 1(a) — Same with sigaction()</h3>
+  <p>Same requirements as Code Workout 1, but using the <code>sigaction()</code> system call which is used in all production code now-a-days instead of <code>signal()</code>.</p>
+
+  <div class="code-block">
+    <div class="code-header">
+      <span><span class="dots"><span></span><span></span><span></span></span><span class="filename">sigaction_demo.c</span></span>
+      <span class="lang">C</span>
+    </div>
+    <div class="code-block-body">
+      <div class="line-numbers"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span><span>21</span><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span>27</span><span>28</span><span>29</span><span>30</span><span>31</span><span>32</span></div>
+      <div class="code-content"><pre><code class="language-c">#define _XOPEN_SOURCE 700
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;signal.h&gt;
+
+// Signal handler function
+void sigint_handler(int signum) {
+    printf("Ctrl+C (SIGINT) received. Exiting...\n");
+    // Perform cleanup or other necessary tasks before exiting
+    exit(signum);
+}
+
+int main() {
+    // Set up the signal action structure
+    struct sigaction sa;
+    sa.sa_handler = sigint_handler;     // Specify the signal handler function
+    sigemptyset(&amp;sa.sa_mask);           // Clear the signal mask
+    sa.sa_flags   = 0;                  // No special flags
+
+    // Register the signal handler using the sigaction system call for SIGINT
+    if (sigaction(SIGINT, &amp;sa, NULL) == -1) {
+        perror("sigaction");
+        return EXIT_FAILURE;
+    }
+
+    // Loop indefinitely to keep the program running
+    while (1) {
+        // Do some work or wait for further input
+    }
+
+    return EXIT_SUCCESS;
+}</code></pre></div>
+    </div>
+  </div>
+
+  <h5>How it works</h5>
+  <ul>
+    <li>Define a signal handler <code>sigint_handler</code> for SIGINT (Ctrl+C).</li>
+    <li>Set up a <code>struct sigaction sa</code> with the handler specified.</li>
+    <li>Register the handler with <code>sigaction(SIGINT, &amp;sa, NULL)</code>.</li>
+    <li>Inside <code>main</code>, an infinite loop keeps the program running. When Ctrl+C is pressed, the handler prints a message and exits.</li>
+  </ul>
+
+  <h5>Observations</h5>
+
+  <div class="callout key">
+    <span class="callout-title">Why <code>#define _XOPEN_SOURCE 700</code> at line 1?</span>
+    <p>The <code>signal()</code> function can have two different forms of behaviour when installing a handler:</p>
+    <ul>
+      <li><strong>System V semantics</strong> — the handler is "one-shot": after the handler is called, the disposition is reset to <code>SIG_DFL</code>, and system calls interrupted by the signal are <em>not</em> restarted; <strong>or</strong></li>
+      <li><strong>BSD semantics</strong> — the handler is not reset when the signal fires, the signal is blocked while the handler is executing, and most interrupted system calls are automatically restarted.</li>
+    </ul>
+    <p>On Linux with glibc, you get BSD semantics if <code>_BSD_SOURCE</code> is defined, and System V semantics if it is not. <code>_BSD_SOURCE</code> is defined by default, but defining <code>_XOPEN_SOURCE</code> (or other macros like <code>_POSIX_SOURCE</code>, <code>_SVID_SOURCE</code>) suppresses that default.</p>
+  </div>
+
+  <div class="callout note">
+    <span class="callout-title">Best Practice</span>
+    <p>Install signal handlers with <code>sigaction()</code> instead of <code>signal()</code>, and set the <code>SA_RESTART</code> flag, which causes system calls to automatically restart in case they got aborted by a signal.</p>
+  </div>
+
+  <!-- CW2 -->
+  <h3 id="lab09-cw2">Code Workout 2 — SIGCHLD &amp; Reaping Zombies</h3>
+  <p>When a child process stops or terminates, <code>SIGCHLD</code> is sent to the parent process. The default response to the signal is to ignore it. The signal can be caught and the exit status from the child process can be obtained by immediately calling <code>wait(2)</code> and <code>wait3(3C)</code>. This allows zombie process entries to be removed as quickly as possible. The example below installs a handler that catches SIGCHLD; <code>wait3()</code> uses the <code>WNOHANG</code> parameter to return immediately if no child process has terminated.</p>
+
+  <div class="code-block">
+    <div class="code-header">
+      <span><span class="dots"><span></span><span></span><span></span></span><span class="filename">sigchld_demo.c</span></span>
+      <span class="lang">C</span>
+    </div>
+    <div class="code-block-body">
+      <div class="line-numbers"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span><span>21</span><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span>27</span><span>28</span><span>29</span><span>30</span><span>31</span><span>32</span><span>33</span><span>34</span><span>35</span><span>36</span><span>37</span></div>
+      <div class="code-content"><pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;signal.h&gt;
+#include &lt;sys/wait.h&gt;
+#include &lt;sys/resource.h&gt;
+
+void proc_exit() {
+    int   wstat;
+    pid_t pid;
+
+    while (1) {
+        // Get info about child process.
+        // WNOHANG returns immediately if there is no child to wait
+        pid = wait3(&amp;wstat, WNOHANG, NULL);
+        if (pid == 0 || pid == -1) {
+            fprintf(stdout, "return value of wait3() is %d\n", pid);
+            return;
+        }
+        fprintf(stdout, "Return code: %d\n", wstat);
+    }
+}
+
+int main() {
+    signal(SIGCHLD, proc_exit);
+    switch (fork()) {
+        case -1:
+            perror("main: fork");
+            exit(0);
+        case 0:
+            printf("I'm alive (temporarily)\n");   // child only executes this and exits
+            int ret_code = rand();
+            printf("Return code is %d\n", ret_code);
+            exit(ret_code);
+        default:
+            pause();   // suspends main process execution until a signal arrives
+    }
+    exit(0);
+}</code></pre></div>
+    </div>
+  </div>
+
+  <h5>Observations &amp; DIY</h5>
+  <ol type="a">
+    <li>Run the above code and dry run it.</li>
+    <li>Now, modify <code>main()</code> to create <strong>3 child processes without the wait() system calls</strong> for each process to terminate. However, insert a <code>sleep()</code> call in the parent so that children terminate and become zombies. Keep the <code>signal(SIGCHLD, ...)</code> registration intact so that when SIGCHLD is raised (by three processes in this case) the signal handler <code>proc_exit</code> is called once. <strong>Observe that termination of multiple children results in only one invocation of the signal handler.</strong></li>
+  </ol>
+
+  <h5>Robust handler using waitpid()</h5>
+  <div class="code-block">
+    <div class="code-header">
+      <span><span class="dots"><span></span><span></span><span></span></span><span class="filename">sigchld_handler_loop.c</span></span>
+      <span class="lang">C</span>
+    </div>
+    <div class="code-block-body">
+      <div class="line-numbers"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div>
+      <div class="code-content"><pre><code class="language-c">void sigchld_handler(int signum) {
+    pid_t pid;
+    int   status;
+
+    // Reap terminated child processes
+    while ((pid = waitpid(-1, &amp;status, WNOHANG)) &gt; 0) {
+        printf("Child process with PID %d terminated\n", pid);
+        // Handle child process termination, if necessary
+    }
+}</code></pre></div>
+    </div>
+  </div>
+
+  <!-- CW3 -->
+  <h3 id="lab09-cw3">Code Workout 3 — Multithreaded SIGUSR1 (kill vs pthread_kill)</h3>
+  <p>The following multithreaded C code contains a user-defined SIGUSR1 handler and two ways to call it: i) using <code>kill()</code> to send SIGUSR1 to a process, and ii) using <code>pthread_kill()</code> to send SIGUSR1 to a specific thread.</p>
+
+  <div class="code-block">
+    <div class="code-header">
+      <span><span class="dots"><span></span><span></span><span></span></span><span class="filename">sigusr1_threads.c</span></span>
+      <span class="lang">C</span>
+    </div>
+    <div class="code-block-body">
+      <div class="line-numbers"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span><span>21</span><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span>27</span><span>28</span><span>29</span><span>30</span><span>31</span><span>32</span><span>33</span><span>34</span><span>35</span><span>36</span><span>37</span><span>38</span><span>39</span><span>40</span><span>41</span><span>42</span><span>43</span></div>
+      <div class="code-content"><pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;pthread.h&gt;
+#include &lt;signal.h&gt;
+#include &lt;unistd.h&gt;
+
+#define NUM_THREADS 4
+pthread_t threads[NUM_THREADS];     // Global variable to store thread IDs
+
+void sigusr1_handler(int signum) {  // signal handler
+    int i = gettid(), j = getppid(), k = getpid();
+    fprintf(stdout, "Thread %u received SIGUSR1 signal (parent=%u) \
+[pid=%u] {tid=%u} \n", pthread_self(), j, k, i);
+}
+
+void *thread_function(void *arg) {  // thread function
+    //signal(SIGUSR1, sigusr1_handler);   // register signal handler
+    while (1) sleep(1);                   // Keep the thread alive
+    return NULL;
+}
+
+int main() {
+    signal(SIGUSR1, sigusr1_handler);     // register signal handler
+    for (int i = 0; i &lt; NUM_THREADS; ++i) {
+        if (pthread_create(&amp;threads[i], NULL, thread_function, NULL) != 0) {
+            perror("pthread_create"); exit(EXIT_FAILURE);
+        }
+    }
+
+    int i = gettid(), j = getpid(), k = getppid();
+    fprintf(stdout, "Parent Process ID: %u, Process ID:%u, main() thread ID: %u\n", \
+        k, j, i);
+    fprintf(stdout, "Thread IDs: 0=%u, 1=%u, 2=%u and 3=%lu\n", \
+        threads[0], threads[1], threads[2], threads[3]);
+
+    kill(j, SIGUSR1);                      // send signal to process
+    pthread_kill(threads[2], SIGUSR1);     // send signal to 3rd thread
+
+    for (int i = 0; i &lt; NUM_THREADS; ++i) {
+        if (pthread_join(threads[i], NULL) != 0) {
+            perror("pthread_join"); exit(EXIT_FAILURE);
+        }
+    }
+    return 0;
+}</code></pre></div>
+    </div>
+  </div>
+
+  <h5>Observations &amp; DIY</h5>
+  <ol type="a">
+    <li>Compile and run the above code.</li>
+    <li>The signal handler is registered at line 23 inside <code>main()</code>. Note that at line 34 <code>kill()</code> is used to send the signal to the process, and at line 35 <code>pthread_kill()</code> is used to send the signal to the 3rd thread.</li>
+    <li>Now, comment line 23 and uncomment line 17. This changes signal registration from <code>main()</code> to the thread worker function. Observe that <strong>both <code>kill()</code> and <code>pthread_kill()</code> still work</strong>. This means that when a signal is sent to the process using <code>kill()</code>, the runtime looks up a thread where the SIGUSR1 handler is registered and processes the signal there.</li>
+  </ol>
+
+  <div class="callout note">
+    <span class="callout-title">Note</span>
+    <p>You may or may not reproduce the debugger output exactly as shown in the manual; the key insight is that even when the handler is registered only inside the worker thread, signals sent at process scope are routed to a thread that has the handler installed.</p>
+  </div>
+</section>
+
+<hr class="section-rule">
+
+<!-- ============================================================
+                            LAB 10
+============================================================ -->
+<section id="lab10">
+  <span class="lab-tag">Lab 10</span><span class="lab-difficulty">Moderate Difficulty</span>
+  <h2 class="lab-title">Mutexes &amp; Semaphores</h2>
+
+  <p><strong>Objective.</strong> To understand and learn using <em>mutex</em> and <em>semaphore</em> to protect critical sections while accessing shared memory in multi-process and multi-threaded applications.</p>
+
+  <!-- MUTEX -->
+  <h3 id="lab10-mutex">Introduction to Mutexes</h3>
+  <p><strong>Mutex</strong>, short for <em>mutual exclusion</em>, is a synchronisation primitive used to ensure that only one thread at a time can access a shared resource. Mutexes are commonly employed in multithreaded programming to prevent <strong>race conditions</strong>, where multiple threads try to access a shared resource simultaneously, leading to unpredictable behaviour.</p>
+
+  <h5>Applications of Mutexes</h5>
+  <ul>
+    <li><strong>Protecting Critical Sections.</strong> Mutexes protect critical sections of code, ensuring only one thread can execute the block at a time. This prevents data corruption and maintains consistency when multiple threads access shared data.</li>
+    <li><strong>Thread Synchronisation.</strong> Mutexes are essential for synchronising access to shared resources such as variables, data structures, or files in a multithreaded environment.</li>
+    <li><strong>Resource Management.</strong> Mutexes coordinate access to resources that can only be used by one thread at a time, such as hardware devices or database connections.</li>
+  </ul>
+
+  <h5>Basic Mutex Usage in Code</h5>
+  <div class="code-block">
+    <div class="code-header">
+      <span><span class="dots"><span></span><span></span><span></span></span><span class="filename">mutex_basic.c</span></span>
+      <span class="lang">C</span>
+    </div>
+    <div class="code-block-body">
+      <div class="line-numbers"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span><span>21</span><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span>27</span><span>28</span><span>29</span><span>30</span><span>31</span><span>32</span><span>33</span><span>34</span><span>35</span><span>36</span><span>37</span></div>
+      <div class="code-content"><pre><code class="language-c">#include &lt;pthread.h&gt;
+#include &lt;stdio.h&gt;
+
+#define NUM_THREADS 5
+
+int shared_data = 0;
+pthread_mutex_t mutex;
+
+void *thread_function(void *arg) {
+    int thread_id = *((int *)arg);
+
+    // Lock and unlock the mutex around shared resources
+    pthread_mutex_lock(&amp;mutex);
+    shared_data++;                          // Critical section - Thread is accessing shared_data
+    pthread_mutex_unlock(&amp;mutex);
+
+    pthread_exit(NULL);
+}
+
+int main() {
+    pthread_t threads[NUM_THREADS];
+    int       thread_args[NUM_THREADS];
+    int i;
+
+    pthread_mutex_init(&amp;mutex, NULL);       // Initialize the mutex
+
+    for (i = 0; i &lt; NUM_THREADS; i++) {     // Create threads
+        thread_args[i] = i;
+        pthread_create(&amp;threads[i], NULL, thread_function, &amp;thread_args[i]);
+    }
+    for (i = 0; i &lt; NUM_THREADS; i++)       // Join threads
+        pthread_join(threads[i], NULL);
+
+    pthread_mutex_destroy(&amp;mutex);          // Destroy the mutex
+
+    return 0;
+}</code></pre></div>
+    </div>
+  </div>
+
+  <h5>Walk-through</h5>
+  <ul>
+    <li>Initialise a mutex using <code>pthread_mutex_init</code>.</li>
+    <li>Each thread locks the mutex before accessing the shared resource using <code>pthread_mutex_lock</code>.</li>
+    <li>After accessing the resource, the thread unlocks the mutex using <code>pthread_mutex_unlock</code>.</li>
+    <li>Finally, destroy the mutex using <code>pthread_mutex_destroy</code> after all threads have completed execution.</li>
+  </ul>
+  <p>This code ensures that only one thread can access the <code>shared_data</code> variable at a time, preventing race conditions and ensuring data integrity.</p>
+
+  <!-- SEMAPHORE -->
+  <h3 id="lab10-sem">Introduction to Semaphores</h3>
+  <p><strong>Semaphore</strong> is a synchronisation primitive introduced by <strong>Edsger W. Dijkstra</strong> in the 1960s. It is a signalling mechanism used to control access to shared resources by multiple processes or threads. Semaphores can be either:</p>
+  <ul>
+    <li><strong>Binary</strong> — only two possible integer values: 0 and 1. Acts as a simple on-off switch or lock.</li>
+    <li><strong>Counting</strong> — an integer value greater than or equal to zero. Can be incremented or decremented by arbitrary values.</li>
+  </ul>
+
+  <h5>Applications of Binary Semaphores</h5>
+  <ul>
+    <li><strong>Mutual Exclusion.</strong> Commonly used to implement mutual exclusion, ensuring only one process or thread accesses a shared resource at a time.</li>
+    <li><strong>Producer-Consumer Problem.</strong> Used to synchronise producer and consumer processes/threads in a bounded buffer scenario.</li>
+    <li><strong>Deadlock Avoidance.</strong> Helps avoid deadlock by providing a controlled mechanism for processes to request and release resources.</li>
+  </ul>
+
+  <h5>Applications of Counting Semaphores</h5>
+  <ul>
+    <li><strong>Resource Allocation.</strong> Useful for managing finite resources, such as memory buffers, database connections, or I/O devices, where multiple instances of a resource may be available.</li>
+    <li><strong>Concurrency Control.</strong> Can control the maximum number of concurrent executions of a particular section of code or a critical resource.</li>
+    <li><strong>Task Synchronisation.</strong> Where multiple tasks need to synchronise at certain points, counting semaphores can coordinate their actions.</li>
+  </ul>
+
+  <h5>Basic Semaphore Usage in Code (Producer–Consumer Bounded Buffer)</h5>
+  <div class="code-block">
+    <div class="code-header">
+      <span><span class="dots"><span></span><span></span><span></span></span><span class="filename">semaphore_basic.c</span></span>
+      <span class="lang">C</span>
+    </div>
+    <div class="code-block-body">
+      <div class="line-numbers"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span><span>21</span><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span>27</span><span>28</span><span>29</span><span>30</span><span>31</span><span>32</span><span>33</span><span>34</span><span>35</span><span>36</span><span>37</span><span>38</span><span>39</span><span>40</span><span>41</span><span>42</span><span>43</span><span>44</span><span>45</span><span>46</span><span>47</span><span>48</span><span>49</span><span>50</span><span>51</span><span>52</span><span>53</span><span>54</span><span>55</span><span>56</span><span>57</span><span>58</span><span>59</span><span>60</span><span>61</span><span>62</span><span>63</span><span>64</span><span>65</span><span>66</span><span>67</span><span>68</span><span>69</span><span>70</span></div>
+      <div class="code-content"><pre><code class="language-c">#include &lt;pthread.h&gt;
+#include &lt;semaphore.h&gt;
+#include &lt;stdio.h&gt;
+
+#define BUFFER_SIZE   5
+#define NUM_PRODUCERS 2
+#define NUM_CONSUMERS 2
+
+int  buffer[BUFFER_SIZE];
+sem_t empty_slots, full_slots;
+pthread_mutex_t mutex;
+
+void *producer(void *arg) {
+    int item = *((int *)arg);
+    sleep(1);                               // Produce item // Sleep to simulate production time
+    sem_wait(&amp;empty_slots);                 // Wait for empty slot in buffer
+    pthread_mutex_lock(&amp;mutex);             // Acquire mutex lock before accessing buffer
+    for (int i = 0; i &lt; BUFFER_SIZE; i++) { // Add item to buffer
+        if (buffer[i] == -1) {
+            buffer[i] = item;
+            break;
+        }
+    }
+    pthread_mutex_unlock(&amp;mutex);           // Release mutex lock
+    sem_post(&amp;full_slots);                  // Signal that buffer has a new item
+
+    pthread_exit(NULL);
+}
+
+void *consumer(void *arg) {
+    sem_wait(&amp;full_slots);                  // Wait for buffer to have data
+    pthread_mutex_lock(&amp;mutex);             // Acquire mutex lock before accessing buffer
+    int item = -1;
+    for (int i = 0; i &lt; BUFFER_SIZE; i++) { // Remove item from buffer
+        if (buffer[i] != -1) {
+            item = buffer[i];
+            buffer[i] = -1;
+            break;
+        }
+    }
+    pthread_mutex_unlock(&amp;mutex);           // Release mutex lock
+    sem_post(&amp;empty_slots);                 // Signal that an empty slot is available in buffer
+    printf("Consumed item: %d\n", item);    // Consume item
+
+    pthread_exit(NULL);
+}
+
+int main() {
+    pthread_t producer_threads[NUM_PRODUCERS], consumer_threads[NUM_CONSUMERS];
+    int producer_args[NUM_PRODUCERS] = {1, 2};      // Argument for producers
+
+    pthread_mutex_init(&amp;mutex, NULL);               // Initialize mutex and semaphores
+    sem_init(&amp;empty_slots, 0, BUFFER_SIZE);         // Initialize empty_slots to BUFFER_SIZE
+    sem_init(&amp;full_slots,  0, 0);                   // Initialize full_slots  to 0
+
+    for (int i = 0; i &lt; NUM_PRODUCERS; i++)         // Create producer threads
+        pthread_create(&amp;producer_threads[i], NULL, producer, &amp;producer_args[i]);
+
+    for (int i = 0; i &lt; NUM_CONSUMERS; i++)         // Create consumer threads
+        pthread_create(&amp;consumer_threads[i], NULL, consumer, NULL);
+
+    // Join threads
+    for (int i = 0; i &lt; NUM_PRODUCERS; i++) pthread_join(producer_threads[i], NULL);
+    for (int i = 0; i &lt; NUM_CONSUMERS; i++) pthread_join(consumer_threads[i], NULL);
+
+    // Destroy mutex and semaphores
+    pthread_mutex_destroy(&amp;mutex);
+    sem_destroy(&amp;empty_slots); sem_destroy(&amp;full_slots);
+
+    return 0;
+}</code></pre></div>
+    </div>
+  </div>
+
+  <h5>Walk-through</h5>
+  <ul>
+    <li>Initialise two semaphores: <code>empty_slots</code> (initially set to the buffer size) and <code>full_slots</code> (initially set to 0).</li>
+    <li>Producers wait for empty slots in the buffer (<code>sem_wait(&amp;empty_slots)</code>) before producing items, and signal that a new item is available (<code>sem_post(&amp;full_slots)</code>).</li>
+    <li>Consumers wait for the buffer to have data (<code>sem_wait(&amp;full_slots)</code>) before consuming items, and signal that an empty slot is available (<code>sem_post(&amp;empty_slots)</code>).</li>
+    <li>The mutex protects the critical section (accessing the buffer) from simultaneous access by multiple threads.</li>
+  </ul>
+
+  <!-- VS -->
+  <h3 id="lab10-vs">Mutex vs Semaphore</h3>
+
+  <div class="compare">
+    <div>
+      <h5>Use a Mutex When…</h5>
+      <ul>
+        <li><strong>Mutual exclusion is needed.</strong> If you need to ensure only one thread accesses a shared resource at a time to prevent corruption or race conditions, a mutex is the appropriate choice. Mutexes provide binary synchronisation, ensuring exclusive access to a critical section of code.</li>
+        <li><strong>Simple locking mechanism.</strong> When you require a straightforward locking mechanism with only two states (locked or unlocked), a mutex is typically more appropriate. Mutexes are simpler and more lightweight than semaphores.</li>
+        <li><strong>Low resource consumption.</strong> Mutexes generally have lower overhead than semaphores, making them more efficient. If efficiency is a concern and binary synchronisation suffices, a mutex is a suitable choice.</li>
+      </ul>
+    </div>
+    <div>
+      <h5>Use a Semaphore When…</h5>
+      <ul>
+        <li><strong>Resource counting is required.</strong> If you need to manage multiple instances of a resource or control access based on a count, a semaphore is appropriate. Counting semaphores allow you to specify an initial count and increment or decrement based on resource availability.</li>
+        <li><strong>Complex synchronisation scenarios.</strong> When synchronisation requirements involve more complex scenarios beyond simple mutual exclusion — such as managing multiple resources with different availability conditions or coordinating multiple threads — semaphores provide more flexibility and expressive power.</li>
+        <li><strong>Task synchronisation.</strong> If you need to coordinate the synchronisation of multiple tasks at various points in their execution, semaphores can signal events or conditions between them.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CW1 BOUNDED BUFFER -->
+  <h3 id="lab10-cw1">Code Workout 1 — Bounded Buffer Problem</h3>
+  <p>Synchronisation example. Use this for the producer–consumer focus area mentioned in your exam scope.</p>
+
+  <div class="code-block">
+    <div class="code-header">
+      <span><span class="dots"><span></span><span></span><span></span></span><span class="filename">bounded_buffer.c</span></span>
+      <span class="lang">C</span>
+    </div>
+    <div class="code-block-body">
+      <div class="line-numbers"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span><span>21</span><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span>27</span><span>28</span><span>29</span><span>30</span><span>31</span><span>32</span><span>33</span><span>34</span><span>35</span><span>36</span><span>37</span><span>38</span><span>39</span><span>40</span><span>41</span><span>42</span><span>43</span><span>44</span><span>45</span><span>46</span><span>47</span><span>48</span><span>49</span><span>50</span><span>51</span><span>52</span><span>53</span><span>54</span><span>55</span><span>56</span><span>57</span><span>58</span><span>59</span><span>60</span></div>
+      <div class="code-content"><pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;pthread.h&gt;
+#include &lt;semaphore.h&gt;
+
+#define BUFFER_SIZE 5
+
+sem_t mutex, empty, full;
+int   buffer[BUFFER_SIZE];
+int   in = 0, out = 0;
+
+void *producer(void *arg) {
+    int item;
+    while (1) {
+        item = rand() % 100;                // Generate a random item to produce
+        sem_wait(&amp;empty);
+        sem_wait(&amp;mutex);
+        buffer[in] = item;
+        printf("Produced: %d\n", item);
+        in = (in + 1) % BUFFER_SIZE;
+        sem_post(&amp;mutex);
+        sem_post(&amp;full);
+        sleep(rand() % 3);                  // Simulate some processing time
+    }
+}
+
+void *consumer(void *arg) {
+    int item;
+    while (1) {
+        sem_wait(&amp;full);
+        sem_wait(&amp;mutex);
+        item = buffer[out];
+        printf("Consumed: %d\n", item);
+        out = (out + 1) % BUFFER_SIZE;
+        sem_post(&amp;mutex);
+        sem_post(&amp;empty);
+        sleep(rand() % 3);                  // Simulate some processing time
+    }
+}
+
+int main() {
+    pthread_t producer_thread, consumer_thread;
+
+    // Initialize semaphores
+    sem_init(&amp;mutex, 0, 1);
+    sem_init(&amp;empty, 0, BUFFER_SIZE);
+    sem_init(&amp;full,  0, 0);
+
+    // Create producer and consumer threads
+    pthread_create(&amp;producer_thread, NULL, producer, NULL);
+    pthread_create(&amp;consumer_thread, NULL, consumer, NULL);
+
+    // Join threads
+    pthread_join(producer_thread, NULL);
+    pthread_join(consumer_thread, NULL);
+
+    // Destroy semaphores
+    sem_destroy(&amp;mutex); sem_destroy(&amp;empty); sem_destroy(&amp;full);
+
+    return 0;
+}</code></pre></div>
+    </div>
+  </div>
+
+  <h5>Observations &amp; DIY</h5>
+  <ol type="a">
+    <li>Compile and run this code from the bash command-line.</li>
+    <li><strong>Explain what functionality is implemented by <code>full</code> and <code>empty</code> semaphores.</strong>
+      <ul>
+        <li><code>empty</code> counts the number of free slots in the buffer (initialised to <code>BUFFER_SIZE</code>). The producer <code>sem_wait</code>s on it before adding an item — if the buffer is full, the producer blocks. The consumer <code>sem_post</code>s it after removing an item.</li>
+        <li><code>full</code> counts the number of items currently in the buffer (initialised to 0). The consumer <code>sem_wait</code>s on it before removing an item — if the buffer is empty, the consumer blocks. The producer <code>sem_post</code>s it after producing an item.</li>
+        <li>Together, they implement <strong>bounded-buffer synchronisation</strong>: producers block on a full buffer, consumers block on an empty one. The binary semaphore <code>mutex</code> separately guards updates to the buffer indices.</li>
+      </ul>
+    </li>
+    <li><strong>What purpose is the <code>sleep()</code> call accomplishing in the producer and consumer functions?</strong> It simulates processing/think time so the producer and consumer interleave realistically rather than one starving the other. It is purely for demonstration.
+      <div class="callout note" style="margin-top:8px;">
+        <span class="callout-title">From the manual</span>
+        <p>The <code>sleep</code> subroutine suspends the current process for whole seconds. The <code>usleep</code> subroutine suspends the current process in microseconds, and the <code>nsleep</code> subroutine suspends the current process in nanoseconds.</p>
+      </div>
+    </li>
+  </ol>
+
+  <!-- CW2 READERS WRITERS -->
+  <h3 id="lab10-cw2">Code Workout 2 — Readers–Writers Problem</h3>
+
+  <div class="code-block">
+    <div class="code-header">
+      <span><span class="dots"><span></span><span></span><span></span></span><span class="filename">readers_writers.c</span></span>
+      <span class="lang">C</span>
+    </div>
+    <div class="code-block-body">
+      <div class="line-numbers"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span><span>21</span><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span>27</span><span>28</span><span>29</span><span>30</span><span>31</span><span>32</span><span>33</span><span>34</span><span>35</span><span>36</span><span>37</span><span>38</span><span>39</span><span>40</span><span>41</span><span>42</span><span>43</span><span>44</span><span>45</span><span>46</span><span>47</span><span>48</span><span>49</span><span>50</span><span>51</span><span>52</span><span>53</span><span>54</span><span>55</span><span>56</span><span>57</span><span>58</span><span>59</span><span>60</span><span>61</span><span>62</span><span>63</span><span>64</span><span>65</span><span>66</span><span>67</span><span>68</span><span>69</span><span>70</span><span>71</span><span>72</span><span>73</span><span>74</span><span>75</span><span>76</span><span>77</span><span>78</span><span>79</span><span>80</span><span>81</span><span>82</span><span>83</span><span>84</span><span>85</span><span>86</span><span>87</span><span>88</span><span>89</span><span>90</span><span>91</span><span>92</span><span>93</span><span>94</span><span>95</span><span>96</span><span>97</span></div>
+      <div class="code-content"><pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;
+#include &lt;semaphore.h&gt;
+#include &lt;pthread.h&gt;
+
+#define NUM_READERS    5
+#define NUM_WRITERS    2
+#define STRING_LENGTH  60
+
+pthread_t readers[NUM_READERS], writers[NUM_WRITERS];
+sem_t     mutex, rw_mutex;
+int       readers_count = 0;
+FILE     *file;
+
+char generateRandomChar() {
+    return (char)('a' + rand() % 26);       // Generating a random lowercase character
+}
+
+void *reader(void *arg) {
+    while (1) {
+        sem_wait(&amp;mutex);
+        readers_count++;
+        if (readers_count == 1) {
+            sem_wait(&amp;rw_mutex);
+        }
+        sem_post(&amp;mutex);
+
+        // Reading from file
+        fseek(file, 0, SEEK_SET);
+        char buffer[256];
+        while (fgets(buffer, sizeof(buffer), file) != NULL) {
+            fprintf(stdout, "Reader %ld: %s", (long)arg, buffer);
+        }
+
+        sem_wait(&amp;mutex);
+        readers_count--;
+        if (readers_count == 0) {
+            sem_post(&amp;rw_mutex);
+        }
+        sem_post(&amp;mutex);
+
+        // Perform other tasks
+        usleep(1000);
+    }
+}
+
+void *writer(void *arg) {
+    while (1) {
+        sem_wait(&amp;rw_mutex);
+
+        // generate random string to be written to file
+        srand(time(NULL));                          // Seed for random number generator
+        char randomString[STRING_LENGTH + 1];       // +1 for null terminator
+        for (int i = 0; i &lt; STRING_LENGTH; i++) {
+            randomString[i] = generateRandomChar();
+        }
+        randomString[STRING_LENGTH] = '\0';         // Null terminate the string
+
+        // Writing to file
+        fseek(file, 0, SEEK_END);
+        fprintf(file,   "%s\n", randomString);                 // writer to file on drive
+        fprintf(stdout, "Writer %ld: %s\n", (long)arg, randomString); // display
+        fflush(file);
+
+        sem_post(&amp;rw_mutex);
+
+        // Perform other tasks
+        usleep(1000);
+    }
+}
+
+int main() {
+    file = fopen("shared_file.txt", "a+");
+    if (file == NULL) {
+        perror("Error opening file");
+        exit(EXIT_FAILURE);
+    }
+
+    sem_init(&amp;mutex, 0, 1);
+    sem_init(&amp;rw_mutex, 0, 1);
+
+    int i;
+    for (i = 0; i &lt; NUM_WRITERS; i++)
+        pthread_create(&amp;writers[i], NULL, writer, (void *)(long)i);
+    for (i = 0; i &lt; NUM_READERS; i++)
+        pthread_create(&amp;readers[i], NULL, reader, (void *)(long)i);
+
+    for (i = 0; i &lt; NUM_READERS; i++) pthread_join(readers[i], NULL);
+    for (i = 0; i &lt; NUM_WRITERS; i++) pthread_join(writers[i], NULL);
+
+    fprintf(stdout, "reader pthread join completed\n");
+
+    sem_destroy(&amp;mutex);
+    sem_destroy(&amp;rw_mutex);
+    fclose(file);
+    return 0;
+}</code></pre></div>
+    </div>
+  </div>
+
+  <h5>Observations &amp; DIY</h5>
+  <ol type="a">
+    <li>Create a file <code>shared_file.txt</code> in the directory of the executable. Write a few lines of text in the file.</li>
+    <li>Compile and execute the file. Observe Writer and Reader processes working — both on screen output and through entries in <code>shared_file.txt</code>.</li>
+    <li>Dry run the code of functions: (i) reader, (ii) writer; submit your handwritten work.</li>
+    <li>Verify that both reader and writer functions ensure the following:
+      <ol type="i">
+        <li><strong>No reader is kept waiting</strong> unless a writer has already obtained permission to use the shared object. In other words, no reader should wait for other readers to finish simply because a writer is waiting.</li>
+        <li><strong>Once a writer is ready</strong>, that writer performs its writing as soon as possible. In other words, if a writer is waiting to access the object, no new readers may start reading.</li>
+      </ol>
+    </li>
+    <li>Submit your dry run and answers to part (d) i &amp; ii to your lab instructor.</li>
+  </ol>
+
+  <div class="callout key">
+    <span class="callout-title">Reader–Writer Logic — Dry-Run Insights</span>
+    <p><strong>Reader entry:</strong> lock <code>mutex</code> → increment <code>readers_count</code> → if it was the <em>first</em> reader, also acquire <code>rw_mutex</code> (to lock writers out) → unlock <code>mutex</code>. Multiple readers can then read concurrently because only the first reader holds <code>rw_mutex</code>.</p>
+    <p><strong>Reader exit:</strong> lock <code>mutex</code> → decrement <code>readers_count</code> → if this was the <em>last</em> reader, release <code>rw_mutex</code> (so a writer can proceed) → unlock <code>mutex</code>.</p>
+    <p><strong>Writer:</strong> simply <code>sem_wait(&amp;rw_mutex)</code> → write → <code>sem_post(&amp;rw_mutex)</code>. Writers are exclusive — no other writer or reader can proceed while a writer holds <code>rw_mutex</code>.</p>
+    <p>This implementation is the <strong>"first reader-writer problem"</strong> — readers have priority. It satisfies condition (i) but does <em>not</em> strictly enforce condition (ii); strict writer-priority would require an additional semaphore (e.g. a <code>writer_pending</code> flag and an entry barrier) so that pending writers block new readers from joining.</p>
+  </div>
+</section>
+
+<hr class="section-rule">
+
+<!-- ============================================================
+                       QUICK CHEATSHEET
+============================================================ -->
+<section id="cheatsheet">
+  <h2 class="lab-title">Quick Cheatsheet</h2>
+
+  <h4>Pipes</h4>
+  <table>
+    <thead><tr><th>Call</th><th>Purpose</th><th>Header</th></tr></thead>
+    <tbody>
+      <tr><td><code>pipe(fd)</code></td><td>Create unnamed pipe; <code>fd[0]</code> read, <code>fd[1]</code> write</td><td><code>unistd.h</code></td></tr>
+      <tr><td><code>fork()</code></td><td>Spawn child to share pipe FDs</td><td><code>unistd.h</code></td></tr>
+      <tr><td><code>mkfifo(path,mode)</code></td><td>Create a named pipe (FIFO)</td><td><code>sys/stat.h</code></td></tr>
+      <tr><td><code>open / read / write / close</code></td><td>Standard FIFO I/O</td><td><code>fcntl.h</code>, <code>unistd.h</code></td></tr>
+      <tr><td><code>unlink(path)</code></td><td>Delete the FIFO file</td><td><code>unistd.h</code></td></tr>
+    </tbody>
+  </table>
+
+  <h4>Shared Memory (POSIX)</h4>
+  <table>
+    <thead><tr><th>Call</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>shm_open(name, flags, mode)</code></td><td>Create/open shared memory object</td></tr>
+      <tr><td><code>ftruncate(fd, SIZE)</code></td><td>Set its size</td></tr>
+      <tr><td><code>mmap(0, SIZE, PROT_…, MAP_SHARED, fd, 0)</code></td><td>Map into address space</td></tr>
+      <tr><td><code>shm_unlink(name)</code></td><td>Remove the object</td></tr>
+      <tr><td>Compile</td><td><code>gcc x.c -o x -lrt</code></td></tr>
+    </tbody>
+  </table>
+
+  <h4>Pthreads</h4>
+  <table>
+    <thead><tr><th>Call</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>pthread_create(&amp;t, attr, fn, arg)</code></td><td>Spawn thread</td></tr>
+      <tr><td><code>pthread_join(t, &amp;ret)</code></td><td>Wait + collect return</td></tr>
+      <tr><td><code>pthread_exit(val)</code></td><td>Exit thread, return <code>val</code></td></tr>
+      <tr><td><code>pthread_self()</code></td><td>Caller's thread ID</td></tr>
+      <tr><td>Compile</td><td><code>gcc x.c -o x -lpthread</code></td></tr>
+    </tbody>
+  </table>
+
+  <h4>Signals</h4>
+  <table>
+    <thead><tr><th>Call</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>signal(SIG, handler)</code></td><td>Old-style register</td></tr>
+      <tr><td><code>sigaction(SIG, &amp;sa, NULL)</code></td><td>Modern, portable register</td></tr>
+      <tr><td><code>kill(pid, SIG)</code></td><td>Send signal to process</td></tr>
+      <tr><td><code>pthread_kill(tid, SIG)</code></td><td>Send signal to a specific thread</td></tr>
+      <tr><td><code>raise(SIG)</code></td><td>Send signal to self</td></tr>
+      <tr><td><code>sigprocmask / pthread_sigmask</code></td><td>Block / unblock signals</td></tr>
+      <tr><td><code>pause()</code></td><td>Suspend until any signal</td></tr>
+      <tr><td><code>wait3 / waitpid</code></td><td>Reap children (often inside SIGCHLD handler)</td></tr>
+    </tbody>
+  </table>
+
+  <h4>Mutex &amp; Semaphore</h4>
+  <table>
+    <thead><tr><th>Call</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>pthread_mutex_init / _destroy</code></td><td>Lifecycle</td></tr>
+      <tr><td><code>pthread_mutex_lock / _unlock</code></td><td>Critical section</td></tr>
+      <tr><td><code>sem_init(&amp;s, 0, value)</code></td><td>Init semaphore (value can be &gt;1)</td></tr>
+      <tr><td><code>sem_wait(&amp;s)</code></td><td>P / down — block if 0</td></tr>
+      <tr><td><code>sem_post(&amp;s)</code></td><td>V / up — increment, may wake</td></tr>
+      <tr><td><code>sem_destroy(&amp;s)</code></td><td>Free semaphore</td></tr>
+    </tbody>
+  </table>
+
+  <h4>Bounded-Buffer Pattern (memorise)</h4>
+  <table>
+    <thead><tr><th>Semaphore</th><th>Init</th><th>Producer</th><th>Consumer</th></tr></thead>
+    <tbody>
+      <tr><td><code>empty</code></td><td><code>BUFFER_SIZE</code></td><td><code>sem_wait</code> before write</td><td><code>sem_post</code> after read</td></tr>
+      <tr><td><code>full</code></td><td><code>0</code></td><td><code>sem_post</code> after write</td><td><code>sem_wait</code> before read</td></tr>
+      <tr><td><code>mutex</code></td><td><code>1</code></td><td>lock around buffer access</td><td>lock around buffer access</td></tr>
+    </tbody>
+  </table>
+
+  <h4>Readers–Writers (first-readers) Pattern</h4>
+  <ul>
+    <li><code>mutex</code> — protects <code>readers_count</code>.</li>
+    <li><code>rw_mutex</code> — gives a writer exclusive access; held by the <em>first</em> reader on entry, released by the <em>last</em> reader on exit.</li>
+    <li>Writers simply <code>sem_wait(&amp;rw_mutex)</code> → write → <code>sem_post(&amp;rw_mutex)</code>.</li>
+  </ul>
+
+  <p style="margin-top:32px;color:var(--muted);font-size:13px;font-family:'JetBrains Mono',monospace;">— end of notes —</p>
+</section>
+
+</main>
+</div>
+
+<script>
+  // Activate highlight.js on every code block
+  document.querySelectorAll('pre code').forEach((el) => {
+    hljs.highlightElement(el);
+  });
+</script>
+
+</body>
+</html>
