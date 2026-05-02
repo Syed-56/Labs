@@ -1,46 +1,45 @@
 from ortools.sat.python import cp_model
 
-model = cp_model.CpModel()
-
 puzzle = [
-    [0, 0, 6, 2, 0, 5],
-    [0, 0, 0, 4, 6, 0],
-    [0, 1, 2, 0, 0, 0],
-    [5, 6, 0, 0, 0, 4],
-    [0, 0, 4, 3, 0, 2],
-    [3, 0, 0, 5, 0, 6],
+    [5, 3, 0, 0, 7, 0, 0, 0, 0],
+    [6, 0, 0, 1, 9, 5, 0, 0, 0],
+    [0, 9, 8, 0, 0, 0, 0, 6, 0],
+    [8, 0, 0, 0, 6, 0, 0, 0, 3],
+    [4, 0, 0, 8, 0, 3, 0, 0, 1],
+    [7, 0, 0, 0, 2, 0, 0, 0, 6],
+    [0, 6, 0, 0, 0, 0, 2, 8, 0],
+    [0, 0, 0, 4, 1, 9, 0, 0, 5],
+    [0, 0, 0, 0, 8, 0, 0, 7, 9],
 ]
 
-# Initialize 6x6 grid variables (Values 1-9 as per your range)
-cells = {
-    (r, c): model.new_int_var(1, 9, f"({r},{c})") 
-    for r in range(6) for c in range(6)
-}
+model = cp_model.CpModel()
 
-# Apply initial puzzle values
-for r, row in enumerate(puzzle):
-    for c, val in enumerate(row):
-        if val:
-            model.add(cells[(r, c)] == val)
+cells = {}
+for r in range(9):
+    for c in range(9):
+        cells[(r, c)] = model.new_int_var(1, 9, f"{r}{c}")
 
-# Rows and Columns constraints
-for i in range(6):
-    model.add_all_different(cells[(i, j)] for j in range(6))
-    model.add_all_different(cells[(j, i)] for j in range(6))
+for r in range(9):
+    for c in range(9):
+        if puzzle[r][c] != 0:
+            model.add(cells[(r, c)] == puzzle[r][c])
 
-# 2x3 Sub-box constraints
-for r_offset in [0, 2, 4]:
-    for c_offset in [0, 3]:
+for r in range(9):
+    model.add_all_different(cells[(r, c)] for c in range(9))
+
+for c in range(9):
+    model.add_all_different(cells[(r, c)] for r in range(9))
+
+for br in range(0, 9, 3):
+    for bc in range(0, 9, 3):
         model.add_all_different(
-            cells[(r_offset + r, c_offset + c)] 
-            for r in range(2) for c in range(3)
+            cells[(br+r, bc+c)]
+            for r in range(3) for c in range(3)
         )
 
 solver = cp_model.CpSolver()
 if solver.solve(model) in (cp_model.FEASIBLE, cp_model.OPTIMAL):
-    for r in range(6):
-        if r % 2 == 0 and r > 0: print("-" * 13)
-        line = [str(solver.Value(cells[(r, c)])) for c in range(6)]
-        print(f"{' '.join(line[:3])} | {' '.join(line[3:])}")
+    for r in range(9):
+        print(' '.join(str(solver.value(cells[(r, c)])) for c in range(9)))
 else:
-    print("No solution found.")
+    print("No solution.")

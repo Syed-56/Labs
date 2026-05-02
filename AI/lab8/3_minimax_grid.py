@@ -1,129 +1,100 @@
 import math
 
-GRID_SIZE = 5
-GOAL_POS = 4
-AGENT_START = 0
-OPPONENT_START = 2
+ROWS = 5
+COLS = 5
 
-leaf_heuristics = []
-
-def heuristic(agent_pos, opponent_pos):
-    distance_to_goal = abs(agent_pos - GOAL_POS)
-    distance_opponent_to_agent = abs(agent_pos - opponent_pos)
-    h = (GRID_SIZE - distance_to_goal) * 2 - distance_opponent_to_agent
-    return h
+def heuristic(agent, opp, goal):
+    dist_to_goal = abs(agent[0] - goal[0]) + abs(agent[1] - goal[1])
+    dist_opp_to_agent = abs(agent[0] - opp[0]) + abs(agent[1] - opp[1])
+    return (ROWS + COLS - dist_to_goal) * 2 - dist_opp_to_agent
 
 def get_moves(pos):
+    r, c = pos
+    candidates = [(r-1,c), (r+1,c), (r,c-1), (r,c+1)]
     moves = []
-    if pos > 0:
-        moves.append(pos - 1)
-    if pos < GRID_SIZE - 1:
-        moves.append(pos + 1)
+    for nr, nc in candidates:
+        if 0 <= nr < ROWS and 0 <= nc < COLS:
+            moves.append((nr, nc))
     return moves
 
-def minimax(agent_pos, opponent_pos, depth, is_maximizing, depth_limit):
-    if agent_pos == GOAL_POS:
+def minimax(agent, opp, goal, depth, limit, maximizing):
+    if agent == goal:
         return 10
-    if agent_pos == opponent_pos:
+    if agent == opp:
         return -10
-    if depth == depth_limit:
-        h = heuristic(agent_pos, opponent_pos)
-        leaf_heuristics.append({
-            "agent": agent_pos,
-            "opponent": opponent_pos,
-            "heuristic": h,
-            "depth": depth
-        })
-        return h
+    if depth == limit:
+        return heuristic(agent, opp, goal)
 
-    if is_maximizing:
+    if maximizing:
         best = -math.inf
-        for move in get_moves(agent_pos):
-            val = minimax(move, opponent_pos, depth + 1, False, depth_limit)
+        for move in get_moves(agent):
+            val = minimax(move, opp, goal, depth+1, limit, False)
             best = max(best, val)
         return best
     else:
         best = math.inf
-        for move in get_moves(opponent_pos):
-            val = minimax(agent_pos, move, depth + 1, True, depth_limit)
+        for move in get_moves(opp):
+            val = minimax(agent, move, goal, depth+1, limit, True)
             best = min(best, val)
         return best
 
-def best_move(agent_pos, opponent_pos, depth_limit):
-    best_val = -math.inf
-    best = agent_pos
-    for move in get_moves(agent_pos):
-        val = minimax(move, opponent_pos, 1, False, depth_limit)
-        if val > best_val:
-            best_val = val
+def best_move(agent, opp, goal, limit):
+    best_score = -math.inf
+    best = agent
+    for move in get_moves(agent):
+        score = minimax(move, opp, goal, 1, limit, False)
+        if score > best_score:
+            best_score = score
             best = move
-    return best, best_val
+    return best, best_score
 
-def simulate(initial_agent, initial_opponent, depth_limit, steps=3):
-    global leaf_heuristics
-    leaf_heuristics = []
+def opp_move(agent, opp, goal):
+    best_score = math.inf
+    best = opp
+    for move in get_moves(opp):
+        score = minimax(agent, move, goal, 1, 2, True)
+        if score < best_score:
+            best_score = score
+            best = move
+    return best
 
-    print(f"SIMULATION  |  Depth Limit = {depth_limit}  |  Grid Size = {GRID_SIZE}")
-    print(f"Goal at position {GOAL_POS}  |  Start: Agent={initial_agent}, Opponent={initial_opponent}")
-
-    agent_pos = initial_agent
-    opponent_pos = initial_opponent
-
-    game_states = [
-        (initial_agent, initial_opponent),
-        (initial_agent + 1, initial_opponent),
-        (initial_agent + 1, initial_opponent - 1),
-    ]
-
-    for i, (a_pos, o_pos) in enumerate(game_states):
-        leaf_heuristics = []
-        move, score = best_move(a_pos, o_pos, depth_limit)
-        print(f"\n  State {i+1}: Agent @ {a_pos}, Opponent @ {o_pos}")
-        print(f"  Grid: ", end="")
-        for cell in range(GRID_SIZE):
-            if cell == a_pos and cell == o_pos:
-                print("[AO]", end="")
-            elif cell == a_pos:
-                print("[ A]", end="")
-            elif cell == o_pos:
-                print("[ O]", end="")
-            elif cell == GOAL_POS:
-                print("[ G]", end="")
+def print_board(agent, opp, goal, score, turn):
+    print(f"Turn {turn}  |  Score: {score}")
+    print("+" + "---+" * COLS)
+    for r in range(ROWS):
+        row = "|"
+        for c in range(COLS):
+            pos = (r, c)
+            if pos == agent:
+                row += " A |"
+            elif pos == opp:
+                row += " O |"
+            elif pos == goal:
+                row += " G |"
             else:
-                print("[  ]", end="")
-        print()
-        print(f"Chosen move: Agent moves to position {move}  (score={score})")
-        print(f"Heuristic values at leaf nodes:")
-        for lh in leaf_heuristics[:6]:
-            print(f"    Agent={lh['agent']}, Opponent={lh['opponent']} => h={lh['heuristic']}")
-        if len(leaf_heuristics) > 6:
-            print(f"    ... ({len(leaf_heuristics) - 6} more leaf nodes)")
+                row += "   |"
+        print(row)
+        print("+" + "---+" * COLS)
+    print()
 
-def compare_depths():
-    print("COMPARISON: depth=2 vs depth=3")
+agent = (0, 0)
+opp   = (0, 4)
+goal  = (4, 4)
+DEPTH = 3
 
-    test_states = [
-        (0, 2),
-        (1, 3),
-        (2, 4),
-    ]
+print("START")
+print(f"A=Agent, O=Opponent, G=Goal\n")
 
-    for a, o in test_states:
-        move2, score2 = best_move(a, o, depth_limit=2)
-        move3, score3 = best_move(a, o, depth_limit=3)
-        print(f"\n  State: Agent={a}, Opponent={o}")
-        print(f"    depth=2 => move to {move2}, score={score2}")
-        print(f"    depth=3 => move to {move3}, score={score3}")
-        if move2 != move3:
-            print(f"Different decisions! depth=3 sees further ahead.")
-        else:
-            print(f"Same decision, but depth=3 has more confidence.")
+for turn in range(1, 11):
+    score = heuristic(agent, opp, goal)
+    print_board(agent, opp, goal, score, turn)
 
-simulate(AGENT_START, OPPONENT_START, depth_limit=3)
-compare_depths()
+    if agent == goal:
+        print("Agent reached the goal!")
+        break
+    if agent == opp:
+        print("Opponent caught the agent!")
+        break
 
-print("LEGEND\n")
-print("  A = Agent (Max player) wants to reach G (+10)")
-print("  O = Opponent (Min player) tries to block (-10)")
-print("  G = Goal position")
-print("  Heuristic = (GRID_SIZE - dist_to_goal)*2 - dist_opponent_to_agent")
+    agent, _ = best_move(agent, opp, goal, DEPTH)
+    opp = opp_move(agent, opp, goal)

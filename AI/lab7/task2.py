@@ -3,10 +3,12 @@ from ortools.sat.python import cp_model
 model = cp_model.CpModel()
 
 outfits = {0: "SQ1", 1: "SQ2"}
-outfits.update({
-    i + 2: f"S{s}-P{p}" 
-    for i, (s, p) in enumerate((s, p) for s in range(1, 6) for p in range(1, 4))
-})
+i = 2
+#outfit[0 and 1] are SQ[] and outfit[2...16] are S[]P[]
+for s in range(1, 6):
+    for p in range(1, 4):
+        outfits[i] = f"S{s}-P{p}"
+        i += 1
 
 work_days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
 vars = {day: model.new_int_var(0, len(outfits) - 1, day) for day in work_days}

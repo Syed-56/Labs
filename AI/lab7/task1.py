@@ -18,8 +18,10 @@ class SolverPrinter(cp_model.CpSolverSolutionCallback):
 
     def on_solution_callback(self):
         self.count += 1
-        output = [f"{n}={COLORS[self.Value(v)]}" for n, v in self._vars.items()]
-        print(f"Sol {self.count}: {', '.join(output)}")
+        print(f"\nSolution {self.count}")
+        for node, val in self._vars.items():
+            color_name = COLORS[self.Value(val)]
+            print(f"{node} = {color_name}")
 
 solver = cp_model.CpSolver()
 solver.parameters.enumerate_all_solutions = True 

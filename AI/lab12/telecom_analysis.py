@@ -16,11 +16,10 @@ print(df.info())
 df['churn'] = df['churn'].astype('int64')
 d = {'no': False, 'yes': True}
 df['international plan'] = df['international plan'].map(d)
-df = df.replace({'voice mail plan': d})
+df['voice mail plan'] = df['voice mail plan'].map(d)
 
 # 3. Feature Engineering
-total_calls = df['total day calls'] + df['total eve calls'] + \
-              df['total night calls'] + df['total intl calls']
+total_calls = df['total day calls'] + df['total eve calls'] + df['total night calls'] + df['total intl calls']
 df.insert(loc=len(df.columns), column='Total calls', value=total_calls)
 
 # 4. Statistical Analysis
