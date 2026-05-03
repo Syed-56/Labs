@@ -98,8 +98,8 @@ int main() {
             printf("Result Reporter: Displaying and logging student grades...\n");
 
             while (read(pipe2_fd, buffer, sizeof(buffer)) > 0) {
-            printf("%s", buffer);
-            fprintf(file, "%s", buffer);
+                printf("%s", buffer);
+                fprintf(file, "%s", buffer);
             }
 
             close(pipe2_fd);

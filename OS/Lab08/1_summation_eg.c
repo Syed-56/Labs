@@ -15,7 +15,6 @@ void *runner(void *num) {
 
 int main(int argc, char* argv[]) {
     pthread_t thread_id;
-    pthread_attr_t attributes;
     int num=10;
 
     pthread_create(&thread_id,NULL,runner,(void*)&num);
