@@ -1,37 +1,29 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <signal.h>
 #include <sys/wait.h>
 #include <sys/resource.h>
 
-void proc_exit() {
-    int   wstat;
+void proc_wait() {
+    int wstat;
     pid_t pid;
-
-    while (1) {
-        // Get info about child process.
-        // WNOHANG returns immediately if there is no child to wait
-        pid = wait3(&wstat, WNOHANG, NULL);
-        if (pid == 0 || pid == -1) {
-            fprintf(stdout, "return value of wait3() is %d\n", pid);
-            return;
-        }
-        fprintf(stdout, "Return code: %d\n", wstat);
+    while ((pid = waitpid(-1,&wstat,WNOHANG))>0) {        
+        printf("Return Code: %d\n", wstat);
     }
 }
 
 int main() {
-    signal(SIGCHLD, proc_exit);
-    switch (fork()) {
-        case -1:
-            perror("main: fork");
+    signal(SIGCHLD, proc_wait);
+    for (int i = 0; i < 3; i++) {
+        pid_t pid = fork();
+        if (pid == 0) {
+            printf("Child %d started\n", getpid());
+            sleep(2);
+            printf("Child %d exiting\n", getpid());
             exit(0);
-        case 0:
-            printf("I'm alive (temporarily)\n");   // child only executes this and exits
-            int ret_code = rand();
-            printf("Return code is %d\n", ret_code);
-            exit(ret_code);
-        default:
-            pause();   // suspends main process execution until a signal arrives
+        }
     }
-    exit(0);
+    sleep(10);
+    printf("Parent exiting\n");
+    return 0;
 }

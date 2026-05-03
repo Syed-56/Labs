@@ -1,37 +1,28 @@
-#include <pthread.h>
 #include <stdio.h>
-
-#define NUM_THREADS 5
-
-int shared_data = 0;
+#include <pthread.h>
+int shared = 0;
 pthread_mutex_t mutex;
+#define NUMTHREADS 4
 
-void *thread_function(void *arg) {
-    int thread_id = *((int *)arg);
-
-    // Lock and unlock the mutex around shared resources
+void* runner(void* arg) {
+    int threadID = *(int*)arg;
     pthread_mutex_lock(&mutex);
-    shared_data++;                          // Critical section - Thread is accessing shared_data
+    shared++;
     pthread_mutex_unlock(&mutex);
-
-    pthread_exit(NULL);
+    pthread_exit(0);
 }
 
-int main() {
-    pthread_t threads[NUM_THREADS];
-    int       thread_args[NUM_THREADS];
-    int i;
+int main(int argc, char* argV) {
+    pthread_t threads[NUMTHREADS];
+    int threadArgs[NUMTHREADS];
+    pthread_mutex_init(&mutex,NULL);
 
-    pthread_mutex_init(&mutex, NULL);       // Initialize the mutex
-
-    for (i = 0; i < NUM_THREADS; i++) {     // Create threads
-        thread_args[i] = i;
-        pthread_create(&threads[i], NULL, thread_function, &thread_args[i]);
+    for(int i=0; i<NUMTHREADS; i++) {
+        threadArgs[i] = i;
+        pthread_create(&threads[i],NULL,runner,&threadArgs[i]);
     }
-    for (i = 0; i < NUM_THREADS; i++)       // Join threads
-        pthread_join(threads[i], NULL);
-
-    pthread_mutex_destroy(&mutex);          // Destroy the mutex
-
-    return 0;
+    for(int i=0; i<NUMTHREADS; i++) {
+        pthread_join(threads[i],NULL);
+    }
+    pthread_mutex_destroy(&mutex);
 }

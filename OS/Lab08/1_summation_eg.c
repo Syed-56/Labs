@@ -1,28 +1,26 @@
-#include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <pthread.h>
+int sum=0;
 
-int sum = 0; // this data is shared by the thread(s)
-void *runner(void *parameters)
-{ // The thread will begin control in this funtion
-    int i, upper = *((int *)parameters);
-    if (upper > 0)
-    {
-        for (i = 1; i <= upper; i++)
-        sum = sum + i;
+void *runner(void *num) {
+    int limit = *(int*)num;
+    int i;
+    if (limit>0) {
+        for(int i=1; i<=limit; i++)
+        sum += i;
     }
-    pthread_exit(0);
+    pthread_exit((void*)404);
 }
 
-int main(int argc, char *argv[])
-{
-    pthread_t threadID; // thread identifier
-    pthread_attr_t attributes; // set attributes for the thread
-    int num = 1000;
+int main(int argc, char* argv[]) {
+    pthread_t thread_id;
+    pthread_attr_t attributes;
+    int num=10;
 
-    pthread_attr_init(&attributes); // get the default attributes
-    pthread_create(&threadID, &attributes, runner, (void *)&num); // create the threa
-    pthread_join(threadID, NULL); // now wait for the thread to exit
-    printf("sum=%d\n", sum);
-    exit(0);
+    pthread_create(&thread_id,NULL,runner,(void*)&num);
+    void *exit_status;
+    pthread_join(thread_id,&exit_status);
+    printf("PThread exited with Status: %ld\n", (long)exit_status);
+    printf("Sum: %d\n", sum);
 }
