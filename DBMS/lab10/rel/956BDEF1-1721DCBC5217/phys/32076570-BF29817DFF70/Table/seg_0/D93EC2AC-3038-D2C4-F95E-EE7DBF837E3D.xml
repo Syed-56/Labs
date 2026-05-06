@@ -1,0 +1,49 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev11g class="oracle.dbtools.crest.model.design.storage.oracle.v11g.TableProxyOraclev11g" name="Author" directorySegmentName="seg_0" id="D93EC2AC-3038-D2C4-F95E-EE7DBF837E3D">
+<createdBy>ssa56</createdBy>
+<createdTime>2026-05-06 18:00:55 UTC</createdTime>
+<ownerDesignName>lab10</ownerDesignName>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="author_id" id="3FACE16B-26B0-BE69-41E1-4A366AE4799D">
+<createdBy>ssa56</createdBy>
+<createdTime>2026-05-06 18:00:55 UTC</createdTime>
+<ownerDesignName>lab10</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="book_written" id="629B3080-FFDA-CED7-CEA7-D87D85A4525D">
+<createdBy>ssa56</createdBy>
+<createdTime>2026-05-06 18:00:55 UTC</createdTime>
+<ownerDesignName>lab10</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="author_Age" id="A5058129-BB11-D61D-84A1-E9461FD27F43">
+<createdBy>ssa56</createdBy>
+<createdTime>2026-05-06 18:00:55 UTC</createdTime>
+<ownerDesignName>lab10</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="author_name" id="E9E116A4-17A2-C1B6-25B6-C79A6BD62673">
+<createdBy>ssa56</createdBy>
+<createdTime>2026-05-06 18:00:55 UTC</createdTime>
+<ownerDesignName>lab10</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="Author_PK" id="E7E7F22D-8188-6719-2864-80791C5F192B">
+<createdBy>ssa56</createdBy>
+<createdTime>2026-05-06 18:00:55 UTC</createdTime>
+<ownerDesignName>lab10</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+<uniqueKeys>
+<UniqueKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.UniqueOraclev10g" name="Author_book_written_UN" id="A90C29E1-9562-6373-2234-0A31DB53D657">
+<createdBy>ssa56</createdBy>
+<createdTime>2026-05-06 18:00:55 UTC</createdTime>
+<ownerDesignName>lab10</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</UniqueKey>
+</uniqueKeys>
+</TableProxyOraclev11g>

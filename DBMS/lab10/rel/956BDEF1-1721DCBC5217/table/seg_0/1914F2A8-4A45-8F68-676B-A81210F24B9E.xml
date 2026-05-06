@@ -1,0 +1,75 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="1914F2A8-4A45-8F68-676B-A81210F24B9E" name="Book">
+<createdBy>ssa56</createdBy>
+<createdTime>2026-05-06 17:54:00 UTC</createdTime>
+<generatorID>389FC5A7-3B3C-7E51-6043-DCD7177FD0B1</generatorID>
+<ownerDesignName>lab10</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="book_id" id="52DB0112-84DC-02DF-CF3C-08ABD45588D1">
+<createdBy>ssa56</createdBy>
+<createdTime>2026-05-06 17:54:00 UTC</createdTime>
+<generatorID>60C168B0-030D-8A20-99BC-C7368AC65F75</generatorID>
+<ownerDesignName>lab10</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="name" id="2BA63614-D31A-248F-7A52-79D12CB805E3">
+<createdBy>ssa56</createdBy>
+<createdTime>2026-05-06 17:54:00 UTC</createdTime>
+<generatorID>B2CEE44D-ECFD-6D50-425D-24AFA709AC68</generatorID>
+<ownerDesignName>lab10</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Author_author_id" id="03B4449E-E6D9-1F1C-448B-C06FF6156721">
+<createdBy>ssa56</createdBy>
+<createdTime>2026-05-06 17:54:00 UTC</createdTime>
+<generatorID>62102C1B-B19F-64F1-8DF3-CF68B32E012E</generatorID>
+<ownerDesignName>lab10</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT026</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="F4BBE0FD-373B-40C0-83B6-E781830B2B84" referredColumn="3FACE16B-26B0-BE69-41E1-4A366AE4799D"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="23979135-2527-89D7-C588-A94861A31ADA" name="Book_PK">
+<createdBy>ssa56</createdBy>
+<createdTime>2026-05-06 17:54:00 UTC</createdTime>
+<generatorID>50119C0F-FAC6-E971-7EE7-79A3D9A2BFD0</generatorID>
+<ownerDesignName>lab10</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="52DB0112-84DC-02DF-CF3C-08ABD45588D1"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="3387B5C8-E9D2-8E79-DAA2-FB2C347F0105" name="Book_Author_FK">
+<createdBy>ssa56</createdBy>
+<createdTime>2026-05-06 17:54:00 UTC</createdTime>
+<generatorID>03666C2F-BEA7-74DD-D18C-C9CC323FCFE5</generatorID>
+<ownerDesignName>lab10</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="03B4449E-E6D9-1F1C-448B-C06FF6156721"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
