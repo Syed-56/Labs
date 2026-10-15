@@ -1,0 +1,1388 @@
+[     0.000 ms] SENDER   SEND DATA seq=0 (#0)
+[     0.000 ms] CHANNEL  LOSS    DATA seq=0 (#0)
+[     0.000 ms] SENDER   SEND DATA seq=1 (#1)
+[     0.000 ms] SENDER   SEND DATA seq=2 (#2)
+[     0.000 ms] SENDER   SEND DATA seq=3 (#3)
+[   258.000 ms] RECEIVER RECV DATA seq=1 out of order (expectedseqnum=0) -> discard
+[   258.000 ms] RECEIVER nothing delivered yet -> no ACK
+[   262.000 ms] RECEIVER RECV DATA seq=2 out of order (expectedseqnum=0) -> discard
+[   262.000 ms] RECEIVER nothing delivered yet -> no ACK
+[   266.000 ms] RECEIVER RECV DATA seq=3 out of order (expectedseqnum=0) -> discard
+[   266.000 ms] RECEIVER nothing delivered yet -> no ACK
+[   604.000 ms] SENDER   TIMEOUT (oldest unACKed #0) -> go back, resend #0..#3
+[   604.000 ms] SENDER   RETRANSMIT DATA seq=0 (#0)
+[   604.000 ms] SENDER   RETRANSMIT DATA seq=1 (#1)
+[   604.000 ms] SENDER   RETRANSMIT DATA seq=2 (#2)
+[   604.000 ms] SENDER   RETRANSMIT DATA seq=3 (#3)
+[   604.000 ms] CHANNEL  LOSS    DATA seq=3 (#3)
+[   858.000 ms] RECEIVER RECV DATA seq=0 in order -> deliver (expectedseqnum=1)
+[   858.000 ms] RECEIVER SEND ACK seq=0
+[   862.000 ms] RECEIVER RECV DATA seq=1 in order -> deliver (expectedseqnum=2)
+[   862.000 ms] RECEIVER SEND ACK seq=1
+[   866.000 ms] RECEIVER RECV DATA seq=2 in order -> deliver (expectedseqnum=3)
+[   866.000 ms] RECEIVER SEND ACK seq=2
+[  1108.000 ms] SENDER   RECV ACK seq=0 (cumulative up to #0)
+[  1108.000 ms] SENDER   window slides: base=1(1) nextseqnum=4(4) window=[1..4]
+[  1108.000 ms] SENDER   SEND DATA seq=4 (#4)
+[  1112.000 ms] SENDER   RECV ACK seq=1 (cumulative up to #1)
+[  1112.000 ms] SENDER   window slides: base=2(2) nextseqnum=5(5) window=[2..5]
+[  1112.000 ms] SENDER   SEND DATA seq=5 (#5)
+[  1116.000 ms] SENDER   RECV ACK seq=2 (cumulative up to #2)
+[  1116.000 ms] SENDER   window slides: base=3(3) nextseqnum=6(6) window=[3..6]
+[  1116.000 ms] SENDER   SEND DATA seq=6 (#6)
+[  1362.000 ms] RECEIVER RECV DATA seq=4 out of order (expectedseqnum=3) -> discard
+[  1362.000 ms] RECEIVER SEND ACK seq=2
+[  1366.000 ms] RECEIVER RECV DATA seq=5 out of order (expectedseqnum=3) -> discard
+[  1366.000 ms] RECEIVER SEND ACK seq=2
+[  1370.000 ms] RECEIVER RECV DATA seq=6 out of order (expectedseqnum=3) -> discard
+[  1370.000 ms] RECEIVER SEND ACK seq=2
+[  1612.000 ms] SENDER   RECV ACK seq=2 (duplicate) -> ignored
+[  1616.000 ms] SENDER   RECV ACK seq=2 (duplicate) -> ignored
+[  1620.000 ms] SENDER   RECV ACK seq=2 (duplicate) -> ignored
+[  1716.000 ms] SENDER   TIMEOUT (oldest unACKed #3) -> go back, resend #3..#6
+[  1716.000 ms] SENDER   RETRANSMIT DATA seq=3 (#3)
+[  1716.000 ms] SENDER   RETRANSMIT DATA seq=4 (#4)
+[  1716.000 ms] SENDER   RETRANSMIT DATA seq=5 (#5)
+[  1716.000 ms] SENDER   RETRANSMIT DATA seq=6 (#6)
+[  1970.000 ms] RECEIVER RECV DATA seq=3 in order -> deliver (expectedseqnum=4)
+[  1970.000 ms] RECEIVER SEND ACK seq=3
+[  1974.000 ms] RECEIVER RECV DATA seq=4 in order -> deliver (expectedseqnum=5)
+[  1974.000 ms] RECEIVER SEND ACK seq=4
+[  1978.000 ms] RECEIVER RECV DATA seq=5 in order -> deliver (expectedseqnum=6)
+[  1978.000 ms] RECEIVER SEND ACK seq=5
+[  1982.000 ms] RECEIVER RECV DATA seq=6 in order -> deliver (expectedseqnum=7)
+[  1982.000 ms] RECEIVER SEND ACK seq=6
+[  2220.000 ms] SENDER   RECV ACK seq=3 (cumulative up to #3)
+[  2220.000 ms] SENDER   window slides: base=4(4) nextseqnum=7(7) window=[4..7]
+[  2220.000 ms] SENDER   SEND DATA seq=7 (#7)
+[  2224.000 ms] SENDER   RECV ACK seq=4 (cumulative up to #4)
+[  2224.000 ms] SENDER   window slides: base=5(5) nextseqnum=0(8) window=[5..8]
+[  2224.000 ms] SENDER   SEND DATA seq=0 (#8)
+[  2228.000 ms] SENDER   RECV ACK seq=5 (cumulative up to #5)
+[  2228.000 ms] SENDER   window slides: base=6(6) nextseqnum=1(9) window=[6..9]
+[  2228.000 ms] SENDER   SEND DATA seq=1 (#9)
+[  2228.000 ms] CHANNEL  LOSS    DATA seq=1 (#9)
+[  2232.000 ms] SENDER   RECV ACK seq=6 (cumulative up to #6)
+[  2232.000 ms] SENDER   window slides: base=7(7) nextseqnum=2(10) window=[7..10]
+[  2232.000 ms] SENDER   SEND DATA seq=2 (#10)
+[  2474.000 ms] RECEIVER RECV DATA seq=7 in order -> deliver (expectedseqnum=0)
+[  2474.000 ms] RECEIVER SEND ACK seq=7
+[  2478.000 ms] RECEIVER RECV DATA seq=0 in order -> deliver (expectedseqnum=1)
+[  2478.000 ms] RECEIVER SEND ACK seq=0
+[  2486.000 ms] RECEIVER RECV DATA seq=2 out of order (expectedseqnum=1) -> discard
+[  2486.000 ms] RECEIVER SEND ACK seq=0
+[  2486.000 ms] CHANNEL  LOSS    ACK seq=0
+[  2724.000 ms] SENDER   RECV ACK seq=7 (cumulative up to #7)
+[  2724.000 ms] SENDER   window slides: base=0(8) nextseqnum=3(11) window=[8..11]
+[  2724.000 ms] SENDER   SEND DATA seq=3 (#11)
+[  2728.000 ms] SENDER   RECV ACK seq=0 (cumulative up to #8)
+[  2728.000 ms] SENDER   window slides: base=1(9) nextseqnum=4(12) window=[9..12]
+[  2728.000 ms] SENDER   SEND DATA seq=4 (#12)
+[  2978.000 ms] RECEIVER RECV DATA seq=3 out of order (expectedseqnum=1) -> discard
+[  2978.000 ms] RECEIVER SEND ACK seq=0
+[  2978.000 ms] CHANNEL  LOSS    ACK seq=0
+[  2982.000 ms] RECEIVER RECV DATA seq=4 out of order (expectedseqnum=1) -> discard
+[  2982.000 ms] RECEIVER SEND ACK seq=0
+[  3232.000 ms] SENDER   RECV ACK seq=0 (duplicate) -> ignored
+[  3328.000 ms] SENDER   TIMEOUT (oldest unACKed #9) -> go back, resend #9..#12
+[  3328.000 ms] SENDER   RETRANSMIT DATA seq=1 (#9)
+[  3328.000 ms] SENDER   RETRANSMIT DATA seq=2 (#10)
+[  3328.000 ms] CHANNEL  LOSS    DATA seq=2 (#10)
+[  3328.000 ms] SENDER   RETRANSMIT DATA seq=3 (#11)
+[  3328.000 ms] SENDER   RETRANSMIT DATA seq=4 (#12)
+[  3328.000 ms] CHANNEL  LOSS    DATA seq=4 (#12)
+[  3582.000 ms] RECEIVER RECV DATA seq=1 in order -> deliver (expectedseqnum=2)
+[  3582.000 ms] RECEIVER SEND ACK seq=1
+[  3590.000 ms] RECEIVER RECV DATA seq=3 out of order (expectedseqnum=2) -> discard
+[  3590.000 ms] RECEIVER SEND ACK seq=1
+[  3832.000 ms] SENDER   RECV ACK seq=1 (cumulative up to #9)
+[  3832.000 ms] SENDER   window slides: base=2(10) nextseqnum=5(13) window=[10..13]
+[  3832.000 ms] SENDER   SEND DATA seq=5 (#13)
+[  3840.000 ms] SENDER   RECV ACK seq=1 (duplicate) -> ignored
+[  4086.000 ms] RECEIVER RECV DATA seq=5 out of order (expectedseqnum=2) -> discard
+[  4086.000 ms] RECEIVER SEND ACK seq=1
+[  4336.000 ms] SENDER   RECV ACK seq=1 (duplicate) -> ignored
+[  4432.000 ms] SENDER   TIMEOUT (oldest unACKed #10) -> go back, resend #10..#13
+[  4432.000 ms] SENDER   RETRANSMIT DATA seq=2 (#10)
+[  4432.000 ms] SENDER   RETRANSMIT DATA seq=3 (#11)
+[  4432.000 ms] SENDER   RETRANSMIT DATA seq=4 (#12)
+[  4432.000 ms] SENDER   RETRANSMIT DATA seq=5 (#13)
+[  4686.000 ms] RECEIVER RECV DATA seq=2 in order -> deliver (expectedseqnum=3)
+[  4686.000 ms] RECEIVER SEND ACK seq=2
+[  4690.000 ms] RECEIVER RECV DATA seq=3 in order -> deliver (expectedseqnum=4)
+[  4690.000 ms] RECEIVER SEND ACK seq=3
+[  4694.000 ms] RECEIVER RECV DATA seq=4 in order -> deliver (expectedseqnum=5)
+[  4694.000 ms] RECEIVER SEND ACK seq=4
+[  4698.000 ms] RECEIVER RECV DATA seq=5 in order -> deliver (expectedseqnum=6)
+[  4698.000 ms] RECEIVER SEND ACK seq=5
+[  4936.000 ms] SENDER   RECV ACK seq=2 (cumulative up to #10)
+[  4936.000 ms] SENDER   window slides: base=3(11) nextseqnum=6(14) window=[11..14]
+[  4936.000 ms] SENDER   SEND DATA seq=6 (#14)
+[  4940.000 ms] SENDER   RECV ACK seq=3 (cumulative up to #11)
+[  4940.000 ms] SENDER   window slides: base=4(12) nextseqnum=7(15) window=[12..15]
+[  4940.000 ms] SENDER   SEND DATA seq=7 (#15)
+[  4944.000 ms] SENDER   RECV ACK seq=4 (cumulative up to #12)
+[  4944.000 ms] SENDER   window slides: base=5(13) nextseqnum=0(16) window=[13..16]
+[  4944.000 ms] SENDER   SEND DATA seq=0 (#16)
+[  4948.000 ms] SENDER   RECV ACK seq=5 (cumulative up to #13)
+[  4948.000 ms] SENDER   window slides: base=6(14) nextseqnum=1(17) window=[14..17]
+[  4948.000 ms] SENDER   SEND DATA seq=1 (#17)
+[  5190.000 ms] RECEIVER RECV DATA seq=6 in order -> deliver (expectedseqnum=7)
+[  5190.000 ms] RECEIVER SEND ACK seq=6
+[  5194.000 ms] RECEIVER RECV DATA seq=7 in order -> deliver (expectedseqnum=0)
+[  5194.000 ms] RECEIVER SEND ACK seq=7
+[  5198.000 ms] RECEIVER RECV DATA seq=0 in order -> deliver (expectedseqnum=1)
+[  5198.000 ms] RECEIVER SEND ACK seq=0
+[  5202.000 ms] RECEIVER RECV DATA seq=1 in order -> deliver (expectedseqnum=2)
+[  5202.000 ms] RECEIVER SEND ACK seq=1
+[  5440.000 ms] SENDER   RECV ACK seq=6 (cumulative up to #14)
+[  5440.000 ms] SENDER   window slides: base=7(15) nextseqnum=2(18) window=[15..18]
+[  5440.000 ms] SENDER   SEND DATA seq=2 (#18)
+[  5444.000 ms] SENDER   RECV ACK seq=7 (cumulative up to #15)
+[  5444.000 ms] SENDER   window slides: base=0(16) nextseqnum=3(19) window=[16..19]
+[  5444.000 ms] SENDER   SEND DATA seq=3 (#19)
+[  5448.000 ms] SENDER   RECV ACK seq=0 (cumulative up to #16)
+[  5448.000 ms] SENDER   window slides: base=1(17) nextseqnum=4(20) window=[17..20]
+[  5448.000 ms] SENDER   SEND DATA seq=4 (#20)
+[  5452.000 ms] SENDER   RECV ACK seq=1 (cumulative up to #17)
+[  5452.000 ms] SENDER   window slides: base=2(18) nextseqnum=5(21) window=[18..21]
+[  5452.000 ms] SENDER   SEND DATA seq=5 (#21)
+[  5694.000 ms] RECEIVER RECV DATA seq=2 in order -> deliver (expectedseqnum=3)
+[  5694.000 ms] RECEIVER SEND ACK seq=2
+[  5698.000 ms] RECEIVER RECV DATA seq=3 in order -> deliver (expectedseqnum=4)
+[  5698.000 ms] RECEIVER SEND ACK seq=3
+[  5702.000 ms] RECEIVER RECV DATA seq=4 in order -> deliver (expectedseqnum=5)
+[  5702.000 ms] RECEIVER SEND ACK seq=4
+[  5706.000 ms] RECEIVER RECV DATA seq=5 in order -> deliver (expectedseqnum=6)
+[  5706.000 ms] RECEIVER SEND ACK seq=5
+[  5944.000 ms] SENDER   RECV ACK seq=2 (cumulative up to #18)
+[  5944.000 ms] SENDER   window slides: base=3(19) nextseqnum=6(22) window=[19..22]
+[  5944.000 ms] SENDER   SEND DATA seq=6 (#22)
+[  5944.000 ms] CHANNEL  LOSS    DATA seq=6 (#22)
+[  5948.000 ms] SENDER   RECV ACK seq=3 (cumulative up to #19)
+[  5948.000 ms] SENDER   window slides: base=4(20) nextseqnum=7(23) window=[20..23]
+[  5948.000 ms] SENDER   SEND DATA seq=7 (#23)
+[  5952.000 ms] SENDER   RECV ACK seq=4 (cumulative up to #20)
+[  5952.000 ms] SENDER   window slides: base=5(21) nextseqnum=0(24) window=[21..24]
+[  5952.000 ms] SENDER   SEND DATA seq=0 (#24)
+[  5952.000 ms] CHANNEL  LOSS    DATA seq=0 (#24)
+[  5956.000 ms] SENDER   RECV ACK seq=5 (cumulative up to #21)
+[  5956.000 ms] SENDER   window slides: base=6(22) nextseqnum=1(25) window=[22..25]
+[  5956.000 ms] SENDER   SEND DATA seq=1 (#25)
+[  6202.000 ms] RECEIVER RECV DATA seq=7 out of order (expectedseqnum=6) -> discard
+[  6202.000 ms] RECEIVER SEND ACK seq=5
+[  6210.000 ms] RECEIVER RECV DATA seq=1 out of order (expectedseqnum=6) -> discard
+[  6210.000 ms] RECEIVER SEND ACK seq=5
+[  6452.000 ms] SENDER   RECV ACK seq=5 (duplicate) -> ignored
+[  6460.000 ms] SENDER   RECV ACK seq=5 (duplicate) -> ignored
+[  6556.000 ms] SENDER   TIMEOUT (oldest unACKed #22) -> go back, resend #22..#25
+[  6556.000 ms] SENDER   RETRANSMIT DATA seq=6 (#22)
+[  6556.000 ms] SENDER   RETRANSMIT DATA seq=7 (#23)
+[  6556.000 ms] SENDER   RETRANSMIT DATA seq=0 (#24)
+[  6556.000 ms] SENDER   RETRANSMIT DATA seq=1 (#25)
+[  6810.000 ms] RECEIVER RECV DATA seq=6 in order -> deliver (expectedseqnum=7)
+[  6810.000 ms] RECEIVER SEND ACK seq=6
+[  6814.000 ms] RECEIVER RECV DATA seq=7 in order -> deliver (expectedseqnum=0)
+[  6814.000 ms] RECEIVER SEND ACK seq=7
+[  6818.000 ms] RECEIVER RECV DATA seq=0 in order -> deliver (expectedseqnum=1)
+[  6818.000 ms] RECEIVER SEND ACK seq=0
+[  6822.000 ms] RECEIVER RECV DATA seq=1 in order -> deliver (expectedseqnum=2)
+[  6822.000 ms] RECEIVER SEND ACK seq=1
+[  6822.000 ms] CHANNEL  LOSS    ACK seq=1
+[  7060.000 ms] SENDER   RECV ACK seq=6 (cumulative up to #22)
+[  7060.000 ms] SENDER   window slides: base=7(23) nextseqnum=2(26) window=[23..26]
+[  7060.000 ms] SENDER   SEND DATA seq=2 (#26)
+[  7064.000 ms] SENDER   RECV ACK seq=7 (cumulative up to #23)
+[  7064.000 ms] SENDER   window slides: base=0(24) nextseqnum=3(27) window=[24..27]
+[  7064.000 ms] SENDER   SEND DATA seq=3 (#27)
+[  7064.000 ms] CHANNEL  LOSS    DATA seq=3 (#27)
+[  7068.000 ms] SENDER   RECV ACK seq=0 (cumulative up to #24)
+[  7068.000 ms] SENDER   window slides: base=1(25) nextseqnum=4(28) window=[25..28]
+[  7068.000 ms] SENDER   SEND DATA seq=4 (#28)
+[  7068.000 ms] CHANNEL  LOSS    DATA seq=4 (#28)
+[  7314.000 ms] RECEIVER RECV DATA seq=2 in order -> deliver (expectedseqnum=3)
+[  7314.000 ms] RECEIVER SEND ACK seq=2
+[  7564.000 ms] SENDER   RECV ACK seq=2 (cumulative up to #26)
+[  7564.000 ms] SENDER   window slides: base=3(27) nextseqnum=5(29) window=[27..30]
+[  7564.000 ms] SENDER   SEND DATA seq=5 (#29)
+[  7564.000 ms] SENDER   SEND DATA seq=6 (#30)
+[  7818.000 ms] RECEIVER RECV DATA seq=5 out of order (expectedseqnum=3) -> discard
+[  7818.000 ms] RECEIVER SEND ACK seq=2
+[  7822.000 ms] RECEIVER RECV DATA seq=6 out of order (expectedseqnum=3) -> discard
+[  7822.000 ms] RECEIVER SEND ACK seq=2
+[  8068.000 ms] SENDER   RECV ACK seq=2 (duplicate) -> ignored
+[  8072.000 ms] SENDER   RECV ACK seq=2 (duplicate) -> ignored
+[  8164.000 ms] SENDER   TIMEOUT (oldest unACKed #27) -> go back, resend #27..#30
+[  8164.000 ms] SENDER   RETRANSMIT DATA seq=3 (#27)
+[  8164.000 ms] SENDER   RETRANSMIT DATA seq=4 (#28)
+[  8164.000 ms] SENDER   RETRANSMIT DATA seq=5 (#29)
+[  8164.000 ms] CHANNEL  LOSS    DATA seq=5 (#29)
+[  8164.000 ms] SENDER   RETRANSMIT DATA seq=6 (#30)
+[  8418.000 ms] RECEIVER RECV DATA seq=3 in order -> deliver (expectedseqnum=4)
+[  8418.000 ms] RECEIVER SEND ACK seq=3
+[  8422.000 ms] RECEIVER RECV DATA seq=4 in order -> deliver (expectedseqnum=5)
+[  8422.000 ms] RECEIVER SEND ACK seq=4
+[  8430.000 ms] RECEIVER RECV DATA seq=6 out of order (expectedseqnum=5) -> discard
+[  8430.000 ms] RECEIVER SEND ACK seq=4
+[  8668.000 ms] SENDER   RECV ACK seq=3 (cumulative up to #27)
+[  8668.000 ms] SENDER   window slides: base=4(28) nextseqnum=7(31) window=[28..31]
+[  8668.000 ms] SENDER   SEND DATA seq=7 (#31)
+[  8672.000 ms] SENDER   RECV ACK seq=4 (cumulative up to #28)
+[  8672.000 ms] SENDER   window slides: base=5(29) nextseqnum=0(32) window=[29..32]
+[  8672.000 ms] SENDER   SEND DATA seq=0 (#32)
+[  8680.000 ms] SENDER   RECV ACK seq=4 (duplicate) -> ignored
+[  8922.000 ms] RECEIVER RECV DATA seq=7 out of order (expectedseqnum=5) -> discard
+[  8922.000 ms] RECEIVER SEND ACK seq=4
+[  8922.000 ms] CHANNEL  LOSS    ACK seq=4
+[  8926.000 ms] RECEIVER RECV DATA seq=0 out of order (expectedseqnum=5) -> discard
+[  8926.000 ms] RECEIVER SEND ACK seq=4
+[  9176.000 ms] SENDER   RECV ACK seq=4 (duplicate) -> ignored
+[  9272.000 ms] SENDER   TIMEOUT (oldest unACKed #29) -> go back, resend #29..#32
+[  9272.000 ms] SENDER   RETRANSMIT DATA seq=5 (#29)
+[  9272.000 ms] SENDER   RETRANSMIT DATA seq=6 (#30)
+[  9272.000 ms] SENDER   RETRANSMIT DATA seq=7 (#31)
+[  9272.000 ms] SENDER   RETRANSMIT DATA seq=0 (#32)
+[  9526.000 ms] RECEIVER RECV DATA seq=5 in order -> deliver (expectedseqnum=6)
+[  9526.000 ms] RECEIVER SEND ACK seq=5
+[  9530.000 ms] RECEIVER RECV DATA seq=6 in order -> deliver (expectedseqnum=7)
+[  9530.000 ms] RECEIVER SEND ACK seq=6
+[  9534.000 ms] RECEIVER RECV DATA seq=7 in order -> deliver (expectedseqnum=0)
+[  9534.000 ms] RECEIVER SEND ACK seq=7
+[  9538.000 ms] RECEIVER RECV DATA seq=0 in order -> deliver (expectedseqnum=1)
+[  9538.000 ms] RECEIVER SEND ACK seq=0
+[  9776.000 ms] SENDER   RECV ACK seq=5 (cumulative up to #29)
+[  9776.000 ms] SENDER   window slides: base=6(30) nextseqnum=1(33) window=[30..33]
+[  9776.000 ms] SENDER   SEND DATA seq=1 (#33)
+[  9780.000 ms] SENDER   RECV ACK seq=6 (cumulative up to #30)
+[  9780.000 ms] SENDER   window slides: base=7(31) nextseqnum=2(34) window=[31..34]
+[  9780.000 ms] SENDER   SEND DATA seq=2 (#34)
+[  9784.000 ms] SENDER   RECV ACK seq=7 (cumulative up to #31)
+[  9784.000 ms] SENDER   window slides: base=0(32) nextseqnum=3(35) window=[32..35]
+[  9784.000 ms] SENDER   SEND DATA seq=3 (#35)
+[  9788.000 ms] SENDER   RECV ACK seq=0 (cumulative up to #32)
+[  9788.000 ms] SENDER   window slides: base=1(33) nextseqnum=4(36) window=[33..36]
+[  9788.000 ms] SENDER   SEND DATA seq=4 (#36)
+[ 10030.000 ms] RECEIVER RECV DATA seq=1 in order -> deliver (expectedseqnum=2)
+[ 10030.000 ms] RECEIVER SEND ACK seq=1
+[ 10034.000 ms] RECEIVER RECV DATA seq=2 in order -> deliver (expectedseqnum=3)
+[ 10034.000 ms] RECEIVER SEND ACK seq=2
+[ 10038.000 ms] RECEIVER RECV DATA seq=3 in order -> deliver (expectedseqnum=4)
+[ 10038.000 ms] RECEIVER SEND ACK seq=3
+[ 10042.000 ms] RECEIVER RECV DATA seq=4 in order -> deliver (expectedseqnum=5)
+[ 10042.000 ms] RECEIVER SEND ACK seq=4
+[ 10280.000 ms] SENDER   RECV ACK seq=1 (cumulative up to #33)
+[ 10280.000 ms] SENDER   window slides: base=2(34) nextseqnum=5(37) window=[34..37]
+[ 10280.000 ms] SENDER   SEND DATA seq=5 (#37)
+[ 10284.000 ms] SENDER   RECV ACK seq=2 (cumulative up to #34)
+[ 10284.000 ms] SENDER   window slides: base=3(35) nextseqnum=6(38) window=[35..38]
+[ 10284.000 ms] SENDER   SEND DATA seq=6 (#38)
+[ 10288.000 ms] SENDER   RECV ACK seq=3 (cumulative up to #35)
+[ 10288.000 ms] SENDER   window slides: base=4(36) nextseqnum=7(39) window=[36..39]
+[ 10288.000 ms] SENDER   SEND DATA seq=7 (#39)
+[ 10288.000 ms] CHANNEL  LOSS    DATA seq=7 (#39)
+[ 10292.000 ms] SENDER   RECV ACK seq=4 (cumulative up to #36)
+[ 10292.000 ms] SENDER   window slides: base=5(37) nextseqnum=0(40) window=[37..40]
+[ 10292.000 ms] SENDER   SEND DATA seq=0 (#40)
+[ 10534.000 ms] RECEIVER RECV DATA seq=5 in order -> deliver (expectedseqnum=6)
+[ 10534.000 ms] RECEIVER SEND ACK seq=5
+[ 10538.000 ms] RECEIVER RECV DATA seq=6 in order -> deliver (expectedseqnum=7)
+[ 10538.000 ms] RECEIVER SEND ACK seq=6
+[ 10546.000 ms] RECEIVER RECV DATA seq=0 out of order (expectedseqnum=7) -> discard
+[ 10546.000 ms] RECEIVER SEND ACK seq=6
+[ 10784.000 ms] SENDER   RECV ACK seq=5 (cumulative up to #37)
+[ 10784.000 ms] SENDER   window slides: base=6(38) nextseqnum=1(41) window=[38..41]
+[ 10784.000 ms] SENDER   SEND DATA seq=1 (#41)
+[ 10788.000 ms] SENDER   RECV ACK seq=6 (cumulative up to #38)
+[ 10788.000 ms] SENDER   window slides: base=7(39) nextseqnum=2(42) window=[39..42]
+[ 10788.000 ms] SENDER   SEND DATA seq=2 (#42)
+[ 10796.000 ms] SENDER   RECV ACK seq=6 (duplicate) -> ignored
+[ 11038.000 ms] RECEIVER RECV DATA seq=1 out of order (expectedseqnum=7) -> discard
+[ 11038.000 ms] RECEIVER SEND ACK seq=6
+[ 11042.000 ms] RECEIVER RECV DATA seq=2 out of order (expectedseqnum=7) -> discard
+[ 11042.000 ms] RECEIVER SEND ACK seq=6
+[ 11288.000 ms] SENDER   RECV ACK seq=6 (duplicate) -> ignored
+[ 11292.000 ms] SENDER   RECV ACK seq=6 (duplicate) -> ignored
+[ 11388.000 ms] SENDER   TIMEOUT (oldest unACKed #39) -> go back, resend #39..#42
+[ 11388.000 ms] SENDER   RETRANSMIT DATA seq=7 (#39)
+[ 11388.000 ms] SENDER   RETRANSMIT DATA seq=0 (#40)
+[ 11388.000 ms] SENDER   RETRANSMIT DATA seq=1 (#41)
+[ 11388.000 ms] SENDER   RETRANSMIT DATA seq=2 (#42)
+[ 11388.000 ms] CHANNEL  LOSS    DATA seq=2 (#42)
+[ 11642.000 ms] RECEIVER RECV DATA seq=7 in order -> deliver (expectedseqnum=0)
+[ 11642.000 ms] RECEIVER SEND ACK seq=7
+[ 11646.000 ms] RECEIVER RECV DATA seq=0 in order -> deliver (expectedseqnum=1)
+[ 11646.000 ms] RECEIVER SEND ACK seq=0
+[ 11650.000 ms] RECEIVER RECV DATA seq=1 in order -> deliver (expectedseqnum=2)
+[ 11650.000 ms] RECEIVER SEND ACK seq=1
+[ 11892.000 ms] SENDER   RECV ACK seq=7 (cumulative up to #39)
+[ 11892.000 ms] SENDER   window slides: base=0(40) nextseqnum=3(43) window=[40..43]
+[ 11892.000 ms] SENDER   SEND DATA seq=3 (#43)
+[ 11896.000 ms] SENDER   RECV ACK seq=0 (cumulative up to #40)
+[ 11896.000 ms] SENDER   window slides: base=1(41) nextseqnum=4(44) window=[41..44]
+[ 11896.000 ms] SENDER   SEND DATA seq=4 (#44)
+[ 11900.000 ms] SENDER   RECV ACK seq=1 (cumulative up to #41)
+[ 11900.000 ms] SENDER   window slides: base=2(42) nextseqnum=5(45) window=[42..45]
+[ 11900.000 ms] SENDER   SEND DATA seq=5 (#45)
+[ 12146.000 ms] RECEIVER RECV DATA seq=3 out of order (expectedseqnum=2) -> discard
+[ 12146.000 ms] RECEIVER SEND ACK seq=1
+[ 12150.000 ms] RECEIVER RECV DATA seq=4 out of order (expectedseqnum=2) -> discard
+[ 12150.000 ms] RECEIVER SEND ACK seq=1
+[ 12154.000 ms] RECEIVER RECV DATA seq=5 out of order (expectedseqnum=2) -> discard
+[ 12154.000 ms] RECEIVER SEND ACK seq=1
+[ 12396.000 ms] SENDER   RECV ACK seq=1 (duplicate) -> ignored
+[ 12400.000 ms] SENDER   RECV ACK seq=1 (duplicate) -> ignored
+[ 12404.000 ms] SENDER   RECV ACK seq=1 (duplicate) -> ignored
+[ 12500.000 ms] SENDER   TIMEOUT (oldest unACKed #42) -> go back, resend #42..#45
+[ 12500.000 ms] SENDER   RETRANSMIT DATA seq=2 (#42)
+[ 12500.000 ms] SENDER   RETRANSMIT DATA seq=3 (#43)
+[ 12500.000 ms] SENDER   RETRANSMIT DATA seq=4 (#44)
+[ 12500.000 ms] SENDER   RETRANSMIT DATA seq=5 (#45)
+[ 12500.000 ms] CHANNEL  LOSS    DATA seq=5 (#45)
+[ 12754.000 ms] RECEIVER RECV DATA seq=2 in order -> deliver (expectedseqnum=3)
+[ 12754.000 ms] RECEIVER SEND ACK seq=2
+[ 12758.000 ms] RECEIVER RECV DATA seq=3 in order -> deliver (expectedseqnum=4)
+[ 12758.000 ms] RECEIVER SEND ACK seq=3
+[ 12762.000 ms] RECEIVER RECV DATA seq=4 in order -> deliver (expectedseqnum=5)
+[ 12762.000 ms] RECEIVER SEND ACK seq=4
+[ 13004.000 ms] SENDER   RECV ACK seq=2 (cumulative up to #42)
+[ 13004.000 ms] SENDER   window slides: base=3(43) nextseqnum=6(46) window=[43..46]
+[ 13004.000 ms] SENDER   SEND DATA seq=6 (#46)
+[ 13004.000 ms] CHANNEL  LOSS    DATA seq=6 (#46)
+[ 13008.000 ms] SENDER   RECV ACK seq=3 (cumulative up to #43)
+[ 13008.000 ms] SENDER   window slides: base=4(44) nextseqnum=7(47) window=[44..47]
+[ 13008.000 ms] SENDER   SEND DATA seq=7 (#47)
+[ 13012.000 ms] SENDER   RECV ACK seq=4 (cumulative up to #44)
+[ 13012.000 ms] SENDER   window slides: base=5(45) nextseqnum=0(48) window=[45..48]
+[ 13012.000 ms] SENDER   SEND DATA seq=0 (#48)
+[ 13262.000 ms] RECEIVER RECV DATA seq=7 out of order (expectedseqnum=5) -> discard
+[ 13262.000 ms] RECEIVER SEND ACK seq=4
+[ 13262.000 ms] CHANNEL  LOSS    ACK seq=4
+[ 13266.000 ms] RECEIVER RECV DATA seq=0 out of order (expectedseqnum=5) -> discard
+[ 13266.000 ms] RECEIVER SEND ACK seq=4
+[ 13516.000 ms] SENDER   RECV ACK seq=4 (duplicate) -> ignored
+[ 13612.000 ms] SENDER   TIMEOUT (oldest unACKed #45) -> go back, resend #45..#48
+[ 13612.000 ms] SENDER   RETRANSMIT DATA seq=5 (#45)
+[ 13612.000 ms] SENDER   RETRANSMIT DATA seq=6 (#46)
+[ 13612.000 ms] SENDER   RETRANSMIT DATA seq=7 (#47)
+[ 13612.000 ms] SENDER   RETRANSMIT DATA seq=0 (#48)
+[ 13612.000 ms] CHANNEL  LOSS    DATA seq=0 (#48)
+[ 13866.000 ms] RECEIVER RECV DATA seq=5 in order -> deliver (expectedseqnum=6)
+[ 13866.000 ms] RECEIVER SEND ACK seq=5
+[ 13870.000 ms] RECEIVER RECV DATA seq=6 in order -> deliver (expectedseqnum=7)
+[ 13870.000 ms] RECEIVER SEND ACK seq=6
+[ 13874.000 ms] RECEIVER RECV DATA seq=7 in order -> deliver (expectedseqnum=0)
+[ 13874.000 ms] RECEIVER SEND ACK seq=7
+[ 13874.000 ms] CHANNEL  LOSS    ACK seq=7
+[ 14116.000 ms] SENDER   RECV ACK seq=5 (cumulative up to #45)
+[ 14116.000 ms] SENDER   window slides: base=6(46) nextseqnum=1(49) window=[46..49]
+[ 14116.000 ms] SENDER   SEND DATA seq=1 (#49)
+[ 14120.000 ms] SENDER   RECV ACK seq=6 (cumulative up to #46)
+[ 14120.000 ms] SENDER   window slides: base=7(47) nextseqnum=2(50) window=[47..50]
+[ 14120.000 ms] SENDER   SEND DATA seq=2 (#50)
+[ 14370.000 ms] RECEIVER RECV DATA seq=1 out of order (expectedseqnum=0) -> discard
+[ 14370.000 ms] RECEIVER SEND ACK seq=7
+[ 14374.000 ms] RECEIVER RECV DATA seq=2 out of order (expectedseqnum=0) -> discard
+[ 14374.000 ms] RECEIVER SEND ACK seq=7
+[ 14620.000 ms] SENDER   RECV ACK seq=7 (cumulative up to #47)
+[ 14620.000 ms] SENDER   window slides: base=0(48) nextseqnum=3(51) window=[48..51]
+[ 14620.000 ms] SENDER   SEND DATA seq=3 (#51)
+[ 14624.000 ms] SENDER   RECV ACK seq=7 (duplicate) -> ignored
+[ 14874.000 ms] RECEIVER RECV DATA seq=3 out of order (expectedseqnum=0) -> discard
+[ 14874.000 ms] RECEIVER SEND ACK seq=7
+[ 14874.000 ms] CHANNEL  LOSS    ACK seq=7
+[ 15220.000 ms] SENDER   TIMEOUT (oldest unACKed #48) -> go back, resend #48..#51
+[ 15220.000 ms] SENDER   RETRANSMIT DATA seq=0 (#48)
+[ 15220.000 ms] CHANNEL  LOSS    DATA seq=0 (#48)
+[ 15220.000 ms] SENDER   RETRANSMIT DATA seq=1 (#49)
+[ 15220.000 ms] SENDER   RETRANSMIT DATA seq=2 (#50)
+[ 15220.000 ms] SENDER   RETRANSMIT DATA seq=3 (#51)
+[ 15478.000 ms] RECEIVER RECV DATA seq=1 out of order (expectedseqnum=0) -> discard
+[ 15478.000 ms] RECEIVER SEND ACK seq=7
+[ 15482.000 ms] RECEIVER RECV DATA seq=2 out of order (expectedseqnum=0) -> discard
+[ 15482.000 ms] RECEIVER SEND ACK seq=7
+[ 15486.000 ms] RECEIVER RECV DATA seq=3 out of order (expectedseqnum=0) -> discard
+[ 15486.000 ms] RECEIVER SEND ACK seq=7
+[ 15728.000 ms] SENDER   RECV ACK seq=7 (duplicate) -> ignored
+[ 15732.000 ms] SENDER   RECV ACK seq=7 (duplicate) -> ignored
+[ 15736.000 ms] SENDER   RECV ACK seq=7 (duplicate) -> ignored
+[ 15824.000 ms] SENDER   TIMEOUT (oldest unACKed #48) -> go back, resend #48..#51
+[ 15824.000 ms] SENDER   RETRANSMIT DATA seq=0 (#48)
+[ 15824.000 ms] SENDER   RETRANSMIT DATA seq=1 (#49)
+[ 15824.000 ms] CHANNEL  LOSS    DATA seq=1 (#49)
+[ 15824.000 ms] SENDER   RETRANSMIT DATA seq=2 (#50)
+[ 15824.000 ms] SENDER   RETRANSMIT DATA seq=3 (#51)
+[ 16078.000 ms] RECEIVER RECV DATA seq=0 in order -> deliver (expectedseqnum=1)
+[ 16078.000 ms] RECEIVER SEND ACK seq=0
+[ 16086.000 ms] RECEIVER RECV DATA seq=2 out of order (expectedseqnum=1) -> discard
+[ 16086.000 ms] RECEIVER SEND ACK seq=0
+[ 16090.000 ms] RECEIVER RECV DATA seq=3 out of order (expectedseqnum=1) -> discard
+[ 16090.000 ms] RECEIVER SEND ACK seq=0
+[ 16328.000 ms] SENDER   RECV ACK seq=0 (cumulative up to #48)
+[ 16328.000 ms] SENDER   window slides: base=1(49) nextseqnum=4(52) window=[49..52]
+[ 16328.000 ms] SENDER   SEND DATA seq=4 (#52)
+[ 16328.000 ms] CHANNEL  LOSS    DATA seq=4 (#52)
+[ 16336.000 ms] SENDER   RECV ACK seq=0 (duplicate) -> ignored
+[ 16340.000 ms] SENDER   RECV ACK seq=0 (duplicate) -> ignored
+[ 16928.000 ms] SENDER   TIMEOUT (oldest unACKed #49) -> go back, resend #49..#52
+[ 16928.000 ms] SENDER   RETRANSMIT DATA seq=1 (#49)
+[ 16928.000 ms] SENDER   RETRANSMIT DATA seq=2 (#50)
+[ 16928.000 ms] SENDER   RETRANSMIT DATA seq=3 (#51)
+[ 16928.000 ms] SENDER   RETRANSMIT DATA seq=4 (#52)
+[ 17182.000 ms] RECEIVER RECV DATA seq=1 in order -> deliver (expectedseqnum=2)
+[ 17182.000 ms] RECEIVER SEND ACK seq=1
+[ 17186.000 ms] RECEIVER RECV DATA seq=2 in order -> deliver (expectedseqnum=3)
+[ 17186.000 ms] RECEIVER SEND ACK seq=2
+[ 17190.000 ms] RECEIVER RECV DATA seq=3 in order -> deliver (expectedseqnum=4)
+[ 17190.000 ms] RECEIVER SEND ACK seq=3
+[ 17194.000 ms] RECEIVER RECV DATA seq=4 in order -> deliver (expectedseqnum=5)
+[ 17194.000 ms] RECEIVER SEND ACK seq=4
+[ 17432.000 ms] SENDER   RECV ACK seq=1 (cumulative up to #49)
+[ 17432.000 ms] SENDER   window slides: base=2(50) nextseqnum=5(53) window=[50..53]
+[ 17432.000 ms] SENDER   SEND DATA seq=5 (#53)
+[ 17432.000 ms] CHANNEL  LOSS    DATA seq=5 (#53)
+[ 17436.000 ms] SENDER   RECV ACK seq=2 (cumulative up to #50)
+[ 17436.000 ms] SENDER   window slides: base=3(51) nextseqnum=6(54) window=[51..54]
+[ 17436.000 ms] SENDER   SEND DATA seq=6 (#54)
+[ 17440.000 ms] SENDER   RECV ACK seq=3 (cumulative up to #51)
+[ 17440.000 ms] SENDER   window slides: base=4(52) nextseqnum=7(55) window=[52..55]
+[ 17440.000 ms] SENDER   SEND DATA seq=7 (#55)
+[ 17444.000 ms] SENDER   RECV ACK seq=4 (cumulative up to #52)
+[ 17444.000 ms] SENDER   window slides: base=5(53) nextseqnum=0(56) window=[53..56]
+[ 17444.000 ms] SENDER   SEND DATA seq=0 (#56)
+[ 17690.000 ms] RECEIVER RECV DATA seq=6 out of order (expectedseqnum=5) -> discard
+[ 17690.000 ms] RECEIVER SEND ACK seq=4
+[ 17694.000 ms] RECEIVER RECV DATA seq=7 out of order (expectedseqnum=5) -> discard
+[ 17694.000 ms] RECEIVER SEND ACK seq=4
+[ 17698.000 ms] RECEIVER RECV DATA seq=0 out of order (expectedseqnum=5) -> discard
+[ 17698.000 ms] RECEIVER SEND ACK seq=4
+[ 17940.000 ms] SENDER   RECV ACK seq=4 (duplicate) -> ignored
+[ 17944.000 ms] SENDER   RECV ACK seq=4 (duplicate) -> ignored
+[ 17948.000 ms] SENDER   RECV ACK seq=4 (duplicate) -> ignored
+[ 18044.000 ms] SENDER   TIMEOUT (oldest unACKed #53) -> go back, resend #53..#56
+[ 18044.000 ms] SENDER   RETRANSMIT DATA seq=5 (#53)
+[ 18044.000 ms] SENDER   RETRANSMIT DATA seq=6 (#54)
+[ 18044.000 ms] SENDER   RETRANSMIT DATA seq=7 (#55)
+[ 18044.000 ms] SENDER   RETRANSMIT DATA seq=0 (#56)
+[ 18298.000 ms] RECEIVER RECV DATA seq=5 in order -> deliver (expectedseqnum=6)
+[ 18298.000 ms] RECEIVER SEND ACK seq=5
+[ 18302.000 ms] RECEIVER RECV DATA seq=6 in order -> deliver (expectedseqnum=7)
+[ 18302.000 ms] RECEIVER SEND ACK seq=6
+[ 18306.000 ms] RECEIVER RECV DATA seq=7 in order -> deliver (expectedseqnum=0)
+[ 18306.000 ms] RECEIVER SEND ACK seq=7
+[ 18310.000 ms] RECEIVER RECV DATA seq=0 in order -> deliver (expectedseqnum=1)
+[ 18310.000 ms] RECEIVER SEND ACK seq=0
+[ 18548.000 ms] SENDER   RECV ACK seq=5 (cumulative up to #53)
+[ 18548.000 ms] SENDER   window slides: base=6(54) nextseqnum=1(57) window=[54..57]
+[ 18548.000 ms] SENDER   SEND DATA seq=1 (#57)
+[ 18548.000 ms] CHANNEL  LOSS    DATA seq=1 (#57)
+[ 18552.000 ms] SENDER   RECV ACK seq=6 (cumulative up to #54)
+[ 18552.000 ms] SENDER   window slides: base=7(55) nextseqnum=2(58) window=[55..58]
+[ 18552.000 ms] SENDER   SEND DATA seq=2 (#58)
+[ 18556.000 ms] SENDER   RECV ACK seq=7 (cumulative up to #55)
+[ 18556.000 ms] SENDER   window slides: base=0(56) nextseqnum=3(59) window=[56..59]
+[ 18556.000 ms] SENDER   SEND DATA seq=3 (#59)
+[ 18560.000 ms] SENDER   RECV ACK seq=0 (cumulative up to #56)
+[ 18560.000 ms] SENDER   window slides: base=1(57) nextseqnum=4(60) window=[57..60]
+[ 18560.000 ms] SENDER   SEND DATA seq=4 (#60)
+[ 18560.000 ms] CHANNEL  LOSS    DATA seq=4 (#60)
+[ 18806.000 ms] RECEIVER RECV DATA seq=2 out of order (expectedseqnum=1) -> discard
+[ 18806.000 ms] RECEIVER SEND ACK seq=0
+[ 18810.000 ms] RECEIVER RECV DATA seq=3 out of order (expectedseqnum=1) -> discard
+[ 18810.000 ms] RECEIVER SEND ACK seq=0
+[ 19056.000 ms] SENDER   RECV ACK seq=0 (duplicate) -> ignored
+[ 19060.000 ms] SENDER   RECV ACK seq=0 (duplicate) -> ignored
+[ 19160.000 ms] SENDER   TIMEOUT (oldest unACKed #57) -> go back, resend #57..#60
+[ 19160.000 ms] SENDER   RETRANSMIT DATA seq=1 (#57)
+[ 19160.000 ms] CHANNEL  LOSS    DATA seq=1 (#57)
+[ 19160.000 ms] SENDER   RETRANSMIT DATA seq=2 (#58)
+[ 19160.000 ms] SENDER   RETRANSMIT DATA seq=3 (#59)
+[ 19160.000 ms] SENDER   RETRANSMIT DATA seq=4 (#60)
+[ 19418.000 ms] RECEIVER RECV DATA seq=2 out of order (expectedseqnum=1) -> discard
+[ 19418.000 ms] RECEIVER SEND ACK seq=0
+[ 19422.000 ms] RECEIVER RECV DATA seq=3 out of order (expectedseqnum=1) -> discard
+[ 19422.000 ms] RECEIVER SEND ACK seq=0
+[ 19422.000 ms] CHANNEL  LOSS    ACK seq=0
+[ 19426.000 ms] RECEIVER RECV DATA seq=4 out of order (expectedseqnum=1) -> discard
+[ 19426.000 ms] RECEIVER SEND ACK seq=0
+[ 19668.000 ms] SENDER   RECV ACK seq=0 (duplicate) -> ignored
+[ 19676.000 ms] SENDER   RECV ACK seq=0 (duplicate) -> ignored
+[ 19764.000 ms] SENDER   TIMEOUT (oldest unACKed #57) -> go back, resend #57..#60
+[ 19764.000 ms] SENDER   RETRANSMIT DATA seq=1 (#57)
+[ 19764.000 ms] CHANNEL  LOSS    DATA seq=1 (#57)
+[ 19764.000 ms] SENDER   RETRANSMIT DATA seq=2 (#58)
+[ 19764.000 ms] SENDER   RETRANSMIT DATA seq=3 (#59)
+[ 19764.000 ms] SENDER   RETRANSMIT DATA seq=4 (#60)
+[ 19764.000 ms] CHANNEL  LOSS    DATA seq=4 (#60)
+[ 20022.000 ms] RECEIVER RECV DATA seq=2 out of order (expectedseqnum=1) -> discard
+[ 20022.000 ms] RECEIVER SEND ACK seq=0
+[ 20026.000 ms] RECEIVER RECV DATA seq=3 out of order (expectedseqnum=1) -> discard
+[ 20026.000 ms] RECEIVER SEND ACK seq=0
+[ 20272.000 ms] SENDER   RECV ACK seq=0 (duplicate) -> ignored
+[ 20276.000 ms] SENDER   RECV ACK seq=0 (duplicate) -> ignored
+[ 20368.000 ms] SENDER   TIMEOUT (oldest unACKed #57) -> go back, resend #57..#60
+[ 20368.000 ms] SENDER   RETRANSMIT DATA seq=1 (#57)
+[ 20368.000 ms] SENDER   RETRANSMIT DATA seq=2 (#58)
+[ 20368.000 ms] SENDER   RETRANSMIT DATA seq=3 (#59)
+[ 20368.000 ms] SENDER   RETRANSMIT DATA seq=4 (#60)
+[ 20622.000 ms] RECEIVER RECV DATA seq=1 in order -> deliver (expectedseqnum=2)
+[ 20622.000 ms] RECEIVER SEND ACK seq=1
+[ 20626.000 ms] RECEIVER RECV DATA seq=2 in order -> deliver (expectedseqnum=3)
+[ 20626.000 ms] RECEIVER SEND ACK seq=2
+[ 20630.000 ms] RECEIVER RECV DATA seq=3 in order -> deliver (expectedseqnum=4)
+[ 20630.000 ms] RECEIVER SEND ACK seq=3
+[ 20634.000 ms] RECEIVER RECV DATA seq=4 in order -> deliver (expectedseqnum=5)
+[ 20634.000 ms] RECEIVER SEND ACK seq=4
+[ 20634.000 ms] CHANNEL  LOSS    ACK seq=4
+[ 20872.000 ms] SENDER   RECV ACK seq=1 (cumulative up to #57)
+[ 20872.000 ms] SENDER   window slides: base=2(58) nextseqnum=5(61) window=[58..61]
+[ 20872.000 ms] SENDER   SEND DATA seq=5 (#61)
+[ 20876.000 ms] SENDER   RECV ACK seq=2 (cumulative up to #58)
+[ 20876.000 ms] SENDER   window slides: base=3(59) nextseqnum=6(62) window=[59..62]
+[ 20876.000 ms] SENDER   SEND DATA seq=6 (#62)
+[ 20876.000 ms] CHANNEL  LOSS    DATA seq=6 (#62)
+[ 20880.000 ms] SENDER   RECV ACK seq=3 (cumulative up to #59)
+[ 20880.000 ms] SENDER   window slides: base=4(60) nextseqnum=7(63) window=[60..63]
+[ 20880.000 ms] SENDER   SEND DATA seq=7 (#63)
+[ 21126.000 ms] RECEIVER RECV DATA seq=5 in order -> deliver (expectedseqnum=6)
+[ 21126.000 ms] RECEIVER SEND ACK seq=5
+[ 21134.000 ms] RECEIVER RECV DATA seq=7 out of order (expectedseqnum=6) -> discard
+[ 21134.000 ms] RECEIVER SEND ACK seq=5
+[ 21376.000 ms] SENDER   RECV ACK seq=5 (cumulative up to #61)
+[ 21376.000 ms] SENDER   window slides: base=6(62) nextseqnum=0(64) window=[62..65]
+[ 21376.000 ms] SENDER   SEND DATA seq=0 (#64)
+[ 21376.000 ms] SENDER   SEND DATA seq=1 (#65)
+[ 21384.000 ms] SENDER   RECV ACK seq=5 (duplicate) -> ignored
+[ 21630.000 ms] RECEIVER RECV DATA seq=0 out of order (expectedseqnum=6) -> discard
+[ 21630.000 ms] RECEIVER SEND ACK seq=5
+[ 21634.000 ms] RECEIVER RECV DATA seq=1 out of order (expectedseqnum=6) -> discard
+[ 21634.000 ms] RECEIVER SEND ACK seq=5
+[ 21880.000 ms] SENDER   RECV ACK seq=5 (duplicate) -> ignored
+[ 21884.000 ms] SENDER   RECV ACK seq=5 (duplicate) -> ignored
+[ 21976.000 ms] SENDER   TIMEOUT (oldest unACKed #62) -> go back, resend #62..#65
+[ 21976.000 ms] SENDER   RETRANSMIT DATA seq=6 (#62)
+[ 21976.000 ms] SENDER   RETRANSMIT DATA seq=7 (#63)
+[ 21976.000 ms] SENDER   RETRANSMIT DATA seq=0 (#64)
+[ 21976.000 ms] SENDER   RETRANSMIT DATA seq=1 (#65)
+[ 22230.000 ms] RECEIVER RECV DATA seq=6 in order -> deliver (expectedseqnum=7)
+[ 22230.000 ms] RECEIVER SEND ACK seq=6
+[ 22234.000 ms] RECEIVER RECV DATA seq=7 in order -> deliver (expectedseqnum=0)
+[ 22234.000 ms] RECEIVER SEND ACK seq=7
+[ 22238.000 ms] RECEIVER RECV DATA seq=0 in order -> deliver (expectedseqnum=1)
+[ 22238.000 ms] RECEIVER SEND ACK seq=0
+[ 22242.000 ms] RECEIVER RECV DATA seq=1 in order -> deliver (expectedseqnum=2)
+[ 22242.000 ms] RECEIVER SEND ACK seq=1
+[ 22480.000 ms] SENDER   RECV ACK seq=6 (cumulative up to #62)
+[ 22480.000 ms] SENDER   window slides: base=7(63) nextseqnum=2(66) window=[63..66]
+[ 22480.000 ms] SENDER   SEND DATA seq=2 (#66)
+[ 22484.000 ms] SENDER   RECV ACK seq=7 (cumulative up to #63)
+[ 22484.000 ms] SENDER   window slides: base=0(64) nextseqnum=3(67) window=[64..67]
+[ 22484.000 ms] SENDER   SEND DATA seq=3 (#67)
+[ 22488.000 ms] SENDER   RECV ACK seq=0 (cumulative up to #64)
+[ 22488.000 ms] SENDER   window slides: base=1(65) nextseqnum=4(68) window=[65..68]
+[ 22488.000 ms] SENDER   SEND DATA seq=4 (#68)
+[ 22492.000 ms] SENDER   RECV ACK seq=1 (cumulative up to #65)
+[ 22492.000 ms] SENDER   window slides: base=2(66) nextseqnum=5(69) window=[66..69]
+[ 22492.000 ms] SENDER   SEND DATA seq=5 (#69)
+[ 22734.000 ms] RECEIVER RECV DATA seq=2 in order -> deliver (expectedseqnum=3)
+[ 22734.000 ms] RECEIVER SEND ACK seq=2
+[ 22738.000 ms] RECEIVER RECV DATA seq=3 in order -> deliver (expectedseqnum=4)
+[ 22738.000 ms] RECEIVER SEND ACK seq=3
+[ 22742.000 ms] RECEIVER RECV DATA seq=4 in order -> deliver (expectedseqnum=5)
+[ 22742.000 ms] RECEIVER SEND ACK seq=4
+[ 22746.000 ms] RECEIVER RECV DATA seq=5 in order -> deliver (expectedseqnum=6)
+[ 22746.000 ms] RECEIVER SEND ACK seq=5
+[ 22984.000 ms] SENDER   RECV ACK seq=2 (cumulative up to #66)
+[ 22984.000 ms] SENDER   window slides: base=3(67) nextseqnum=6(70) window=[67..70]
+[ 22984.000 ms] SENDER   SEND DATA seq=6 (#70)
+[ 22988.000 ms] SENDER   RECV ACK seq=3 (cumulative up to #67)
+[ 22988.000 ms] SENDER   window slides: base=4(68) nextseqnum=7(71) window=[68..71]
+[ 22988.000 ms] SENDER   SEND DATA seq=7 (#71)
+[ 22992.000 ms] SENDER   RECV ACK seq=4 (cumulative up to #68)
+[ 22992.000 ms] SENDER   window slides: base=5(69) nextseqnum=0(72) window=[69..72]
+[ 22992.000 ms] SENDER   SEND DATA seq=0 (#72)
+[ 22996.000 ms] SENDER   RECV ACK seq=5 (cumulative up to #69)
+[ 22996.000 ms] SENDER   window slides: base=6(70) nextseqnum=1(73) window=[70..73]
+[ 22996.000 ms] SENDER   SEND DATA seq=1 (#73)
+[ 23238.000 ms] RECEIVER RECV DATA seq=6 in order -> deliver (expectedseqnum=7)
+[ 23238.000 ms] RECEIVER SEND ACK seq=6
+[ 23242.000 ms] RECEIVER RECV DATA seq=7 in order -> deliver (expectedseqnum=0)
+[ 23242.000 ms] RECEIVER SEND ACK seq=7
+[ 23246.000 ms] RECEIVER RECV DATA seq=0 in order -> deliver (expectedseqnum=1)
+[ 23246.000 ms] RECEIVER SEND ACK seq=0
+[ 23250.000 ms] RECEIVER RECV DATA seq=1 in order -> deliver (expectedseqnum=2)
+[ 23250.000 ms] RECEIVER SEND ACK seq=1
+[ 23488.000 ms] SENDER   RECV ACK seq=6 (cumulative up to #70)
+[ 23488.000 ms] SENDER   window slides: base=7(71) nextseqnum=2(74) window=[71..74]
+[ 23488.000 ms] SENDER   SEND DATA seq=2 (#74)
+[ 23492.000 ms] SENDER   RECV ACK seq=7 (cumulative up to #71)
+[ 23492.000 ms] SENDER   window slides: base=0(72) nextseqnum=3(75) window=[72..75]
+[ 23492.000 ms] SENDER   SEND DATA seq=3 (#75)
+[ 23496.000 ms] SENDER   RECV ACK seq=0 (cumulative up to #72)
+[ 23496.000 ms] SENDER   window slides: base=1(73) nextseqnum=4(76) window=[73..76]
+[ 23496.000 ms] SENDER   SEND DATA seq=4 (#76)
+[ 23496.000 ms] CHANNEL  LOSS    DATA seq=4 (#76)
+[ 23500.000 ms] SENDER   RECV ACK seq=1 (cumulative up to #73)
+[ 23500.000 ms] SENDER   window slides: base=2(74) nextseqnum=5(77) window=[74..77]
+[ 23500.000 ms] SENDER   SEND DATA seq=5 (#77)
+[ 23742.000 ms] RECEIVER RECV DATA seq=2 in order -> deliver (expectedseqnum=3)
+[ 23742.000 ms] RECEIVER SEND ACK seq=2
+[ 23746.000 ms] RECEIVER RECV DATA seq=3 in order -> deliver (expectedseqnum=4)
+[ 23746.000 ms] RECEIVER SEND ACK seq=3
+[ 23754.000 ms] RECEIVER RECV DATA seq=5 out of order (expectedseqnum=4) -> discard
+[ 23754.000 ms] RECEIVER SEND ACK seq=3
+[ 23754.000 ms] CHANNEL  LOSS    ACK seq=3
+[ 23992.000 ms] SENDER   RECV ACK seq=2 (cumulative up to #74)
+[ 23992.000 ms] SENDER   window slides: base=3(75) nextseqnum=6(78) window=[75..78]
+[ 23992.000 ms] SENDER   SEND DATA seq=6 (#78)
+[ 23996.000 ms] SENDER   RECV ACK seq=3 (cumulative up to #75)
+[ 23996.000 ms] SENDER   window slides: base=4(76) nextseqnum=7(79) window=[76..79]
+[ 23996.000 ms] SENDER   SEND DATA seq=7 (#79)
+[ 24246.000 ms] RECEIVER RECV DATA seq=6 out of order (expectedseqnum=4) -> discard
+[ 24246.000 ms] RECEIVER SEND ACK seq=3
+[ 24250.000 ms] RECEIVER RECV DATA seq=7 out of order (expectedseqnum=4) -> discard
+[ 24250.000 ms] RECEIVER SEND ACK seq=3
+[ 24496.000 ms] SENDER   RECV ACK seq=3 (duplicate) -> ignored
+[ 24500.000 ms] SENDER   RECV ACK seq=3 (duplicate) -> ignored
+[ 24596.000 ms] SENDER   TIMEOUT (oldest unACKed #76) -> go back, resend #76..#79
+[ 24596.000 ms] SENDER   RETRANSMIT DATA seq=4 (#76)
+[ 24596.000 ms] SENDER   RETRANSMIT DATA seq=5 (#77)
+[ 24596.000 ms] SENDER   RETRANSMIT DATA seq=6 (#78)
+[ 24596.000 ms] SENDER   RETRANSMIT DATA seq=7 (#79)
+[ 24850.000 ms] RECEIVER RECV DATA seq=4 in order -> deliver (expectedseqnum=5)
+[ 24850.000 ms] RECEIVER SEND ACK seq=4
+[ 24854.000 ms] RECEIVER RECV DATA seq=5 in order -> deliver (expectedseqnum=6)
+[ 24854.000 ms] RECEIVER SEND ACK seq=5
+[ 24854.000 ms] CHANNEL  LOSS    ACK seq=5
+[ 24858.000 ms] RECEIVER RECV DATA seq=6 in order -> deliver (expectedseqnum=7)
+[ 24858.000 ms] RECEIVER SEND ACK seq=6
+[ 24862.000 ms] RECEIVER RECV DATA seq=7 in order -> deliver (expectedseqnum=0)
+[ 24862.000 ms] RECEIVER SEND ACK seq=7
+[ 25100.000 ms] SENDER   RECV ACK seq=4 (cumulative up to #76)
+[ 25100.000 ms] SENDER   window slides: base=5(77) nextseqnum=0(80) window=[77..80]
+[ 25100.000 ms] SENDER   SEND DATA seq=0 (#80)
+[ 25108.000 ms] SENDER   RECV ACK seq=6 (cumulative up to #78)
+[ 25108.000 ms] SENDER   window slides: base=7(79) nextseqnum=1(81) window=[79..82]
+[ 25108.000 ms] SENDER   SEND DATA seq=1 (#81)
+[ 25108.000 ms] SENDER   SEND DATA seq=2 (#82)
+[ 25112.000 ms] SENDER   RECV ACK seq=7 (cumulative up to #79)
+[ 25112.000 ms] SENDER   window slides: base=0(80) nextseqnum=3(83) window=[80..83]
+[ 25112.000 ms] SENDER   SEND DATA seq=3 (#83)
+[ 25112.000 ms] CHANNEL  LOSS    DATA seq=3 (#83)
+[ 25354.000 ms] RECEIVER RECV DATA seq=0 in order -> deliver (expectedseqnum=1)
+[ 25354.000 ms] RECEIVER SEND ACK seq=0
+[ 25362.000 ms] RECEIVER RECV DATA seq=1 in order -> deliver (expectedseqnum=2)
+[ 25362.000 ms] RECEIVER SEND ACK seq=1
+[ 25366.000 ms] RECEIVER RECV DATA seq=2 in order -> deliver (expectedseqnum=3)
+[ 25366.000 ms] RECEIVER SEND ACK seq=2
+[ 25604.000 ms] SENDER   RECV ACK seq=0 (cumulative up to #80)
+[ 25604.000 ms] SENDER   window slides: base=1(81) nextseqnum=4(84) window=[81..84]
+[ 25604.000 ms] SENDER   SEND DATA seq=4 (#84)
+[ 25612.000 ms] SENDER   RECV ACK seq=1 (cumulative up to #81)
+[ 25612.000 ms] SENDER   window slides: base=2(82) nextseqnum=5(85) window=[82..85]
+[ 25612.000 ms] SENDER   SEND DATA seq=5 (#85)
+[ 25616.000 ms] SENDER   RECV ACK seq=2 (cumulative up to #82)
+[ 25616.000 ms] SENDER   window slides: base=3(83) nextseqnum=6(86) window=[83..86]
+[ 25616.000 ms] SENDER   SEND DATA seq=6 (#86)
+[ 25858.000 ms] RECEIVER RECV DATA seq=4 out of order (expectedseqnum=3) -> discard
+[ 25858.000 ms] RECEIVER SEND ACK seq=2
+[ 25866.000 ms] RECEIVER RECV DATA seq=5 out of order (expectedseqnum=3) -> discard
+[ 25866.000 ms] RECEIVER SEND ACK seq=2
+[ 25870.000 ms] RECEIVER RECV DATA seq=6 out of order (expectedseqnum=3) -> discard
+[ 25870.000 ms] RECEIVER SEND ACK seq=2
+[ 26108.000 ms] SENDER   RECV ACK seq=2 (duplicate) -> ignored
+[ 26116.000 ms] SENDER   RECV ACK seq=2 (duplicate) -> ignored
+[ 26120.000 ms] SENDER   RECV ACK seq=2 (duplicate) -> ignored
+[ 26216.000 ms] SENDER   TIMEOUT (oldest unACKed #83) -> go back, resend #83..#86
+[ 26216.000 ms] SENDER   RETRANSMIT DATA seq=3 (#83)
+[ 26216.000 ms] SENDER   RETRANSMIT DATA seq=4 (#84)
+[ 26216.000 ms] SENDER   RETRANSMIT DATA seq=5 (#85)
+[ 26216.000 ms] SENDER   RETRANSMIT DATA seq=6 (#86)
+[ 26470.000 ms] RECEIVER RECV DATA seq=3 in order -> deliver (expectedseqnum=4)
+[ 26470.000 ms] RECEIVER SEND ACK seq=3
+[ 26470.000 ms] CHANNEL  LOSS    ACK seq=3
+[ 26474.000 ms] RECEIVER RECV DATA seq=4 in order -> deliver (expectedseqnum=5)
+[ 26474.000 ms] RECEIVER SEND ACK seq=4
+[ 26478.000 ms] RECEIVER RECV DATA seq=5 in order -> deliver (expectedseqnum=6)
+[ 26478.000 ms] RECEIVER SEND ACK seq=5
+[ 26482.000 ms] RECEIVER RECV DATA seq=6 in order -> deliver (expectedseqnum=7)
+[ 26482.000 ms] RECEIVER SEND ACK seq=6
+[ 26724.000 ms] SENDER   RECV ACK seq=4 (cumulative up to #84)
+[ 26724.000 ms] SENDER   window slides: base=5(85) nextseqnum=7(87) window=[85..88]
+[ 26724.000 ms] SENDER   SEND DATA seq=7 (#87)
+[ 26724.000 ms] SENDER   SEND DATA seq=0 (#88)
+[ 26728.000 ms] SENDER   RECV ACK seq=5 (cumulative up to #85)
+[ 26728.000 ms] SENDER   window slides: base=6(86) nextseqnum=1(89) window=[86..89]
+[ 26728.000 ms] SENDER   SEND DATA seq=1 (#89)
+[ 26732.000 ms] SENDER   RECV ACK seq=6 (cumulative up to #86)
+[ 26732.000 ms] SENDER   window slides: base=7(87) nextseqnum=2(90) window=[87..90]
+[ 26732.000 ms] SENDER   SEND DATA seq=2 (#90)
+[ 26978.000 ms] RECEIVER RECV DATA seq=7 in order -> deliver (expectedseqnum=0)
+[ 26978.000 ms] RECEIVER SEND ACK seq=7
+[ 26978.000 ms] CHANNEL  LOSS    ACK seq=7
+[ 26982.000 ms] RECEIVER RECV DATA seq=0 in order -> deliver (expectedseqnum=1)
+[ 26982.000 ms] RECEIVER SEND ACK seq=0
+[ 26986.000 ms] RECEIVER RECV DATA seq=1 in order -> deliver (expectedseqnum=2)
+[ 26986.000 ms] RECEIVER SEND ACK seq=1
+[ 26990.000 ms] RECEIVER RECV DATA seq=2 in order -> deliver (expectedseqnum=3)
+[ 26990.000 ms] RECEIVER SEND ACK seq=2
+[ 27232.000 ms] SENDER   RECV ACK seq=0 (cumulative up to #88)
+[ 27232.000 ms] SENDER   window slides: base=1(89) nextseqnum=3(91) window=[89..92]
+[ 27232.000 ms] SENDER   SEND DATA seq=3 (#91)
+[ 27232.000 ms] SENDER   SEND DATA seq=4 (#92)
+[ 27236.000 ms] SENDER   RECV ACK seq=1 (cumulative up to #89)
+[ 27236.000 ms] SENDER   window slides: base=2(90) nextseqnum=5(93) window=[90..93]
+[ 27236.000 ms] SENDER   SEND DATA seq=5 (#93)
+[ 27240.000 ms] SENDER   RECV ACK seq=2 (cumulative up to #90)
+[ 27240.000 ms] SENDER   window slides: base=3(91) nextseqnum=6(94) window=[91..94]
+[ 27240.000 ms] SENDER   SEND DATA seq=6 (#94)
+[ 27486.000 ms] RECEIVER RECV DATA seq=3 in order -> deliver (expectedseqnum=4)
+[ 27486.000 ms] RECEIVER SEND ACK seq=3
+[ 27490.000 ms] RECEIVER RECV DATA seq=4 in order -> deliver (expectedseqnum=5)
+[ 27490.000 ms] RECEIVER SEND ACK seq=4
+[ 27494.000 ms] RECEIVER RECV DATA seq=5 in order -> deliver (expectedseqnum=6)
+[ 27494.000 ms] RECEIVER SEND ACK seq=5
+[ 27498.000 ms] RECEIVER RECV DATA seq=6 in order -> deliver (expectedseqnum=7)
+[ 27498.000 ms] RECEIVER SEND ACK seq=6
+[ 27736.000 ms] SENDER   RECV ACK seq=3 (cumulative up to #91)
+[ 27736.000 ms] SENDER   window slides: base=4(92) nextseqnum=7(95) window=[92..95]
+[ 27736.000 ms] SENDER   SEND DATA seq=7 (#95)
+[ 27740.000 ms] SENDER   RECV ACK seq=4 (cumulative up to #92)
+[ 27740.000 ms] SENDER   window slides: base=5(93) nextseqnum=0(96) window=[93..96]
+[ 27740.000 ms] SENDER   SEND DATA seq=0 (#96)
+[ 27744.000 ms] SENDER   RECV ACK seq=5 (cumulative up to #93)
+[ 27744.000 ms] SENDER   window slides: base=6(94) nextseqnum=1(97) window=[94..97]
+[ 27744.000 ms] SENDER   SEND DATA seq=1 (#97)
+[ 27748.000 ms] SENDER   RECV ACK seq=6 (cumulative up to #94)
+[ 27748.000 ms] SENDER   window slides: base=7(95) nextseqnum=2(98) window=[95..98]
+[ 27748.000 ms] SENDER   SEND DATA seq=2 (#98)
+[ 27990.000 ms] RECEIVER RECV DATA seq=7 in order -> deliver (expectedseqnum=0)
+[ 27990.000 ms] RECEIVER SEND ACK seq=7
+[ 27994.000 ms] RECEIVER RECV DATA seq=0 in order -> deliver (expectedseqnum=1)
+[ 27994.000 ms] RECEIVER SEND ACK seq=0
+[ 27998.000 ms] RECEIVER RECV DATA seq=1 in order -> deliver (expectedseqnum=2)
+[ 27998.000 ms] RECEIVER SEND ACK seq=1
+[ 28002.000 ms] RECEIVER RECV DATA seq=2 in order -> deliver (expectedseqnum=3)
+[ 28002.000 ms] RECEIVER SEND ACK seq=2
+[ 28240.000 ms] SENDER   RECV ACK seq=7 (cumulative up to #95)
+[ 28240.000 ms] SENDER   window slides: base=0(96) nextseqnum=3(99) window=[96..99]
+[ 28240.000 ms] SENDER   SEND DATA seq=3 (#99)
+[ 28244.000 ms] SENDER   RECV ACK seq=0 (cumulative up to #96)
+[ 28244.000 ms] SENDER   window slides: base=1(97) nextseqnum=4(100) window=[97..100]
+[ 28244.000 ms] SENDER   SEND DATA seq=4 (#100)
+[ 28248.000 ms] SENDER   RECV ACK seq=1 (cumulative up to #97)
+[ 28248.000 ms] SENDER   window slides: base=2(98) nextseqnum=5(101) window=[98..101]
+[ 28248.000 ms] SENDER   SEND DATA seq=5 (#101)
+[ 28252.000 ms] SENDER   RECV ACK seq=2 (cumulative up to #98)
+[ 28252.000 ms] SENDER   window slides: base=3(99) nextseqnum=6(102) window=[99..102]
+[ 28252.000 ms] SENDER   SEND DATA seq=6 (#102)
+[ 28494.000 ms] RECEIVER RECV DATA seq=3 in order -> deliver (expectedseqnum=4)
+[ 28494.000 ms] RECEIVER SEND ACK seq=3
+[ 28498.000 ms] RECEIVER RECV DATA seq=4 in order -> deliver (expectedseqnum=5)
+[ 28498.000 ms] RECEIVER SEND ACK seq=4
+[ 28502.000 ms] RECEIVER RECV DATA seq=5 in order -> deliver (expectedseqnum=6)
+[ 28502.000 ms] RECEIVER SEND ACK seq=5
+[ 28502.000 ms] CHANNEL  LOSS    ACK seq=5
+[ 28506.000 ms] RECEIVER RECV DATA seq=6 in order -> deliver (expectedseqnum=7)
+[ 28506.000 ms] RECEIVER SEND ACK seq=6
+[ 28744.000 ms] SENDER   RECV ACK seq=3 (cumulative up to #99)
+[ 28744.000 ms] SENDER   window slides: base=4(100) nextseqnum=7(103) window=[100..103]
+[ 28744.000 ms] SENDER   SEND DATA seq=7 (#103)
+[ 28748.000 ms] SENDER   RECV ACK seq=4 (cumulative up to #100)
+[ 28748.000 ms] SENDER   window slides: base=5(101) nextseqnum=0(104) window=[101..104]
+[ 28748.000 ms] SENDER   SEND DATA seq=0 (#104)
+[ 28748.000 ms] CHANNEL  LOSS    DATA seq=0 (#104)
+[ 28756.000 ms] SENDER   RECV ACK seq=6 (cumulative up to #102)
+[ 28756.000 ms] SENDER   window slides: base=7(103) nextseqnum=1(105) window=[103..106]
+[ 28756.000 ms] SENDER   SEND DATA seq=1 (#105)
+[ 28756.000 ms] SENDER   SEND DATA seq=2 (#106)
+[ 28998.000 ms] RECEIVER RECV DATA seq=7 in order -> deliver (expectedseqnum=0)
+[ 28998.000 ms] RECEIVER SEND ACK seq=7
+[ 29010.000 ms] RECEIVER RECV DATA seq=1 out of order (expectedseqnum=0) -> discard
+[ 29010.000 ms] RECEIVER SEND ACK seq=7
+[ 29014.000 ms] RECEIVER RECV DATA seq=2 out of order (expectedseqnum=0) -> discard
+[ 29014.000 ms] RECEIVER SEND ACK seq=7
+[ 29248.000 ms] SENDER   RECV ACK seq=7 (cumulative up to #103)
+[ 29248.000 ms] SENDER   window slides: base=0(104) nextseqnum=3(107) window=[104..107]
+[ 29248.000 ms] SENDER   SEND DATA seq=3 (#107)
+[ 29260.000 ms] SENDER   RECV ACK seq=7 (duplicate) -> ignored
+[ 29264.000 ms] SENDER   RECV ACK seq=7 (duplicate) -> ignored
+[ 29502.000 ms] RECEIVER RECV DATA seq=3 out of order (expectedseqnum=0) -> discard
+[ 29502.000 ms] RECEIVER SEND ACK seq=7
+[ 29752.000 ms] SENDER   RECV ACK seq=7 (duplicate) -> ignored
+[ 29848.000 ms] SENDER   TIMEOUT (oldest unACKed #104) -> go back, resend #104..#107
+[ 29848.000 ms] SENDER   RETRANSMIT DATA seq=0 (#104)
+[ 29848.000 ms] SENDER   RETRANSMIT DATA seq=1 (#105)
+[ 29848.000 ms] SENDER   RETRANSMIT DATA seq=2 (#106)
+[ 29848.000 ms] SENDER   RETRANSMIT DATA seq=3 (#107)
+[ 30102.000 ms] RECEIVER RECV DATA seq=0 in order -> deliver (expectedseqnum=1)
+[ 30102.000 ms] RECEIVER SEND ACK seq=0
+[ 30106.000 ms] RECEIVER RECV DATA seq=1 in order -> deliver (expectedseqnum=2)
+[ 30106.000 ms] RECEIVER SEND ACK seq=1
+[ 30110.000 ms] RECEIVER RECV DATA seq=2 in order -> deliver (expectedseqnum=3)
+[ 30110.000 ms] RECEIVER SEND ACK seq=2
+[ 30114.000 ms] RECEIVER RECV DATA seq=3 in order -> deliver (expectedseqnum=4)
+[ 30114.000 ms] RECEIVER SEND ACK seq=3
+[ 30352.000 ms] SENDER   RECV ACK seq=0 (cumulative up to #104)
+[ 30352.000 ms] SENDER   window slides: base=1(105) nextseqnum=4(108) window=[105..108]
+[ 30352.000 ms] SENDER   SEND DATA seq=4 (#108)
+[ 30356.000 ms] SENDER   RECV ACK seq=1 (cumulative up to #105)
+[ 30356.000 ms] SENDER   window slides: base=2(106) nextseqnum=5(109) window=[106..109]
+[ 30356.000 ms] SENDER   SEND DATA seq=5 (#109)
+[ 30360.000 ms] SENDER   RECV ACK seq=2 (cumulative up to #106)
+[ 30360.000 ms] SENDER   window slides: base=3(107) nextseqnum=6(110) window=[107..110]
+[ 30360.000 ms] SENDER   SEND DATA seq=6 (#110)
+[ 30360.000 ms] CHANNEL  LOSS    DATA seq=6 (#110)
+[ 30364.000 ms] SENDER   RECV ACK seq=3 (cumulative up to #107)
+[ 30364.000 ms] SENDER   window slides: base=4(108) nextseqnum=7(111) window=[108..111]
+[ 30364.000 ms] SENDER   SEND DATA seq=7 (#111)
+[ 30606.000 ms] RECEIVER RECV DATA seq=4 in order -> deliver (expectedseqnum=5)
+[ 30606.000 ms] RECEIVER SEND ACK seq=4
+[ 30606.000 ms] CHANNEL  LOSS    ACK seq=4
+[ 30610.000 ms] RECEIVER RECV DATA seq=5 in order -> deliver (expectedseqnum=6)
+[ 30610.000 ms] RECEIVER SEND ACK seq=5
+[ 30618.000 ms] RECEIVER RECV DATA seq=7 out of order (expectedseqnum=6) -> discard
+[ 30618.000 ms] RECEIVER SEND ACK seq=5
+[ 30618.000 ms] CHANNEL  LOSS    ACK seq=5
+[ 30860.000 ms] SENDER   RECV ACK seq=5 (cumulative up to #109)
+[ 30860.000 ms] SENDER   window slides: base=6(110) nextseqnum=0(112) window=[110..113]
+[ 30860.000 ms] SENDER   SEND DATA seq=0 (#112)
+[ 30860.000 ms] SENDER   SEND DATA seq=1 (#113)
+[ 31114.000 ms] RECEIVER RECV DATA seq=0 out of order (expectedseqnum=6) -> discard
+[ 31114.000 ms] RECEIVER SEND ACK seq=5
+[ 31118.000 ms] RECEIVER RECV DATA seq=1 out of order (expectedseqnum=6) -> discard
+[ 31118.000 ms] RECEIVER SEND ACK seq=5
+[ 31118.000 ms] CHANNEL  LOSS    ACK seq=5
+[ 31364.000 ms] SENDER   RECV ACK seq=5 (duplicate) -> ignored
+[ 31460.000 ms] SENDER   TIMEOUT (oldest unACKed #110) -> go back, resend #110..#113
+[ 31460.000 ms] SENDER   RETRANSMIT DATA seq=6 (#110)
+[ 31460.000 ms] SENDER   RETRANSMIT DATA seq=7 (#111)
+[ 31460.000 ms] CHANNEL  LOSS    DATA seq=7 (#111)
+[ 31460.000 ms] SENDER   RETRANSMIT DATA seq=0 (#112)
+[ 31460.000 ms] SENDER   RETRANSMIT DATA seq=1 (#113)
+[ 31714.000 ms] RECEIVER RECV DATA seq=6 in order -> deliver (expectedseqnum=7)
+[ 31714.000 ms] RECEIVER SEND ACK seq=6
+[ 31722.000 ms] RECEIVER RECV DATA seq=0 out of order (expectedseqnum=7) -> discard
+[ 31722.000 ms] RECEIVER SEND ACK seq=6
+[ 31726.000 ms] RECEIVER RECV DATA seq=1 out of order (expectedseqnum=7) -> discard
+[ 31726.000 ms] RECEIVER SEND ACK seq=6
+[ 31964.000 ms] SENDER   RECV ACK seq=6 (cumulative up to #110)
+[ 31964.000 ms] SENDER   window slides: base=7(111) nextseqnum=2(114) window=[111..114]
+[ 31964.000 ms] SENDER   SEND DATA seq=2 (#114)
+[ 31972.000 ms] SENDER   RECV ACK seq=6 (duplicate) -> ignored
+[ 31976.000 ms] SENDER   RECV ACK seq=6 (duplicate) -> ignored
+[ 32218.000 ms] RECEIVER RECV DATA seq=2 out of order (expectedseqnum=7) -> discard
+[ 32218.000 ms] RECEIVER SEND ACK seq=6
+[ 32468.000 ms] SENDER   RECV ACK seq=6 (duplicate) -> ignored
+[ 32564.000 ms] SENDER   TIMEOUT (oldest unACKed #111) -> go back, resend #111..#114
+[ 32564.000 ms] SENDER   RETRANSMIT DATA seq=7 (#111)
+[ 32564.000 ms] SENDER   RETRANSMIT DATA seq=0 (#112)
+[ 32564.000 ms] SENDER   RETRANSMIT DATA seq=1 (#113)
+[ 32564.000 ms] SENDER   RETRANSMIT DATA seq=2 (#114)
+[ 32818.000 ms] RECEIVER RECV DATA seq=7 in order -> deliver (expectedseqnum=0)
+[ 32818.000 ms] RECEIVER SEND ACK seq=7
+[ 32822.000 ms] RECEIVER RECV DATA seq=0 in order -> deliver (expectedseqnum=1)
+[ 32822.000 ms] RECEIVER SEND ACK seq=0
+[ 32826.000 ms] RECEIVER RECV DATA seq=1 in order -> deliver (expectedseqnum=2)
+[ 32826.000 ms] RECEIVER SEND ACK seq=1
+[ 32830.000 ms] RECEIVER RECV DATA seq=2 in order -> deliver (expectedseqnum=3)
+[ 32830.000 ms] RECEIVER SEND ACK seq=2
+[ 33068.000 ms] SENDER   RECV ACK seq=7 (cumulative up to #111)
+[ 33068.000 ms] SENDER   window slides: base=0(112) nextseqnum=3(115) window=[112..115]
+[ 33068.000 ms] SENDER   SEND DATA seq=3 (#115)
+[ 33072.000 ms] SENDER   RECV ACK seq=0 (cumulative up to #112)
+[ 33072.000 ms] SENDER   window slides: base=1(113) nextseqnum=4(116) window=[113..116]
+[ 33072.000 ms] SENDER   SEND DATA seq=4 (#116)
+[ 33076.000 ms] SENDER   RECV ACK seq=1 (cumulative up to #113)
+[ 33076.000 ms] SENDER   window slides: base=2(114) nextseqnum=5(117) window=[114..117]
+[ 33076.000 ms] SENDER   SEND DATA seq=5 (#117)
+[ 33080.000 ms] SENDER   RECV ACK seq=2 (cumulative up to #114)
+[ 33080.000 ms] SENDER   window slides: base=3(115) nextseqnum=6(118) window=[115..118]
+[ 33080.000 ms] SENDER   SEND DATA seq=6 (#118)
+[ 33322.000 ms] RECEIVER RECV DATA seq=3 in order -> deliver (expectedseqnum=4)
+[ 33322.000 ms] RECEIVER SEND ACK seq=3
+[ 33322.000 ms] CHANNEL  LOSS    ACK seq=3
+[ 33326.000 ms] RECEIVER RECV DATA seq=4 in order -> deliver (expectedseqnum=5)
+[ 33326.000 ms] RECEIVER SEND ACK seq=4
+[ 33326.000 ms] CHANNEL  LOSS    ACK seq=4
+[ 33330.000 ms] RECEIVER RECV DATA seq=5 in order -> deliver (expectedseqnum=6)
+[ 33330.000 ms] RECEIVER SEND ACK seq=5
+[ 33334.000 ms] RECEIVER RECV DATA seq=6 in order -> deliver (expectedseqnum=7)
+[ 33334.000 ms] RECEIVER SEND ACK seq=6
+[ 33580.000 ms] SENDER   RECV ACK seq=5 (cumulative up to #117)
+[ 33580.000 ms] SENDER   window slides: base=6(118) nextseqnum=7(119) window=[118..121]
+[ 33580.000 ms] SENDER   SEND DATA seq=7 (#119)
+[ 33580.000 ms] SENDER   SEND DATA seq=0 (#120)
+[ 33580.000 ms] SENDER   SEND DATA seq=1 (#121)
+[ 33584.000 ms] SENDER   RECV ACK seq=6 (cumulative up to #118)
+[ 33584.000 ms] SENDER   window slides: base=7(119) nextseqnum=2(122) window=[119..122]
+[ 33584.000 ms] SENDER   SEND DATA seq=2 (#122)
+[ 33834.000 ms] RECEIVER RECV DATA seq=7 in order -> deliver (expectedseqnum=0)
+[ 33834.000 ms] RECEIVER SEND ACK seq=7
+[ 33838.000 ms] RECEIVER RECV DATA seq=0 in order -> deliver (expectedseqnum=1)
+[ 33838.000 ms] RECEIVER SEND ACK seq=0
+[ 33842.000 ms] RECEIVER RECV DATA seq=1 in order -> deliver (expectedseqnum=2)
+[ 33842.000 ms] RECEIVER SEND ACK seq=1
+[ 33846.000 ms] RECEIVER RECV DATA seq=2 in order -> deliver (expectedseqnum=3)
+[ 33846.000 ms] RECEIVER SEND ACK seq=2
+[ 34084.000 ms] SENDER   RECV ACK seq=7 (cumulative up to #119)
+[ 34084.000 ms] SENDER   window slides: base=0(120) nextseqnum=3(123) window=[120..123]
+[ 34084.000 ms] SENDER   SEND DATA seq=3 (#123)
+[ 34088.000 ms] SENDER   RECV ACK seq=0 (cumulative up to #120)
+[ 34088.000 ms] SENDER   window slides: base=1(121) nextseqnum=4(124) window=[121..124]
+[ 34088.000 ms] SENDER   SEND DATA seq=4 (#124)
+[ 34092.000 ms] SENDER   RECV ACK seq=1 (cumulative up to #121)
+[ 34092.000 ms] SENDER   window slides: base=2(122) nextseqnum=5(125) window=[122..125]
+[ 34092.000 ms] SENDER   SEND DATA seq=5 (#125)
+[ 34096.000 ms] SENDER   RECV ACK seq=2 (cumulative up to #122)
+[ 34096.000 ms] SENDER   window slides: base=3(123) nextseqnum=6(126) window=[123..126]
+[ 34096.000 ms] SENDER   SEND DATA seq=6 (#126)
+[ 34338.000 ms] RECEIVER RECV DATA seq=3 in order -> deliver (expectedseqnum=4)
+[ 34338.000 ms] RECEIVER SEND ACK seq=3
+[ 34342.000 ms] RECEIVER RECV DATA seq=4 in order -> deliver (expectedseqnum=5)
+[ 34342.000 ms] RECEIVER SEND ACK seq=4
+[ 34346.000 ms] RECEIVER RECV DATA seq=5 in order -> deliver (expectedseqnum=6)
+[ 34346.000 ms] RECEIVER SEND ACK seq=5
+[ 34350.000 ms] RECEIVER RECV DATA seq=6 in order -> deliver (expectedseqnum=7)
+[ 34350.000 ms] RECEIVER SEND ACK seq=6
+[ 34588.000 ms] SENDER   RECV ACK seq=3 (cumulative up to #123)
+[ 34588.000 ms] SENDER   window slides: base=4(124) nextseqnum=7(127) window=[124..127]
+[ 34588.000 ms] SENDER   SEND DATA seq=7 (#127)
+[ 34592.000 ms] SENDER   RECV ACK seq=4 (cumulative up to #124)
+[ 34592.000 ms] SENDER   window slides: base=5(125) nextseqnum=0(128) window=[125..128]
+[ 34592.000 ms] SENDER   SEND DATA seq=0 (#128)
+[ 34596.000 ms] SENDER   RECV ACK seq=5 (cumulative up to #125)
+[ 34596.000 ms] SENDER   window slides: base=6(126) nextseqnum=1(129) window=[126..129]
+[ 34596.000 ms] SENDER   SEND DATA seq=1 (#129)
+[ 34600.000 ms] SENDER   RECV ACK seq=6 (cumulative up to #126)
+[ 34600.000 ms] SENDER   window slides: base=7(127) nextseqnum=2(130) window=[127..130]
+[ 34600.000 ms] SENDER   SEND DATA seq=2 (#130)
+[ 34842.000 ms] RECEIVER RECV DATA seq=7 in order -> deliver (expectedseqnum=0)
+[ 34842.000 ms] RECEIVER SEND ACK seq=7
+[ 34846.000 ms] RECEIVER RECV DATA seq=0 in order -> deliver (expectedseqnum=1)
+[ 34846.000 ms] RECEIVER SEND ACK seq=0
+[ 34850.000 ms] RECEIVER RECV DATA seq=1 in order -> deliver (expectedseqnum=2)
+[ 34850.000 ms] RECEIVER SEND ACK seq=1
+[ 34854.000 ms] RECEIVER RECV DATA seq=2 in order -> deliver (expectedseqnum=3)
+[ 34854.000 ms] RECEIVER SEND ACK seq=2
+[ 34854.000 ms] CHANNEL  LOSS    ACK seq=2
+[ 35092.000 ms] SENDER   RECV ACK seq=7 (cumulative up to #127)
+[ 35092.000 ms] SENDER   window slides: base=0(128) nextseqnum=3(131) window=[128..131]
+[ 35092.000 ms] SENDER   SEND DATA seq=3 (#131)
+[ 35096.000 ms] SENDER   RECV ACK seq=0 (cumulative up to #128)
+[ 35096.000 ms] SENDER   window slides: base=1(129) nextseqnum=4(132) window=[129..132]
+[ 35096.000 ms] SENDER   SEND DATA seq=4 (#132)
+[ 35100.000 ms] SENDER   RECV ACK seq=1 (cumulative up to #129)
+[ 35100.000 ms] SENDER   window slides: base=2(130) nextseqnum=5(133) window=[130..133]
+[ 35100.000 ms] SENDER   SEND DATA seq=5 (#133)
+[ 35346.000 ms] RECEIVER RECV DATA seq=3 in order -> deliver (expectedseqnum=4)
+[ 35346.000 ms] RECEIVER SEND ACK seq=3
+[ 35350.000 ms] RECEIVER RECV DATA seq=4 in order -> deliver (expectedseqnum=5)
+[ 35350.000 ms] RECEIVER SEND ACK seq=4
+[ 35354.000 ms] RECEIVER RECV DATA seq=5 in order -> deliver (expectedseqnum=6)
+[ 35354.000 ms] RECEIVER SEND ACK seq=5
+[ 35596.000 ms] SENDER   RECV ACK seq=3 (cumulative up to #131)
+[ 35596.000 ms] SENDER   window slides: base=4(132) nextseqnum=6(134) window=[132..135]
+[ 35596.000 ms] SENDER   SEND DATA seq=6 (#134)
+[ 35596.000 ms] SENDER   SEND DATA seq=7 (#135)
+[ 35600.000 ms] SENDER   RECV ACK seq=4 (cumulative up to #132)
+[ 35600.000 ms] SENDER   window slides: base=5(133) nextseqnum=0(136) window=[133..136]
+[ 35600.000 ms] SENDER   SEND DATA seq=0 (#136)
+[ 35604.000 ms] SENDER   RECV ACK seq=5 (cumulative up to #133)
+[ 35604.000 ms] SENDER   window slides: base=6(134) nextseqnum=1(137) window=[134..137]
+[ 35604.000 ms] SENDER   SEND DATA seq=1 (#137)
+[ 35850.000 ms] RECEIVER RECV DATA seq=6 in order -> deliver (expectedseqnum=7)
+[ 35850.000 ms] RECEIVER SEND ACK seq=6
+[ 35854.000 ms] RECEIVER RECV DATA seq=7 in order -> deliver (expectedseqnum=0)
+[ 35854.000 ms] RECEIVER SEND ACK seq=7
+[ 35854.000 ms] CHANNEL  LOSS    ACK seq=7
+[ 35858.000 ms] RECEIVER RECV DATA seq=0 in order -> deliver (expectedseqnum=1)
+[ 35858.000 ms] RECEIVER SEND ACK seq=0
+[ 35862.000 ms] RECEIVER RECV DATA seq=1 in order -> deliver (expectedseqnum=2)
+[ 35862.000 ms] RECEIVER SEND ACK seq=1
+[ 36100.000 ms] SENDER   RECV ACK seq=6 (cumulative up to #134)
+[ 36100.000 ms] SENDER   window slides: base=7(135) nextseqnum=2(138) window=[135..138]
+[ 36100.000 ms] SENDER   SEND DATA seq=2 (#138)
+[ 36100.000 ms] CHANNEL  LOSS    DATA seq=2 (#138)
+[ 36108.000 ms] SENDER   RECV ACK seq=0 (cumulative up to #136)
+[ 36108.000 ms] SENDER   window slides: base=1(137) nextseqnum=3(139) window=[137..140]
+[ 36108.000 ms] SENDER   SEND DATA seq=3 (#139)
+[ 36108.000 ms] CHANNEL  LOSS    DATA seq=3 (#139)
+[ 36108.000 ms] SENDER   SEND DATA seq=4 (#140)
+[ 36112.000 ms] SENDER   RECV ACK seq=1 (cumulative up to #137)
+[ 36112.000 ms] SENDER   window slides: base=2(138) nextseqnum=5(141) window=[138..141]
+[ 36112.000 ms] SENDER   SEND DATA seq=5 (#141)
+[ 36366.000 ms] RECEIVER RECV DATA seq=4 out of order (expectedseqnum=2) -> discard
+[ 36366.000 ms] RECEIVER SEND ACK seq=1
+[ 36370.000 ms] RECEIVER RECV DATA seq=5 out of order (expectedseqnum=2) -> discard
+[ 36370.000 ms] RECEIVER SEND ACK seq=1
+[ 36616.000 ms] SENDER   RECV ACK seq=1 (duplicate) -> ignored
+[ 36620.000 ms] SENDER   RECV ACK seq=1 (duplicate) -> ignored
+[ 36712.000 ms] SENDER   TIMEOUT (oldest unACKed #138) -> go back, resend #138..#141
+[ 36712.000 ms] SENDER   RETRANSMIT DATA seq=2 (#138)
+[ 36712.000 ms] SENDER   RETRANSMIT DATA seq=3 (#139)
+[ 36712.000 ms] SENDER   RETRANSMIT DATA seq=4 (#140)
+[ 36712.000 ms] SENDER   RETRANSMIT DATA seq=5 (#141)
+[ 36966.000 ms] RECEIVER RECV DATA seq=2 in order -> deliver (expectedseqnum=3)
+[ 36966.000 ms] RECEIVER SEND ACK seq=2
+[ 36970.000 ms] RECEIVER RECV DATA seq=3 in order -> deliver (expectedseqnum=4)
+[ 36970.000 ms] RECEIVER SEND ACK seq=3
+[ 36974.000 ms] RECEIVER RECV DATA seq=4 in order -> deliver (expectedseqnum=5)
+[ 36974.000 ms] RECEIVER SEND ACK seq=4
+[ 36978.000 ms] RECEIVER RECV DATA seq=5 in order -> deliver (expectedseqnum=6)
+[ 36978.000 ms] RECEIVER SEND ACK seq=5
+[ 37216.000 ms] SENDER   RECV ACK seq=2 (cumulative up to #138)
+[ 37216.000 ms] SENDER   window slides: base=3(139) nextseqnum=6(142) window=[139..142]
+[ 37216.000 ms] SENDER   SEND DATA seq=6 (#142)
+[ 37220.000 ms] SENDER   RECV ACK seq=3 (cumulative up to #139)
+[ 37220.000 ms] SENDER   window slides: base=4(140) nextseqnum=7(143) window=[140..143]
+[ 37220.000 ms] SENDER   SEND DATA seq=7 (#143)
+[ 37224.000 ms] SENDER   RECV ACK seq=4 (cumulative up to #140)
+[ 37224.000 ms] SENDER   window slides: base=5(141) nextseqnum=0(144) window=[141..144]
+[ 37224.000 ms] SENDER   SEND DATA seq=0 (#144)
+[ 37228.000 ms] SENDER   RECV ACK seq=5 (cumulative up to #141)
+[ 37228.000 ms] SENDER   window slides: base=6(142) nextseqnum=1(145) window=[142..145]
+[ 37228.000 ms] SENDER   SEND DATA seq=1 (#145)
+[ 37470.000 ms] RECEIVER RECV DATA seq=6 in order -> deliver (expectedseqnum=7)
+[ 37470.000 ms] RECEIVER SEND ACK seq=6
+[ 37474.000 ms] RECEIVER RECV DATA seq=7 in order -> deliver (expectedseqnum=0)
+[ 37474.000 ms] RECEIVER SEND ACK seq=7
+[ 37478.000 ms] RECEIVER RECV DATA seq=0 in order -> deliver (expectedseqnum=1)
+[ 37478.000 ms] RECEIVER SEND ACK seq=0
+[ 37482.000 ms] RECEIVER RECV DATA seq=1 in order -> deliver (expectedseqnum=2)
+[ 37482.000 ms] RECEIVER SEND ACK seq=1
+[ 37720.000 ms] SENDER   RECV ACK seq=6 (cumulative up to #142)
+[ 37720.000 ms] SENDER   window slides: base=7(143) nextseqnum=2(146) window=[143..146]
+[ 37720.000 ms] SENDER   SEND DATA seq=2 (#146)
+[ 37724.000 ms] SENDER   RECV ACK seq=7 (cumulative up to #143)
+[ 37724.000 ms] SENDER   window slides: base=0(144) nextseqnum=3(147) window=[144..147]
+[ 37724.000 ms] SENDER   SEND DATA seq=3 (#147)
+[ 37728.000 ms] SENDER   RECV ACK seq=0 (cumulative up to #144)
+[ 37728.000 ms] SENDER   window slides: base=1(145) nextseqnum=4(148) window=[145..148]
+[ 37728.000 ms] SENDER   SEND DATA seq=4 (#148)
+[ 37732.000 ms] SENDER   RECV ACK seq=1 (cumulative up to #145)
+[ 37732.000 ms] SENDER   window slides: base=2(146) nextseqnum=5(149) window=[146..149]
+[ 37732.000 ms] SENDER   SEND DATA seq=5 (#149)
+[ 37974.000 ms] RECEIVER RECV DATA seq=2 in order -> deliver (expectedseqnum=3)
+[ 37974.000 ms] RECEIVER SEND ACK seq=2
+[ 37974.000 ms] CHANNEL  LOSS    ACK seq=2
+[ 37978.000 ms] RECEIVER RECV DATA seq=3 in order -> deliver (expectedseqnum=4)
+[ 37978.000 ms] RECEIVER SEND ACK seq=3
+[ 37978.000 ms] CHANNEL  LOSS    ACK seq=3
+[ 37982.000 ms] RECEIVER RECV DATA seq=4 in order -> deliver (expectedseqnum=5)
+[ 37982.000 ms] RECEIVER SEND ACK seq=4
+[ 37986.000 ms] RECEIVER RECV DATA seq=5 in order -> deliver (expectedseqnum=6)
+[ 37986.000 ms] RECEIVER SEND ACK seq=5
+[ 38232.000 ms] SENDER   RECV ACK seq=4 (cumulative up to #148)
+[ 38232.000 ms] SENDER   window slides: base=5(149) nextseqnum=6(150) window=[149..152]
+[ 38232.000 ms] SENDER   SEND DATA seq=6 (#150)
+[ 38232.000 ms] SENDER   SEND DATA seq=7 (#151)
+[ 38232.000 ms] SENDER   SEND DATA seq=0 (#152)
+[ 38236.000 ms] SENDER   RECV ACK seq=5 (cumulative up to #149)
+[ 38236.000 ms] SENDER   window slides: base=6(150) nextseqnum=1(153) window=[150..153]
+[ 38236.000 ms] SENDER   SEND DATA seq=1 (#153)
+[ 38486.000 ms] RECEIVER RECV DATA seq=6 in order -> deliver (expectedseqnum=7)
+[ 38486.000 ms] RECEIVER SEND ACK seq=6
+[ 38490.000 ms] RECEIVER RECV DATA seq=7 in order -> deliver (expectedseqnum=0)
+[ 38490.000 ms] RECEIVER SEND ACK seq=7
+[ 38494.000 ms] RECEIVER RECV DATA seq=0 in order -> deliver (expectedseqnum=1)
+[ 38494.000 ms] RECEIVER SEND ACK seq=0
+[ 38498.000 ms] RECEIVER RECV DATA seq=1 in order -> deliver (expectedseqnum=2)
+[ 38498.000 ms] RECEIVER SEND ACK seq=1
+[ 38736.000 ms] SENDER   RECV ACK seq=6 (cumulative up to #150)
+[ 38736.000 ms] SENDER   window slides: base=7(151) nextseqnum=2(154) window=[151..154]
+[ 38736.000 ms] SENDER   SEND DATA seq=2 (#154)
+[ 38740.000 ms] SENDER   RECV ACK seq=7 (cumulative up to #151)
+[ 38740.000 ms] SENDER   window slides: base=0(152) nextseqnum=3(155) window=[152..155]
+[ 38740.000 ms] SENDER   SEND DATA seq=3 (#155)
+[ 38744.000 ms] SENDER   RECV ACK seq=0 (cumulative up to #152)
+[ 38744.000 ms] SENDER   window slides: base=1(153) nextseqnum=4(156) window=[153..156]
+[ 38744.000 ms] SENDER   SEND DATA seq=4 (#156)
+[ 38748.000 ms] SENDER   RECV ACK seq=1 (cumulative up to #153)
+[ 38748.000 ms] SENDER   window slides: base=2(154) nextseqnum=5(157) window=[154..157]
+[ 38748.000 ms] SENDER   SEND DATA seq=5 (#157)
+[ 38990.000 ms] RECEIVER RECV DATA seq=2 in order -> deliver (expectedseqnum=3)
+[ 38990.000 ms] RECEIVER SEND ACK seq=2
+[ 38994.000 ms] RECEIVER RECV DATA seq=3 in order -> deliver (expectedseqnum=4)
+[ 38994.000 ms] RECEIVER SEND ACK seq=3
+[ 38998.000 ms] RECEIVER RECV DATA seq=4 in order -> deliver (expectedseqnum=5)
+[ 38998.000 ms] RECEIVER SEND ACK seq=4
+[ 39002.000 ms] RECEIVER RECV DATA seq=5 in order -> deliver (expectedseqnum=6)
+[ 39002.000 ms] RECEIVER SEND ACK seq=5
+[ 39240.000 ms] SENDER   RECV ACK seq=2 (cumulative up to #154)
+[ 39240.000 ms] SENDER   window slides: base=3(155) nextseqnum=6(158) window=[155..158]
+[ 39240.000 ms] SENDER   SEND DATA seq=6 (#158)
+[ 39244.000 ms] SENDER   RECV ACK seq=3 (cumulative up to #155)
+[ 39244.000 ms] SENDER   window slides: base=4(156) nextseqnum=7(159) window=[156..159]
+[ 39244.000 ms] SENDER   SEND DATA seq=7 (#159)
+[ 39248.000 ms] SENDER   RECV ACK seq=4 (cumulative up to #156)
+[ 39248.000 ms] SENDER   window slides: base=5(157) nextseqnum=0(160) window=[157..160]
+[ 39248.000 ms] SENDER   SEND DATA seq=0 (#160)
+[ 39252.000 ms] SENDER   RECV ACK seq=5 (cumulative up to #157)
+[ 39252.000 ms] SENDER   window slides: base=6(158) nextseqnum=1(161) window=[158..161]
+[ 39252.000 ms] SENDER   SEND DATA seq=1 (#161)
+[ 39494.000 ms] RECEIVER RECV DATA seq=6 in order -> deliver (expectedseqnum=7)
+[ 39494.000 ms] RECEIVER SEND ACK seq=6
+[ 39498.000 ms] RECEIVER RECV DATA seq=7 in order -> deliver (expectedseqnum=0)
+[ 39498.000 ms] RECEIVER SEND ACK seq=7
+[ 39502.000 ms] RECEIVER RECV DATA seq=0 in order -> deliver (expectedseqnum=1)
+[ 39502.000 ms] RECEIVER SEND ACK seq=0
+[ 39506.000 ms] RECEIVER RECV DATA seq=1 in order -> deliver (expectedseqnum=2)
+[ 39506.000 ms] RECEIVER SEND ACK seq=1
+[ 39744.000 ms] SENDER   RECV ACK seq=6 (cumulative up to #158)
+[ 39744.000 ms] SENDER   window slides: base=7(159) nextseqnum=2(162) window=[159..162]
+[ 39744.000 ms] SENDER   SEND DATA seq=2 (#162)
+[ 39748.000 ms] SENDER   RECV ACK seq=7 (cumulative up to #159)
+[ 39748.000 ms] SENDER   window slides: base=0(160) nextseqnum=3(163) window=[160..163]
+[ 39748.000 ms] SENDER   SEND DATA seq=3 (#163)
+[ 39752.000 ms] SENDER   RECV ACK seq=0 (cumulative up to #160)
+[ 39752.000 ms] SENDER   window slides: base=1(161) nextseqnum=4(164) window=[161..164]
+[ 39752.000 ms] SENDER   SEND DATA seq=4 (#164)
+[ 39752.000 ms] CHANNEL  LOSS    DATA seq=4 (#164)
+[ 39756.000 ms] SENDER   RECV ACK seq=1 (cumulative up to #161)
+[ 39756.000 ms] SENDER   window slides: base=2(162) nextseqnum=5(165) window=[162..165]
+[ 39756.000 ms] SENDER   SEND DATA seq=5 (#165)
+[ 39998.000 ms] RECEIVER RECV DATA seq=2 in order -> deliver (expectedseqnum=3)
+[ 39998.000 ms] RECEIVER SEND ACK seq=2
+[ 40002.000 ms] RECEIVER RECV DATA seq=3 in order -> deliver (expectedseqnum=4)
+[ 40002.000 ms] RECEIVER SEND ACK seq=3
+[ 40010.000 ms] RECEIVER RECV DATA seq=5 out of order (expectedseqnum=4) -> discard
+[ 40010.000 ms] RECEIVER SEND ACK seq=3
+[ 40248.000 ms] SENDER   RECV ACK seq=2 (cumulative up to #162)
+[ 40248.000 ms] SENDER   window slides: base=3(163) nextseqnum=6(166) window=[163..166]
+[ 40248.000 ms] SENDER   SEND DATA seq=6 (#166)
+[ 40252.000 ms] SENDER   RECV ACK seq=3 (cumulative up to #163)
+[ 40252.000 ms] SENDER   window slides: base=4(164) nextseqnum=7(167) window=[164..167]
+[ 40252.000 ms] SENDER   SEND DATA seq=7 (#167)
+[ 40260.000 ms] SENDER   RECV ACK seq=3 (duplicate) -> ignored
+[ 40502.000 ms] RECEIVER RECV DATA seq=6 out of order (expectedseqnum=4) -> discard
+[ 40502.000 ms] RECEIVER SEND ACK seq=3
+[ 40502.000 ms] CHANNEL  LOSS    ACK seq=3
+[ 40506.000 ms] RECEIVER RECV DATA seq=7 out of order (expectedseqnum=4) -> discard
+[ 40506.000 ms] RECEIVER SEND ACK seq=3
+[ 40756.000 ms] SENDER   RECV ACK seq=3 (duplicate) -> ignored
+[ 40852.000 ms] SENDER   TIMEOUT (oldest unACKed #164) -> go back, resend #164..#167
+[ 40852.000 ms] SENDER   RETRANSMIT DATA seq=4 (#164)
+[ 40852.000 ms] CHANNEL  LOSS    DATA seq=4 (#164)
+[ 40852.000 ms] SENDER   RETRANSMIT DATA seq=5 (#165)
+[ 40852.000 ms] SENDER   RETRANSMIT DATA seq=6 (#166)
+[ 40852.000 ms] SENDER   RETRANSMIT DATA seq=7 (#167)
+[ 40852.000 ms] CHANNEL  LOSS    DATA seq=7 (#167)
+[ 41110.000 ms] RECEIVER RECV DATA seq=5 out of order (expectedseqnum=4) -> discard
+[ 41110.000 ms] RECEIVER SEND ACK seq=3
+[ 41114.000 ms] RECEIVER RECV DATA seq=6 out of order (expectedseqnum=4) -> discard
+[ 41114.000 ms] RECEIVER SEND ACK seq=3
+[ 41114.000 ms] CHANNEL  LOSS    ACK seq=3
+[ 41360.000 ms] SENDER   RECV ACK seq=3 (duplicate) -> ignored
+[ 41456.000 ms] SENDER   TIMEOUT (oldest unACKed #164) -> go back, resend #164..#167
+[ 41456.000 ms] SENDER   RETRANSMIT DATA seq=4 (#164)
+[ 41456.000 ms] CHANNEL  LOSS    DATA seq=4 (#164)
+[ 41456.000 ms] SENDER   RETRANSMIT DATA seq=5 (#165)
+[ 41456.000 ms] SENDER   RETRANSMIT DATA seq=6 (#166)
+[ 41456.000 ms] SENDER   RETRANSMIT DATA seq=7 (#167)
+[ 41456.000 ms] CHANNEL  LOSS    DATA seq=7 (#167)
+[ 41714.000 ms] RECEIVER RECV DATA seq=5 out of order (expectedseqnum=4) -> discard
+[ 41714.000 ms] RECEIVER SEND ACK seq=3
+[ 41718.000 ms] RECEIVER RECV DATA seq=6 out of order (expectedseqnum=4) -> discard
+[ 41718.000 ms] RECEIVER SEND ACK seq=3
+[ 41964.000 ms] SENDER   RECV ACK seq=3 (duplicate) -> ignored
+[ 41968.000 ms] SENDER   RECV ACK seq=3 (duplicate) -> ignored
+[ 42060.000 ms] SENDER   TIMEOUT (oldest unACKed #164) -> go back, resend #164..#167
+[ 42060.000 ms] SENDER   RETRANSMIT DATA seq=4 (#164)
+[ 42060.000 ms] SENDER   RETRANSMIT DATA seq=5 (#165)
+[ 42060.000 ms] SENDER   RETRANSMIT DATA seq=6 (#166)
+[ 42060.000 ms] SENDER   RETRANSMIT DATA seq=7 (#167)
+[ 42314.000 ms] RECEIVER RECV DATA seq=4 in order -> deliver (expectedseqnum=5)
+[ 42314.000 ms] RECEIVER SEND ACK seq=4
+[ 42314.000 ms] CHANNEL  LOSS    ACK seq=4
+[ 42318.000 ms] RECEIVER RECV DATA seq=5 in order -> deliver (expectedseqnum=6)
+[ 42318.000 ms] RECEIVER SEND ACK seq=5
+[ 42322.000 ms] RECEIVER RECV DATA seq=6 in order -> deliver (expectedseqnum=7)
+[ 42322.000 ms] RECEIVER SEND ACK seq=6
+[ 42326.000 ms] RECEIVER RECV DATA seq=7 in order -> deliver (expectedseqnum=0)
+[ 42326.000 ms] RECEIVER SEND ACK seq=7
+[ 42568.000 ms] SENDER   RECV ACK seq=5 (cumulative up to #165)
+[ 42568.000 ms] SENDER   window slides: base=6(166) nextseqnum=0(168) window=[166..169]
+[ 42568.000 ms] SENDER   SEND DATA seq=0 (#168)
+[ 42568.000 ms] SENDER   SEND DATA seq=1 (#169)
+[ 42572.000 ms] SENDER   RECV ACK seq=6 (cumulative up to #166)
+[ 42572.000 ms] SENDER   window slides: base=7(167) nextseqnum=2(170) window=[167..170]
+[ 42572.000 ms] SENDER   SEND DATA seq=2 (#170)
+[ 42576.000 ms] SENDER   RECV ACK seq=7 (cumulative up to #167)
+[ 42576.000 ms] SENDER   window slides: base=0(168) nextseqnum=3(171) window=[168..171]
+[ 42576.000 ms] SENDER   SEND DATA seq=3 (#171)
+[ 42822.000 ms] RECEIVER RECV DATA seq=0 in order -> deliver (expectedseqnum=1)
+[ 42822.000 ms] RECEIVER SEND ACK seq=0
+[ 42826.000 ms] RECEIVER RECV DATA seq=1 in order -> deliver (expectedseqnum=2)
+[ 42826.000 ms] RECEIVER SEND ACK seq=1
+[ 42830.000 ms] RECEIVER RECV DATA seq=2 in order -> deliver (expectedseqnum=3)
+[ 42830.000 ms] RECEIVER SEND ACK seq=2
+[ 42834.000 ms] RECEIVER RECV DATA seq=3 in order -> deliver (expectedseqnum=4)
+[ 42834.000 ms] RECEIVER SEND ACK seq=3
+[ 43072.000 ms] SENDER   RECV ACK seq=0 (cumulative up to #168)
+[ 43072.000 ms] SENDER   window slides: base=1(169) nextseqnum=4(172) window=[169..172]
+[ 43072.000 ms] SENDER   SEND DATA seq=4 (#172)
+[ 43076.000 ms] SENDER   RECV ACK seq=1 (cumulative up to #169)
+[ 43076.000 ms] SENDER   window slides: base=2(170) nextseqnum=5(173) window=[170..173]
+[ 43076.000 ms] SENDER   SEND DATA seq=5 (#173)
+[ 43080.000 ms] SENDER   RECV ACK seq=2 (cumulative up to #170)
+[ 43080.000 ms] SENDER   window slides: base=3(171) nextseqnum=6(174) window=[171..174]
+[ 43080.000 ms] SENDER   SEND DATA seq=6 (#174)
+[ 43084.000 ms] SENDER   RECV ACK seq=3 (cumulative up to #171)
+[ 43084.000 ms] SENDER   window slides: base=4(172) nextseqnum=7(175) window=[172..175]
+[ 43084.000 ms] SENDER   SEND DATA seq=7 (#175)
+[ 43326.000 ms] RECEIVER RECV DATA seq=4 in order -> deliver (expectedseqnum=5)
+[ 43326.000 ms] RECEIVER SEND ACK seq=4
+[ 43326.000 ms] CHANNEL  LOSS    ACK seq=4
+[ 43330.000 ms] RECEIVER RECV DATA seq=5 in order -> deliver (expectedseqnum=6)
+[ 43330.000 ms] RECEIVER SEND ACK seq=5
+[ 43334.000 ms] RECEIVER RECV DATA seq=6 in order -> deliver (expectedseqnum=7)
+[ 43334.000 ms] RECEIVER SEND ACK seq=6
+[ 43338.000 ms] RECEIVER RECV DATA seq=7 in order -> deliver (expectedseqnum=0)
+[ 43338.000 ms] RECEIVER SEND ACK seq=7
+[ 43580.000 ms] SENDER   RECV ACK seq=5 (cumulative up to #173)
+[ 43580.000 ms] SENDER   window slides: base=6(174) nextseqnum=0(176) window=[174..177]
+[ 43580.000 ms] SENDER   SEND DATA seq=0 (#176)
+[ 43580.000 ms] SENDER   SEND DATA seq=1 (#177)
+[ 43584.000 ms] SENDER   RECV ACK seq=6 (cumulative up to #174)
+[ 43584.000 ms] SENDER   window slides: base=7(175) nextseqnum=2(178) window=[175..178]
+[ 43584.000 ms] SENDER   SEND DATA seq=2 (#178)
+[ 43588.000 ms] SENDER   RECV ACK seq=7 (cumulative up to #175)
+[ 43588.000 ms] SENDER   window slides: base=0(176) nextseqnum=3(179) window=[176..179]
+[ 43588.000 ms] SENDER   SEND DATA seq=3 (#179)
+[ 43834.000 ms] RECEIVER RECV DATA seq=0 in order -> deliver (expectedseqnum=1)
+[ 43834.000 ms] RECEIVER SEND ACK seq=0
+[ 43838.000 ms] RECEIVER RECV DATA seq=1 in order -> deliver (expectedseqnum=2)
+[ 43838.000 ms] RECEIVER SEND ACK seq=1
+[ 43842.000 ms] RECEIVER RECV DATA seq=2 in order -> deliver (expectedseqnum=3)
+[ 43842.000 ms] RECEIVER SEND ACK seq=2
+[ 43846.000 ms] RECEIVER RECV DATA seq=3 in order -> deliver (expectedseqnum=4)
+[ 43846.000 ms] RECEIVER SEND ACK seq=3
+[ 44084.000 ms] SENDER   RECV ACK seq=0 (cumulative up to #176)
+[ 44084.000 ms] SENDER   window slides: base=1(177) nextseqnum=4(180) window=[177..180]
+[ 44084.000 ms] SENDER   SEND DATA seq=4 (#180)
+[ 44088.000 ms] SENDER   RECV ACK seq=1 (cumulative up to #177)
+[ 44088.000 ms] SENDER   window slides: base=2(178) nextseqnum=5(181) window=[178..181]
+[ 44088.000 ms] SENDER   SEND DATA seq=5 (#181)
+[ 44092.000 ms] SENDER   RECV ACK seq=2 (cumulative up to #178)
+[ 44092.000 ms] SENDER   window slides: base=3(179) nextseqnum=6(182) window=[179..182]
+[ 44092.000 ms] SENDER   SEND DATA seq=6 (#182)
+[ 44096.000 ms] SENDER   RECV ACK seq=3 (cumulative up to #179)
+[ 44096.000 ms] SENDER   window slides: base=4(180) nextseqnum=7(183) window=[180..183]
+[ 44096.000 ms] SENDER   SEND DATA seq=7 (#183)
+[ 44338.000 ms] RECEIVER RECV DATA seq=4 in order -> deliver (expectedseqnum=5)
+[ 44338.000 ms] RECEIVER SEND ACK seq=4
+[ 44342.000 ms] RECEIVER RECV DATA seq=5 in order -> deliver (expectedseqnum=6)
+[ 44342.000 ms] RECEIVER SEND ACK seq=5
+[ 44346.000 ms] RECEIVER RECV DATA seq=6 in order -> deliver (expectedseqnum=7)
+[ 44346.000 ms] RECEIVER SEND ACK seq=6
+[ 44350.000 ms] RECEIVER RECV DATA seq=7 in order -> deliver (expectedseqnum=0)
+[ 44350.000 ms] RECEIVER SEND ACK seq=7
+[ 44588.000 ms] SENDER   RECV ACK seq=4 (cumulative up to #180)
+[ 44588.000 ms] SENDER   window slides: base=5(181) nextseqnum=0(184) window=[181..184]
+[ 44588.000 ms] SENDER   SEND DATA seq=0 (#184)
+[ 44592.000 ms] SENDER   RECV ACK seq=5 (cumulative up to #181)
+[ 44592.000 ms] SENDER   window slides: base=6(182) nextseqnum=1(185) window=[182..185]
+[ 44592.000 ms] SENDER   SEND DATA seq=1 (#185)
+[ 44596.000 ms] SENDER   RECV ACK seq=6 (cumulative up to #182)
+[ 44596.000 ms] SENDER   window slides: base=7(183) nextseqnum=2(186) window=[183..186]
+[ 44596.000 ms] SENDER   SEND DATA seq=2 (#186)
+[ 44600.000 ms] SENDER   RECV ACK seq=7 (cumulative up to #183)
+[ 44600.000 ms] SENDER   window slides: base=0(184) nextseqnum=3(187) window=[184..187]
+[ 44600.000 ms] SENDER   SEND DATA seq=3 (#187)
+[ 44842.000 ms] RECEIVER RECV DATA seq=0 in order -> deliver (expectedseqnum=1)
+[ 44842.000 ms] RECEIVER SEND ACK seq=0
+[ 44846.000 ms] RECEIVER RECV DATA seq=1 in order -> deliver (expectedseqnum=2)
+[ 44846.000 ms] RECEIVER SEND ACK seq=1
+[ 44850.000 ms] RECEIVER RECV DATA seq=2 in order -> deliver (expectedseqnum=3)
+[ 44850.000 ms] RECEIVER SEND ACK seq=2
+[ 44854.000 ms] RECEIVER RECV DATA seq=3 in order -> deliver (expectedseqnum=4)
+[ 44854.000 ms] RECEIVER SEND ACK seq=3
+[ 45092.000 ms] SENDER   RECV ACK seq=0 (cumulative up to #184)
+[ 45092.000 ms] SENDER   window slides: base=1(185) nextseqnum=4(188) window=[185..188]
+[ 45092.000 ms] SENDER   SEND DATA seq=4 (#188)
+[ 45096.000 ms] SENDER   RECV ACK seq=1 (cumulative up to #185)
+[ 45096.000 ms] SENDER   window slides: base=2(186) nextseqnum=5(189) window=[186..189]
+[ 45096.000 ms] SENDER   SEND DATA seq=5 (#189)
+[ 45100.000 ms] SENDER   RECV ACK seq=2 (cumulative up to #186)
+[ 45100.000 ms] SENDER   window slides: base=3(187) nextseqnum=6(190) window=[187..190]
+[ 45100.000 ms] SENDER   SEND DATA seq=6 (#190)
+[ 45104.000 ms] SENDER   RECV ACK seq=3 (cumulative up to #187)
+[ 45104.000 ms] SENDER   window slides: base=4(188) nextseqnum=7(191) window=[188..191]
+[ 45104.000 ms] SENDER   SEND DATA seq=7 (#191)
+[ 45346.000 ms] RECEIVER RECV DATA seq=4 in order -> deliver (expectedseqnum=5)
+[ 45346.000 ms] RECEIVER SEND ACK seq=4
+[ 45350.000 ms] RECEIVER RECV DATA seq=5 in order -> deliver (expectedseqnum=6)
+[ 45350.000 ms] RECEIVER SEND ACK seq=5
+[ 45354.000 ms] RECEIVER RECV DATA seq=6 in order -> deliver (expectedseqnum=7)
+[ 45354.000 ms] RECEIVER SEND ACK seq=6
+[ 45358.000 ms] RECEIVER RECV DATA seq=7 in order -> deliver (expectedseqnum=0)
+[ 45358.000 ms] RECEIVER SEND ACK seq=7
+[ 45596.000 ms] SENDER   RECV ACK seq=4 (cumulative up to #188)
+[ 45596.000 ms] SENDER   window slides: base=5(189) nextseqnum=0(192) window=[189..192]
+[ 45596.000 ms] SENDER   SEND DATA seq=0 (#192)
+[ 45600.000 ms] SENDER   RECV ACK seq=5 (cumulative up to #189)
+[ 45600.000 ms] SENDER   window slides: base=6(190) nextseqnum=1(193) window=[190..193]
+[ 45600.000 ms] SENDER   SEND DATA seq=1 (#193)
+[ 45600.000 ms] CHANNEL  LOSS    DATA seq=1 (#193)
+[ 45604.000 ms] SENDER   RECV ACK seq=6 (cumulative up to #190)
+[ 45604.000 ms] SENDER   window slides: base=7(191) nextseqnum=2(194) window=[191..194]
+[ 45604.000 ms] SENDER   SEND DATA seq=2 (#194)
+[ 45608.000 ms] SENDER   RECV ACK seq=7 (cumulative up to #191)
+[ 45608.000 ms] SENDER   window slides: base=0(192) nextseqnum=3(195) window=[192..195]
+[ 45608.000 ms] SENDER   SEND DATA seq=3 (#195)
+[ 45608.000 ms] CHANNEL  LOSS    DATA seq=3 (#195)
+[ 45850.000 ms] RECEIVER RECV DATA seq=0 in order -> deliver (expectedseqnum=1)
+[ 45850.000 ms] RECEIVER SEND ACK seq=0
+[ 45858.000 ms] RECEIVER RECV DATA seq=2 out of order (expectedseqnum=1) -> discard
+[ 45858.000 ms] RECEIVER SEND ACK seq=0
+[ 46100.000 ms] SENDER   RECV ACK seq=0 (cumulative up to #192)
+[ 46100.000 ms] SENDER   window slides: base=1(193) nextseqnum=4(196) window=[193..196]
+[ 46100.000 ms] SENDER   SEND DATA seq=4 (#196)
+[ 46108.000 ms] SENDER   RECV ACK seq=0 (duplicate) -> ignored
+[ 46354.000 ms] RECEIVER RECV DATA seq=4 out of order (expectedseqnum=1) -> discard
+[ 46354.000 ms] RECEIVER SEND ACK seq=0
+[ 46604.000 ms] SENDER   RECV ACK seq=0 (duplicate) -> ignored
+[ 46700.000 ms] SENDER   TIMEOUT (oldest unACKed #193) -> go back, resend #193..#196
+[ 46700.000 ms] SENDER   RETRANSMIT DATA seq=1 (#193)
+[ 46700.000 ms] SENDER   RETRANSMIT DATA seq=2 (#194)
+[ 46700.000 ms] SENDER   RETRANSMIT DATA seq=3 (#195)
+[ 46700.000 ms] SENDER   RETRANSMIT DATA seq=4 (#196)
+[ 46954.000 ms] RECEIVER RECV DATA seq=1 in order -> deliver (expectedseqnum=2)
+[ 46954.000 ms] RECEIVER SEND ACK seq=1
+[ 46958.000 ms] RECEIVER RECV DATA seq=2 in order -> deliver (expectedseqnum=3)
+[ 46958.000 ms] RECEIVER SEND ACK seq=2
+[ 46962.000 ms] RECEIVER RECV DATA seq=3 in order -> deliver (expectedseqnum=4)
+[ 46962.000 ms] RECEIVER SEND ACK seq=3
+[ 46966.000 ms] RECEIVER RECV DATA seq=4 in order -> deliver (expectedseqnum=5)
+[ 46966.000 ms] RECEIVER SEND ACK seq=4
+[ 47204.000 ms] SENDER   RECV ACK seq=1 (cumulative up to #193)
+[ 47204.000 ms] SENDER   window slides: base=2(194) nextseqnum=5(197) window=[194..197]
+[ 47204.000 ms] SENDER   SEND DATA seq=5 (#197)
+[ 47208.000 ms] SENDER   RECV ACK seq=2 (cumulative up to #194)
+[ 47208.000 ms] SENDER   window slides: base=3(195) nextseqnum=6(198) window=[195..198]
+[ 47208.000 ms] SENDER   SEND DATA seq=6 (#198)
+[ 47208.000 ms] CHANNEL  LOSS    DATA seq=6 (#198)
+[ 47212.000 ms] SENDER   RECV ACK seq=3 (cumulative up to #195)
+[ 47212.000 ms] SENDER   window slides: base=4(196) nextseqnum=7(199) window=[196..199]
+[ 47212.000 ms] SENDER   SEND DATA seq=7 (#199)
+[ 47216.000 ms] SENDER   RECV ACK seq=4 (cumulative up to #196)
+[ 47216.000 ms] SENDER   window slides: base=5(197) nextseqnum=0(200) window=[197..200]
+[ 47458.000 ms] RECEIVER RECV DATA seq=5 in order -> deliver (expectedseqnum=6)
+[ 47458.000 ms] RECEIVER SEND ACK seq=5
+[ 47466.000 ms] RECEIVER RECV DATA seq=7 out of order (expectedseqnum=6) -> discard
+[ 47466.000 ms] RECEIVER SEND ACK seq=5
+[ 47466.000 ms] CHANNEL  LOSS    ACK seq=5
+[ 47708.000 ms] SENDER   RECV ACK seq=5 (cumulative up to #197)
+[ 47708.000 ms] SENDER   window slides: base=6(198) nextseqnum=0(200) window=[198..201]
+[ 48308.000 ms] SENDER   TIMEOUT (oldest unACKed #198) -> go back, resend #198..#199
+[ 48308.000 ms] SENDER   RETRANSMIT DATA seq=6 (#198)
+[ 48308.000 ms] SENDER   RETRANSMIT DATA seq=7 (#199)
+[ 48562.000 ms] RECEIVER RECV DATA seq=6 in order -> deliver (expectedseqnum=7)
+[ 48562.000 ms] RECEIVER SEND ACK seq=6
+[ 48566.000 ms] RECEIVER RECV DATA seq=7 in order -> deliver (expectedseqnum=0)
+[ 48566.000 ms] RECEIVER SEND ACK seq=7
+[ 48812.000 ms] SENDER   RECV ACK seq=6 (cumulative up to #198)
+[ 48812.000 ms] SENDER   window slides: base=7(199) nextseqnum=0(200) window=[199..202]
+[ 48816.000 ms] SENDER   RECV ACK seq=7 (cumulative up to #199)
+[ 48816.000 ms] SENDER   window slides: base=0(200) nextseqnum=0(200) window=[200..203]
+[ 48816.000 ms] SENDER   all packets acknowledged -> transfer complete

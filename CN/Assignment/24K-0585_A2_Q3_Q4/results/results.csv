@@ -1,0 +1,7 @@
+scenario,protocol,transmitted,retransmissions,delivered,time_ms,throughput_kbps,utilization,timeouts,in_order_correct
+A: Reliable,GBN,200,0,200,25212.0,63.462,0.03173,0,True
+A: Reliable,SR,200,0,200,25212.0,63.462,0.03173,0,True
+B: Loss 0.10,GBN,314,114,200,48816.0,32.776,0.01639,29,True
+B: Loss 0.10,SR,255,55,200,41380.0,38.666,0.01933,55,True
+C: Mixed errors,GBN,320,120,200,47226.257,33.879,0.01694,30,True
+C: Mixed errors,SR,305,105,200,41914.126,38.173,0.01909,105,True

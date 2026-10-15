@@ -1,0 +1,1523 @@
+[     0.000 ms] SENDER   SEND DATA seq=0 (#0)
+[     0.000 ms] CHANNEL  LOSS    DATA seq=0 (#0)
+[     0.000 ms] SENDER   SEND DATA seq=1 (#1)
+[     0.000 ms] SENDER   SEND DATA seq=2 (#2)
+[     0.000 ms] SENDER   SEND DATA seq=3 (#3)
+[   258.000 ms] RECEIVER RECV DATA seq=1 out of order -> BUFFER (rcv_base=0)
+[   258.000 ms] RECEIVER SEND ACK seq=1
+[   262.000 ms] RECEIVER RECV DATA seq=2 out of order -> BUFFER (rcv_base=0)
+[   262.000 ms] RECEIVER SEND ACK seq=2
+[   266.000 ms] RECEIVER RECV DATA seq=3 out of order -> BUFFER (rcv_base=0)
+[   266.000 ms] RECEIVER SEND ACK seq=3
+[   508.000 ms] SENDER   RECV ACK seq=1 (individual, #1 marked ACKed)
+[   512.000 ms] SENDER   RECV ACK seq=2 (individual, #2 marked ACKed)
+[   516.000 ms] SENDER   RECV ACK seq=3 (individual, #3 marked ACKed)
+[   604.000 ms] SENDER   TIMEOUT for #0 only -> selective retransmit
+[   604.000 ms] SENDER   RETRANSMIT DATA seq=0 (#0)
+[   604.000 ms] CHANNEL  LOSS    DATA seq=0 (#0)
+[  1208.000 ms] SENDER   TIMEOUT for #0 only -> selective retransmit
+[  1208.000 ms] SENDER   RETRANSMIT DATA seq=0 (#0)
+[  1462.000 ms] RECEIVER RECV DATA seq=0 = rcv_base -> accept
+[  1462.000 ms] RECEIVER SEND ACK seq=0
+[  1462.000 ms] RECEIVER deliver #0 to application
+[  1462.000 ms] RECEIVER deliver #1 to application
+[  1462.000 ms] RECEIVER deliver #2 to application
+[  1462.000 ms] RECEIVER deliver #3 to application
+[  1462.000 ms] RECEIVER window slides: rcv_base=4(4) window=[4..7]
+[  1712.000 ms] SENDER   RECV ACK seq=0 (individual, #0 marked ACKed)
+[  1712.000 ms] SENDER   window slides: send_base=4(4) nextseqnum=4(4) window=[4..7]
+[  1712.000 ms] SENDER   SEND DATA seq=4 (#4)
+[  1712.000 ms] SENDER   SEND DATA seq=5 (#5)
+[  1712.000 ms] SENDER   SEND DATA seq=6 (#6)
+[  1712.000 ms] SENDER   SEND DATA seq=7 (#7)
+[  1966.000 ms] RECEIVER RECV DATA seq=4 = rcv_base -> accept
+[  1966.000 ms] RECEIVER SEND ACK seq=4
+[  1966.000 ms] RECEIVER deliver #4 to application
+[  1966.000 ms] RECEIVER window slides: rcv_base=5(5) window=[5..8]
+[  1970.000 ms] RECEIVER RECV DATA seq=5 = rcv_base -> accept
+[  1970.000 ms] RECEIVER SEND ACK seq=5
+[  1970.000 ms] RECEIVER deliver #5 to application
+[  1970.000 ms] RECEIVER window slides: rcv_base=6(6) window=[6..9]
+[  1974.000 ms] RECEIVER RECV DATA seq=6 = rcv_base -> accept
+[  1974.000 ms] RECEIVER SEND ACK seq=6
+[  1974.000 ms] RECEIVER deliver #6 to application
+[  1974.000 ms] RECEIVER window slides: rcv_base=7(7) window=[7..10]
+[  1978.000 ms] RECEIVER RECV DATA seq=7 = rcv_base -> accept
+[  1978.000 ms] RECEIVER SEND ACK seq=7
+[  1978.000 ms] RECEIVER deliver #7 to application
+[  1978.000 ms] RECEIVER window slides: rcv_base=0(8) window=[8..11]
+[  2216.000 ms] SENDER   RECV ACK seq=4 (individual, #4 marked ACKed)
+[  2216.000 ms] SENDER   window slides: send_base=5(5) nextseqnum=0(8) window=[5..8]
+[  2216.000 ms] SENDER   SEND DATA seq=0 (#8)
+[  2220.000 ms] SENDER   RECV ACK seq=5 (individual, #5 marked ACKed)
+[  2220.000 ms] SENDER   window slides: send_base=6(6) nextseqnum=1(9) window=[6..9]
+[  2220.000 ms] SENDER   SEND DATA seq=1 (#9)
+[  2224.000 ms] SENDER   RECV ACK seq=6 (individual, #6 marked ACKed)
+[  2224.000 ms] SENDER   window slides: send_base=7(7) nextseqnum=2(10) window=[7..10]
+[  2224.000 ms] SENDER   SEND DATA seq=2 (#10)
+[  2228.000 ms] SENDER   RECV ACK seq=7 (individual, #7 marked ACKed)
+[  2228.000 ms] SENDER   window slides: send_base=0(8) nextseqnum=3(11) window=[8..11]
+[  2228.000 ms] SENDER   SEND DATA seq=3 (#11)
+[  2470.000 ms] RECEIVER RECV DATA seq=0 = rcv_base -> accept
+[  2470.000 ms] RECEIVER SEND ACK seq=0
+[  2470.000 ms] RECEIVER deliver #8 to application
+[  2470.000 ms] RECEIVER window slides: rcv_base=1(9) window=[9..12]
+[  2474.000 ms] RECEIVER RECV DATA seq=1 = rcv_base -> accept
+[  2474.000 ms] RECEIVER SEND ACK seq=1
+[  2474.000 ms] RECEIVER deliver #9 to application
+[  2474.000 ms] RECEIVER window slides: rcv_base=2(10) window=[10..13]
+[  2478.000 ms] RECEIVER RECV DATA seq=2 = rcv_base -> accept
+[  2478.000 ms] RECEIVER SEND ACK seq=2
+[  2478.000 ms] RECEIVER deliver #10 to application
+[  2478.000 ms] RECEIVER window slides: rcv_base=3(11) window=[11..14]
+[  2482.000 ms] RECEIVER RECV DATA seq=3 = rcv_base -> accept
+[  2482.000 ms] RECEIVER SEND ACK seq=3
+[  2482.000 ms] RECEIVER deliver #11 to application
+[  2482.000 ms] RECEIVER window slides: rcv_base=4(12) window=[12..15]
+[  2720.000 ms] SENDER   RECV ACK seq=0 (individual, #8 marked ACKed)
+[  2720.000 ms] SENDER   window slides: send_base=1(9) nextseqnum=4(12) window=[9..12]
+[  2720.000 ms] SENDER   SEND DATA seq=4 (#12)
+[  2724.000 ms] SENDER   RECV ACK seq=1 (individual, #9 marked ACKed)
+[  2724.000 ms] SENDER   window slides: send_base=2(10) nextseqnum=5(13) window=[10..13]
+[  2724.000 ms] SENDER   SEND DATA seq=5 (#13)
+[  2724.000 ms] CHANNEL  LOSS    DATA seq=5 (#13)
+[  2728.000 ms] SENDER   RECV ACK seq=2 (individual, #10 marked ACKed)
+[  2728.000 ms] SENDER   window slides: send_base=3(11) nextseqnum=6(14) window=[11..14]
+[  2728.000 ms] SENDER   SEND DATA seq=6 (#14)
+[  2732.000 ms] SENDER   RECV ACK seq=3 (individual, #11 marked ACKed)
+[  2732.000 ms] SENDER   window slides: send_base=4(12) nextseqnum=7(15) window=[12..15]
+[  2732.000 ms] SENDER   SEND DATA seq=7 (#15)
+[  2974.000 ms] RECEIVER RECV DATA seq=4 = rcv_base -> accept
+[  2974.000 ms] RECEIVER SEND ACK seq=4
+[  2974.000 ms] RECEIVER deliver #12 to application
+[  2974.000 ms] RECEIVER window slides: rcv_base=5(13) window=[13..16]
+[  2982.000 ms] RECEIVER RECV DATA seq=6 out of order -> BUFFER (rcv_base=5)
+[  2982.000 ms] RECEIVER SEND ACK seq=6
+[  2982.000 ms] CHANNEL  LOSS    ACK seq=6
+[  2986.000 ms] RECEIVER RECV DATA seq=7 out of order -> BUFFER (rcv_base=5)
+[  2986.000 ms] RECEIVER SEND ACK seq=7
+[  3224.000 ms] SENDER   RECV ACK seq=4 (individual, #12 marked ACKed)
+[  3224.000 ms] SENDER   window slides: send_base=5(13) nextseqnum=0(16) window=[13..16]
+[  3224.000 ms] SENDER   SEND DATA seq=0 (#16)
+[  3236.000 ms] SENDER   RECV ACK seq=7 (individual, #15 marked ACKed)
+[  3328.000 ms] SENDER   TIMEOUT for #13 only -> selective retransmit
+[  3328.000 ms] SENDER   RETRANSMIT DATA seq=5 (#13)
+[  3328.000 ms] CHANNEL  LOSS    DATA seq=5 (#13)
+[  3332.000 ms] SENDER   TIMEOUT for #14 only -> selective retransmit
+[  3332.000 ms] SENDER   RETRANSMIT DATA seq=6 (#14)
+[  3478.000 ms] RECEIVER RECV DATA seq=0 out of order -> BUFFER (rcv_base=5)
+[  3478.000 ms] RECEIVER SEND ACK seq=0
+[  3586.000 ms] RECEIVER RECV DATA seq=6 duplicate of buffered packet -> re-ACK
+[  3586.000 ms] RECEIVER SEND ACK seq=6
+[  3586.000 ms] CHANNEL  LOSS    ACK seq=6
+[  3728.000 ms] SENDER   RECV ACK seq=0 (individual, #16 marked ACKed)
+[  3932.000 ms] SENDER   TIMEOUT for #13 only -> selective retransmit
+[  3932.000 ms] SENDER   RETRANSMIT DATA seq=5 (#13)
+[  3936.000 ms] SENDER   TIMEOUT for #14 only -> selective retransmit
+[  3936.000 ms] SENDER   RETRANSMIT DATA seq=6 (#14)
+[  3936.000 ms] CHANNEL  LOSS    DATA seq=6 (#14)
+[  4186.000 ms] RECEIVER RECV DATA seq=5 = rcv_base -> accept
+[  4186.000 ms] RECEIVER SEND ACK seq=5
+[  4186.000 ms] RECEIVER deliver #13 to application
+[  4186.000 ms] RECEIVER deliver #14 to application
+[  4186.000 ms] RECEIVER deliver #15 to application
+[  4186.000 ms] RECEIVER deliver #16 to application
+[  4186.000 ms] RECEIVER window slides: rcv_base=1(17) window=[17..20]
+[  4436.000 ms] SENDER   RECV ACK seq=5 (individual, #13 marked ACKed)
+[  4436.000 ms] SENDER   window slides: send_base=6(14) nextseqnum=1(17) window=[14..17]
+[  4436.000 ms] SENDER   SEND DATA seq=1 (#17)
+[  4540.000 ms] SENDER   TIMEOUT for #14 only -> selective retransmit
+[  4540.000 ms] SENDER   RETRANSMIT DATA seq=6 (#14)
+[  4690.000 ms] RECEIVER RECV DATA seq=1 = rcv_base -> accept
+[  4690.000 ms] RECEIVER SEND ACK seq=1
+[  4690.000 ms] RECEIVER deliver #17 to application
+[  4690.000 ms] RECEIVER window slides: rcv_base=2(18) window=[18..21]
+[  4794.000 ms] RECEIVER RECV DATA seq=6 already delivered (old window) -> re-ACK
+[  4794.000 ms] RECEIVER SEND ACK seq=6
+[  4940.000 ms] SENDER   RECV ACK seq=1 (individual, #17 marked ACKed)
+[  5044.000 ms] SENDER   RECV ACK seq=6 (individual, #14 marked ACKed)
+[  5044.000 ms] SENDER   window slides: send_base=2(18) nextseqnum=2(18) window=[18..21]
+[  5044.000 ms] SENDER   SEND DATA seq=2 (#18)
+[  5044.000 ms] SENDER   SEND DATA seq=3 (#19)
+[  5044.000 ms] SENDER   SEND DATA seq=4 (#20)
+[  5044.000 ms] SENDER   SEND DATA seq=5 (#21)
+[  5298.000 ms] RECEIVER RECV DATA seq=2 = rcv_base -> accept
+[  5298.000 ms] RECEIVER SEND ACK seq=2
+[  5298.000 ms] RECEIVER deliver #18 to application
+[  5298.000 ms] RECEIVER window slides: rcv_base=3(19) window=[19..22]
+[  5302.000 ms] RECEIVER RECV DATA seq=3 = rcv_base -> accept
+[  5302.000 ms] RECEIVER SEND ACK seq=3
+[  5302.000 ms] RECEIVER deliver #19 to application
+[  5302.000 ms] RECEIVER window slides: rcv_base=4(20) window=[20..23]
+[  5306.000 ms] RECEIVER RECV DATA seq=4 = rcv_base -> accept
+[  5306.000 ms] RECEIVER SEND ACK seq=4
+[  5306.000 ms] RECEIVER deliver #20 to application
+[  5306.000 ms] RECEIVER window slides: rcv_base=5(21) window=[21..24]
+[  5310.000 ms] RECEIVER RECV DATA seq=5 = rcv_base -> accept
+[  5310.000 ms] RECEIVER SEND ACK seq=5
+[  5310.000 ms] RECEIVER deliver #21 to application
+[  5310.000 ms] RECEIVER window slides: rcv_base=6(22) window=[22..25]
+[  5548.000 ms] SENDER   RECV ACK seq=2 (individual, #18 marked ACKed)
+[  5548.000 ms] SENDER   window slides: send_base=3(19) nextseqnum=6(22) window=[19..22]
+[  5548.000 ms] SENDER   SEND DATA seq=6 (#22)
+[  5552.000 ms] SENDER   RECV ACK seq=3 (individual, #19 marked ACKed)
+[  5552.000 ms] SENDER   window slides: send_base=4(20) nextseqnum=7(23) window=[20..23]
+[  5552.000 ms] SENDER   SEND DATA seq=7 (#23)
+[  5556.000 ms] SENDER   RECV ACK seq=4 (individual, #20 marked ACKed)
+[  5556.000 ms] SENDER   window slides: send_base=5(21) nextseqnum=0(24) window=[21..24]
+[  5556.000 ms] SENDER   SEND DATA seq=0 (#24)
+[  5560.000 ms] SENDER   RECV ACK seq=5 (individual, #21 marked ACKed)
+[  5560.000 ms] SENDER   window slides: send_base=6(22) nextseqnum=1(25) window=[22..25]
+[  5560.000 ms] SENDER   SEND DATA seq=1 (#25)
+[  5802.000 ms] RECEIVER RECV DATA seq=6 = rcv_base -> accept
+[  5802.000 ms] RECEIVER SEND ACK seq=6
+[  5802.000 ms] RECEIVER deliver #22 to application
+[  5802.000 ms] RECEIVER window slides: rcv_base=7(23) window=[23..26]
+[  5806.000 ms] RECEIVER RECV DATA seq=7 = rcv_base -> accept
+[  5806.000 ms] RECEIVER SEND ACK seq=7
+[  5806.000 ms] RECEIVER deliver #23 to application
+[  5806.000 ms] RECEIVER window slides: rcv_base=0(24) window=[24..27]
+[  5810.000 ms] RECEIVER RECV DATA seq=0 = rcv_base -> accept
+[  5810.000 ms] RECEIVER SEND ACK seq=0
+[  5810.000 ms] RECEIVER deliver #24 to application
+[  5810.000 ms] RECEIVER window slides: rcv_base=1(25) window=[25..28]
+[  5814.000 ms] RECEIVER RECV DATA seq=1 = rcv_base -> accept
+[  5814.000 ms] RECEIVER SEND ACK seq=1
+[  5814.000 ms] RECEIVER deliver #25 to application
+[  5814.000 ms] RECEIVER window slides: rcv_base=2(26) window=[26..29]
+[  6052.000 ms] SENDER   RECV ACK seq=6 (individual, #22 marked ACKed)
+[  6052.000 ms] SENDER   window slides: send_base=7(23) nextseqnum=2(26) window=[23..26]
+[  6052.000 ms] SENDER   SEND DATA seq=2 (#26)
+[  6056.000 ms] SENDER   RECV ACK seq=7 (individual, #23 marked ACKed)
+[  6056.000 ms] SENDER   window slides: send_base=0(24) nextseqnum=3(27) window=[24..27]
+[  6056.000 ms] SENDER   SEND DATA seq=3 (#27)
+[  6060.000 ms] SENDER   RECV ACK seq=0 (individual, #24 marked ACKed)
+[  6060.000 ms] SENDER   window slides: send_base=1(25) nextseqnum=4(28) window=[25..28]
+[  6060.000 ms] SENDER   SEND DATA seq=4 (#28)
+[  6064.000 ms] SENDER   RECV ACK seq=1 (individual, #25 marked ACKed)
+[  6064.000 ms] SENDER   window slides: send_base=2(26) nextseqnum=5(29) window=[26..29]
+[  6064.000 ms] SENDER   SEND DATA seq=5 (#29)
+[  6306.000 ms] RECEIVER RECV DATA seq=2 = rcv_base -> accept
+[  6306.000 ms] RECEIVER SEND ACK seq=2
+[  6306.000 ms] RECEIVER deliver #26 to application
+[  6306.000 ms] RECEIVER window slides: rcv_base=3(27) window=[27..30]
+[  6310.000 ms] RECEIVER RECV DATA seq=3 = rcv_base -> accept
+[  6310.000 ms] RECEIVER SEND ACK seq=3
+[  6310.000 ms] RECEIVER deliver #27 to application
+[  6310.000 ms] RECEIVER window slides: rcv_base=4(28) window=[28..31]
+[  6314.000 ms] RECEIVER RECV DATA seq=4 = rcv_base -> accept
+[  6314.000 ms] RECEIVER SEND ACK seq=4
+[  6314.000 ms] RECEIVER deliver #28 to application
+[  6314.000 ms] RECEIVER window slides: rcv_base=5(29) window=[29..32]
+[  6318.000 ms] RECEIVER RECV DATA seq=5 = rcv_base -> accept
+[  6318.000 ms] RECEIVER SEND ACK seq=5
+[  6318.000 ms] CHANNEL  LOSS    ACK seq=5
+[  6318.000 ms] RECEIVER deliver #29 to application
+[  6318.000 ms] RECEIVER window slides: rcv_base=6(30) window=[30..33]
+[  6556.000 ms] SENDER   RECV ACK seq=2 (individual, #26 marked ACKed)
+[  6556.000 ms] SENDER   window slides: send_base=3(27) nextseqnum=6(30) window=[27..30]
+[  6556.000 ms] SENDER   SEND DATA seq=6 (#30)
+[  6560.000 ms] SENDER   RECV ACK seq=3 (individual, #27 marked ACKed)
+[  6560.000 ms] SENDER   window slides: send_base=4(28) nextseqnum=7(31) window=[28..31]
+[  6560.000 ms] SENDER   SEND DATA seq=7 (#31)
+[  6560.000 ms] CHANNEL  LOSS    DATA seq=7 (#31)
+[  6564.000 ms] SENDER   RECV ACK seq=4 (individual, #28 marked ACKed)
+[  6564.000 ms] SENDER   window slides: send_base=5(29) nextseqnum=0(32) window=[29..32]
+[  6564.000 ms] SENDER   SEND DATA seq=0 (#32)
+[  6668.000 ms] SENDER   TIMEOUT for #29 only -> selective retransmit
+[  6668.000 ms] SENDER   RETRANSMIT DATA seq=5 (#29)
+[  6810.000 ms] RECEIVER RECV DATA seq=6 = rcv_base -> accept
+[  6810.000 ms] RECEIVER SEND ACK seq=6
+[  6810.000 ms] RECEIVER deliver #30 to application
+[  6810.000 ms] RECEIVER window slides: rcv_base=7(31) window=[31..34]
+[  6818.000 ms] RECEIVER RECV DATA seq=0 out of order -> BUFFER (rcv_base=7)
+[  6818.000 ms] RECEIVER SEND ACK seq=0
+[  6922.000 ms] RECEIVER RECV DATA seq=5 already delivered (old window) -> re-ACK
+[  6922.000 ms] RECEIVER SEND ACK seq=5
+[  7060.000 ms] SENDER   RECV ACK seq=6 (individual, #30 marked ACKed)
+[  7068.000 ms] SENDER   RECV ACK seq=0 (individual, #32 marked ACKed)
+[  7164.000 ms] SENDER   TIMEOUT for #31 only -> selective retransmit
+[  7164.000 ms] SENDER   RETRANSMIT DATA seq=7 (#31)
+[  7172.000 ms] SENDER   RECV ACK seq=5 (individual, #29 marked ACKed)
+[  7172.000 ms] SENDER   window slides: send_base=7(31) nextseqnum=1(33) window=[31..34]
+[  7172.000 ms] SENDER   SEND DATA seq=1 (#33)
+[  7172.000 ms] SENDER   SEND DATA seq=2 (#34)
+[  7418.000 ms] RECEIVER RECV DATA seq=7 = rcv_base -> accept
+[  7418.000 ms] RECEIVER SEND ACK seq=7
+[  7418.000 ms] RECEIVER deliver #31 to application
+[  7418.000 ms] RECEIVER deliver #32 to application
+[  7418.000 ms] RECEIVER window slides: rcv_base=1(33) window=[33..36]
+[  7426.000 ms] RECEIVER RECV DATA seq=1 = rcv_base -> accept
+[  7426.000 ms] RECEIVER SEND ACK seq=1
+[  7426.000 ms] RECEIVER deliver #33 to application
+[  7426.000 ms] RECEIVER window slides: rcv_base=2(34) window=[34..37]
+[  7430.000 ms] RECEIVER RECV DATA seq=2 = rcv_base -> accept
+[  7430.000 ms] RECEIVER SEND ACK seq=2
+[  7430.000 ms] CHANNEL  LOSS    ACK seq=2
+[  7430.000 ms] RECEIVER deliver #34 to application
+[  7430.000 ms] RECEIVER window slides: rcv_base=3(35) window=[35..38]
+[  7668.000 ms] SENDER   RECV ACK seq=7 (individual, #31 marked ACKed)
+[  7668.000 ms] SENDER   window slides: send_base=1(33) nextseqnum=3(35) window=[33..36]
+[  7668.000 ms] SENDER   SEND DATA seq=3 (#35)
+[  7668.000 ms] SENDER   SEND DATA seq=4 (#36)
+[  7668.000 ms] CHANNEL  LOSS    DATA seq=4 (#36)
+[  7676.000 ms] SENDER   RECV ACK seq=1 (individual, #33 marked ACKed)
+[  7676.000 ms] SENDER   window slides: send_base=2(34) nextseqnum=5(37) window=[34..37]
+[  7676.000 ms] SENDER   SEND DATA seq=5 (#37)
+[  7676.000 ms] CHANNEL  LOSS    DATA seq=5 (#37)
+[  7780.000 ms] SENDER   TIMEOUT for #34 only -> selective retransmit
+[  7780.000 ms] SENDER   RETRANSMIT DATA seq=2 (#34)
+[  7922.000 ms] RECEIVER RECV DATA seq=3 = rcv_base -> accept
+[  7922.000 ms] RECEIVER SEND ACK seq=3
+[  7922.000 ms] RECEIVER deliver #35 to application
+[  7922.000 ms] RECEIVER window slides: rcv_base=4(36) window=[36..39]
+[  8034.000 ms] RECEIVER RECV DATA seq=2 already delivered (old window) -> re-ACK
+[  8034.000 ms] RECEIVER SEND ACK seq=2
+[  8172.000 ms] SENDER   RECV ACK seq=3 (individual, #35 marked ACKed)
+[  8276.000 ms] SENDER   TIMEOUT for #36 only -> selective retransmit
+[  8276.000 ms] SENDER   RETRANSMIT DATA seq=4 (#36)
+[  8280.000 ms] SENDER   TIMEOUT for #37 only -> selective retransmit
+[  8280.000 ms] SENDER   RETRANSMIT DATA seq=5 (#37)
+[  8284.000 ms] SENDER   RECV ACK seq=2 (individual, #34 marked ACKed)
+[  8284.000 ms] SENDER   window slides: send_base=4(36) nextseqnum=6(38) window=[36..39]
+[  8284.000 ms] SENDER   SEND DATA seq=6 (#38)
+[  8284.000 ms] SENDER   SEND DATA seq=7 (#39)
+[  8530.000 ms] RECEIVER RECV DATA seq=4 = rcv_base -> accept
+[  8530.000 ms] RECEIVER SEND ACK seq=4
+[  8530.000 ms] CHANNEL  LOSS    ACK seq=4
+[  8530.000 ms] RECEIVER deliver #36 to application
+[  8530.000 ms] RECEIVER window slides: rcv_base=5(37) window=[37..40]
+[  8534.000 ms] RECEIVER RECV DATA seq=5 = rcv_base -> accept
+[  8534.000 ms] RECEIVER SEND ACK seq=5
+[  8534.000 ms] RECEIVER deliver #37 to application
+[  8534.000 ms] RECEIVER window slides: rcv_base=6(38) window=[38..41]
+[  8538.000 ms] RECEIVER RECV DATA seq=6 = rcv_base -> accept
+[  8538.000 ms] RECEIVER SEND ACK seq=6
+[  8538.000 ms] RECEIVER deliver #38 to application
+[  8538.000 ms] RECEIVER window slides: rcv_base=7(39) window=[39..42]
+[  8542.000 ms] RECEIVER RECV DATA seq=7 = rcv_base -> accept
+[  8542.000 ms] RECEIVER SEND ACK seq=7
+[  8542.000 ms] RECEIVER deliver #39 to application
+[  8542.000 ms] RECEIVER window slides: rcv_base=0(40) window=[40..43]
+[  8784.000 ms] SENDER   RECV ACK seq=5 (individual, #37 marked ACKed)
+[  8788.000 ms] SENDER   RECV ACK seq=6 (individual, #38 marked ACKed)
+[  8792.000 ms] SENDER   RECV ACK seq=7 (individual, #39 marked ACKed)
+[  8880.000 ms] SENDER   TIMEOUT for #36 only -> selective retransmit
+[  8880.000 ms] SENDER   RETRANSMIT DATA seq=4 (#36)
+[  9134.000 ms] RECEIVER RECV DATA seq=4 already delivered (old window) -> re-ACK
+[  9134.000 ms] RECEIVER SEND ACK seq=4
+[  9384.000 ms] SENDER   RECV ACK seq=4 (individual, #36 marked ACKed)
+[  9384.000 ms] SENDER   window slides: send_base=0(40) nextseqnum=0(40) window=[40..43]
+[  9384.000 ms] SENDER   SEND DATA seq=0 (#40)
+[  9384.000 ms] SENDER   SEND DATA seq=1 (#41)
+[  9384.000 ms] CHANNEL  LOSS    DATA seq=1 (#41)
+[  9384.000 ms] SENDER   SEND DATA seq=2 (#42)
+[  9384.000 ms] SENDER   SEND DATA seq=3 (#43)
+[  9638.000 ms] RECEIVER RECV DATA seq=0 = rcv_base -> accept
+[  9638.000 ms] RECEIVER SEND ACK seq=0
+[  9638.000 ms] RECEIVER deliver #40 to application
+[  9638.000 ms] RECEIVER window slides: rcv_base=1(41) window=[41..44]
+[  9646.000 ms] RECEIVER RECV DATA seq=2 out of order -> BUFFER (rcv_base=1)
+[  9646.000 ms] RECEIVER SEND ACK seq=2
+[  9650.000 ms] RECEIVER RECV DATA seq=3 out of order -> BUFFER (rcv_base=1)
+[  9650.000 ms] RECEIVER SEND ACK seq=3
+[  9888.000 ms] SENDER   RECV ACK seq=0 (individual, #40 marked ACKed)
+[  9888.000 ms] SENDER   window slides: send_base=1(41) nextseqnum=4(44) window=[41..44]
+[  9888.000 ms] SENDER   SEND DATA seq=4 (#44)
+[  9896.000 ms] SENDER   RECV ACK seq=2 (individual, #42 marked ACKed)
+[  9900.000 ms] SENDER   RECV ACK seq=3 (individual, #43 marked ACKed)
+[  9992.000 ms] SENDER   TIMEOUT for #41 only -> selective retransmit
+[  9992.000 ms] SENDER   RETRANSMIT DATA seq=1 (#41)
+[ 10142.000 ms] RECEIVER RECV DATA seq=4 out of order -> BUFFER (rcv_base=1)
+[ 10142.000 ms] RECEIVER SEND ACK seq=4
+[ 10246.000 ms] RECEIVER RECV DATA seq=1 = rcv_base -> accept
+[ 10246.000 ms] RECEIVER SEND ACK seq=1
+[ 10246.000 ms] RECEIVER deliver #41 to application
+[ 10246.000 ms] RECEIVER deliver #42 to application
+[ 10246.000 ms] RECEIVER deliver #43 to application
+[ 10246.000 ms] RECEIVER deliver #44 to application
+[ 10246.000 ms] RECEIVER window slides: rcv_base=5(45) window=[45..48]
+[ 10392.000 ms] SENDER   RECV ACK seq=4 (individual, #44 marked ACKed)
+[ 10496.000 ms] SENDER   RECV ACK seq=1 (individual, #41 marked ACKed)
+[ 10496.000 ms] SENDER   window slides: send_base=5(45) nextseqnum=5(45) window=[45..48]
+[ 10496.000 ms] SENDER   SEND DATA seq=5 (#45)
+[ 10496.000 ms] SENDER   SEND DATA seq=6 (#46)
+[ 10496.000 ms] SENDER   SEND DATA seq=7 (#47)
+[ 10496.000 ms] SENDER   SEND DATA seq=0 (#48)
+[ 10750.000 ms] RECEIVER RECV DATA seq=5 = rcv_base -> accept
+[ 10750.000 ms] RECEIVER SEND ACK seq=5
+[ 10750.000 ms] RECEIVER deliver #45 to application
+[ 10750.000 ms] RECEIVER window slides: rcv_base=6(46) window=[46..49]
+[ 10754.000 ms] RECEIVER RECV DATA seq=6 = rcv_base -> accept
+[ 10754.000 ms] RECEIVER SEND ACK seq=6
+[ 10754.000 ms] RECEIVER deliver #46 to application
+[ 10754.000 ms] RECEIVER window slides: rcv_base=7(47) window=[47..50]
+[ 10758.000 ms] RECEIVER RECV DATA seq=7 = rcv_base -> accept
+[ 10758.000 ms] RECEIVER SEND ACK seq=7
+[ 10758.000 ms] RECEIVER deliver #47 to application
+[ 10758.000 ms] RECEIVER window slides: rcv_base=0(48) window=[48..51]
+[ 10762.000 ms] RECEIVER RECV DATA seq=0 = rcv_base -> accept
+[ 10762.000 ms] RECEIVER SEND ACK seq=0
+[ 10762.000 ms] RECEIVER deliver #48 to application
+[ 10762.000 ms] RECEIVER window slides: rcv_base=1(49) window=[49..52]
+[ 11000.000 ms] SENDER   RECV ACK seq=5 (individual, #45 marked ACKed)
+[ 11000.000 ms] SENDER   window slides: send_base=6(46) nextseqnum=1(49) window=[46..49]
+[ 11000.000 ms] SENDER   SEND DATA seq=1 (#49)
+[ 11004.000 ms] SENDER   RECV ACK seq=6 (individual, #46 marked ACKed)
+[ 11004.000 ms] SENDER   window slides: send_base=7(47) nextseqnum=2(50) window=[47..50]
+[ 11004.000 ms] SENDER   SEND DATA seq=2 (#50)
+[ 11008.000 ms] SENDER   RECV ACK seq=7 (individual, #47 marked ACKed)
+[ 11008.000 ms] SENDER   window slides: send_base=0(48) nextseqnum=3(51) window=[48..51]
+[ 11008.000 ms] SENDER   SEND DATA seq=3 (#51)
+[ 11008.000 ms] CHANNEL  LOSS    DATA seq=3 (#51)
+[ 11012.000 ms] SENDER   RECV ACK seq=0 (individual, #48 marked ACKed)
+[ 11012.000 ms] SENDER   window slides: send_base=1(49) nextseqnum=4(52) window=[49..52]
+[ 11012.000 ms] SENDER   SEND DATA seq=4 (#52)
+[ 11254.000 ms] RECEIVER RECV DATA seq=1 = rcv_base -> accept
+[ 11254.000 ms] RECEIVER SEND ACK seq=1
+[ 11254.000 ms] RECEIVER deliver #49 to application
+[ 11254.000 ms] RECEIVER window slides: rcv_base=2(50) window=[50..53]
+[ 11258.000 ms] RECEIVER RECV DATA seq=2 = rcv_base -> accept
+[ 11258.000 ms] RECEIVER SEND ACK seq=2
+[ 11258.000 ms] RECEIVER deliver #50 to application
+[ 11258.000 ms] RECEIVER window slides: rcv_base=3(51) window=[51..54]
+[ 11266.000 ms] RECEIVER RECV DATA seq=4 out of order -> BUFFER (rcv_base=3)
+[ 11266.000 ms] RECEIVER SEND ACK seq=4
+[ 11504.000 ms] SENDER   RECV ACK seq=1 (individual, #49 marked ACKed)
+[ 11504.000 ms] SENDER   window slides: send_base=2(50) nextseqnum=5(53) window=[50..53]
+[ 11504.000 ms] SENDER   SEND DATA seq=5 (#53)
+[ 11508.000 ms] SENDER   RECV ACK seq=2 (individual, #50 marked ACKed)
+[ 11508.000 ms] SENDER   window slides: send_base=3(51) nextseqnum=6(54) window=[51..54]
+[ 11508.000 ms] SENDER   SEND DATA seq=6 (#54)
+[ 11516.000 ms] SENDER   RECV ACK seq=4 (individual, #52 marked ACKed)
+[ 11612.000 ms] SENDER   TIMEOUT for #51 only -> selective retransmit
+[ 11612.000 ms] SENDER   RETRANSMIT DATA seq=3 (#51)
+[ 11758.000 ms] RECEIVER RECV DATA seq=5 out of order -> BUFFER (rcv_base=3)
+[ 11758.000 ms] RECEIVER SEND ACK seq=5
+[ 11762.000 ms] RECEIVER RECV DATA seq=6 out of order -> BUFFER (rcv_base=3)
+[ 11762.000 ms] RECEIVER SEND ACK seq=6
+[ 11866.000 ms] RECEIVER RECV DATA seq=3 = rcv_base -> accept
+[ 11866.000 ms] RECEIVER SEND ACK seq=3
+[ 11866.000 ms] RECEIVER deliver #51 to application
+[ 11866.000 ms] RECEIVER deliver #52 to application
+[ 11866.000 ms] RECEIVER deliver #53 to application
+[ 11866.000 ms] RECEIVER deliver #54 to application
+[ 11866.000 ms] RECEIVER window slides: rcv_base=7(55) window=[55..58]
+[ 12008.000 ms] SENDER   RECV ACK seq=5 (individual, #53 marked ACKed)
+[ 12012.000 ms] SENDER   RECV ACK seq=6 (individual, #54 marked ACKed)
+[ 12116.000 ms] SENDER   RECV ACK seq=3 (individual, #51 marked ACKed)
+[ 12116.000 ms] SENDER   window slides: send_base=7(55) nextseqnum=7(55) window=[55..58]
+[ 12116.000 ms] SENDER   SEND DATA seq=7 (#55)
+[ 12116.000 ms] SENDER   SEND DATA seq=0 (#56)
+[ 12116.000 ms] CHANNEL  LOSS    DATA seq=0 (#56)
+[ 12116.000 ms] SENDER   SEND DATA seq=1 (#57)
+[ 12116.000 ms] SENDER   SEND DATA seq=2 (#58)
+[ 12370.000 ms] RECEIVER RECV DATA seq=7 = rcv_base -> accept
+[ 12370.000 ms] RECEIVER SEND ACK seq=7
+[ 12370.000 ms] RECEIVER deliver #55 to application
+[ 12370.000 ms] RECEIVER window slides: rcv_base=0(56) window=[56..59]
+[ 12378.000 ms] RECEIVER RECV DATA seq=1 out of order -> BUFFER (rcv_base=0)
+[ 12378.000 ms] RECEIVER SEND ACK seq=1
+[ 12382.000 ms] RECEIVER RECV DATA seq=2 out of order -> BUFFER (rcv_base=0)
+[ 12382.000 ms] RECEIVER SEND ACK seq=2
+[ 12620.000 ms] SENDER   RECV ACK seq=7 (individual, #55 marked ACKed)
+[ 12620.000 ms] SENDER   window slides: send_base=0(56) nextseqnum=3(59) window=[56..59]
+[ 12620.000 ms] SENDER   SEND DATA seq=3 (#59)
+[ 12628.000 ms] SENDER   RECV ACK seq=1 (individual, #57 marked ACKed)
+[ 12632.000 ms] SENDER   RECV ACK seq=2 (individual, #58 marked ACKed)
+[ 12724.000 ms] SENDER   TIMEOUT for #56 only -> selective retransmit
+[ 12724.000 ms] SENDER   RETRANSMIT DATA seq=0 (#56)
+[ 12874.000 ms] RECEIVER RECV DATA seq=3 out of order -> BUFFER (rcv_base=0)
+[ 12874.000 ms] RECEIVER SEND ACK seq=3
+[ 12978.000 ms] RECEIVER RECV DATA seq=0 = rcv_base -> accept
+[ 12978.000 ms] RECEIVER SEND ACK seq=0
+[ 12978.000 ms] RECEIVER deliver #56 to application
+[ 12978.000 ms] RECEIVER deliver #57 to application
+[ 12978.000 ms] RECEIVER deliver #58 to application
+[ 12978.000 ms] RECEIVER deliver #59 to application
+[ 12978.000 ms] RECEIVER window slides: rcv_base=4(60) window=[60..63]
+[ 13124.000 ms] SENDER   RECV ACK seq=3 (individual, #59 marked ACKed)
+[ 13228.000 ms] SENDER   RECV ACK seq=0 (individual, #56 marked ACKed)
+[ 13228.000 ms] SENDER   window slides: send_base=4(60) nextseqnum=4(60) window=[60..63]
+[ 13228.000 ms] SENDER   SEND DATA seq=4 (#60)
+[ 13228.000 ms] SENDER   SEND DATA seq=5 (#61)
+[ 13228.000 ms] SENDER   SEND DATA seq=6 (#62)
+[ 13228.000 ms] SENDER   SEND DATA seq=7 (#63)
+[ 13228.000 ms] CHANNEL  LOSS    DATA seq=7 (#63)
+[ 13482.000 ms] RECEIVER RECV DATA seq=4 = rcv_base -> accept
+[ 13482.000 ms] RECEIVER SEND ACK seq=4
+[ 13482.000 ms] RECEIVER deliver #60 to application
+[ 13482.000 ms] RECEIVER window slides: rcv_base=5(61) window=[61..64]
+[ 13486.000 ms] RECEIVER RECV DATA seq=5 = rcv_base -> accept
+[ 13486.000 ms] RECEIVER SEND ACK seq=5
+[ 13486.000 ms] RECEIVER deliver #61 to application
+[ 13486.000 ms] RECEIVER window slides: rcv_base=6(62) window=[62..65]
+[ 13490.000 ms] RECEIVER RECV DATA seq=6 = rcv_base -> accept
+[ 13490.000 ms] RECEIVER SEND ACK seq=6
+[ 13490.000 ms] RECEIVER deliver #62 to application
+[ 13490.000 ms] RECEIVER window slides: rcv_base=7(63) window=[63..66]
+[ 13732.000 ms] SENDER   RECV ACK seq=4 (individual, #60 marked ACKed)
+[ 13732.000 ms] SENDER   window slides: send_base=5(61) nextseqnum=0(64) window=[61..64]
+[ 13732.000 ms] SENDER   SEND DATA seq=0 (#64)
+[ 13732.000 ms] CHANNEL  LOSS    DATA seq=0 (#64)
+[ 13736.000 ms] SENDER   RECV ACK seq=5 (individual, #61 marked ACKed)
+[ 13736.000 ms] SENDER   window slides: send_base=6(62) nextseqnum=1(65) window=[62..65]
+[ 13736.000 ms] SENDER   SEND DATA seq=1 (#65)
+[ 13740.000 ms] SENDER   RECV ACK seq=6 (individual, #62 marked ACKed)
+[ 13740.000 ms] SENDER   window slides: send_base=7(63) nextseqnum=2(66) window=[63..66]
+[ 13740.000 ms] SENDER   SEND DATA seq=2 (#66)
+[ 13844.000 ms] SENDER   TIMEOUT for #63 only -> selective retransmit
+[ 13844.000 ms] SENDER   RETRANSMIT DATA seq=7 (#63)
+[ 13844.000 ms] CHANNEL  LOSS    DATA seq=7 (#63)
+[ 13990.000 ms] RECEIVER RECV DATA seq=1 out of order -> BUFFER (rcv_base=7)
+[ 13990.000 ms] RECEIVER SEND ACK seq=1
+[ 13994.000 ms] RECEIVER RECV DATA seq=2 out of order -> BUFFER (rcv_base=7)
+[ 13994.000 ms] RECEIVER SEND ACK seq=2
+[ 14240.000 ms] SENDER   RECV ACK seq=1 (individual, #65 marked ACKed)
+[ 14244.000 ms] SENDER   RECV ACK seq=2 (individual, #66 marked ACKed)
+[ 14336.000 ms] SENDER   TIMEOUT for #64 only -> selective retransmit
+[ 14336.000 ms] SENDER   RETRANSMIT DATA seq=0 (#64)
+[ 14448.000 ms] SENDER   TIMEOUT for #63 only -> selective retransmit
+[ 14448.000 ms] SENDER   RETRANSMIT DATA seq=7 (#63)
+[ 14590.000 ms] RECEIVER RECV DATA seq=0 out of order -> BUFFER (rcv_base=7)
+[ 14590.000 ms] RECEIVER SEND ACK seq=0
+[ 14590.000 ms] CHANNEL  LOSS    ACK seq=0
+[ 14702.000 ms] RECEIVER RECV DATA seq=7 = rcv_base -> accept
+[ 14702.000 ms] RECEIVER SEND ACK seq=7
+[ 14702.000 ms] RECEIVER deliver #63 to application
+[ 14702.000 ms] RECEIVER deliver #64 to application
+[ 14702.000 ms] RECEIVER deliver #65 to application
+[ 14702.000 ms] RECEIVER deliver #66 to application
+[ 14702.000 ms] RECEIVER window slides: rcv_base=3(67) window=[67..70]
+[ 14940.000 ms] SENDER   TIMEOUT for #64 only -> selective retransmit
+[ 14940.000 ms] SENDER   RETRANSMIT DATA seq=0 (#64)
+[ 14952.000 ms] SENDER   RECV ACK seq=7 (individual, #63 marked ACKed)
+[ 14952.000 ms] SENDER   window slides: send_base=0(64) nextseqnum=3(67) window=[64..67]
+[ 14952.000 ms] SENDER   SEND DATA seq=3 (#67)
+[ 14952.000 ms] CHANNEL  LOSS    DATA seq=3 (#67)
+[ 15194.000 ms] RECEIVER RECV DATA seq=0 already delivered (old window) -> re-ACK
+[ 15194.000 ms] RECEIVER SEND ACK seq=0
+[ 15444.000 ms] SENDER   RECV ACK seq=0 (individual, #64 marked ACKed)
+[ 15444.000 ms] SENDER   window slides: send_base=3(67) nextseqnum=4(68) window=[67..70]
+[ 15444.000 ms] SENDER   SEND DATA seq=4 (#68)
+[ 15444.000 ms] SENDER   SEND DATA seq=5 (#69)
+[ 15444.000 ms] SENDER   SEND DATA seq=6 (#70)
+[ 15556.000 ms] SENDER   TIMEOUT for #67 only -> selective retransmit
+[ 15556.000 ms] SENDER   RETRANSMIT DATA seq=3 (#67)
+[ 15698.000 ms] RECEIVER RECV DATA seq=4 out of order -> BUFFER (rcv_base=3)
+[ 15698.000 ms] RECEIVER SEND ACK seq=4
+[ 15698.000 ms] CHANNEL  LOSS    ACK seq=4
+[ 15702.000 ms] RECEIVER RECV DATA seq=5 out of order -> BUFFER (rcv_base=3)
+[ 15702.000 ms] RECEIVER SEND ACK seq=5
+[ 15702.000 ms] CHANNEL  LOSS    ACK seq=5
+[ 15706.000 ms] RECEIVER RECV DATA seq=6 out of order -> BUFFER (rcv_base=3)
+[ 15706.000 ms] RECEIVER SEND ACK seq=6
+[ 15810.000 ms] RECEIVER RECV DATA seq=3 = rcv_base -> accept
+[ 15810.000 ms] RECEIVER SEND ACK seq=3
+[ 15810.000 ms] RECEIVER deliver #67 to application
+[ 15810.000 ms] RECEIVER deliver #68 to application
+[ 15810.000 ms] RECEIVER deliver #69 to application
+[ 15810.000 ms] RECEIVER deliver #70 to application
+[ 15810.000 ms] RECEIVER window slides: rcv_base=7(71) window=[71..74]
+[ 15956.000 ms] SENDER   RECV ACK seq=6 (individual, #70 marked ACKed)
+[ 16048.000 ms] SENDER   TIMEOUT for #68 only -> selective retransmit
+[ 16048.000 ms] SENDER   RETRANSMIT DATA seq=4 (#68)
+[ 16052.000 ms] SENDER   TIMEOUT for #69 only -> selective retransmit
+[ 16052.000 ms] SENDER   RETRANSMIT DATA seq=5 (#69)
+[ 16060.000 ms] SENDER   RECV ACK seq=3 (individual, #67 marked ACKed)
+[ 16060.000 ms] SENDER   window slides: send_base=4(68) nextseqnum=7(71) window=[68..71]
+[ 16060.000 ms] SENDER   SEND DATA seq=7 (#71)
+[ 16302.000 ms] RECEIVER RECV DATA seq=4 already delivered (old window) -> re-ACK
+[ 16302.000 ms] RECEIVER SEND ACK seq=4
+[ 16306.000 ms] RECEIVER RECV DATA seq=5 already delivered (old window) -> re-ACK
+[ 16306.000 ms] RECEIVER SEND ACK seq=5
+[ 16314.000 ms] RECEIVER RECV DATA seq=7 = rcv_base -> accept
+[ 16314.000 ms] RECEIVER SEND ACK seq=7
+[ 16314.000 ms] CHANNEL  LOSS    ACK seq=7
+[ 16314.000 ms] RECEIVER deliver #71 to application
+[ 16314.000 ms] RECEIVER window slides: rcv_base=0(72) window=[72..75]
+[ 16552.000 ms] SENDER   RECV ACK seq=4 (individual, #68 marked ACKed)
+[ 16552.000 ms] SENDER   window slides: send_base=5(69) nextseqnum=0(72) window=[69..72]
+[ 16552.000 ms] SENDER   SEND DATA seq=0 (#72)
+[ 16556.000 ms] SENDER   RECV ACK seq=5 (individual, #69 marked ACKed)
+[ 16556.000 ms] SENDER   window slides: send_base=7(71) nextseqnum=1(73) window=[71..74]
+[ 16556.000 ms] SENDER   SEND DATA seq=1 (#73)
+[ 16556.000 ms] SENDER   SEND DATA seq=2 (#74)
+[ 16664.000 ms] SENDER   TIMEOUT for #71 only -> selective retransmit
+[ 16664.000 ms] SENDER   RETRANSMIT DATA seq=7 (#71)
+[ 16806.000 ms] RECEIVER RECV DATA seq=0 = rcv_base -> accept
+[ 16806.000 ms] RECEIVER SEND ACK seq=0
+[ 16806.000 ms] RECEIVER deliver #72 to application
+[ 16806.000 ms] RECEIVER window slides: rcv_base=1(73) window=[73..76]
+[ 16810.000 ms] RECEIVER RECV DATA seq=1 = rcv_base -> accept
+[ 16810.000 ms] RECEIVER SEND ACK seq=1
+[ 16810.000 ms] CHANNEL  LOSS    ACK seq=1
+[ 16810.000 ms] RECEIVER deliver #73 to application
+[ 16810.000 ms] RECEIVER window slides: rcv_base=2(74) window=[74..77]
+[ 16814.000 ms] RECEIVER RECV DATA seq=2 = rcv_base -> accept
+[ 16814.000 ms] RECEIVER SEND ACK seq=2
+[ 16814.000 ms] RECEIVER deliver #74 to application
+[ 16814.000 ms] RECEIVER window slides: rcv_base=3(75) window=[75..78]
+[ 16918.000 ms] RECEIVER RECV DATA seq=7 already delivered (old window) -> re-ACK
+[ 16918.000 ms] RECEIVER SEND ACK seq=7
+[ 17056.000 ms] SENDER   RECV ACK seq=0 (individual, #72 marked ACKed)
+[ 17064.000 ms] SENDER   RECV ACK seq=2 (individual, #74 marked ACKed)
+[ 17160.000 ms] SENDER   TIMEOUT for #73 only -> selective retransmit
+[ 17160.000 ms] SENDER   RETRANSMIT DATA seq=1 (#73)
+[ 17168.000 ms] SENDER   RECV ACK seq=7 (individual, #71 marked ACKed)
+[ 17168.000 ms] SENDER   window slides: send_base=1(73) nextseqnum=3(75) window=[73..76]
+[ 17168.000 ms] SENDER   SEND DATA seq=3 (#75)
+[ 17168.000 ms] SENDER   SEND DATA seq=4 (#76)
+[ 17414.000 ms] RECEIVER RECV DATA seq=1 already delivered (old window) -> re-ACK
+[ 17414.000 ms] RECEIVER SEND ACK seq=1
+[ 17422.000 ms] RECEIVER RECV DATA seq=3 = rcv_base -> accept
+[ 17422.000 ms] RECEIVER SEND ACK seq=3
+[ 17422.000 ms] RECEIVER deliver #75 to application
+[ 17422.000 ms] RECEIVER window slides: rcv_base=4(76) window=[76..79]
+[ 17426.000 ms] RECEIVER RECV DATA seq=4 = rcv_base -> accept
+[ 17426.000 ms] RECEIVER SEND ACK seq=4
+[ 17426.000 ms] RECEIVER deliver #76 to application
+[ 17426.000 ms] RECEIVER window slides: rcv_base=5(77) window=[77..80]
+[ 17664.000 ms] SENDER   RECV ACK seq=1 (individual, #73 marked ACKed)
+[ 17664.000 ms] SENDER   window slides: send_base=3(75) nextseqnum=5(77) window=[75..78]
+[ 17664.000 ms] SENDER   SEND DATA seq=5 (#77)
+[ 17664.000 ms] CHANNEL  LOSS    DATA seq=5 (#77)
+[ 17664.000 ms] SENDER   SEND DATA seq=6 (#78)
+[ 17672.000 ms] SENDER   RECV ACK seq=3 (individual, #75 marked ACKed)
+[ 17672.000 ms] SENDER   window slides: send_base=4(76) nextseqnum=7(79) window=[76..79]
+[ 17672.000 ms] SENDER   SEND DATA seq=7 (#79)
+[ 17676.000 ms] SENDER   RECV ACK seq=4 (individual, #76 marked ACKed)
+[ 17676.000 ms] SENDER   window slides: send_base=5(77) nextseqnum=0(80) window=[77..80]
+[ 17676.000 ms] SENDER   SEND DATA seq=0 (#80)
+[ 17922.000 ms] RECEIVER RECV DATA seq=6 out of order -> BUFFER (rcv_base=5)
+[ 17922.000 ms] RECEIVER SEND ACK seq=6
+[ 17926.000 ms] RECEIVER RECV DATA seq=7 out of order -> BUFFER (rcv_base=5)
+[ 17926.000 ms] RECEIVER SEND ACK seq=7
+[ 17930.000 ms] RECEIVER RECV DATA seq=0 out of order -> BUFFER (rcv_base=5)
+[ 17930.000 ms] RECEIVER SEND ACK seq=0
+[ 18172.000 ms] SENDER   RECV ACK seq=6 (individual, #78 marked ACKed)
+[ 18176.000 ms] SENDER   RECV ACK seq=7 (individual, #79 marked ACKed)
+[ 18180.000 ms] SENDER   RECV ACK seq=0 (individual, #80 marked ACKed)
+[ 18268.000 ms] SENDER   TIMEOUT for #77 only -> selective retransmit
+[ 18268.000 ms] SENDER   RETRANSMIT DATA seq=5 (#77)
+[ 18522.000 ms] RECEIVER RECV DATA seq=5 = rcv_base -> accept
+[ 18522.000 ms] RECEIVER SEND ACK seq=5
+[ 18522.000 ms] RECEIVER deliver #77 to application
+[ 18522.000 ms] RECEIVER deliver #78 to application
+[ 18522.000 ms] RECEIVER deliver #79 to application
+[ 18522.000 ms] RECEIVER deliver #80 to application
+[ 18522.000 ms] RECEIVER window slides: rcv_base=1(81) window=[81..84]
+[ 18772.000 ms] SENDER   RECV ACK seq=5 (individual, #77 marked ACKed)
+[ 18772.000 ms] SENDER   window slides: send_base=1(81) nextseqnum=1(81) window=[81..84]
+[ 18772.000 ms] SENDER   SEND DATA seq=1 (#81)
+[ 18772.000 ms] SENDER   SEND DATA seq=2 (#82)
+[ 18772.000 ms] SENDER   SEND DATA seq=3 (#83)
+[ 18772.000 ms] SENDER   SEND DATA seq=4 (#84)
+[ 19026.000 ms] RECEIVER RECV DATA seq=1 = rcv_base -> accept
+[ 19026.000 ms] RECEIVER SEND ACK seq=1
+[ 19026.000 ms] RECEIVER deliver #81 to application
+[ 19026.000 ms] RECEIVER window slides: rcv_base=2(82) window=[82..85]
+[ 19030.000 ms] RECEIVER RECV DATA seq=2 = rcv_base -> accept
+[ 19030.000 ms] RECEIVER SEND ACK seq=2
+[ 19030.000 ms] RECEIVER deliver #82 to application
+[ 19030.000 ms] RECEIVER window slides: rcv_base=3(83) window=[83..86]
+[ 19034.000 ms] RECEIVER RECV DATA seq=3 = rcv_base -> accept
+[ 19034.000 ms] RECEIVER SEND ACK seq=3
+[ 19034.000 ms] CHANNEL  LOSS    ACK seq=3
+[ 19034.000 ms] RECEIVER deliver #83 to application
+[ 19034.000 ms] RECEIVER window slides: rcv_base=4(84) window=[84..87]
+[ 19038.000 ms] RECEIVER RECV DATA seq=4 = rcv_base -> accept
+[ 19038.000 ms] RECEIVER SEND ACK seq=4
+[ 19038.000 ms] RECEIVER deliver #84 to application
+[ 19038.000 ms] RECEIVER window slides: rcv_base=5(85) window=[85..88]
+[ 19276.000 ms] SENDER   RECV ACK seq=1 (individual, #81 marked ACKed)
+[ 19276.000 ms] SENDER   window slides: send_base=2(82) nextseqnum=5(85) window=[82..85]
+[ 19276.000 ms] SENDER   SEND DATA seq=5 (#85)
+[ 19280.000 ms] SENDER   RECV ACK seq=2 (individual, #82 marked ACKed)
+[ 19280.000 ms] SENDER   window slides: send_base=3(83) nextseqnum=6(86) window=[83..86]
+[ 19280.000 ms] SENDER   SEND DATA seq=6 (#86)
+[ 19280.000 ms] CHANNEL  LOSS    DATA seq=6 (#86)
+[ 19288.000 ms] SENDER   RECV ACK seq=4 (individual, #84 marked ACKed)
+[ 19384.000 ms] SENDER   TIMEOUT for #83 only -> selective retransmit
+[ 19384.000 ms] SENDER   RETRANSMIT DATA seq=3 (#83)
+[ 19530.000 ms] RECEIVER RECV DATA seq=5 = rcv_base -> accept
+[ 19530.000 ms] RECEIVER SEND ACK seq=5
+[ 19530.000 ms] RECEIVER deliver #85 to application
+[ 19530.000 ms] RECEIVER window slides: rcv_base=6(86) window=[86..89]
+[ 19638.000 ms] RECEIVER RECV DATA seq=3 already delivered (old window) -> re-ACK
+[ 19638.000 ms] RECEIVER SEND ACK seq=3
+[ 19638.000 ms] CHANNEL  LOSS    ACK seq=3
+[ 19780.000 ms] SENDER   RECV ACK seq=5 (individual, #85 marked ACKed)
+[ 19884.000 ms] SENDER   TIMEOUT for #86 only -> selective retransmit
+[ 19884.000 ms] SENDER   RETRANSMIT DATA seq=6 (#86)
+[ 19988.000 ms] SENDER   TIMEOUT for #83 only -> selective retransmit
+[ 19988.000 ms] SENDER   RETRANSMIT DATA seq=3 (#83)
+[ 20138.000 ms] RECEIVER RECV DATA seq=6 = rcv_base -> accept
+[ 20138.000 ms] RECEIVER SEND ACK seq=6
+[ 20138.000 ms] RECEIVER deliver #86 to application
+[ 20138.000 ms] RECEIVER window slides: rcv_base=7(87) window=[87..90]
+[ 20242.000 ms] RECEIVER RECV DATA seq=3 already delivered (old window) -> re-ACK
+[ 20242.000 ms] RECEIVER SEND ACK seq=3
+[ 20388.000 ms] SENDER   RECV ACK seq=6 (individual, #86 marked ACKed)
+[ 20492.000 ms] SENDER   RECV ACK seq=3 (individual, #83 marked ACKed)
+[ 20492.000 ms] SENDER   window slides: send_base=7(87) nextseqnum=7(87) window=[87..90]
+[ 20492.000 ms] SENDER   SEND DATA seq=7 (#87)
+[ 20492.000 ms] CHANNEL  LOSS    DATA seq=7 (#87)
+[ 20492.000 ms] SENDER   SEND DATA seq=0 (#88)
+[ 20492.000 ms] SENDER   SEND DATA seq=1 (#89)
+[ 20492.000 ms] CHANNEL  LOSS    DATA seq=1 (#89)
+[ 20492.000 ms] SENDER   SEND DATA seq=2 (#90)
+[ 20750.000 ms] RECEIVER RECV DATA seq=0 out of order -> BUFFER (rcv_base=7)
+[ 20750.000 ms] RECEIVER SEND ACK seq=0
+[ 20758.000 ms] RECEIVER RECV DATA seq=2 out of order -> BUFFER (rcv_base=7)
+[ 20758.000 ms] RECEIVER SEND ACK seq=2
+[ 20758.000 ms] CHANNEL  LOSS    ACK seq=2
+[ 21000.000 ms] SENDER   RECV ACK seq=0 (individual, #88 marked ACKed)
+[ 21096.000 ms] SENDER   TIMEOUT for #87 only -> selective retransmit
+[ 21096.000 ms] SENDER   RETRANSMIT DATA seq=7 (#87)
+[ 21104.000 ms] SENDER   TIMEOUT for #89 only -> selective retransmit
+[ 21104.000 ms] SENDER   RETRANSMIT DATA seq=1 (#89)
+[ 21108.000 ms] SENDER   TIMEOUT for #90 only -> selective retransmit
+[ 21108.000 ms] SENDER   RETRANSMIT DATA seq=2 (#90)
+[ 21350.000 ms] RECEIVER RECV DATA seq=7 = rcv_base -> accept
+[ 21350.000 ms] RECEIVER SEND ACK seq=7
+[ 21350.000 ms] RECEIVER deliver #87 to application
+[ 21350.000 ms] RECEIVER deliver #88 to application
+[ 21350.000 ms] RECEIVER window slides: rcv_base=1(89) window=[89..92]
+[ 21358.000 ms] RECEIVER RECV DATA seq=1 = rcv_base -> accept
+[ 21358.000 ms] RECEIVER SEND ACK seq=1
+[ 21358.000 ms] RECEIVER deliver #89 to application
+[ 21358.000 ms] RECEIVER deliver #90 to application
+[ 21358.000 ms] RECEIVER window slides: rcv_base=3(91) window=[91..94]
+[ 21362.000 ms] RECEIVER RECV DATA seq=2 already delivered (old window) -> re-ACK
+[ 21362.000 ms] RECEIVER SEND ACK seq=2
+[ 21600.000 ms] SENDER   RECV ACK seq=7 (individual, #87 marked ACKed)
+[ 21600.000 ms] SENDER   window slides: send_base=1(89) nextseqnum=3(91) window=[89..92]
+[ 21600.000 ms] SENDER   SEND DATA seq=3 (#91)
+[ 21600.000 ms] SENDER   SEND DATA seq=4 (#92)
+[ 21608.000 ms] SENDER   RECV ACK seq=1 (individual, #89 marked ACKed)
+[ 21608.000 ms] SENDER   window slides: send_base=2(90) nextseqnum=5(93) window=[90..93]
+[ 21608.000 ms] SENDER   SEND DATA seq=5 (#93)
+[ 21612.000 ms] SENDER   RECV ACK seq=2 (individual, #90 marked ACKed)
+[ 21612.000 ms] SENDER   window slides: send_base=3(91) nextseqnum=6(94) window=[91..94]
+[ 21612.000 ms] SENDER   SEND DATA seq=6 (#94)
+[ 21612.000 ms] CHANNEL  LOSS    DATA seq=6 (#94)
+[ 21854.000 ms] RECEIVER RECV DATA seq=3 = rcv_base -> accept
+[ 21854.000 ms] RECEIVER SEND ACK seq=3
+[ 21854.000 ms] RECEIVER deliver #91 to application
+[ 21854.000 ms] RECEIVER window slides: rcv_base=4(92) window=[92..95]
+[ 21858.000 ms] RECEIVER RECV DATA seq=4 = rcv_base -> accept
+[ 21858.000 ms] RECEIVER SEND ACK seq=4
+[ 21858.000 ms] CHANNEL  LOSS    ACK seq=4
+[ 21858.000 ms] RECEIVER deliver #92 to application
+[ 21858.000 ms] RECEIVER window slides: rcv_base=5(93) window=[93..96]
+[ 21862.000 ms] RECEIVER RECV DATA seq=5 = rcv_base -> accept
+[ 21862.000 ms] RECEIVER SEND ACK seq=5
+[ 21862.000 ms] RECEIVER deliver #93 to application
+[ 21862.000 ms] RECEIVER window slides: rcv_base=6(94) window=[94..97]
+[ 22104.000 ms] SENDER   RECV ACK seq=3 (individual, #91 marked ACKed)
+[ 22104.000 ms] SENDER   window slides: send_base=4(92) nextseqnum=7(95) window=[92..95]
+[ 22104.000 ms] SENDER   SEND DATA seq=7 (#95)
+[ 22112.000 ms] SENDER   RECV ACK seq=5 (individual, #93 marked ACKed)
+[ 22208.000 ms] SENDER   TIMEOUT for #92 only -> selective retransmit
+[ 22208.000 ms] SENDER   RETRANSMIT DATA seq=4 (#92)
+[ 22216.000 ms] SENDER   TIMEOUT for #94 only -> selective retransmit
+[ 22216.000 ms] SENDER   RETRANSMIT DATA seq=6 (#94)
+[ 22358.000 ms] RECEIVER RECV DATA seq=7 out of order -> BUFFER (rcv_base=6)
+[ 22358.000 ms] RECEIVER SEND ACK seq=7
+[ 22462.000 ms] RECEIVER RECV DATA seq=4 already delivered (old window) -> re-ACK
+[ 22462.000 ms] RECEIVER SEND ACK seq=4
+[ 22470.000 ms] RECEIVER RECV DATA seq=6 = rcv_base -> accept
+[ 22470.000 ms] RECEIVER SEND ACK seq=6
+[ 22470.000 ms] RECEIVER deliver #94 to application
+[ 22470.000 ms] RECEIVER deliver #95 to application
+[ 22470.000 ms] RECEIVER window slides: rcv_base=0(96) window=[96..99]
+[ 22608.000 ms] SENDER   RECV ACK seq=7 (individual, #95 marked ACKed)
+[ 22712.000 ms] SENDER   RECV ACK seq=4 (individual, #92 marked ACKed)
+[ 22712.000 ms] SENDER   window slides: send_base=6(94) nextseqnum=0(96) window=[94..97]
+[ 22712.000 ms] SENDER   SEND DATA seq=0 (#96)
+[ 22712.000 ms] SENDER   SEND DATA seq=1 (#97)
+[ 22720.000 ms] SENDER   RECV ACK seq=6 (individual, #94 marked ACKed)
+[ 22720.000 ms] SENDER   window slides: send_base=0(96) nextseqnum=2(98) window=[96..99]
+[ 22720.000 ms] SENDER   SEND DATA seq=2 (#98)
+[ 22720.000 ms] SENDER   SEND DATA seq=3 (#99)
+[ 22966.000 ms] RECEIVER RECV DATA seq=0 = rcv_base -> accept
+[ 22966.000 ms] RECEIVER SEND ACK seq=0
+[ 22966.000 ms] RECEIVER deliver #96 to application
+[ 22966.000 ms] RECEIVER window slides: rcv_base=1(97) window=[97..100]
+[ 22970.000 ms] RECEIVER RECV DATA seq=1 = rcv_base -> accept
+[ 22970.000 ms] RECEIVER SEND ACK seq=1
+[ 22970.000 ms] RECEIVER deliver #97 to application
+[ 22970.000 ms] RECEIVER window slides: rcv_base=2(98) window=[98..101]
+[ 22974.000 ms] RECEIVER RECV DATA seq=2 = rcv_base -> accept
+[ 22974.000 ms] RECEIVER SEND ACK seq=2
+[ 22974.000 ms] RECEIVER deliver #98 to application
+[ 22974.000 ms] RECEIVER window slides: rcv_base=3(99) window=[99..102]
+[ 22978.000 ms] RECEIVER RECV DATA seq=3 = rcv_base -> accept
+[ 22978.000 ms] RECEIVER SEND ACK seq=3
+[ 22978.000 ms] RECEIVER deliver #99 to application
+[ 22978.000 ms] RECEIVER window slides: rcv_base=4(100) window=[100..103]
+[ 23216.000 ms] SENDER   RECV ACK seq=0 (individual, #96 marked ACKed)
+[ 23216.000 ms] SENDER   window slides: send_base=1(97) nextseqnum=4(100) window=[97..100]
+[ 23216.000 ms] SENDER   SEND DATA seq=4 (#100)
+[ 23220.000 ms] SENDER   RECV ACK seq=1 (individual, #97 marked ACKed)
+[ 23220.000 ms] SENDER   window slides: send_base=2(98) nextseqnum=5(101) window=[98..101]
+[ 23220.000 ms] SENDER   SEND DATA seq=5 (#101)
+[ 23224.000 ms] SENDER   RECV ACK seq=2 (individual, #98 marked ACKed)
+[ 23224.000 ms] SENDER   window slides: send_base=3(99) nextseqnum=6(102) window=[99..102]
+[ 23224.000 ms] SENDER   SEND DATA seq=6 (#102)
+[ 23228.000 ms] SENDER   RECV ACK seq=3 (individual, #99 marked ACKed)
+[ 23228.000 ms] SENDER   window slides: send_base=4(100) nextseqnum=7(103) window=[100..103]
+[ 23228.000 ms] SENDER   SEND DATA seq=7 (#103)
+[ 23470.000 ms] RECEIVER RECV DATA seq=4 = rcv_base -> accept
+[ 23470.000 ms] RECEIVER SEND ACK seq=4
+[ 23470.000 ms] RECEIVER deliver #100 to application
+[ 23470.000 ms] RECEIVER window slides: rcv_base=5(101) window=[101..104]
+[ 23474.000 ms] RECEIVER RECV DATA seq=5 = rcv_base -> accept
+[ 23474.000 ms] RECEIVER SEND ACK seq=5
+[ 23474.000 ms] RECEIVER deliver #101 to application
+[ 23474.000 ms] RECEIVER window slides: rcv_base=6(102) window=[102..105]
+[ 23478.000 ms] RECEIVER RECV DATA seq=6 = rcv_base -> accept
+[ 23478.000 ms] RECEIVER SEND ACK seq=6
+[ 23478.000 ms] RECEIVER deliver #102 to application
+[ 23478.000 ms] RECEIVER window slides: rcv_base=7(103) window=[103..106]
+[ 23482.000 ms] RECEIVER RECV DATA seq=7 = rcv_base -> accept
+[ 23482.000 ms] RECEIVER SEND ACK seq=7
+[ 23482.000 ms] RECEIVER deliver #103 to application
+[ 23482.000 ms] RECEIVER window slides: rcv_base=0(104) window=[104..107]
+[ 23720.000 ms] SENDER   RECV ACK seq=4 (individual, #100 marked ACKed)
+[ 23720.000 ms] SENDER   window slides: send_base=5(101) nextseqnum=0(104) window=[101..104]
+[ 23720.000 ms] SENDER   SEND DATA seq=0 (#104)
+[ 23724.000 ms] SENDER   RECV ACK seq=5 (individual, #101 marked ACKed)
+[ 23724.000 ms] SENDER   window slides: send_base=6(102) nextseqnum=1(105) window=[102..105]
+[ 23724.000 ms] SENDER   SEND DATA seq=1 (#105)
+[ 23728.000 ms] SENDER   RECV ACK seq=6 (individual, #102 marked ACKed)
+[ 23728.000 ms] SENDER   window slides: send_base=7(103) nextseqnum=2(106) window=[103..106]
+[ 23728.000 ms] SENDER   SEND DATA seq=2 (#106)
+[ 23732.000 ms] SENDER   RECV ACK seq=7 (individual, #103 marked ACKed)
+[ 23732.000 ms] SENDER   window slides: send_base=0(104) nextseqnum=3(107) window=[104..107]
+[ 23732.000 ms] SENDER   SEND DATA seq=3 (#107)
+[ 23974.000 ms] RECEIVER RECV DATA seq=0 = rcv_base -> accept
+[ 23974.000 ms] RECEIVER SEND ACK seq=0
+[ 23974.000 ms] RECEIVER deliver #104 to application
+[ 23974.000 ms] RECEIVER window slides: rcv_base=1(105) window=[105..108]
+[ 23978.000 ms] RECEIVER RECV DATA seq=1 = rcv_base -> accept
+[ 23978.000 ms] RECEIVER SEND ACK seq=1
+[ 23978.000 ms] RECEIVER deliver #105 to application
+[ 23978.000 ms] RECEIVER window slides: rcv_base=2(106) window=[106..109]
+[ 23982.000 ms] RECEIVER RECV DATA seq=2 = rcv_base -> accept
+[ 23982.000 ms] RECEIVER SEND ACK seq=2
+[ 23982.000 ms] RECEIVER deliver #106 to application
+[ 23982.000 ms] RECEIVER window slides: rcv_base=3(107) window=[107..110]
+[ 23986.000 ms] RECEIVER RECV DATA seq=3 = rcv_base -> accept
+[ 23986.000 ms] RECEIVER SEND ACK seq=3
+[ 23986.000 ms] RECEIVER deliver #107 to application
+[ 23986.000 ms] RECEIVER window slides: rcv_base=4(108) window=[108..111]
+[ 24224.000 ms] SENDER   RECV ACK seq=0 (individual, #104 marked ACKed)
+[ 24224.000 ms] SENDER   window slides: send_base=1(105) nextseqnum=4(108) window=[105..108]
+[ 24224.000 ms] SENDER   SEND DATA seq=4 (#108)
+[ 24228.000 ms] SENDER   RECV ACK seq=1 (individual, #105 marked ACKed)
+[ 24228.000 ms] SENDER   window slides: send_base=2(106) nextseqnum=5(109) window=[106..109]
+[ 24228.000 ms] SENDER   SEND DATA seq=5 (#109)
+[ 24232.000 ms] SENDER   RECV ACK seq=2 (individual, #106 marked ACKed)
+[ 24232.000 ms] SENDER   window slides: send_base=3(107) nextseqnum=6(110) window=[107..110]
+[ 24232.000 ms] SENDER   SEND DATA seq=6 (#110)
+[ 24232.000 ms] CHANNEL  LOSS    DATA seq=6 (#110)
+[ 24236.000 ms] SENDER   RECV ACK seq=3 (individual, #107 marked ACKed)
+[ 24236.000 ms] SENDER   window slides: send_base=4(108) nextseqnum=7(111) window=[108..111]
+[ 24236.000 ms] SENDER   SEND DATA seq=7 (#111)
+[ 24478.000 ms] RECEIVER RECV DATA seq=4 = rcv_base -> accept
+[ 24478.000 ms] RECEIVER SEND ACK seq=4
+[ 24478.000 ms] RECEIVER deliver #108 to application
+[ 24478.000 ms] RECEIVER window slides: rcv_base=5(109) window=[109..112]
+[ 24482.000 ms] RECEIVER RECV DATA seq=5 = rcv_base -> accept
+[ 24482.000 ms] RECEIVER SEND ACK seq=5
+[ 24482.000 ms] RECEIVER deliver #109 to application
+[ 24482.000 ms] RECEIVER window slides: rcv_base=6(110) window=[110..113]
+[ 24490.000 ms] RECEIVER RECV DATA seq=7 out of order -> BUFFER (rcv_base=6)
+[ 24490.000 ms] RECEIVER SEND ACK seq=7
+[ 24490.000 ms] CHANNEL  LOSS    ACK seq=7
+[ 24728.000 ms] SENDER   RECV ACK seq=4 (individual, #108 marked ACKed)
+[ 24728.000 ms] SENDER   window slides: send_base=5(109) nextseqnum=0(112) window=[109..112]
+[ 24728.000 ms] SENDER   SEND DATA seq=0 (#112)
+[ 24732.000 ms] SENDER   RECV ACK seq=5 (individual, #109 marked ACKed)
+[ 24732.000 ms] SENDER   window slides: send_base=6(110) nextseqnum=1(113) window=[110..113]
+[ 24732.000 ms] SENDER   SEND DATA seq=1 (#113)
+[ 24836.000 ms] SENDER   TIMEOUT for #110 only -> selective retransmit
+[ 24836.000 ms] SENDER   RETRANSMIT DATA seq=6 (#110)
+[ 24840.000 ms] SENDER   TIMEOUT for #111 only -> selective retransmit
+[ 24840.000 ms] SENDER   RETRANSMIT DATA seq=7 (#111)
+[ 24982.000 ms] RECEIVER RECV DATA seq=0 out of order -> BUFFER (rcv_base=6)
+[ 24982.000 ms] RECEIVER SEND ACK seq=0
+[ 24986.000 ms] RECEIVER RECV DATA seq=1 out of order -> BUFFER (rcv_base=6)
+[ 24986.000 ms] RECEIVER SEND ACK seq=1
+[ 25090.000 ms] RECEIVER RECV DATA seq=6 = rcv_base -> accept
+[ 25090.000 ms] RECEIVER SEND ACK seq=6
+[ 25090.000 ms] RECEIVER deliver #110 to application
+[ 25090.000 ms] RECEIVER deliver #111 to application
+[ 25090.000 ms] RECEIVER deliver #112 to application
+[ 25090.000 ms] RECEIVER deliver #113 to application
+[ 25090.000 ms] RECEIVER window slides: rcv_base=2(114) window=[114..117]
+[ 25094.000 ms] RECEIVER RECV DATA seq=7 already delivered (old window) -> re-ACK
+[ 25094.000 ms] RECEIVER SEND ACK seq=7
+[ 25232.000 ms] SENDER   RECV ACK seq=0 (individual, #112 marked ACKed)
+[ 25236.000 ms] SENDER   RECV ACK seq=1 (individual, #113 marked ACKed)
+[ 25340.000 ms] SENDER   RECV ACK seq=6 (individual, #110 marked ACKed)
+[ 25340.000 ms] SENDER   window slides: send_base=7(111) nextseqnum=2(114) window=[111..114]
+[ 25340.000 ms] SENDER   SEND DATA seq=2 (#114)
+[ 25344.000 ms] SENDER   RECV ACK seq=7 (individual, #111 marked ACKed)
+[ 25344.000 ms] SENDER   window slides: send_base=2(114) nextseqnum=3(115) window=[114..117]
+[ 25344.000 ms] SENDER   SEND DATA seq=3 (#115)
+[ 25344.000 ms] CHANNEL  LOSS    DATA seq=3 (#115)
+[ 25344.000 ms] SENDER   SEND DATA seq=4 (#116)
+[ 25344.000 ms] SENDER   SEND DATA seq=5 (#117)
+[ 25594.000 ms] RECEIVER RECV DATA seq=2 = rcv_base -> accept
+[ 25594.000 ms] RECEIVER SEND ACK seq=2
+[ 25594.000 ms] RECEIVER deliver #114 to application
+[ 25594.000 ms] RECEIVER window slides: rcv_base=3(115) window=[115..118]
+[ 25602.000 ms] RECEIVER RECV DATA seq=4 out of order -> BUFFER (rcv_base=3)
+[ 25602.000 ms] RECEIVER SEND ACK seq=4
+[ 25606.000 ms] RECEIVER RECV DATA seq=5 out of order -> BUFFER (rcv_base=3)
+[ 25606.000 ms] RECEIVER SEND ACK seq=5
+[ 25844.000 ms] SENDER   RECV ACK seq=2 (individual, #114 marked ACKed)
+[ 25844.000 ms] SENDER   window slides: send_base=3(115) nextseqnum=6(118) window=[115..118]
+[ 25844.000 ms] SENDER   SEND DATA seq=6 (#118)
+[ 25844.000 ms] CHANNEL  LOSS    DATA seq=6 (#118)
+[ 25852.000 ms] SENDER   RECV ACK seq=4 (individual, #116 marked ACKed)
+[ 25856.000 ms] SENDER   RECV ACK seq=5 (individual, #117 marked ACKed)
+[ 25948.000 ms] SENDER   TIMEOUT for #115 only -> selective retransmit
+[ 25948.000 ms] SENDER   RETRANSMIT DATA seq=3 (#115)
+[ 26202.000 ms] RECEIVER RECV DATA seq=3 = rcv_base -> accept
+[ 26202.000 ms] RECEIVER SEND ACK seq=3
+[ 26202.000 ms] RECEIVER deliver #115 to application
+[ 26202.000 ms] RECEIVER deliver #116 to application
+[ 26202.000 ms] RECEIVER deliver #117 to application
+[ 26202.000 ms] RECEIVER window slides: rcv_base=6(118) window=[118..121]
+[ 26448.000 ms] SENDER   TIMEOUT for #118 only -> selective retransmit
+[ 26448.000 ms] SENDER   RETRANSMIT DATA seq=6 (#118)
+[ 26452.000 ms] SENDER   RECV ACK seq=3 (individual, #115 marked ACKed)
+[ 26452.000 ms] SENDER   window slides: send_base=6(118) nextseqnum=7(119) window=[118..121]
+[ 26452.000 ms] SENDER   SEND DATA seq=7 (#119)
+[ 26452.000 ms] SENDER   SEND DATA seq=0 (#120)
+[ 26452.000 ms] SENDER   SEND DATA seq=1 (#121)
+[ 26702.000 ms] RECEIVER RECV DATA seq=6 = rcv_base -> accept
+[ 26702.000 ms] RECEIVER SEND ACK seq=6
+[ 26702.000 ms] RECEIVER deliver #118 to application
+[ 26702.000 ms] RECEIVER window slides: rcv_base=7(119) window=[119..122]
+[ 26706.000 ms] RECEIVER RECV DATA seq=7 = rcv_base -> accept
+[ 26706.000 ms] RECEIVER SEND ACK seq=7
+[ 26706.000 ms] RECEIVER deliver #119 to application
+[ 26706.000 ms] RECEIVER window slides: rcv_base=0(120) window=[120..123]
+[ 26710.000 ms] RECEIVER RECV DATA seq=0 = rcv_base -> accept
+[ 26710.000 ms] RECEIVER SEND ACK seq=0
+[ 26710.000 ms] RECEIVER deliver #120 to application
+[ 26710.000 ms] RECEIVER window slides: rcv_base=1(121) window=[121..124]
+[ 26714.000 ms] RECEIVER RECV DATA seq=1 = rcv_base -> accept
+[ 26714.000 ms] RECEIVER SEND ACK seq=1
+[ 26714.000 ms] RECEIVER deliver #121 to application
+[ 26714.000 ms] RECEIVER window slides: rcv_base=2(122) window=[122..125]
+[ 26952.000 ms] SENDER   RECV ACK seq=6 (individual, #118 marked ACKed)
+[ 26952.000 ms] SENDER   window slides: send_base=7(119) nextseqnum=2(122) window=[119..122]
+[ 26952.000 ms] SENDER   SEND DATA seq=2 (#122)
+[ 26956.000 ms] SENDER   RECV ACK seq=7 (individual, #119 marked ACKed)
+[ 26956.000 ms] SENDER   window slides: send_base=0(120) nextseqnum=3(123) window=[120..123]
+[ 26956.000 ms] SENDER   SEND DATA seq=3 (#123)
+[ 26960.000 ms] SENDER   RECV ACK seq=0 (individual, #120 marked ACKed)
+[ 26960.000 ms] SENDER   window slides: send_base=1(121) nextseqnum=4(124) window=[121..124]
+[ 26960.000 ms] SENDER   SEND DATA seq=4 (#124)
+[ 26964.000 ms] SENDER   RECV ACK seq=1 (individual, #121 marked ACKed)
+[ 26964.000 ms] SENDER   window slides: send_base=2(122) nextseqnum=5(125) window=[122..125]
+[ 26964.000 ms] SENDER   SEND DATA seq=5 (#125)
+[ 26964.000 ms] CHANNEL  LOSS    DATA seq=5 (#125)
+[ 27206.000 ms] RECEIVER RECV DATA seq=2 = rcv_base -> accept
+[ 27206.000 ms] RECEIVER SEND ACK seq=2
+[ 27206.000 ms] RECEIVER deliver #122 to application
+[ 27206.000 ms] RECEIVER window slides: rcv_base=3(123) window=[123..126]
+[ 27210.000 ms] RECEIVER RECV DATA seq=3 = rcv_base -> accept
+[ 27210.000 ms] RECEIVER SEND ACK seq=3
+[ 27210.000 ms] RECEIVER deliver #123 to application
+[ 27210.000 ms] RECEIVER window slides: rcv_base=4(124) window=[124..127]
+[ 27214.000 ms] RECEIVER RECV DATA seq=4 = rcv_base -> accept
+[ 27214.000 ms] RECEIVER SEND ACK seq=4
+[ 27214.000 ms] RECEIVER deliver #124 to application
+[ 27214.000 ms] RECEIVER window slides: rcv_base=5(125) window=[125..128]
+[ 27456.000 ms] SENDER   RECV ACK seq=2 (individual, #122 marked ACKed)
+[ 27456.000 ms] SENDER   window slides: send_base=3(123) nextseqnum=6(126) window=[123..126]
+[ 27456.000 ms] SENDER   SEND DATA seq=6 (#126)
+[ 27460.000 ms] SENDER   RECV ACK seq=3 (individual, #123 marked ACKed)
+[ 27460.000 ms] SENDER   window slides: send_base=4(124) nextseqnum=7(127) window=[124..127]
+[ 27460.000 ms] SENDER   SEND DATA seq=7 (#127)
+[ 27464.000 ms] SENDER   RECV ACK seq=4 (individual, #124 marked ACKed)
+[ 27464.000 ms] SENDER   window slides: send_base=5(125) nextseqnum=0(128) window=[125..128]
+[ 27464.000 ms] SENDER   SEND DATA seq=0 (#128)
+[ 27568.000 ms] SENDER   TIMEOUT for #125 only -> selective retransmit
+[ 27568.000 ms] SENDER   RETRANSMIT DATA seq=5 (#125)
+[ 27710.000 ms] RECEIVER RECV DATA seq=6 out of order -> BUFFER (rcv_base=5)
+[ 27710.000 ms] RECEIVER SEND ACK seq=6
+[ 27710.000 ms] CHANNEL  LOSS    ACK seq=6
+[ 27714.000 ms] RECEIVER RECV DATA seq=7 out of order -> BUFFER (rcv_base=5)
+[ 27714.000 ms] RECEIVER SEND ACK seq=7
+[ 27718.000 ms] RECEIVER RECV DATA seq=0 out of order -> BUFFER (rcv_base=5)
+[ 27718.000 ms] RECEIVER SEND ACK seq=0
+[ 27822.000 ms] RECEIVER RECV DATA seq=5 = rcv_base -> accept
+[ 27822.000 ms] RECEIVER SEND ACK seq=5
+[ 27822.000 ms] RECEIVER deliver #125 to application
+[ 27822.000 ms] RECEIVER deliver #126 to application
+[ 27822.000 ms] RECEIVER deliver #127 to application
+[ 27822.000 ms] RECEIVER deliver #128 to application
+[ 27822.000 ms] RECEIVER window slides: rcv_base=1(129) window=[129..132]
+[ 27964.000 ms] SENDER   RECV ACK seq=7 (individual, #127 marked ACKed)
+[ 27968.000 ms] SENDER   RECV ACK seq=0 (individual, #128 marked ACKed)
+[ 28060.000 ms] SENDER   TIMEOUT for #126 only -> selective retransmit
+[ 28060.000 ms] SENDER   RETRANSMIT DATA seq=6 (#126)
+[ 28072.000 ms] SENDER   RECV ACK seq=5 (individual, #125 marked ACKed)
+[ 28072.000 ms] SENDER   window slides: send_base=6(126) nextseqnum=1(129) window=[126..129]
+[ 28072.000 ms] SENDER   SEND DATA seq=1 (#129)
+[ 28314.000 ms] RECEIVER RECV DATA seq=6 already delivered (old window) -> re-ACK
+[ 28314.000 ms] RECEIVER SEND ACK seq=6
+[ 28326.000 ms] RECEIVER RECV DATA seq=1 = rcv_base -> accept
+[ 28326.000 ms] RECEIVER SEND ACK seq=1
+[ 28326.000 ms] RECEIVER deliver #129 to application
+[ 28326.000 ms] RECEIVER window slides: rcv_base=2(130) window=[130..133]
+[ 28564.000 ms] SENDER   RECV ACK seq=6 (individual, #126 marked ACKed)
+[ 28564.000 ms] SENDER   window slides: send_base=1(129) nextseqnum=2(130) window=[129..132]
+[ 28564.000 ms] SENDER   SEND DATA seq=2 (#130)
+[ 28564.000 ms] SENDER   SEND DATA seq=3 (#131)
+[ 28564.000 ms] SENDER   SEND DATA seq=4 (#132)
+[ 28576.000 ms] SENDER   RECV ACK seq=1 (individual, #129 marked ACKed)
+[ 28576.000 ms] SENDER   window slides: send_base=2(130) nextseqnum=5(133) window=[130..133]
+[ 28576.000 ms] SENDER   SEND DATA seq=5 (#133)
+[ 28818.000 ms] RECEIVER RECV DATA seq=2 = rcv_base -> accept
+[ 28818.000 ms] RECEIVER SEND ACK seq=2
+[ 28818.000 ms] RECEIVER deliver #130 to application
+[ 28818.000 ms] RECEIVER window slides: rcv_base=3(131) window=[131..134]
+[ 28822.000 ms] RECEIVER RECV DATA seq=3 = rcv_base -> accept
+[ 28822.000 ms] RECEIVER SEND ACK seq=3
+[ 28822.000 ms] RECEIVER deliver #131 to application
+[ 28822.000 ms] RECEIVER window slides: rcv_base=4(132) window=[132..135]
+[ 28826.000 ms] RECEIVER RECV DATA seq=4 = rcv_base -> accept
+[ 28826.000 ms] RECEIVER SEND ACK seq=4
+[ 28826.000 ms] RECEIVER deliver #132 to application
+[ 28826.000 ms] RECEIVER window slides: rcv_base=5(133) window=[133..136]
+[ 28830.000 ms] RECEIVER RECV DATA seq=5 = rcv_base -> accept
+[ 28830.000 ms] RECEIVER SEND ACK seq=5
+[ 28830.000 ms] RECEIVER deliver #133 to application
+[ 28830.000 ms] RECEIVER window slides: rcv_base=6(134) window=[134..137]
+[ 29068.000 ms] SENDER   RECV ACK seq=2 (individual, #130 marked ACKed)
+[ 29068.000 ms] SENDER   window slides: send_base=3(131) nextseqnum=6(134) window=[131..134]
+[ 29068.000 ms] SENDER   SEND DATA seq=6 (#134)
+[ 29072.000 ms] SENDER   RECV ACK seq=3 (individual, #131 marked ACKed)
+[ 29072.000 ms] SENDER   window slides: send_base=4(132) nextseqnum=7(135) window=[132..135]
+[ 29072.000 ms] SENDER   SEND DATA seq=7 (#135)
+[ 29076.000 ms] SENDER   RECV ACK seq=4 (individual, #132 marked ACKed)
+[ 29076.000 ms] SENDER   window slides: send_base=5(133) nextseqnum=0(136) window=[133..136]
+[ 29076.000 ms] SENDER   SEND DATA seq=0 (#136)
+[ 29080.000 ms] SENDER   RECV ACK seq=5 (individual, #133 marked ACKed)
+[ 29080.000 ms] SENDER   window slides: send_base=6(134) nextseqnum=1(137) window=[134..137]
+[ 29080.000 ms] SENDER   SEND DATA seq=1 (#137)
+[ 29322.000 ms] RECEIVER RECV DATA seq=6 = rcv_base -> accept
+[ 29322.000 ms] RECEIVER SEND ACK seq=6
+[ 29322.000 ms] RECEIVER deliver #134 to application
+[ 29322.000 ms] RECEIVER window slides: rcv_base=7(135) window=[135..138]
+[ 29326.000 ms] RECEIVER RECV DATA seq=7 = rcv_base -> accept
+[ 29326.000 ms] RECEIVER SEND ACK seq=7
+[ 29326.000 ms] RECEIVER deliver #135 to application
+[ 29326.000 ms] RECEIVER window slides: rcv_base=0(136) window=[136..139]
+[ 29330.000 ms] RECEIVER RECV DATA seq=0 = rcv_base -> accept
+[ 29330.000 ms] RECEIVER SEND ACK seq=0
+[ 29330.000 ms] RECEIVER deliver #136 to application
+[ 29330.000 ms] RECEIVER window slides: rcv_base=1(137) window=[137..140]
+[ 29334.000 ms] RECEIVER RECV DATA seq=1 = rcv_base -> accept
+[ 29334.000 ms] RECEIVER SEND ACK seq=1
+[ 29334.000 ms] RECEIVER deliver #137 to application
+[ 29334.000 ms] RECEIVER window slides: rcv_base=2(138) window=[138..141]
+[ 29572.000 ms] SENDER   RECV ACK seq=6 (individual, #134 marked ACKed)
+[ 29572.000 ms] SENDER   window slides: send_base=7(135) nextseqnum=2(138) window=[135..138]
+[ 29572.000 ms] SENDER   SEND DATA seq=2 (#138)
+[ 29576.000 ms] SENDER   RECV ACK seq=7 (individual, #135 marked ACKed)
+[ 29576.000 ms] SENDER   window slides: send_base=0(136) nextseqnum=3(139) window=[136..139]
+[ 29576.000 ms] SENDER   SEND DATA seq=3 (#139)
+[ 29580.000 ms] SENDER   RECV ACK seq=0 (individual, #136 marked ACKed)
+[ 29580.000 ms] SENDER   window slides: send_base=1(137) nextseqnum=4(140) window=[137..140]
+[ 29580.000 ms] SENDER   SEND DATA seq=4 (#140)
+[ 29580.000 ms] CHANNEL  LOSS    DATA seq=4 (#140)
+[ 29584.000 ms] SENDER   RECV ACK seq=1 (individual, #137 marked ACKed)
+[ 29584.000 ms] SENDER   window slides: send_base=2(138) nextseqnum=5(141) window=[138..141]
+[ 29584.000 ms] SENDER   SEND DATA seq=5 (#141)
+[ 29826.000 ms] RECEIVER RECV DATA seq=2 = rcv_base -> accept
+[ 29826.000 ms] RECEIVER SEND ACK seq=2
+[ 29826.000 ms] RECEIVER deliver #138 to application
+[ 29826.000 ms] RECEIVER window slides: rcv_base=3(139) window=[139..142]
+[ 29830.000 ms] RECEIVER RECV DATA seq=3 = rcv_base -> accept
+[ 29830.000 ms] RECEIVER SEND ACK seq=3
+[ 29830.000 ms] CHANNEL  LOSS    ACK seq=3
+[ 29830.000 ms] RECEIVER deliver #139 to application
+[ 29830.000 ms] RECEIVER window slides: rcv_base=4(140) window=[140..143]
+[ 29838.000 ms] RECEIVER RECV DATA seq=5 out of order -> BUFFER (rcv_base=4)
+[ 29838.000 ms] RECEIVER SEND ACK seq=5
+[ 30076.000 ms] SENDER   RECV ACK seq=2 (individual, #138 marked ACKed)
+[ 30076.000 ms] SENDER   window slides: send_base=3(139) nextseqnum=6(142) window=[139..142]
+[ 30076.000 ms] SENDER   SEND DATA seq=6 (#142)
+[ 30088.000 ms] SENDER   RECV ACK seq=5 (individual, #141 marked ACKed)
+[ 30180.000 ms] SENDER   TIMEOUT for #139 only -> selective retransmit
+[ 30180.000 ms] SENDER   RETRANSMIT DATA seq=3 (#139)
+[ 30184.000 ms] SENDER   TIMEOUT for #140 only -> selective retransmit
+[ 30184.000 ms] SENDER   RETRANSMIT DATA seq=4 (#140)
+[ 30330.000 ms] RECEIVER RECV DATA seq=6 out of order -> BUFFER (rcv_base=4)
+[ 30330.000 ms] RECEIVER SEND ACK seq=6
+[ 30434.000 ms] RECEIVER RECV DATA seq=3 already delivered (old window) -> re-ACK
+[ 30434.000 ms] RECEIVER SEND ACK seq=3
+[ 30438.000 ms] RECEIVER RECV DATA seq=4 = rcv_base -> accept
+[ 30438.000 ms] RECEIVER SEND ACK seq=4
+[ 30438.000 ms] RECEIVER deliver #140 to application
+[ 30438.000 ms] RECEIVER deliver #141 to application
+[ 30438.000 ms] RECEIVER deliver #142 to application
+[ 30438.000 ms] RECEIVER window slides: rcv_base=7(143) window=[143..146]
+[ 30580.000 ms] SENDER   RECV ACK seq=6 (individual, #142 marked ACKed)
+[ 30684.000 ms] SENDER   RECV ACK seq=3 (individual, #139 marked ACKed)
+[ 30684.000 ms] SENDER   window slides: send_base=4(140) nextseqnum=7(143) window=[140..143]
+[ 30684.000 ms] SENDER   SEND DATA seq=7 (#143)
+[ 30688.000 ms] SENDER   RECV ACK seq=4 (individual, #140 marked ACKed)
+[ 30688.000 ms] SENDER   window slides: send_base=7(143) nextseqnum=0(144) window=[143..146]
+[ 30688.000 ms] SENDER   SEND DATA seq=0 (#144)
+[ 30688.000 ms] SENDER   SEND DATA seq=1 (#145)
+[ 30688.000 ms] SENDER   SEND DATA seq=2 (#146)
+[ 30938.000 ms] RECEIVER RECV DATA seq=7 = rcv_base -> accept
+[ 30938.000 ms] RECEIVER SEND ACK seq=7
+[ 30938.000 ms] RECEIVER deliver #143 to application
+[ 30938.000 ms] RECEIVER window slides: rcv_base=0(144) window=[144..147]
+[ 30942.000 ms] RECEIVER RECV DATA seq=0 = rcv_base -> accept
+[ 30942.000 ms] RECEIVER SEND ACK seq=0
+[ 30942.000 ms] RECEIVER deliver #144 to application
+[ 30942.000 ms] RECEIVER window slides: rcv_base=1(145) window=[145..148]
+[ 30946.000 ms] RECEIVER RECV DATA seq=1 = rcv_base -> accept
+[ 30946.000 ms] RECEIVER SEND ACK seq=1
+[ 30946.000 ms] RECEIVER deliver #145 to application
+[ 30946.000 ms] RECEIVER window slides: rcv_base=2(146) window=[146..149]
+[ 30950.000 ms] RECEIVER RECV DATA seq=2 = rcv_base -> accept
+[ 30950.000 ms] RECEIVER SEND ACK seq=2
+[ 30950.000 ms] RECEIVER deliver #146 to application
+[ 30950.000 ms] RECEIVER window slides: rcv_base=3(147) window=[147..150]
+[ 31188.000 ms] SENDER   RECV ACK seq=7 (individual, #143 marked ACKed)
+[ 31188.000 ms] SENDER   window slides: send_base=0(144) nextseqnum=3(147) window=[144..147]
+[ 31188.000 ms] SENDER   SEND DATA seq=3 (#147)
+[ 31192.000 ms] SENDER   RECV ACK seq=0 (individual, #144 marked ACKed)
+[ 31192.000 ms] SENDER   window slides: send_base=1(145) nextseqnum=4(148) window=[145..148]
+[ 31192.000 ms] SENDER   SEND DATA seq=4 (#148)
+[ 31196.000 ms] SENDER   RECV ACK seq=1 (individual, #145 marked ACKed)
+[ 31196.000 ms] SENDER   window slides: send_base=2(146) nextseqnum=5(149) window=[146..149]
+[ 31196.000 ms] SENDER   SEND DATA seq=5 (#149)
+[ 31196.000 ms] CHANNEL  LOSS    DATA seq=5 (#149)
+[ 31200.000 ms] SENDER   RECV ACK seq=2 (individual, #146 marked ACKed)
+[ 31200.000 ms] SENDER   window slides: send_base=3(147) nextseqnum=6(150) window=[147..150]
+[ 31200.000 ms] SENDER   SEND DATA seq=6 (#150)
+[ 31442.000 ms] RECEIVER RECV DATA seq=3 = rcv_base -> accept
+[ 31442.000 ms] RECEIVER SEND ACK seq=3
+[ 31442.000 ms] CHANNEL  LOSS    ACK seq=3
+[ 31442.000 ms] RECEIVER deliver #147 to application
+[ 31442.000 ms] RECEIVER window slides: rcv_base=4(148) window=[148..151]
+[ 31446.000 ms] RECEIVER RECV DATA seq=4 = rcv_base -> accept
+[ 31446.000 ms] RECEIVER SEND ACK seq=4
+[ 31446.000 ms] RECEIVER deliver #148 to application
+[ 31446.000 ms] RECEIVER window slides: rcv_base=5(149) window=[149..152]
+[ 31454.000 ms] RECEIVER RECV DATA seq=6 out of order -> BUFFER (rcv_base=5)
+[ 31454.000 ms] RECEIVER SEND ACK seq=6
+[ 31454.000 ms] CHANNEL  LOSS    ACK seq=6
+[ 31696.000 ms] SENDER   RECV ACK seq=4 (individual, #148 marked ACKed)
+[ 31792.000 ms] SENDER   TIMEOUT for #147 only -> selective retransmit
+[ 31792.000 ms] SENDER   RETRANSMIT DATA seq=3 (#147)
+[ 31800.000 ms] SENDER   TIMEOUT for #149 only -> selective retransmit
+[ 31800.000 ms] SENDER   RETRANSMIT DATA seq=5 (#149)
+[ 31804.000 ms] SENDER   TIMEOUT for #150 only -> selective retransmit
+[ 31804.000 ms] SENDER   RETRANSMIT DATA seq=6 (#150)
+[ 32046.000 ms] RECEIVER RECV DATA seq=3 already delivered (old window) -> re-ACK
+[ 32046.000 ms] RECEIVER SEND ACK seq=3
+[ 32046.000 ms] CHANNEL  LOSS    ACK seq=3
+[ 32054.000 ms] RECEIVER RECV DATA seq=5 = rcv_base -> accept
+[ 32054.000 ms] RECEIVER SEND ACK seq=5
+[ 32054.000 ms] RECEIVER deliver #149 to application
+[ 32054.000 ms] RECEIVER deliver #150 to application
+[ 32054.000 ms] RECEIVER window slides: rcv_base=7(151) window=[151..154]
+[ 32058.000 ms] RECEIVER RECV DATA seq=6 already delivered (old window) -> re-ACK
+[ 32058.000 ms] RECEIVER SEND ACK seq=6
+[ 32058.000 ms] CHANNEL  LOSS    ACK seq=6
+[ 32304.000 ms] SENDER   RECV ACK seq=5 (individual, #149 marked ACKed)
+[ 32396.000 ms] SENDER   TIMEOUT for #147 only -> selective retransmit
+[ 32396.000 ms] SENDER   RETRANSMIT DATA seq=3 (#147)
+[ 32408.000 ms] SENDER   TIMEOUT for #150 only -> selective retransmit
+[ 32408.000 ms] SENDER   RETRANSMIT DATA seq=6 (#150)
+[ 32650.000 ms] RECEIVER RECV DATA seq=3 already delivered (old window) -> re-ACK
+[ 32650.000 ms] RECEIVER SEND ACK seq=3
+[ 32662.000 ms] RECEIVER RECV DATA seq=6 already delivered (old window) -> re-ACK
+[ 32662.000 ms] RECEIVER SEND ACK seq=6
+[ 32900.000 ms] SENDER   RECV ACK seq=3 (individual, #147 marked ACKed)
+[ 32900.000 ms] SENDER   window slides: send_base=6(150) nextseqnum=7(151) window=[150..153]
+[ 32900.000 ms] SENDER   SEND DATA seq=7 (#151)
+[ 32900.000 ms] SENDER   SEND DATA seq=0 (#152)
+[ 32900.000 ms] SENDER   SEND DATA seq=1 (#153)
+[ 32912.000 ms] SENDER   RECV ACK seq=6 (individual, #150 marked ACKed)
+[ 32912.000 ms] SENDER   window slides: send_base=7(151) nextseqnum=2(154) window=[151..154]
+[ 32912.000 ms] SENDER   SEND DATA seq=2 (#154)
+[ 33154.000 ms] RECEIVER RECV DATA seq=7 = rcv_base -> accept
+[ 33154.000 ms] RECEIVER SEND ACK seq=7
+[ 33154.000 ms] RECEIVER deliver #151 to application
+[ 33154.000 ms] RECEIVER window slides: rcv_base=0(152) window=[152..155]
+[ 33158.000 ms] RECEIVER RECV DATA seq=0 = rcv_base -> accept
+[ 33158.000 ms] RECEIVER SEND ACK seq=0
+[ 33158.000 ms] RECEIVER deliver #152 to application
+[ 33158.000 ms] RECEIVER window slides: rcv_base=1(153) window=[153..156]
+[ 33162.000 ms] RECEIVER RECV DATA seq=1 = rcv_base -> accept
+[ 33162.000 ms] RECEIVER SEND ACK seq=1
+[ 33162.000 ms] RECEIVER deliver #153 to application
+[ 33162.000 ms] RECEIVER window slides: rcv_base=2(154) window=[154..157]
+[ 33166.000 ms] RECEIVER RECV DATA seq=2 = rcv_base -> accept
+[ 33166.000 ms] RECEIVER SEND ACK seq=2
+[ 33166.000 ms] RECEIVER deliver #154 to application
+[ 33166.000 ms] RECEIVER window slides: rcv_base=3(155) window=[155..158]
+[ 33404.000 ms] SENDER   RECV ACK seq=7 (individual, #151 marked ACKed)
+[ 33404.000 ms] SENDER   window slides: send_base=0(152) nextseqnum=3(155) window=[152..155]
+[ 33404.000 ms] SENDER   SEND DATA seq=3 (#155)
+[ 33408.000 ms] SENDER   RECV ACK seq=0 (individual, #152 marked ACKed)
+[ 33408.000 ms] SENDER   window slides: send_base=1(153) nextseqnum=4(156) window=[153..156]
+[ 33408.000 ms] SENDER   SEND DATA seq=4 (#156)
+[ 33412.000 ms] SENDER   RECV ACK seq=1 (individual, #153 marked ACKed)
+[ 33412.000 ms] SENDER   window slides: send_base=2(154) nextseqnum=5(157) window=[154..157]
+[ 33412.000 ms] SENDER   SEND DATA seq=5 (#157)
+[ 33416.000 ms] SENDER   RECV ACK seq=2 (individual, #154 marked ACKed)
+[ 33416.000 ms] SENDER   window slides: send_base=3(155) nextseqnum=6(158) window=[155..158]
+[ 33416.000 ms] SENDER   SEND DATA seq=6 (#158)
+[ 33658.000 ms] RECEIVER RECV DATA seq=3 = rcv_base -> accept
+[ 33658.000 ms] RECEIVER SEND ACK seq=3
+[ 33658.000 ms] RECEIVER deliver #155 to application
+[ 33658.000 ms] RECEIVER window slides: rcv_base=4(156) window=[156..159]
+[ 33662.000 ms] RECEIVER RECV DATA seq=4 = rcv_base -> accept
+[ 33662.000 ms] RECEIVER SEND ACK seq=4
+[ 33662.000 ms] RECEIVER deliver #156 to application
+[ 33662.000 ms] RECEIVER window slides: rcv_base=5(157) window=[157..160]
+[ 33666.000 ms] RECEIVER RECV DATA seq=5 = rcv_base -> accept
+[ 33666.000 ms] RECEIVER SEND ACK seq=5
+[ 33666.000 ms] RECEIVER deliver #157 to application
+[ 33666.000 ms] RECEIVER window slides: rcv_base=6(158) window=[158..161]
+[ 33670.000 ms] RECEIVER RECV DATA seq=6 = rcv_base -> accept
+[ 33670.000 ms] RECEIVER SEND ACK seq=6
+[ 33670.000 ms] CHANNEL  LOSS    ACK seq=6
+[ 33670.000 ms] RECEIVER deliver #158 to application
+[ 33670.000 ms] RECEIVER window slides: rcv_base=7(159) window=[159..162]
+[ 33908.000 ms] SENDER   RECV ACK seq=3 (individual, #155 marked ACKed)
+[ 33908.000 ms] SENDER   window slides: send_base=4(156) nextseqnum=7(159) window=[156..159]
+[ 33908.000 ms] SENDER   SEND DATA seq=7 (#159)
+[ 33908.000 ms] CHANNEL  LOSS    DATA seq=7 (#159)
+[ 33912.000 ms] SENDER   RECV ACK seq=4 (individual, #156 marked ACKed)
+[ 33912.000 ms] SENDER   window slides: send_base=5(157) nextseqnum=0(160) window=[157..160]
+[ 33912.000 ms] SENDER   SEND DATA seq=0 (#160)
+[ 33916.000 ms] SENDER   RECV ACK seq=5 (individual, #157 marked ACKed)
+[ 33916.000 ms] SENDER   window slides: send_base=6(158) nextseqnum=1(161) window=[158..161]
+[ 33916.000 ms] SENDER   SEND DATA seq=1 (#161)
+[ 34020.000 ms] SENDER   TIMEOUT for #158 only -> selective retransmit
+[ 34020.000 ms] SENDER   RETRANSMIT DATA seq=6 (#158)
+[ 34166.000 ms] RECEIVER RECV DATA seq=0 out of order -> BUFFER (rcv_base=7)
+[ 34166.000 ms] RECEIVER SEND ACK seq=0
+[ 34170.000 ms] RECEIVER RECV DATA seq=1 out of order -> BUFFER (rcv_base=7)
+[ 34170.000 ms] RECEIVER SEND ACK seq=1
+[ 34274.000 ms] RECEIVER RECV DATA seq=6 already delivered (old window) -> re-ACK
+[ 34274.000 ms] RECEIVER SEND ACK seq=6
+[ 34416.000 ms] SENDER   RECV ACK seq=0 (individual, #160 marked ACKed)
+[ 34420.000 ms] SENDER   RECV ACK seq=1 (individual, #161 marked ACKed)
+[ 34512.000 ms] SENDER   TIMEOUT for #159 only -> selective retransmit
+[ 34512.000 ms] SENDER   RETRANSMIT DATA seq=7 (#159)
+[ 34524.000 ms] SENDER   RECV ACK seq=6 (individual, #158 marked ACKed)
+[ 34524.000 ms] SENDER   window slides: send_base=7(159) nextseqnum=2(162) window=[159..162]
+[ 34524.000 ms] SENDER   SEND DATA seq=2 (#162)
+[ 34766.000 ms] RECEIVER RECV DATA seq=7 = rcv_base -> accept
+[ 34766.000 ms] RECEIVER SEND ACK seq=7
+[ 34766.000 ms] RECEIVER deliver #159 to application
+[ 34766.000 ms] RECEIVER deliver #160 to application
+[ 34766.000 ms] RECEIVER deliver #161 to application
+[ 34766.000 ms] RECEIVER window slides: rcv_base=2(162) window=[162..165]
+[ 34778.000 ms] RECEIVER RECV DATA seq=2 = rcv_base -> accept
+[ 34778.000 ms] RECEIVER SEND ACK seq=2
+[ 34778.000 ms] RECEIVER deliver #162 to application
+[ 34778.000 ms] RECEIVER window slides: rcv_base=3(163) window=[163..166]
+[ 35016.000 ms] SENDER   RECV ACK seq=7 (individual, #159 marked ACKed)
+[ 35016.000 ms] SENDER   window slides: send_base=2(162) nextseqnum=3(163) window=[162..165]
+[ 35016.000 ms] SENDER   SEND DATA seq=3 (#163)
+[ 35016.000 ms] SENDER   SEND DATA seq=4 (#164)
+[ 35016.000 ms] SENDER   SEND DATA seq=5 (#165)
+[ 35028.000 ms] SENDER   RECV ACK seq=2 (individual, #162 marked ACKed)
+[ 35028.000 ms] SENDER   window slides: send_base=3(163) nextseqnum=6(166) window=[163..166]
+[ 35028.000 ms] SENDER   SEND DATA seq=6 (#166)
+[ 35270.000 ms] RECEIVER RECV DATA seq=3 = rcv_base -> accept
+[ 35270.000 ms] RECEIVER SEND ACK seq=3
+[ 35270.000 ms] RECEIVER deliver #163 to application
+[ 35270.000 ms] RECEIVER window slides: rcv_base=4(164) window=[164..167]
+[ 35274.000 ms] RECEIVER RECV DATA seq=4 = rcv_base -> accept
+[ 35274.000 ms] RECEIVER SEND ACK seq=4
+[ 35274.000 ms] RECEIVER deliver #164 to application
+[ 35274.000 ms] RECEIVER window slides: rcv_base=5(165) window=[165..168]
+[ 35278.000 ms] RECEIVER RECV DATA seq=5 = rcv_base -> accept
+[ 35278.000 ms] RECEIVER SEND ACK seq=5
+[ 35278.000 ms] RECEIVER deliver #165 to application
+[ 35278.000 ms] RECEIVER window slides: rcv_base=6(166) window=[166..169]
+[ 35282.000 ms] RECEIVER RECV DATA seq=6 = rcv_base -> accept
+[ 35282.000 ms] RECEIVER SEND ACK seq=6
+[ 35282.000 ms] RECEIVER deliver #166 to application
+[ 35282.000 ms] RECEIVER window slides: rcv_base=7(167) window=[167..170]
+[ 35520.000 ms] SENDER   RECV ACK seq=3 (individual, #163 marked ACKed)
+[ 35520.000 ms] SENDER   window slides: send_base=4(164) nextseqnum=7(167) window=[164..167]
+[ 35520.000 ms] SENDER   SEND DATA seq=7 (#167)
+[ 35524.000 ms] SENDER   RECV ACK seq=4 (individual, #164 marked ACKed)
+[ 35524.000 ms] SENDER   window slides: send_base=5(165) nextseqnum=0(168) window=[165..168]
+[ 35524.000 ms] SENDER   SEND DATA seq=0 (#168)
+[ 35528.000 ms] SENDER   RECV ACK seq=5 (individual, #165 marked ACKed)
+[ 35528.000 ms] SENDER   window slides: send_base=6(166) nextseqnum=1(169) window=[166..169]
+[ 35528.000 ms] SENDER   SEND DATA seq=1 (#169)
+[ 35532.000 ms] SENDER   RECV ACK seq=6 (individual, #166 marked ACKed)
+[ 35532.000 ms] SENDER   window slides: send_base=7(167) nextseqnum=2(170) window=[167..170]
+[ 35532.000 ms] SENDER   SEND DATA seq=2 (#170)
+[ 35774.000 ms] RECEIVER RECV DATA seq=7 = rcv_base -> accept
+[ 35774.000 ms] RECEIVER SEND ACK seq=7
+[ 35774.000 ms] RECEIVER deliver #167 to application
+[ 35774.000 ms] RECEIVER window slides: rcv_base=0(168) window=[168..171]
+[ 35778.000 ms] RECEIVER RECV DATA seq=0 = rcv_base -> accept
+[ 35778.000 ms] RECEIVER SEND ACK seq=0
+[ 35778.000 ms] RECEIVER deliver #168 to application
+[ 35778.000 ms] RECEIVER window slides: rcv_base=1(169) window=[169..172]
+[ 35782.000 ms] RECEIVER RECV DATA seq=1 = rcv_base -> accept
+[ 35782.000 ms] RECEIVER SEND ACK seq=1
+[ 35782.000 ms] RECEIVER deliver #169 to application
+[ 35782.000 ms] RECEIVER window slides: rcv_base=2(170) window=[170..173]
+[ 35786.000 ms] RECEIVER RECV DATA seq=2 = rcv_base -> accept
+[ 35786.000 ms] RECEIVER SEND ACK seq=2
+[ 35786.000 ms] CHANNEL  LOSS    ACK seq=2
+[ 35786.000 ms] RECEIVER deliver #170 to application
+[ 35786.000 ms] RECEIVER window slides: rcv_base=3(171) window=[171..174]
+[ 36024.000 ms] SENDER   RECV ACK seq=7 (individual, #167 marked ACKed)
+[ 36024.000 ms] SENDER   window slides: send_base=0(168) nextseqnum=3(171) window=[168..171]
+[ 36024.000 ms] SENDER   SEND DATA seq=3 (#171)
+[ 36028.000 ms] SENDER   RECV ACK seq=0 (individual, #168 marked ACKed)
+[ 36028.000 ms] SENDER   window slides: send_base=1(169) nextseqnum=4(172) window=[169..172]
+[ 36028.000 ms] SENDER   SEND DATA seq=4 (#172)
+[ 36032.000 ms] SENDER   RECV ACK seq=1 (individual, #169 marked ACKed)
+[ 36032.000 ms] SENDER   window slides: send_base=2(170) nextseqnum=5(173) window=[170..173]
+[ 36032.000 ms] SENDER   SEND DATA seq=5 (#173)
+[ 36136.000 ms] SENDER   TIMEOUT for #170 only -> selective retransmit
+[ 36136.000 ms] SENDER   RETRANSMIT DATA seq=2 (#170)
+[ 36278.000 ms] RECEIVER RECV DATA seq=3 = rcv_base -> accept
+[ 36278.000 ms] RECEIVER SEND ACK seq=3
+[ 36278.000 ms] RECEIVER deliver #171 to application
+[ 36278.000 ms] RECEIVER window slides: rcv_base=4(172) window=[172..175]
+[ 36282.000 ms] RECEIVER RECV DATA seq=4 = rcv_base -> accept
+[ 36282.000 ms] RECEIVER SEND ACK seq=4
+[ 36282.000 ms] RECEIVER deliver #172 to application
+[ 36282.000 ms] RECEIVER window slides: rcv_base=5(173) window=[173..176]
+[ 36286.000 ms] RECEIVER RECV DATA seq=5 = rcv_base -> accept
+[ 36286.000 ms] RECEIVER SEND ACK seq=5
+[ 36286.000 ms] RECEIVER deliver #173 to application
+[ 36286.000 ms] RECEIVER window slides: rcv_base=6(174) window=[174..177]
+[ 36390.000 ms] RECEIVER RECV DATA seq=2 already delivered (old window) -> re-ACK
+[ 36390.000 ms] RECEIVER SEND ACK seq=2
+[ 36528.000 ms] SENDER   RECV ACK seq=3 (individual, #171 marked ACKed)
+[ 36532.000 ms] SENDER   RECV ACK seq=4 (individual, #172 marked ACKed)
+[ 36536.000 ms] SENDER   RECV ACK seq=5 (individual, #173 marked ACKed)
+[ 36640.000 ms] SENDER   RECV ACK seq=2 (individual, #170 marked ACKed)
+[ 36640.000 ms] SENDER   window slides: send_base=6(174) nextseqnum=6(174) window=[174..177]
+[ 36640.000 ms] SENDER   SEND DATA seq=6 (#174)
+[ 36640.000 ms] SENDER   SEND DATA seq=7 (#175)
+[ 36640.000 ms] SENDER   SEND DATA seq=0 (#176)
+[ 36640.000 ms] SENDER   SEND DATA seq=1 (#177)
+[ 36640.000 ms] CHANNEL  LOSS    DATA seq=1 (#177)
+[ 36894.000 ms] RECEIVER RECV DATA seq=6 = rcv_base -> accept
+[ 36894.000 ms] RECEIVER SEND ACK seq=6
+[ 36894.000 ms] RECEIVER deliver #174 to application
+[ 36894.000 ms] RECEIVER window slides: rcv_base=7(175) window=[175..178]
+[ 36898.000 ms] RECEIVER RECV DATA seq=7 = rcv_base -> accept
+[ 36898.000 ms] RECEIVER SEND ACK seq=7
+[ 36898.000 ms] RECEIVER deliver #175 to application
+[ 36898.000 ms] RECEIVER window slides: rcv_base=0(176) window=[176..179]
+[ 36902.000 ms] RECEIVER RECV DATA seq=0 = rcv_base -> accept
+[ 36902.000 ms] RECEIVER SEND ACK seq=0
+[ 36902.000 ms] CHANNEL  LOSS    ACK seq=0
+[ 36902.000 ms] RECEIVER deliver #176 to application
+[ 36902.000 ms] RECEIVER window slides: rcv_base=1(177) window=[177..180]
+[ 37144.000 ms] SENDER   RECV ACK seq=6 (individual, #174 marked ACKed)
+[ 37144.000 ms] SENDER   window slides: send_base=7(175) nextseqnum=2(178) window=[175..178]
+[ 37144.000 ms] SENDER   SEND DATA seq=2 (#178)
+[ 37144.000 ms] CHANNEL  LOSS    DATA seq=2 (#178)
+[ 37148.000 ms] SENDER   RECV ACK seq=7 (individual, #175 marked ACKed)
+[ 37148.000 ms] SENDER   window slides: send_base=0(176) nextseqnum=3(179) window=[176..179]
+[ 37148.000 ms] SENDER   SEND DATA seq=3 (#179)
+[ 37252.000 ms] SENDER   TIMEOUT for #176 only -> selective retransmit
+[ 37252.000 ms] SENDER   RETRANSMIT DATA seq=0 (#176)
+[ 37256.000 ms] SENDER   TIMEOUT for #177 only -> selective retransmit
+[ 37256.000 ms] SENDER   RETRANSMIT DATA seq=1 (#177)
+[ 37402.000 ms] RECEIVER RECV DATA seq=3 out of order -> BUFFER (rcv_base=1)
+[ 37402.000 ms] RECEIVER SEND ACK seq=3
+[ 37506.000 ms] RECEIVER RECV DATA seq=0 already delivered (old window) -> re-ACK
+[ 37506.000 ms] RECEIVER SEND ACK seq=0
+[ 37510.000 ms] RECEIVER RECV DATA seq=1 = rcv_base -> accept
+[ 37510.000 ms] RECEIVER SEND ACK seq=1
+[ 37510.000 ms] RECEIVER deliver #177 to application
+[ 37510.000 ms] RECEIVER window slides: rcv_base=2(178) window=[178..181]
+[ 37652.000 ms] SENDER   RECV ACK seq=3 (individual, #179 marked ACKed)
+[ 37748.000 ms] SENDER   TIMEOUT for #178 only -> selective retransmit
+[ 37748.000 ms] SENDER   RETRANSMIT DATA seq=2 (#178)
+[ 37756.000 ms] SENDER   RECV ACK seq=0 (individual, #176 marked ACKed)
+[ 37756.000 ms] SENDER   window slides: send_base=1(177) nextseqnum=4(180) window=[177..180]
+[ 37756.000 ms] SENDER   SEND DATA seq=4 (#180)
+[ 37760.000 ms] SENDER   RECV ACK seq=1 (individual, #177 marked ACKed)
+[ 37760.000 ms] SENDER   window slides: send_base=2(178) nextseqnum=5(181) window=[178..181]
+[ 37760.000 ms] SENDER   SEND DATA seq=5 (#181)
+[ 38002.000 ms] RECEIVER RECV DATA seq=2 = rcv_base -> accept
+[ 38002.000 ms] RECEIVER SEND ACK seq=2
+[ 38002.000 ms] RECEIVER deliver #178 to application
+[ 38002.000 ms] RECEIVER deliver #179 to application
+[ 38002.000 ms] RECEIVER window slides: rcv_base=4(180) window=[180..183]
+[ 38010.000 ms] RECEIVER RECV DATA seq=4 = rcv_base -> accept
+[ 38010.000 ms] RECEIVER SEND ACK seq=4
+[ 38010.000 ms] RECEIVER deliver #180 to application
+[ 38010.000 ms] RECEIVER window slides: rcv_base=5(181) window=[181..184]
+[ 38014.000 ms] RECEIVER RECV DATA seq=5 = rcv_base -> accept
+[ 38014.000 ms] RECEIVER SEND ACK seq=5
+[ 38014.000 ms] RECEIVER deliver #181 to application
+[ 38014.000 ms] RECEIVER window slides: rcv_base=6(182) window=[182..185]
+[ 38252.000 ms] SENDER   RECV ACK seq=2 (individual, #178 marked ACKed)
+[ 38252.000 ms] SENDER   window slides: send_base=4(180) nextseqnum=6(182) window=[180..183]
+[ 38252.000 ms] SENDER   SEND DATA seq=6 (#182)
+[ 38252.000 ms] SENDER   SEND DATA seq=7 (#183)
+[ 38260.000 ms] SENDER   RECV ACK seq=4 (individual, #180 marked ACKed)
+[ 38260.000 ms] SENDER   window slides: send_base=5(181) nextseqnum=0(184) window=[181..184]
+[ 38260.000 ms] SENDER   SEND DATA seq=0 (#184)
+[ 38264.000 ms] SENDER   RECV ACK seq=5 (individual, #181 marked ACKed)
+[ 38264.000 ms] SENDER   window slides: send_base=6(182) nextseqnum=1(185) window=[182..185]
+[ 38264.000 ms] SENDER   SEND DATA seq=1 (#185)
+[ 38506.000 ms] RECEIVER RECV DATA seq=6 = rcv_base -> accept
+[ 38506.000 ms] RECEIVER SEND ACK seq=6
+[ 38506.000 ms] RECEIVER deliver #182 to application
+[ 38506.000 ms] RECEIVER window slides: rcv_base=7(183) window=[183..186]
+[ 38510.000 ms] RECEIVER RECV DATA seq=7 = rcv_base -> accept
+[ 38510.000 ms] RECEIVER SEND ACK seq=7
+[ 38510.000 ms] RECEIVER deliver #183 to application
+[ 38510.000 ms] RECEIVER window slides: rcv_base=0(184) window=[184..187]
+[ 38514.000 ms] RECEIVER RECV DATA seq=0 = rcv_base -> accept
+[ 38514.000 ms] RECEIVER SEND ACK seq=0
+[ 38514.000 ms] RECEIVER deliver #184 to application
+[ 38514.000 ms] RECEIVER window slides: rcv_base=1(185) window=[185..188]
+[ 38518.000 ms] RECEIVER RECV DATA seq=1 = rcv_base -> accept
+[ 38518.000 ms] RECEIVER SEND ACK seq=1
+[ 38518.000 ms] RECEIVER deliver #185 to application
+[ 38518.000 ms] RECEIVER window slides: rcv_base=2(186) window=[186..189]
+[ 38756.000 ms] SENDER   RECV ACK seq=6 (individual, #182 marked ACKed)
+[ 38756.000 ms] SENDER   window slides: send_base=7(183) nextseqnum=2(186) window=[183..186]
+[ 38756.000 ms] SENDER   SEND DATA seq=2 (#186)
+[ 38760.000 ms] SENDER   RECV ACK seq=7 (individual, #183 marked ACKed)
+[ 38760.000 ms] SENDER   window slides: send_base=0(184) nextseqnum=3(187) window=[184..187]
+[ 38760.000 ms] SENDER   SEND DATA seq=3 (#187)
+[ 38764.000 ms] SENDER   RECV ACK seq=0 (individual, #184 marked ACKed)
+[ 38764.000 ms] SENDER   window slides: send_base=1(185) nextseqnum=4(188) window=[185..188]
+[ 38764.000 ms] SENDER   SEND DATA seq=4 (#188)
+[ 38768.000 ms] SENDER   RECV ACK seq=1 (individual, #185 marked ACKed)
+[ 38768.000 ms] SENDER   window slides: send_base=2(186) nextseqnum=5(189) window=[186..189]
+[ 38768.000 ms] SENDER   SEND DATA seq=5 (#189)
+[ 39010.000 ms] RECEIVER RECV DATA seq=2 = rcv_base -> accept
+[ 39010.000 ms] RECEIVER SEND ACK seq=2
+[ 39010.000 ms] CHANNEL  LOSS    ACK seq=2
+[ 39010.000 ms] RECEIVER deliver #186 to application
+[ 39010.000 ms] RECEIVER window slides: rcv_base=3(187) window=[187..190]
+[ 39014.000 ms] RECEIVER RECV DATA seq=3 = rcv_base -> accept
+[ 39014.000 ms] RECEIVER SEND ACK seq=3
+[ 39014.000 ms] CHANNEL  LOSS    ACK seq=3
+[ 39014.000 ms] RECEIVER deliver #187 to application
+[ 39014.000 ms] RECEIVER window slides: rcv_base=4(188) window=[188..191]
+[ 39018.000 ms] RECEIVER RECV DATA seq=4 = rcv_base -> accept
+[ 39018.000 ms] RECEIVER SEND ACK seq=4
+[ 39018.000 ms] RECEIVER deliver #188 to application
+[ 39018.000 ms] RECEIVER window slides: rcv_base=5(189) window=[189..192]
+[ 39022.000 ms] RECEIVER RECV DATA seq=5 = rcv_base -> accept
+[ 39022.000 ms] RECEIVER SEND ACK seq=5
+[ 39022.000 ms] RECEIVER deliver #189 to application
+[ 39022.000 ms] RECEIVER window slides: rcv_base=6(190) window=[190..193]
+[ 39268.000 ms] SENDER   RECV ACK seq=4 (individual, #188 marked ACKed)
+[ 39272.000 ms] SENDER   RECV ACK seq=5 (individual, #189 marked ACKed)
+[ 39360.000 ms] SENDER   TIMEOUT for #186 only -> selective retransmit
+[ 39360.000 ms] SENDER   RETRANSMIT DATA seq=2 (#186)
+[ 39364.000 ms] SENDER   TIMEOUT for #187 only -> selective retransmit
+[ 39364.000 ms] SENDER   RETRANSMIT DATA seq=3 (#187)
+[ 39614.000 ms] RECEIVER RECV DATA seq=2 already delivered (old window) -> re-ACK
+[ 39614.000 ms] RECEIVER SEND ACK seq=2
+[ 39618.000 ms] RECEIVER RECV DATA seq=3 already delivered (old window) -> re-ACK
+[ 39618.000 ms] RECEIVER SEND ACK seq=3
+[ 39864.000 ms] SENDER   RECV ACK seq=2 (individual, #186 marked ACKed)
+[ 39864.000 ms] SENDER   window slides: send_base=3(187) nextseqnum=6(190) window=[187..190]
+[ 39864.000 ms] SENDER   SEND DATA seq=6 (#190)
+[ 39868.000 ms] SENDER   RECV ACK seq=3 (individual, #187 marked ACKed)
+[ 39868.000 ms] SENDER   window slides: send_base=6(190) nextseqnum=7(191) window=[190..193]
+[ 39868.000 ms] SENDER   SEND DATA seq=7 (#191)
+[ 39868.000 ms] SENDER   SEND DATA seq=0 (#192)
+[ 39868.000 ms] SENDER   SEND DATA seq=1 (#193)
+[ 40118.000 ms] RECEIVER RECV DATA seq=6 = rcv_base -> accept
+[ 40118.000 ms] RECEIVER SEND ACK seq=6
+[ 40118.000 ms] RECEIVER deliver #190 to application
+[ 40118.000 ms] RECEIVER window slides: rcv_base=7(191) window=[191..194]
+[ 40122.000 ms] RECEIVER RECV DATA seq=7 = rcv_base -> accept
+[ 40122.000 ms] RECEIVER SEND ACK seq=7
+[ 40122.000 ms] RECEIVER deliver #191 to application
+[ 40122.000 ms] RECEIVER window slides: rcv_base=0(192) window=[192..195]
+[ 40126.000 ms] RECEIVER RECV DATA seq=0 = rcv_base -> accept
+[ 40126.000 ms] RECEIVER SEND ACK seq=0
+[ 40126.000 ms] RECEIVER deliver #192 to application
+[ 40126.000 ms] RECEIVER window slides: rcv_base=1(193) window=[193..196]
+[ 40130.000 ms] RECEIVER RECV DATA seq=1 = rcv_base -> accept
+[ 40130.000 ms] RECEIVER SEND ACK seq=1
+[ 40130.000 ms] RECEIVER deliver #193 to application
+[ 40130.000 ms] RECEIVER window slides: rcv_base=2(194) window=[194..197]
+[ 40368.000 ms] SENDER   RECV ACK seq=6 (individual, #190 marked ACKed)
+[ 40368.000 ms] SENDER   window slides: send_base=7(191) nextseqnum=2(194) window=[191..194]
+[ 40368.000 ms] SENDER   SEND DATA seq=2 (#194)
+[ 40372.000 ms] SENDER   RECV ACK seq=7 (individual, #191 marked ACKed)
+[ 40372.000 ms] SENDER   window slides: send_base=0(192) nextseqnum=3(195) window=[192..195]
+[ 40372.000 ms] SENDER   SEND DATA seq=3 (#195)
+[ 40376.000 ms] SENDER   RECV ACK seq=0 (individual, #192 marked ACKed)
+[ 40376.000 ms] SENDER   window slides: send_base=1(193) nextseqnum=4(196) window=[193..196]
+[ 40376.000 ms] SENDER   SEND DATA seq=4 (#196)
+[ 40380.000 ms] SENDER   RECV ACK seq=1 (individual, #193 marked ACKed)
+[ 40380.000 ms] SENDER   window slides: send_base=2(194) nextseqnum=5(197) window=[194..197]
+[ 40380.000 ms] SENDER   SEND DATA seq=5 (#197)
+[ 40622.000 ms] RECEIVER RECV DATA seq=2 = rcv_base -> accept
+[ 40622.000 ms] RECEIVER SEND ACK seq=2
+[ 40622.000 ms] RECEIVER deliver #194 to application
+[ 40622.000 ms] RECEIVER window slides: rcv_base=3(195) window=[195..198]
+[ 40626.000 ms] RECEIVER RECV DATA seq=3 = rcv_base -> accept
+[ 40626.000 ms] RECEIVER SEND ACK seq=3
+[ 40626.000 ms] RECEIVER deliver #195 to application
+[ 40626.000 ms] RECEIVER window slides: rcv_base=4(196) window=[196..199]
+[ 40630.000 ms] RECEIVER RECV DATA seq=4 = rcv_base -> accept
+[ 40630.000 ms] RECEIVER SEND ACK seq=4
+[ 40630.000 ms] RECEIVER deliver #196 to application
+[ 40630.000 ms] RECEIVER window slides: rcv_base=5(197) window=[197..200]
+[ 40634.000 ms] RECEIVER RECV DATA seq=5 = rcv_base -> accept
+[ 40634.000 ms] RECEIVER SEND ACK seq=5
+[ 40634.000 ms] RECEIVER deliver #197 to application
+[ 40634.000 ms] RECEIVER window slides: rcv_base=6(198) window=[198..201]
+[ 40872.000 ms] SENDER   RECV ACK seq=2 (individual, #194 marked ACKed)
+[ 40872.000 ms] SENDER   window slides: send_base=3(195) nextseqnum=6(198) window=[195..198]
+[ 40872.000 ms] SENDER   SEND DATA seq=6 (#198)
+[ 40876.000 ms] SENDER   RECV ACK seq=3 (individual, #195 marked ACKed)
+[ 40876.000 ms] SENDER   window slides: send_base=4(196) nextseqnum=7(199) window=[196..199]
+[ 40876.000 ms] SENDER   SEND DATA seq=7 (#199)
+[ 40880.000 ms] SENDER   RECV ACK seq=4 (individual, #196 marked ACKed)
+[ 40880.000 ms] SENDER   window slides: send_base=5(197) nextseqnum=0(200) window=[197..200]
+[ 40884.000 ms] SENDER   RECV ACK seq=5 (individual, #197 marked ACKed)
+[ 40884.000 ms] SENDER   window slides: send_base=6(198) nextseqnum=0(200) window=[198..201]
+[ 41126.000 ms] RECEIVER RECV DATA seq=6 = rcv_base -> accept
+[ 41126.000 ms] RECEIVER SEND ACK seq=6
+[ 41126.000 ms] RECEIVER deliver #198 to application
+[ 41126.000 ms] RECEIVER window slides: rcv_base=7(199) window=[199..202]
+[ 41130.000 ms] RECEIVER RECV DATA seq=7 = rcv_base -> accept
+[ 41130.000 ms] RECEIVER SEND ACK seq=7
+[ 41130.000 ms] RECEIVER deliver #199 to application
+[ 41130.000 ms] RECEIVER window slides: rcv_base=0(200) window=[200..203]
+[ 41376.000 ms] SENDER   RECV ACK seq=6 (individual, #198 marked ACKed)
+[ 41376.000 ms] SENDER   window slides: send_base=7(199) nextseqnum=0(200) window=[199..202]
+[ 41380.000 ms] SENDER   RECV ACK seq=7 (individual, #199 marked ACKed)
+[ 41380.000 ms] SENDER   window slides: send_base=0(200) nextseqnum=0(200) window=[200..203]
+[ 41380.000 ms] SENDER   all packets acknowledged -> transfer complete
