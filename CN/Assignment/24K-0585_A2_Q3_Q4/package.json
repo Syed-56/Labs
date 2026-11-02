@@ -1,0 +1,16 @@
+{
+  "name": "24k-0585_a2_q3_q4",
+  "version": "1.0.0",
+  "description": "Python 3.8+. The simulator uses only the standard library; `matplotlib` is needed only for the graph. No ready-made GBN/SR/reliable-transport library is used.",
+  "main": "temp.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "docx": "^9.11.0"
+  }
+}

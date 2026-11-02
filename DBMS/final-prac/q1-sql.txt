@@ -1,0 +1,54 @@
+--Finds employees earning more than the highest salary found in any other department
+SELECT E.FIRST_NAME, E.LAST_NAME, E.SALARY, J.JOB_TITLE, L.CITY FROM EMPLOYEES E
+JOIN DEPARTMENTS D ON E.DEPARTMENT_ID=D.DEPARTMENT_ID
+JOIN JOBS J ON E.JOB_ID=J.JOB_ID
+JOIN LOCATIONS L ON D.LOCATION_ID=L.LOCATION_ID
+WHERE E.SALARY > (
+    SELECT MAX(SALARY) FROM EMPLOYEES E2
+    WHERE E2.DEPARTMENT_ID!=E.DEPARTMENT_ID
+);
+
+--map employees with their job roles and departments whose department region is approved and job role is active
+SELECT e.employee_id,
+       e.first_name || ' ' || e.last_name AS full_name,
+       j.job_title,
+       d.department_name,
+       r.region_name
+FROM   employees   e
+JOIN   job_history jh ON e.employee_id    = jh.employee_id
+JOIN   jobs         j ON e.job_id         = j.job_id
+JOIN   departments  d ON e.department_id  = d.department_id
+JOIN   locations    l ON d.location_id    = l.location_id
+JOIN   countries    c ON l.country_id     = c.country_id
+JOIN   regions      r ON c.region_id      = r.region_id
+WHERE  jh.end_date IS NULL                          -- active assignment
+AND    r.region_name IN ('Europe', 'Americas');     -- approved regions
+
+--audit employee transfer
+CREATE OR REPLACE TRIGGER trg_employee_transfer
+BEFORE UPDATE OF DEPARTMENT_ID ON EMPLOYEES
+FOR EACH ROW
+DECLARE
+    v_user      VARCHAR2(30);
+    v_date      DATE;
+    v_dept_count NUMBER;
+BEGIN
+    v_user := USER;
+    v_date := SYSDATE;
+
+    -- Check if new department exists
+    SELECT COUNT(*) INTO v_dept_count
+    FROM DEPARTMENTS
+    WHERE DEPARTMENT_ID = :NEW.DEPARTMENT_ID;
+
+    IF v_dept_count = 0 THEN
+        RAISE_APPLICATION_ERROR(-20001,
+            'Transfer rejected: Department ' || :NEW.DEPARTMENT_ID || ' does not exist.');
+    END IF;
+
+    -- Record the transfer
+    INSERT INTO TRANSFER_HISTORY (EMPLOYEE_ID, OLD_DEPT_ID, NEW_DEPT_ID, TRANSFER_DATE)
+    VALUES (:OLD.EMPLOYEE_ID, :OLD.DEPARTMENT_ID, :NEW.DEPARTMENT_ID, v_date);
+
+END;
+/
